@@ -2,10 +2,10 @@ namespace: crm
 modules:
   Account:
     (envoy): { onExisting: "skip" }
-    name: Account
+    name: חשבונות
     fields:
       AccountName:
-        label: Account Name
+        label: שם חשבון
         kind: String
         required: true
       OwnerId:
