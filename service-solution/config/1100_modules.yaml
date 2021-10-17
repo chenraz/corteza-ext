@@ -729,7 +729,7 @@ modules:
     name: Case
     fields:
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -743,7 +743,7 @@ modules:
         kind: String
         private: true
       ContactTitle:
-        label: Title
+        label: כותרת
         kind: String
         private: true
       ContactEmail:
@@ -769,7 +769,7 @@ modules:
           - RecordLabel
           selectType: default
       Subject:
-        label: Subject
+        label: נושא
         kind: String
       Escalated:
         label: Escalated
@@ -837,7 +837,7 @@ modules:
           - Title
           selectType: default
       Number:
-        label: Case Number
+        label: מס קייס
         kind: String
         expressions:
           valueExpr: "\"Ticket#\" + strftime(new.createdAt, \"%Y%m%d%H%M%S%b\")"
@@ -1274,7 +1274,7 @@ modules:
         kind: String
         private: true
       LastName:
-        label: Last Name
+        label: שם משפחה
         kind: String
         private: true
       OtherStreet:
@@ -1566,7 +1566,7 @@ modules:
           - RecordLabel
           selectType: default
       Title:
-        label: Title
+        label: כותרת
         kind: String
         private: true
       Twitter:
@@ -1653,13 +1653,13 @@ modules:
         label: Entitlement Name
         kind: String
       StartDate:
-        label: Start Date
+        label: תאריך התחלה
         kind: DateTime
       EndDate:
-        label: End Date
+        label: תאריך סיום
         kind: DateTime
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -1738,7 +1738,7 @@ modules:
           precision: 0
           prefix: KB#
       Title:
-        label: Title
+        label: כותרת
         kind: String
       Content:
         label: Content
@@ -1759,7 +1759,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -1952,7 +1952,7 @@ modules:
           - Other
           selectType: default
       Subject:
-        label: Subject
+        label: נושא
         kind: String
       Content:
         label: Content
