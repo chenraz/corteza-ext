@@ -759,7 +759,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [8, 32, 4, 8]
-        - title: Contracts
+        - title: הסכמים
           options:
             allowExport: true
             draggable: false
@@ -1698,7 +1698,7 @@ pages:
     visible: true
   - handle: Contracts
     (envoy): { onExisting: "skip" }
-    title: Contracts
+    title: הסכמים
     blocks:
     - title: List of Contracts
       options:

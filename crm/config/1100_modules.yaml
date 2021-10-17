@@ -1396,7 +1396,7 @@ modules:
         options:
           multiLine: true
       EndDate:
-        label: End Date
+        label: תאריך סיום
         kind: DateTime
         options:
           onlyDate: true
@@ -1442,12 +1442,12 @@ modules:
           format: "0"
           precision: 0
       StartDate:
-        label: Start Date
+        label: תאריך התחלה
         kind: DateTime
         options:
           onlyDate: true
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -1554,7 +1554,7 @@ modules:
         kind: String
         private: true
       CaseNumber:
-        label: Case Number
+        label: מס קייס
         kind: Number
         options:
           format: "0000000"
@@ -1649,7 +1649,7 @@ modules:
             value: High
           selectType: default
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -1663,7 +1663,7 @@ modules:
             value: Closed
           selectType: default
       Subject:
-        label: Subject
+        label: נושא
         kind: String
       Type:
         label: סוג
@@ -2408,11 +2408,11 @@ modules:
         kind: String
         private: true
       FirstName:
-        label: First Name
+        label: שם פרטי
         kind: String
         private: true
       LastName:
-        label: Last Name
+        label: שם משפחה
         kind: String
         private: true
       OtherStreet:
@@ -2947,7 +2947,7 @@ modules:
           - LastName
           selectType: default
       Title:
-        label: Title
+        label: כותרת
         kind: String
         private: true
       Twitter:
@@ -3549,12 +3549,12 @@ modules:
         label: Company Signed Date
         kind: DateTime
       EndDate:
-        label: End Date
+        label: תאריך סיום
         kind: DateTime
         options:
           onlyDate: true
       Name:
-        label: Contract Name
+        label: שם הסכם
         kind: String
       ContractNumber:
         label: Contract Number
@@ -3569,7 +3569,7 @@ modules:
           presetWithAuthenticated: true
           selectType: default
       StartDate:
-        label: Start Date
+        label: תאריך התחלה
         kind: DateTime
         options:
           onlyDate: true
@@ -4155,7 +4155,7 @@ modules:
           multiLine: true
           useRichTextEditor: true
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -4260,7 +4260,7 @@ modules:
           precision: 2
           prefix: $
       EndDate:
-        label: End Date
+        label: תאריך סיום
         kind: DateTime
         options:
           onlyDate: true
@@ -4301,12 +4301,12 @@ modules:
           precision: 2
           suffix: €
       StartDate:
-        label: Start Date
+        label: תאריך התחלה
         kind: DateTime
         options:
           onlyDate: true
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -4383,7 +4383,7 @@ modules:
         label: Email Template Name
         kind: String
       Subject:
-        label: Subject
+        label: נושא
         kind: String
       Markup:
         label: Markup
@@ -4444,7 +4444,7 @@ modules:
           - ContractId
           selectType: ""
       EndDate:
-        label: End Date
+        label: תאריך סיום
         kind: DateTime
       Name:
         label: Entitlement Name
@@ -4468,10 +4468,10 @@ modules:
           format: "0"
           precision: 0
       StartDate:
-        label: Start Date
+        label: תאריך התחלה
         kind: DateTime
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -4619,7 +4619,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       Subject:
-        label: Subject
+        label: נושא
         kind: String
       Type:
         label: סוג
@@ -4753,7 +4753,7 @@ modules:
           - Title
           selectType: ""
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -4769,7 +4769,7 @@ modules:
             value: Duplicate
           selectType: default
       Title:
-        label: Title
+        label: כותרת
         kind: String
       VoteScore:
         label: Vote Score
@@ -5560,11 +5560,11 @@ modules:
         label: Salutation
         kind: String
       FirstName:
-        label: First Name
+        label: שם פרטי
         kind: String
         private: true
       LastName:
-        label: Last Name
+        label: שם משפחה
         kind: String
         private: true
         required: true
@@ -5597,7 +5597,7 @@ modules:
             value: ★★★★★
           selectType: default
       Title:
-        label: Title
+        label: כותרת
         kind: String
       IsUnreadByOwner:
         label: Unread By Owner
@@ -5687,7 +5687,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       Title:
-        label: Title
+        label: כותרת
         kind: String
       AccountContactRoleId:
         label: חשבון Contact Role
@@ -5925,14 +5925,14 @@ modules:
           - AccountName
           selectType: each
       Amount:
-        label: Amount
+        label: סכום
         kind: Number
         options:
           format: "0.00"
           precision: 2
           suffix: €
       CloseDate:
-        label: Close Date
+        label: תאריך סגירה
         kind: DateTime
       IsClosed:
         label: Closed
@@ -6035,7 +6035,7 @@ modules:
         label: Next Step
         kind: String
       Name:
-        label: Opportunity Name
+        label: שם ההזדמנות
         kind: String
       OwnerId:
         label: Opportunity Owner
@@ -6082,7 +6082,7 @@ modules:
           format: "0"
           precision: 0
       StageName:
-        label: Stage
+        label: שלב
         kind: Select
         options:
           options:
@@ -7559,7 +7559,7 @@ modules:
           format: "0"
           precision: 0
       OpportunityId:
-        label: Opportunity Name
+        label: שם ההזדמנות
         kind: Record
         options:
           labelField: Name
@@ -8620,7 +8620,7 @@ modules:
               error: Shipping and Handling can not be a negative number
 
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -8863,7 +8863,7 @@ modules:
         label: Forecast Category
         kind: String
       OpportunityStagename:
-        label: Stage
+        label: שלב
         kind: String
       ContractNextNumber:
         label: Next number for a contract (updates after saving a new contract)
@@ -8993,7 +8993,7 @@ modules:
         label: Solution Title
         kind: String
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -9118,7 +9118,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       Status:
-        label: Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -9128,7 +9128,7 @@ modules:
             value: Completed
           selectType: default
       Subject:
-        label: Subject
+        label: נושא
         kind: String
       Type:
         label: סוג
