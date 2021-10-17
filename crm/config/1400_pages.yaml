@@ -2,9 +2,9 @@ namespace: crm
 pages:
   - handle: Home
     (envoy): { onExisting: "skip" }
-    title: Home
+    title: דשבורד
     blocks:
-    - title: My New Leads
+    - title: לידים חדשים
       options:
         allowExport: true
         draggable: false
@@ -31,7 +31,7 @@ pages:
         variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
       kind: RecordList
       xywh: [0, 11, 4, 9]
-    - title: My Key Deals - Recent Opportunities
+    - title: הזדמנויות אחרונות
       options:
         allowExport: true
         draggable: false
@@ -57,7 +57,7 @@ pages:
         variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
       kind: RecordList
       xywh: [4, 11, 4, 9]
-    - title: My Tasks
+    - title: משימות אחרונות
       options:
         allowExport: true
         draggable: false
@@ -81,14 +81,14 @@ pages:
         variants: {border: primary, headerBg: white, headerText: primary}
       kind: RecordList
       xywh: [8, 11, 4, 9]
-    - title: Sales vs. Target
+    - title: מכירות מול יעדים
       options:
         chart: SalesVsTarget
       style:
         variants: {border: primary, headerBg: white, headerText: primary}
       kind: Chart
       xywh: [6, 0, 2, 4]
-    - title: New Leads
+    - title: לידים חדשים
       options:
         metrics:
         - filter: Status = 'New'
@@ -103,7 +103,7 @@ pages:
         variants: {border: primary, headerBg: white, headerText: primary}
       kind: Metric
       xywh: [0, 0, 2, 4]
-    - title: Converted Leads
+    - title: לידים מומרים
       options:
         metrics:
         - filter: Status = 'Converted'
@@ -117,7 +117,7 @@ pages:
         variants: {border: primary, headerBg: white, headerText: primary}
       kind: Metric
       xywh: [2, 0, 2, 4]
-    - title: Total Pipeline €
+    - title: סהכ בייצור ₪ 
       options:
         metrics:
         - filter: StageName != 'Closed Won' AND StageName != 'Closed Lost' AND
@@ -137,21 +137,21 @@ pages:
         variants: {border: primary, headerBg: white, headerText: primary}
       kind: Metric
       xywh: [4, 0, 2, 4]
-    - title: Leads per Month
+    - title: לידים פר חודש
       options:
         chart: LeadsPerMonth
       style:
         variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
       kind: Chart
       xywh: [0, 4, 4, 7]
-    - title: Monthly Sales
+    - title: מכירות חודשיות
       options:
         chart: MonthlySales
       style:
         variants: {border: primary, headerBg: white, headerText: primary}
       kind: Chart
       xywh: [4, 4, 4, 7]
-    - title: My Calendar
+    - title: אירועים
       options:
         defaultView: dayGridMonth
         feeds:
@@ -468,7 +468,7 @@ pages:
         (envoy): { onExisting: "skip" }
         title: All New Leads
         blocks:
-        - title: New Leads
+        - title: לידים חדשים
           options:
             allowExport: true
             draggable: false
@@ -1085,7 +1085,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [8, 6, 4, 10]
-    - title: Sales vs. Target
+    - title: מכירות מול יעדים
       options:
         chart: SalesVsTarget
       style:
@@ -2963,7 +2963,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [9, 0, 3, 7]
-    - title: Monthly Sales
+    - title: מכירות חודשיות
       options:
         chart: MonthlySales
       style:
@@ -2977,7 +2977,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [9, 14, 3, 7]
-    - title: Sales vs. Target
+    - title: מכירות מול יעדים
       options:
         chart: SalesVsTarget
       style:
@@ -3156,7 +3156,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [6, 6, 6, 8]
-        - title: Monthly Sales
+        - title: מכירות חודשיות
           options:
             chart: MonthlySales
           style:
@@ -3177,7 +3177,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [0, 0, 3, 6]
-        - title: Sales vs. Target
+        - title: מכירות מול יעדים
           options:
             chart: SalesVsTarget
           style:
@@ -3203,7 +3203,7 @@ pages:
         (envoy): { onExisting: "skip" }
         title: KPIs and Sales Activities Dashboard
         blocks:
-        - title: New Leads
+        - title: לידים חדשים
           options:
             metrics:
             - filter: Status = 'New'
@@ -3217,7 +3217,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Metric
           xywh: [0, 0, 2, 4]
-        - title: Converted Leads
+        - title: לידים מומרים
           options:
             metrics:
             - filter: Status = 'Converted'
@@ -3322,7 +3322,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [8, 0, 2, 4]
-        - title: Sales vs. Target
+        - title: מכירות מול יעדים
           options:
             chart: SalesVsTarget
           style:
@@ -3343,7 +3343,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [10, 4, 2, 4]
-        - title: Leads per Month
+        - title: לידים פר חודש
           options:
             chart: LeadsPerMonth
           style:

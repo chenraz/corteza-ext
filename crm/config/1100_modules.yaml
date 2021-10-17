@@ -1637,7 +1637,7 @@ modules:
           - Subject
           selectType: ""
       Priority:
-        label: Priority
+        עדיפות
         kind: Select
         options:
           options:
@@ -4374,7 +4374,7 @@ modules:
         options:
           multiLine: true
       Body:
-        label: Body
+        label: תוכן
         kind: String
         options:
           multiLine: true
@@ -4584,7 +4584,7 @@ modules:
           presetWithAuthenticated: true
           selectType: default
       ActivityDate:
-        label: Start
+        label: מתחיל
         kind: DateTime
       Description:
         label: תאור
@@ -5341,7 +5341,7 @@ modules:
             value: 100 To 500 Million
           selectType: default
       Company:
-        label: Company
+        ארגון
         kind: String
         required: true
       IsConverted:
@@ -5675,7 +5675,7 @@ modules:
     name: Note
     fields:
       Body:
-        label: Body
+        label: תוכן
         kind: String
         options:
           multiLine: true
@@ -9094,10 +9094,10 @@ modules:
           multiLine: true
           useRichTextEditor: true
       ActivityDate:
-        label: Due Date
+        label: תאריך יעד
         kind: DateTime
       Priority:
-        label: Priority
+        עדיפות
         kind: Select
         options:
           options:
