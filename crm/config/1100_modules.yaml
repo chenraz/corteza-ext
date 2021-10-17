@@ -5341,7 +5341,7 @@ modules:
             value: 100 To 500 Million
           selectType: default
       Company:
-        ארגון
+        label: ארגון
         kind: String
         required: true
       IsConverted:
