@@ -808,7 +808,7 @@ modules:
         options:
           onlyDate: true
       Priority:
-        עדיפות
+        label: עדיפות
         kind: Select
         options:
           options:
