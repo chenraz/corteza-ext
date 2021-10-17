@@ -1517,7 +1517,7 @@ modules:
           format: "0"
           precision: 0
       NumberOfAccounts:
-        label: Accounts in Campaign
+        label: חשבונות in Campaign
         kind: Number
         options:
           format: ""

@@ -503,9 +503,9 @@ pages:
     visible: true
   - handle: Accounts
     (envoy): { onExisting: "skip" }
-    title: Accounts
+    title: חשבונות
     blocks:
-    - title: All accounts
+    - title: כל החשבונות
       options:
         allowExport: true
         draggable: false
@@ -534,14 +534,14 @@ pages:
         variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
       kind: RecordList
       xywh: [0, 0, 9, 16]
-    - title: Account by Type
+    - title: חשבון לפי סוג
       options:
         chart: AccountsByType
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [9, 0, 3, 8]
-    - title: Accounts by Rating
+    - title: חשבונות לפי דירוג
       options:
         chart: AccountsByRating
       style:
@@ -2991,7 +2991,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [3, 14, 3, 7]
-    - title: Accounts by Rating
+    - title: חשבונות לפי דירוג
       options:
         chart: AccountsByRating
       style:
@@ -3130,7 +3130,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [6, 18, 3, 7]
-        - title: Accounts by Rating
+        - title: חשבונות לפי דירוג
           options:
             chart: AccountsByRating
           style:
