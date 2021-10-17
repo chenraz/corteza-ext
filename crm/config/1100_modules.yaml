@@ -9097,7 +9097,7 @@ modules:
         label: תאריך יעד
         kind: DateTime
       Priority:
-        עדיפות
+        label: עדיפות
         kind: Select
         options:
           options:
