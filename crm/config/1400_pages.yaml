@@ -333,7 +333,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [6, 0, 3, 15]
-        - title: Notes
+        - title: הערות 
           options:
             allowExport: true
             draggable: false
@@ -358,7 +358,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 15, 6, 8]
-        - title: Events
+        - title: אירועים 
           options:
             allowExport: true
             draggable: false
@@ -383,7 +383,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 23, 4, 8]
-        - title: Tasks
+        - title: משימות 
           options:
             allowExport: true
             draggable: false
@@ -552,9 +552,9 @@ pages:
       - handle: RecordPageForModuleAccount
         (envoy): { onExisting: "skip" }
         module: Account
-        title: Record page for module "Account"
+        title: עמוד רשומה במודול "חשבונות"
         blocks:
-        - title: Account Detail
+        - title: פרטי חשבון
           options:
             fields:
             - name: AccountName
@@ -569,7 +569,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [0, 0, 3, 12]
-        - title: Account Address
+        - title: כתובת חשבון
           options:
             fields:
             - name: BillingStreet
@@ -583,7 +583,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [3, 0, 3, 12]
-        - title: Other Information
+        - title: מידע נוסף
           options:
             fields:
             - name: Rating
@@ -596,7 +596,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [6, 0, 3, 12]
-        - title: Company Twitter Feed
+        - title: פיד מטוויטר
           options:
             profileSourceField: Twitter
             profileUrl: ""
@@ -604,7 +604,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: SocialFeed
           xywh: [9, 0, 3, 12]
-        - title: Opportunities
+        - title: הזדמנויות
           options:
             allowExport: true
             draggable: false
@@ -631,7 +631,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 17, 9, 7]
-        - title: Contacts
+        - title: אנשי קשר
           options:
             allowExport: true
             draggable: false
@@ -657,7 +657,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 24, 4, 8]
-        - title: Notes
+        - title: הערות 
           options:
             allowExport: true
             draggable: false
@@ -682,7 +682,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 32, 4, 8]
-        - title: Cases
+        - title: קייסים 
           options:
             allowExport: true
             draggable: false
@@ -708,7 +708,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [8, 24, 4, 8]
-        - title: Events
+        - title: אירועים 
           options:
             allowExport: true
             draggable: false
@@ -733,7 +733,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [4, 32, 4, 8]
-        - title: Tasks
+        - title: משימות 
           options:
             allowExport: true
             draggable: false
@@ -786,21 +786,21 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [4, 24, 4, 8]
-        - title: Account Actions
+        - title: פעולות בחשבון
           options:
             buttons:
             - enabled: true
-              label: Create new Opportunity from this Account
+              label: יצירת הזדמנות חדשה
               resourceType: compose:record
               workflow: CRM-Account-CreateNewOpportunity
               stepID: 3
             - enabled: true
-              label: Create new Contract from this Account
+              label: יצירת הסכם חדש
               resourceType: compose:record
               workflow: CRM-Account-CreateNewContract
               stepID: 3
             - enabled: true
-              label: Create new Case from this Account
+              label: יצירת קייס חדש
               resourceType: compose:record
               workflow: CRM-Account-CreateNewCase
               stepID: 56
@@ -829,7 +829,7 @@ pages:
     visible: true
   - handle: Contacts
     (envoy): { onExisting: "skip" }
-    title: Contacts
+    title: אנשי קשר
     blocks:
     - title: List of Contacts
       options:
@@ -928,7 +928,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: SocialFeed
           xywh: [9, 0, 3, 21]
-        - title: Notes
+        - title: הערות 
           options:
             allowExport: true
             draggable: false
@@ -954,7 +954,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 21, 4, 8]
-        - title: Events
+        - title: אירועים 
           options:
             allowExport: true
             draggable: false
@@ -979,7 +979,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [4, 21, 4, 8]
-        - title: Tasks
+        - title: משימות 
           options:
             allowExport: true
             draggable: false
@@ -1049,7 +1049,7 @@ pages:
     visible: true
   - handle: Opportunities
     (envoy): { onExisting: "skip" }
-    title: Opportunities
+    title: הזדמנויות
     blocks:
     - title: List of Opportunities
       options:
@@ -1205,7 +1205,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 18, 8, 8]
-        - title: Notes
+        - title: הערות 
           options:
             allowExport: true
             draggable: false
@@ -1230,7 +1230,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 34, 4, 8]
-        - title: Events
+        - title: אירועים 
           options:
             allowExport: true
             draggable: false
@@ -1255,7 +1255,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [4, 34, 4, 8]
-        - title: Tasks
+        - title: משימות 
           options:
             allowExport: true
             draggable: false
@@ -1577,7 +1577,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 12, 12, 8]
-        - title: Notes
+        - title: הערות 
           options:
             allowExport: true
             draggable: false
@@ -1602,7 +1602,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 29, 4, 8]
-        - title: Events
+        - title: אירועים 
           options:
             allowExport: true
             draggable: false
@@ -1627,7 +1627,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [4, 29, 4, 8]
-        - title: Tasks
+        - title: משימות 
           options:
             allowExport: true
             draggable: false
@@ -1808,7 +1808,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [9, 10, 3, 9]
-        - title: Notes
+        - title: הערות 
           options:
             allowExport: true
             draggable: false
@@ -1833,7 +1833,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 19, 4, 8]
-        - title: Events
+        - title: אירועים 
           options:
             allowExport: true
             draggable: false
@@ -1858,7 +1858,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [4, 19, 4, 8]
-        - title: Tasks
+        - title: משימות 
           options:
             allowExport: true
             draggable: false
@@ -1993,7 +1993,7 @@ pages:
                 - name: LastModifiedDate
               kind: Record
               xywh: [4, 0, 4, 13]
-            - title: Notes
+            - title: הערות 
               options:
                 fields:
                 - name: Title
@@ -2087,7 +2087,7 @@ pages:
                 - name: TotalPrice
               kind: Record
               xywh: [4, 0, 4, 11]
-            - title: Notes
+            - title: הערות 
               options:
                 fields:
                 - name: Title
@@ -2489,7 +2489,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: RecordList
           xywh: [6, 10, 6, 9]
-        - title: Notes
+        - title: הערות 
           options:
             allowExport: true
             draggable: false
@@ -2625,7 +2625,7 @@ pages:
                 variants: {border: primary, headerText: primary}
               kind: RecordList
               xywh: [6, 0, 6, 14]
-            - title: Notes
+            - title: הערות 
               options:
                 draggable: false
                 editFields: []
@@ -2669,7 +2669,7 @@ pages:
     visible: true
   - handle: Events
     (envoy): { onExisting: "skip" }
-    title: Events
+    title: אירועים 
     blocks:
     - title: List of Events
       options:
@@ -2834,7 +2834,7 @@ pages:
     visible: true
   - handle: Tasks
     (envoy): { onExisting: "skip" }
-    title: Tasks
+    title: משימות 
     blocks:
     - title: List of Tasks
       options:
@@ -3502,7 +3502,7 @@ pages:
     pages:
       - handle: Notes
         (envoy): { onExisting: "skip" }
-        title: Notes
+        title: הערות 
         blocks:
         - title: List of Notes
           options:
@@ -3576,7 +3576,7 @@ pages:
         visible: true
       - handle: Cases
         (envoy): { onExisting: "skip" }
-        title: Cases
+        title: קייסים 
         blocks:
         - title: List of Cases
           options:
@@ -3688,7 +3688,7 @@ pages:
                 variants: {border: primary, headerText: primary}
               kind: Record
               xywh: [9, 0, 3, 12]
-            - title: Notes
+            - title: הערות 
               options:
                 allowExport: true
                 draggable: false
@@ -3713,7 +3713,7 @@ pages:
                 variants: {border: primary, headerText: primary}
               kind: RecordList
               xywh: [0, 21, 4, 8]
-            - title: Events
+            - title: אירועים 
               options:
                 allowExport: true
                 draggable: false
@@ -3738,7 +3738,7 @@ pages:
                 variants: {border: primary, headerText: primary}
               kind: RecordList
               xywh: [4, 21, 4, 8]
-            - title: Tasks
+            - title: משימות 
               options:
                 allowExport: true
                 draggable: false
