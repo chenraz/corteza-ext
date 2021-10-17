@@ -17,13 +17,13 @@ charts:
           field: count
           fill: true
           fixTooltips: false
-          label: Number of Accounts
+          label: סהכ חשבונות
           lineTension: 0.4
           type: line
         module: Account
         renderer: {}
         yAxis:
-          label: Accounts
+          label: חשבונות
       colorScheme: tableau.Tableau10
   AccountsByType:
     (envoy): { onExisting: "skip" }
