@@ -1636,8 +1636,7 @@ modules:
           - CaseNumber
           - Subject
           selectType: ""
-      Priority:
-        עדיפות
+      Priority: עדיפות
         kind: Select
         options:
           options:
