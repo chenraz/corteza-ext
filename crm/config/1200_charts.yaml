@@ -143,7 +143,7 @@ charts:
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Euro
+          label: שח
       colorScheme: tableau.Tableau10
   CampaignCosts:
     (envoy): { onExisting: "skip" }
@@ -258,7 +258,7 @@ charts:
         - field: count
           fill: true
           fx: m?m+n:n
-          label: Cumulative number of cases
+          label: מספר קייסים מצטבר
           type: line
         module: Case
         renderer: {}
@@ -350,7 +350,7 @@ charts:
         - field: count
           fill: true
           fx: m?m+n:n
-          label: Cumulative number of contracts
+          label: מספר הסכמים מצטבר
           type: line
         module: Contract
         renderer: {}
@@ -391,7 +391,7 @@ charts:
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Euro
+          label: שח
       colorScheme: tableau.Tableau10
   EventsPerMonth:
     (envoy): { onExisting: "skip" }
@@ -565,14 +565,14 @@ charts:
           fill: true
           fixTooltips: null
           fx: m?m+n:n
-          label: Cumulative number of leads
+          label: מספר לידים מצטבר
           lineTension: 0.4
           type: line
         module: Lead
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Leads
+          label: לידים
       colorScheme: tableau.Tableau20
   MonthlySales:
     (envoy): { onExisting: "skip" }
@@ -593,20 +593,20 @@ charts:
           fill: true
           fixTooltips: null
           fx: ""
-          label: Monthly Sales
+          label: מכירות חודשיות
           type: bar
         - aggregate: SUM
           field: Amount
           fill: true
           fx: m?m+n:n
-          label: Cumulative Sales
+          label: מכירות מצטברות
           lineTension: 0.4
           type: line
         module: Opportunity
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Euro
+          label: שח
           max: ""
       colorScheme: tableau.Tableau20
   NumberOfOpportunitiesVsTarget:
@@ -645,7 +645,7 @@ charts:
         - field: count
           fill: true
           fx: m?m+n:n
-          label: Cumulative number of opportunities
+          label: מספר הזדמנויות מצטבר
           lineTension: 0.4
           type: line
         - field: count
@@ -861,7 +861,7 @@ charts:
         - field: count
           fill: true
           fx: m?m+n:n
-          label: Cumulative number of quotes
+          label: מספר הצעות מחיר מצטבר
           lineTension: 0.4
           type: line
         module: Quote
