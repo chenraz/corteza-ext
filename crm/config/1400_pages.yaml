@@ -223,9 +223,9 @@ pages:
     visible: true
   - handle: Leads
     (envoy): { onExisting: "skip" }
-    title: Leads
+    title: לידים
     blocks:
-    - title: Leads by type
+    - title: לידים לפי סוג
       options:
         chart: LeadsByType
       style:
@@ -239,7 +239,7 @@ pages:
         variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
       kind: Chart
       xywh: [9, 8, 3, 8]
-    - title: Leads
+    - title: לידים
       options:
         allowExport: true
         draggable: false
@@ -2297,7 +2297,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Record
           xywh: [9, 0, 3, 10]
-        - title: Leads in Campaign
+        - title: לידים בקמפיין
           options:
             allowExport: true
             draggable: false
@@ -2935,21 +2935,21 @@ pages:
     (envoy): { onExisting: "skip" }
     title: Dashboards
     blocks:
-    - title: Leads per day
+    - title: לידים פר יום
       options:
         chart: LeadsPerMonth
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [0, 0, 6, 7]
-    - title: Leads By Type
+    - title: לידים לפי סוג
       options:
         chart: LeadsByType
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [6, 0, 3, 7]
-    - title: Leads by Country
+    - title: לידים לפי מדינה
       options:
         chart: LeadsByCountry
       style:
@@ -3095,14 +3095,14 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [6, 10, 6, 8]
-        - title: Leads by type
+        - title: לידים לפי סוג
           options:
             chart: LeadsByType
           style:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [0, 18, 3, 7]
-        - title: Leads by Source
+        - title: לידים לפי מקור
           options:
             chart: LeadsBySource
           style:
@@ -3123,7 +3123,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [9, 4, 3, 6]
-        - title: Leads by Rating
+        - title: לידים לפי דירוג
           options:
             chart: LeadsByRating
           style:
