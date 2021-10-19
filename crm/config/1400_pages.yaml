@@ -920,7 +920,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [6, 0, 3, 13]
-        - title: Contact Twitter Feed
+        - title: פיד טוויטר
           options:
             profileSourceField: Twitter
             profileUrl: ""

@@ -1905,7 +1905,7 @@ modules:
         kind: String
         private: true
       MailingCountry:
-        label: Mailing Country
+        label: מדינה
         kind: Select
         options:
           options:
