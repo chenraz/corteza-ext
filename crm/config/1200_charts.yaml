@@ -344,7 +344,7 @@ charts:
         metrics:
         - field: count
           fill: true
-          label: Activated contract per month
+          label: הסכמים פר חודש
           lineTension: 0.4
           type: bar
         - field: count
@@ -356,7 +356,7 @@ charts:
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Activated contracts
+          label: הסכמים חדשים
       colorScheme: tableau.Tableau20
   Dealsize:
     (envoy): { onExisting: "skip" }
