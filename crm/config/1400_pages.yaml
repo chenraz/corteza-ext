@@ -2133,21 +2133,21 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: RecordList
       xywh: [0, 4, 8, 12]
-    - title: Campaign Costs vs. Revenue
+    - title: עלויות קמפיין מול הכנסות
       options:
         chart: CampaignCostVsRevenue
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [8, 4, 4, 7]
-    - title: Active Campaigns per Type
+    - title: קמפיינים פעילים פר סוג
       options:
         chart: ActiveCampaignsByType
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [8, 11, 4, 5]
-    - title: Number of Leads in Campaigns
+    - title: מספר לידים בקמפיין
       options:
         metrics:
         - labelStyle: {}
@@ -2161,7 +2161,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Metric
       xywh: [0, 0, 2, 4]
-    - title: Number of Accounts in Campaigns
+    - title: מספר חשבונות בקמפיין
       options:
         metrics:
         - labelStyle: {}
@@ -2175,7 +2175,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Metric
       xywh: [2, 0, 2, 4]
-    - title: Number of Contacts in Campaigns
+    - title: מספר אנשי קשר בקמפיין
       options:
         metrics:
         - labelStyle: {}
@@ -2189,7 +2189,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Metric
       xywh: [4, 0, 2, 4]
-    - title: Number of Opp. in Campaigns
+    - title: מספר הזדמנויות בקמפיין
       options:
         metrics:
         - labelStyle: {}
@@ -2203,14 +2203,14 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Metric
       xywh: [6, 0, 2, 4]
-    - title: Campaign Opps. vs. Target
+    - title: הזדמנויות בקמפיין מול יעדים
       options:
         chart: CampaignAmountAllOpportunitiesVsTarget
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [8, 0, 2, 4]
-    - title: Campaign Won Opps. vs. Target
+    - title: הזדמנויות מוצלחות בקמפיין מול יעדים
       options:
         chart: CampaignAmountAllWonOpportunitiesVsTarget
       style:
@@ -2932,7 +2932,7 @@ pages:
     visible: true
   - handle: Dashboards
     (envoy): { onExisting: "skip" }
-    title: Dashboards
+    title: מרכז בקרה
     blocks:
     - title: לידים פר יום
       options:
@@ -2955,7 +2955,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [6, 7, 6, 7]
-    - title: Lead Funnel
+    - title: משפך לידים
       options:
         chart: LeadFunnel
       style:
@@ -2969,7 +2969,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [0, 7, 6, 7]
-    - title: Sales Pipeline
+    - title: צנרת מכירות
       options:
         chart: OpportunityStatusFunnel
       style:
@@ -2983,7 +2983,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [0, 14, 3, 7]
-    - title: Number of Opportunities vs. Target
+    - title: הזדמנויות מול ידעים
       options:
         chart: NumberOfOpportunitiesVsTarget
       style:
@@ -3000,9 +3000,9 @@ pages:
     pages:
       - handle: LeadFunnelDashboard
         (envoy): { onExisting: "skip" }
-        title: Lead Funnel Dashboard
+        title: דשבורד משפך לידים
         blocks:
-        - title: Number of Leads in Campaigns
+        - title: מספר לידים בקמפיין
           options:
             metrics:
             - labelStyle: {}
@@ -3016,7 +3016,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Metric
           xywh: [0, 0, 3, 4]
-        - title: Number of Accounts in Campaigns
+        - title: מספר חשבונות בקמפיין
           options:
             metrics:
             - label: Number of Accounts in Campaigns
@@ -3031,7 +3031,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Metric
           xywh: [3, 0, 3, 4]
-        - title: Number of Contacts in Campaigns
+        - title: מספר אנשי קשר בקמפיין
           options:
             metrics:
             - labelStyle: {}
@@ -3045,7 +3045,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Metric
           xywh: [6, 0, 3, 4]
-        - title: Number of Opp. in Campaigns
+        - title: מספר הזדמנויות בקמפיין
           options:
             metrics:
             - labelStyle: {}
@@ -3059,35 +3059,35 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Metric
           xywh: [9, 0, 3, 4]
-        - title: Campaign Opps. vs. Target
+        - title: הזדמנויות בקמפיין מול יעדים
           options:
             chart: CampaignAmountAllOpportunitiesVsTarget
           style:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [3, 4, 3, 6]
-        - title: Campaign Won Opps. vs. Target
+        - title: הזדמנויות מוצלחות בקמפיין מול יעדים
           options:
             chart: CampaignAmountAllWonOpportunitiesVsTarget
           style:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [6, 4, 3, 6]
-        - title: Active Campaigns per Type
+        - title: קמפיינים פעילים פר סוג
           options:
             chart: ActiveCampaignsByType
           style:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [0, 4, 3, 6]
-        - title: Campaign Costs vs. Revenue
+        - title: עלויות קמפיין מול הכנסות
           options:
             chart: CampaignCostVsRevenue
           style:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [0, 10, 6, 8]
-        - title: New Leads Per Month
+        - title: לידים חדשים פר חודש
           options:
             chart: LeadsPerMonth
           style:
@@ -3108,14 +3108,14 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [3, 18, 3, 7]
-        - title: Lead by Country
+        - title: לידים לפי מדינה
           options:
             chart: LeadsByCountry
           style:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [0, 25, 12, 8]
-        - title: Lead Funnel
+        - title: משפך לידים
           options:
             chart: LeadFunnel
           style:
@@ -3244,7 +3244,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Metric
           xywh: [4, 0, 2, 4]
-        - title: Number of Leads in Campaigns
+        - title: מספר לידים בקמפיין
           options:
             metrics:
             - labelStyle: {}
@@ -3258,7 +3258,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Metric
           xywh: [0, 4, 2, 4]
-        - title: Number of Accounts in Campaigns
+        - title: מספר חשבונות בקמפיין
           options:
             metrics:
             - labelStyle: {}
@@ -3272,7 +3272,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Metric
           xywh: [2, 4, 2, 4]
-        - title: Number of Contacts in Campaigns
+        - title: מספר אנשי קשר בקמפיין
           options:
             metrics:
             - labelStyle: {}
@@ -3286,7 +3286,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Metric
           xywh: [4, 4, 2, 4]
-        - title: Number of Opp. in Campaigns
+        - title: מספר הזדמנויות בקמפיין
           options:
             metrics:
             - labelStyle: {}
@@ -3328,14 +3328,14 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [10, 0, 2, 4]
-        - title: Campaign Opps. vs. Target
+        - title: הזדמנויות בקמפיין מול יעדים
           options:
             chart: CampaignAmountAllOpportunitiesVsTarget
           style:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [8, 4, 2, 4]
-        - title: Campaign Won Opps. vs. Target
+        - title: הזדמנויות מוצלחות בקמפיין מול יעדים
           options:
             chart: CampaignAmountAllWonOpportunitiesVsTarget
           style:
@@ -3389,7 +3389,7 @@ pages:
         (envoy): { onExisting: "skip" }
         title: Executive Daily View Dashboard
         blocks:
-        - title: Sales Pipeline
+        - title: צנרת מכירות
           options:
             chart: OpportunitySalesPipeline
           style:
@@ -3459,7 +3459,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [3, 15, 3, 7]
-        - title: Lead Funnel
+        - title: משפך לידים
           options:
             chart: LeadFunnel
           style:

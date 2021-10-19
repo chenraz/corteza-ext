@@ -1368,14 +1368,14 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       ActualCost:
-        label: Actual Cost
+        label: עלות בפועל
         kind: Number
         options:
           format: "0.00"
           precision: 2
           suffix: €
       BudgetedCost:
-        label: Budgeted Cost
+        label: עלות מתוקצבת
         kind: Number
         options:
           format: "0.00"
@@ -1408,7 +1408,7 @@ modules:
           precision: 2
           suffix: '%'
       ExpectedRevenue:
-        label: Expected Revenue
+        label: צפי הכנסות
         kind: Number
         options:
           format: "0.00"
@@ -5958,7 +5958,7 @@ modules:
           multiLine: true
           useRichTextEditor: true
       ExpectedRevenue:
-        label: Expected Revenue
+        label: צפי הכנסות
         kind: Number
         options:
           format: "0"
