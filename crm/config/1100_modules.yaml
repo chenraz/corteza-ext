@@ -1453,7 +1453,7 @@ modules:
           options:
           - text: Aborted
             value: Aborted
-          - text: Completed
+          - text: הושלמה
             value: Completed
           - text: בטיפול
             value: In Progress
@@ -1564,7 +1564,7 @@ modules:
         kind: Select
         options:
           options:
-          - text: Email
+          - text: אימייל
             value: Email
           - text: Messaging
             value: Messaging
@@ -1641,11 +1641,11 @@ modules:
         kind: Select
         options:
           options:
-          - text: Low
+          - text: נמוכה
             value: Low
           - text: Medium
             value: Medium
-          - text: High
+          - text: גבוהה
             value: High
           selectType: default
       Status:
@@ -4626,13 +4626,13 @@ modules:
         kind: Select
         options:
           options:
-          - text: Call
+          - text: שיחה
             value: Call
-          - text: Email
+          - text: אימייל
             value: Email
-          - text: Meeting
+          - text: פגישה
             value: Meeting
-          - text: Send Letter / Quote
+          - text: שליחת הצעת/מידע
             value: Send Letter / Quote
           - text: אחר
             value: Other
@@ -6328,13 +6328,13 @@ modules:
         options:
           multiLine: true
       IsStandard:
-        label: Is Standard Price Book
+        label: ספר מחיר סטנדרטי
         kind: Bool
         options:
           falseLabel: "No"
           trueLabel: "Yes"
       Name:
-        label: Price Book Name
+        label: שם ספר מחיר
         kind: String
   PricebookEntry:
     (envoy): { onExisting: "skip" }
@@ -9101,11 +9101,11 @@ modules:
         kind: Select
         options:
           options:
-          - text: High
+          - text: גבוהה
             value: High
-          - text: Normal
+          - text: רגילה
             value: Normal
-          - text: Low
+          - text: נמוכה
             value: Low
           selectType: default
       ReminderDateTime:
@@ -9122,9 +9122,9 @@ modules:
         kind: Select
         options:
           options:
-          - text: Open
+          - text: פתוחה
             value: Open
-          - text: Completed
+          - text: הושלמה
             value: Completed
           selectType: default
       Subject:
@@ -9135,15 +9135,15 @@ modules:
         kind: Select
         options:
           options:
-          - text: Call
+          - text: שיחה
             value: Call
-          - text: Email
+          - text: אימייל
             value: Email
-          - text: Send letter
+          - text: משלוח מידע
             value: Send letter
-          - text: Send Quote
+          - text: משלוח הצעת מחיר
             value: Send Quote
-          - text: Send Message
+          - text: שליחת הודעה
             value: Send Message
           - text: אחר
             value: Other
