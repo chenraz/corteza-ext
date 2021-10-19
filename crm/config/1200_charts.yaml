@@ -414,7 +414,7 @@ charts:
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Events
+          label: אירועים
       colorScheme: tableau.Tableau10
   EventsPerType:
     (envoy): { onExisting: "skip" }

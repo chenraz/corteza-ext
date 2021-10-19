@@ -2670,7 +2670,7 @@ pages:
     (envoy): { onExisting: "skip" }
     title: אירועים 
     blocks:
-    - title: List of Events
+    - title: רשימת אירועים
       options:
         allowExport: true
         draggable: false
@@ -2695,21 +2695,21 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: RecordList
       xywh: [0, 0, 3, 16]
-    - title: Events per Type
+    - title: אירועים לפי סוג
       options:
         chart: EventsPerType
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [9, 0, 3, 8]
-    - title: Events per Month
+    - title: אירועים פר חודש
       options:
         chart: EventsPerMonth
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [9, 8, 3, 8]
-    - title: Event Calendar
+    - title: לוח אירועים
       options:
         defaultView: dayGridMonth
         feeds:
@@ -2784,7 +2784,7 @@ pages:
         module: Event
         title: עמוד רשומה במודול "אירוע"
         blocks:
-        - title: Event Data
+        - title: פרטי אירוע
           options:
             fields:
             - name: Subject
@@ -2811,7 +2811,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Record
           xywh: [9, 0, 3, 16]
-        - title: Event Date and Time
+        - title: מועדי אירוע
           options:
             fields:
             - name: ActivityDate
@@ -2821,7 +2821,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Record
           xywh: [3, 0, 3, 16]
-        - title: Assigned To
+        - title: שוייך ל
           options:
             fields:
             - name: OwnerId
@@ -2918,7 +2918,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [3, 0, 3, 16]
-        - title: Assigned To
+        - title: שוייך ל
           options:
             fields:
             - name: OwnerId
