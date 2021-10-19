@@ -750,14 +750,14 @@ charts:
         metrics:
         - field: count
           fill: true
-          label: Price book entries
+          label: מוצרים בספר מחיר
           lineTension: 0.4
           type: line
         module: PricebookEntry
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Price book entries
+          label: מוצרים בספר מחיר
       colorScheme: tableau.Tableau10
   PriceBooksCreatedPerMonth:
     (envoy): { onExisting: "skip" }
@@ -988,12 +988,12 @@ charts:
         metrics:
         - field: count
           fill: true
-          label: Tasks per month
+          label: משימות פר חודש
           lineTension: 0.4
           type: line
         module: Task
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Tasks
+          label: משימות
       colorScheme: tableau.Tableau10

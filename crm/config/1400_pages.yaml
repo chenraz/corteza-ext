@@ -2103,7 +2103,7 @@ pages:
     visible: true
   - handle: Campaigns
     (envoy): { onExisting: "skip" }
-    title: Campaigns
+    title: קמפיינים
     blocks:
     - title: List of Campaigns
       options:
@@ -2539,7 +2539,7 @@ pages:
         (envoy): { onExisting: "skip" }
         title: ספר מחיר
         blocks:
-        - title: Price Books
+        - title: ספר מחירים
           options:
             allowExport: true
             draggable: false
@@ -2565,14 +2565,14 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: RecordList
           xywh: [0, 0, 9, 16]
-        - title: Price Books created per Month
+        - title: ספרי מחיר פר חודש
           options:
             chart: PriceBooksCreatedPerMonth
           style:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [9, 0, 3, 8]
-        - title: Price Book Entries per Month
+        - title: פרטי ספרי מחיר פר חודש
           options:
             chart: PriceBookEntriesPerMonth
           style:
@@ -2585,7 +2585,7 @@ pages:
             module: Pricebook
             title: עמוד רשומה במודול "ספר מחירים"
             blocks:
-            - title: Price Book Details
+            - title: נתוני ספר מחיר
               options:
                 fields:
                 - name: Name
@@ -2594,7 +2594,7 @@ pages:
                 - name: IsActive
               kind: Record
               xywh: [0, 0, 6, 14]
-            - title: Price Book Entries
+            - title: מוצרים בספר מחיר
               options:
                 allowExport: true
                 draggable: true
@@ -2835,7 +2835,7 @@ pages:
     (envoy): { onExisting: "skip" }
     title: משימות 
     blocks:
-    - title: List of Tasks
+    - title: רשימת משימות
       options:
         allowExport: true
         draggable: false
@@ -2865,14 +2865,14 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: RecordList
       xywh: [0, 0, 9, 16]
-    - title: Tasks by Status
+    - title: משימות לפי סטאטוס
       options:
         chart: TasksByStatus
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [9, 0, 3, 8]
-    - title: Tasks per Month
+    - title: משימות פר חודש
       options:
         chart: TasksPerMonth
       style:
@@ -2885,7 +2885,7 @@ pages:
         module: Task
         title: עמוד רשומה במודול "משימה"
         blocks:
-        - title: Task Details
+        - title: פרטי משימה
           options:
             fields:
             - name: Subject
@@ -2895,7 +2895,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [0, 0, 3, 16]
-        - title: Related To
+        - title: רשומות קשורות
           options:
             fields:
             - name: LeadId
@@ -2908,7 +2908,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [9, 0, 3, 16]
-        - title: Task Status
+        - title: סטאטוס משימה
           options:
             fields:
             - name: Status
@@ -3480,7 +3480,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [6, 15, 3, 7]
-        - title: Tasks by Status
+        - title: משימות לפי סטאטוס
           options:
             chart: TasksByStatus
           style:
