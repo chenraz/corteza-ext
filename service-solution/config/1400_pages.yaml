@@ -715,9 +715,9 @@ pages:
     visible: true
   - handle: Products
     (envoy): { onExisting: "skip" }
-    title: Products
+    title: מוצרים
     blocks:
-    - title: Products
+    - title: מוצרים
       options:
         allowExport: true
         draggable: false

@@ -6069,7 +6069,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       Probability:
-        label: Probability (%)
+        label: סיכוי (%)
         kind: Number
         options:
           format: "0"
