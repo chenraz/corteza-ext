@@ -1817,7 +1817,7 @@ modules:
     name: Product
     fields:
       IsActive:
-        label: Active
+        label: פעיל
         kind: Bool
         options:
           falseLabel: "No"
@@ -1832,7 +1832,7 @@ modules:
           multiLine: true
           useRichTextEditor: true
       Family:
-        label: Product Family
+        label: משפחת מוצר
         kind: Select
         options:
           options:
@@ -1843,10 +1843,10 @@ modules:
           - Service
           selectType: default
       Name:
-        label: Product Name
+        label: שם מוצר
         kind: String
       Photo:
-        label: Photo
+        label: תמונה
         kind: File
         options:
           allowDocuments: false

@@ -765,7 +765,7 @@ pages:
         module: Product
         title: Record page for module "Product"
         blocks:
-        - title: Product Description
+        - title: תאור מוצר
           options:
             fields:
             - name: ProductCode

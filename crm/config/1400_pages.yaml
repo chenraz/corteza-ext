@@ -2381,7 +2381,7 @@ pages:
     (envoy): { onExisting: "skip" }
     title: מוצרים
     blocks:
-    - title: List of Products
+    - title: רשימת מוצרים
       options:
         allowExport: true
         draggable: false
@@ -2406,14 +2406,14 @@ pages:
         selectionButtons: []
       kind: RecordList
       xywh: [0, 0, 9, 16]
-    - title: Products per Product Family
+    - title: מוצרים לפי משפחת מוצר
       options:
         chart: ProductsPerFamily
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [9, 0, 3, 8]
-    - title: Products added per Month
+    - title: מוצרים נוספים פר חודש
       options:
         chart: ProductsAddedPerMonth
       style:
@@ -2426,7 +2426,7 @@ pages:
         module: Product
         title: עמוד רשומה במודול "מוצר"
         blocks:
-        - title: Product Description
+        - title: תאור מוצר
           options:
             fields:
             - name: Name
@@ -2437,7 +2437,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Record
           xywh: [0, 0, 4, 10]
-        - title: Appears in the following Price Books
+        - title: מופיע בספרי מחיר
           options:
             allowExport: true
             draggable: false
@@ -2462,7 +2462,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: RecordList
           xywh: [0, 10, 6, 9]
-        - title: Related Cases
+        - title: קייסים קשורים
           options:
             allowExport: true
             draggable: false
@@ -2522,7 +2522,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Record
           xywh: [4, 0, 4, 10]
-        - title: Record Information
+        - title: נתוני רשומה
           options:
             fields:
             - name: IsActive

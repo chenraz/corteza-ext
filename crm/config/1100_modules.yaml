@@ -1362,7 +1362,7 @@ modules:
     name: Campaigns
     fields:
       IsActive:
-        label: Active
+        label: פעיל
         kind: Bool
         options:
           falseLabel: "No"
@@ -2979,7 +2979,7 @@ modules:
           presetWithAuthenticated: true
           selectType: default
       Photo:
-        label: Photo
+        label: תמונה
         kind: File
         options:
           allowDocuments: true
@@ -3563,7 +3563,7 @@ modules:
           format: "0000000"
           precision: 0
       OwnerId:
-        label: Contract Owner
+        label: בעל ההסכם
         kind: User
         options:
           presetWithAuthenticated: true
@@ -4149,7 +4149,7 @@ modules:
           selectType: default
         private: true
       SpecialTerms:
-        label: Special Terms
+        label: תנאים מיוחדים
         kind: String
         options:
           multiLine: true
@@ -6317,7 +6317,7 @@ modules:
     name: Pricebook
     fields:
       IsActive:
-        label: Active
+        label: פעיל
         kind: Bool
         options:
           falseLabel: "No"
@@ -6341,7 +6341,7 @@ modules:
     name: PricebookEntry
     fields:
       IsActive:
-        label: Active
+        label: פעיל
         kind: Bool
         options:
           falseLabel: "No"
@@ -6376,7 +6376,7 @@ modules:
         label: קוד מוצר
         kind: String
       Name:
-        label: Product Name
+        label: שם מוצר
         kind: String
       UseStandardPrice:
         label: Use Standard Price
@@ -6395,7 +6395,7 @@ modules:
     name: Product
     fields:
       IsActive:
-        label: Active
+        label: פעיל
         kind: Bool
         options:
           falseLabel: "No"
@@ -6410,7 +6410,7 @@ modules:
           multiLine: true
           useRichTextEditor: true
       Family:
-        label: Product Family
+        label: משפחת מוצר
         kind: Select
         options:
           options:
@@ -6420,10 +6420,10 @@ modules:
             value: Products
           selectType: default
       Name:
-        label: Product Name
+        label: שם מוצר
         kind: String
       Photo:
-        label: Photo
+        label: תמונה
         kind: File
         options:
           allowDocuments: true
