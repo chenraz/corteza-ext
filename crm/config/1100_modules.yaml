@@ -19,35 +19,35 @@ modules:
         kind: Select
         options:
           options:
-          - text: Customer Referral
+          - text: הפניית לקוח
             value: Customer Referral
-          - text: Direct
+          - text: ישיר
             value: Direct
-          - text: Employee Referral
+          - text: הפניית מועסק
             value: Employee Referral
-          - text: Event
+          - text: אירוע
             value: Event
-          - text: Existing Customer
+          - text: לקוח קיים
             value: Existing Customer
-          - text: Inbound Call
+          - text: שיחה נכנסת
             value: Inbound Call
-          - text: Outbound List
+          - text: רשימת תפוצה
             value: Outbound List
-          - text: Partner Referral
+          - text: הפנייה משותף
             value: Partner Referral
-          - text: Seminar
+          - text: כנס
             value: Seminar
-          - text: Social Media
+          - text: מדיה חברתית
             value: Social Media
-          - text: Webinar
+          - text: וובינר
             value: Webinar
-          - text: Website (Organic)
+          - text: אתר (אורגני)
             value: Website (Organic)
-          - text: Website (PPC)
+          - text: אתר (ממומן)
             value: Website (PPC)
-          - text: Word of Mouth
+          - text: פה לאוזן
             value: Word of Mouth
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
       BillingStreet:
@@ -644,7 +644,7 @@ modules:
             value: Media
           - text: Not For Profit
             value: Not For Profit
-          - text: Other
+          - text: אחר
             value: Other
           - text: Recreation
             value: Recreation
@@ -1250,7 +1250,7 @@ modules:
             value: Prospect
           - text: Technology Partner
             value: Technology Partner
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
       AnnualRevenue:
@@ -1354,7 +1354,7 @@ modules:
             value: Project Manager
           - text: Technical Buyer
             value: Technical Buyer
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
   Campaigns:
@@ -1455,7 +1455,7 @@ modules:
             value: Aborted
           - text: Completed
             value: Completed
-          - text: In Progress
+          - text: בטיפול
             value: In Progress
           - text: Planned
             value: Planned
@@ -1572,7 +1572,7 @@ modules:
             value: Phone
           - text: Web
             value: Web
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
       Reason:
@@ -1586,7 +1586,7 @@ modules:
             value: Software bug
           - text: User didn't attend training
             value: User didn't attend training
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
       IsClosed:
@@ -1653,7 +1653,7 @@ modules:
         kind: Select
         options:
           options:
-          - text: New
+          - text: חדש
             value: New
           - text: Working
             value: Working
@@ -1676,7 +1676,7 @@ modules:
             value: Feature Request
           - text: Question
             value: Question
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
       ProductId:
@@ -1857,35 +1857,35 @@ modules:
         kind: Select
         options:
           options:
-          - text: Customer Referral
+          - text: הפניית לקוח
             value: Customer Referral
-          - text: Direct
+          - text: ישיר
             value: Direct
-          - text: Employee Referral
+          - text: הפניית מועסק
             value: Employee Referral
-          - text: Event
+          - text: אירוע
             value: Event
-          - text: Existing Customer
+          - text: לקוח קיים
             value: Existing Customer
-          - text: Inbound Call
+          - text: שיחה נכנסת
             value: Inbound Call
-          - text: Outbound List
+          - text: רשימת תפוצה
             value: Outbound List
-          - text: Partner Referral
+          - text: הפנייה משותף
             value: Partner Referral
-          - text: Seminar
+          - text: כנס
             value: Seminar
-          - text: Social Media
+          - text: מדיה חברתית
             value: Social Media
-          - text: Webinar
+          - text: וובינר
             value: Webinar
-          - text: Website (Organic)
+          - text: אתר (אורגני)
             value: Website (Organic)
-          - text: Website (PPC)
+          - text: אתר (ממומן)
             value: Website (PPC)
-          - text: Word of Mouth
+          - text: פה לאוזן
             value: Word of Mouth
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
       MailingStreet:
@@ -4240,7 +4240,7 @@ modules:
             value: Project Manager
           - text: Technical Buyer
             value: Technical Buyer
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
   ContractLineItem:
@@ -4634,7 +4634,7 @@ modules:
             value: Meeting
           - text: Send Letter / Quote
             value: Send Letter / Quote
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
       LeadId:
@@ -4757,7 +4757,7 @@ modules:
         kind: Select
         options:
           options:
-          - text: New
+          - text: חדש
             value: New
           - text: Under Consideration
             value: Under Consideration
@@ -5467,7 +5467,7 @@ modules:
             value: Media
           - text: Not For Profit
             value: Not For Profit
-          - text: Other
+          - text: אחר
             value: Other
           - text: Recreation
             value: Recreation
@@ -5504,35 +5504,35 @@ modules:
         kind: Select
         options:
           options:
-          - text: Customer Referral
+          - text: הפניית לקוח
             value: Customer Referral
-          - text: Direct
+          - text: ישיר
             value: Direct
-          - text: Employee Referral
+          - text: הפניית מועסק
             value: Employee Referral
-          - text: Event
+          - text: אירוע
             value: Event
-          - text: Existing Customer
+          - text: לקוח קיים
             value: Existing Customer
-          - text: Inbound Call
+          - text: שיחה נכנסת
             value: Inbound Call
-          - text: Outbound List
+          - text: רשימת תפוצה
             value: Outbound List
-          - text: Partner Referral
+          - text: הפנייה משותף
             value: Partner Referral
-          - text: Seminar
+          - text: כנס
             value: Seminar
-          - text: Social Media
+          - text: מדיה חברתית
             value: Social Media
-          - text: Webinar
+          - text: וובינר
             value: Webinar
-          - text: Website (Organic)
+          - text: אתר (אורגני)
             value: Website (Organic)
-          - text: Website (PPC)
+          - text: אתר (ממומן)
             value: Website (PPC)
-          - text: Word of Mouth
+          - text: פה לאוזן
             value: Word of Mouth
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
       Status:
@@ -5540,17 +5540,17 @@ modules:
         kind: Select
         options:
           options:
-          - text: New
+          - text: חדש
             value: New
-          - text: Assigned
+          - text: שוייך
             value: Assigned
-          - text: In Progress
+          - text: בטיפול
             value: In Progress
-          - text: Converted
+          - text: הומר
             value: Converted
-          - text: Recycled
+          - text: שוחזר
             value: Recycled
-          - text: Dead
+          - text: לא רלוונטי
             value: Dead
           selectType: default
       MobilePhone:
@@ -5999,35 +5999,35 @@ modules:
         kind: Select
         options:
           options:
-          - text: Customer Referral
+          - text: הפניית לקוח
             value: Customer Referral
-          - text: Direct
+          - text: ישיר
             value: Direct
-          - text: Employee Referral
+          - text: הפניית מועסק
             value: Employee Referral
-          - text: Event
+          - text: אירוע
             value: Event
-          - text: Existing Customer
+          - text: לקוח קיים
             value: Existing Customer
-          - text: Inbound Call
+          - text: שיחה נכנסת
             value: Inbound Call
-          - text: Outbound List
+          - text: רשימת תפוצה
             value: Outbound List
-          - text: Partner Referral
+          - text: הפנייה משותף
             value: Partner Referral
-          - text: Seminar
+          - text: כנס
             value: Seminar
-          - text: Social Media
+          - text: מדיה חברתית
             value: Social Media
-          - text: Webinar
+          - text: וובינר
             value: Webinar
-          - text: Website (Organic)
+          - text: אתר (אורגני)
             value: Website (Organic)
-          - text: Website (PPC)
+          - text: אתר (ממומן)
             value: Website (PPC)
-          - text: Word of Mouth
+          - text: פה לאוזן
             value: Word of Mouth
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
         multi: true
@@ -8997,7 +8997,7 @@ modules:
         kind: Select
         options:
           options:
-          - text: New
+          - text: חדש
             value: New
           - text: Pending review
             value: Pending review
@@ -9145,7 +9145,7 @@ modules:
             value: Send Quote
           - text: Send Message
             value: Send Message
-          - text: Other
+          - text: אחר
             value: Other
           selectType: default
       LeadId:

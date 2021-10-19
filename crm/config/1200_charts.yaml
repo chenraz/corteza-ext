@@ -443,13 +443,13 @@ charts:
           field: Status
           meta:
             fields:
-            - text: New
+            - text: חדש
               value: New
-            - text: Assigned
+            - text: שוייך
               value: Assigned
-            - text: In Progress
+            - text: בטיפול
               value: In Progress
-            - text: Converted
+            - text: הומר
               value: Converted
           modifier: (no grouping / buckets)
         filter: ""
