@@ -1546,7 +1546,7 @@ modules:
         kind: Email
         private: true
       SuppliedName:
-        label: איש קשר Name
+        label: שם איש קשר
         kind: String
         private: true
       SuppliedPhone:
@@ -1602,7 +1602,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       ContactId:
-        label: איש קשר Name
+        label: שם איש קשר
         kind: Record
         options:
           labelField: RecordLabel
@@ -4159,7 +4159,7 @@ modules:
         kind: Select
         options:
           options:
-          - text: Draft
+          - text: טיוטה
             value: Draft
           - text: Activated
             value: Activated
@@ -4501,7 +4501,7 @@ modules:
     name: EntitlementContact
     fields:
       ContactId:
-        label: איש קשר Name
+        label: שם איש קשר
         kind: Record
         options:
           labelField: RecordLabel
@@ -4761,7 +4761,7 @@ modules:
             value: New
           - text: Under Consideration
             value: Under Consideration
-          - text: Accepted
+          - text: התקבלה
             value: Accepted
           - text: Implemented
             value: Implemented
@@ -5853,7 +5853,7 @@ modules:
           - Name
           selectType: ""
       PricebookId:
-        label: Pricebook
+        label: ספר מחירים
         kind: Record
         options:
           labelField: Name
@@ -7010,19 +7010,19 @@ modules:
         label: Additional To Name
         kind: String
       BillingStreet:
-        label: Bill To Street
+        label: רחוב לחשובנית
         kind: String
       BillingCity:
-        label: Bill To City
+        label: ישוב לחשובנית
         kind: String
       BillingState:
-        label: Bill To State
+        label: מחוז לחשובנית
         kind: String
       BillingPostalCode:
-        label: Bill To Postal Code
+        label: מיקוד לחשובנית
         kind: String
       BillingCountry:
-        label: Bill To Country
+        label: מדינה לחשובנית
         kind: Select
         options:
           options:
@@ -7519,7 +7519,7 @@ modules:
         label: Bill To Name
         kind: String
       ContactId:
-        label: איש קשר Name
+        label: שם איש קשר
         kind: Record
         options:
           labelField: RecordLabel
@@ -7533,7 +7533,7 @@ modules:
         options:
           multiLine: true
       Discount:
-        label: Additional Discount
+        label: הנחה נוספת
         kind: Number
         options:
           format: "0.00"
@@ -7572,7 +7572,7 @@ modules:
         label: טלפון
         kind: String
       PricebookId:
-        label: Pricebook
+        label: ספר מחירים
         kind: Record
         options:
           labelField: Name
@@ -7590,19 +7590,19 @@ modules:
           format: "0000000"
           precision: 0
       QuoteToStreet:
-        label: Quote To Street
+        label: רחוב להצעת מחיר
         kind: String
       QuoteToCity:
-        label: Quote To City
+        label: ישוב להצעת מחיר
         kind: String
       QuoteToState:
-        label: Quote To State
+        label: מחוז להצעת מחיר
         kind: String
       QuoteToPostalCode:
-        label: Quote To Postal Code
+        label: מיקוד להצעת מחיר
         kind: String
       QuoteToCountry:
-        label: Quote To Country
+        label: מדינה להצעת מחיר
         kind: Select
         options:
           options:
@@ -8096,22 +8096,22 @@ modules:
             value: Zimbabwe
           selectType: default
       QuoteToName:
-        label: Quote To Name
+        label: שם להצעת מחיר
         kind: String
       ShippingStreet:
-        label: Ship To Street
+        label: רחוב למשלוח
         kind: String
       ShippingCity:
-        label: Ship To City
+        label: ישוב למשלוח
         kind: String
       ShippingState:
-        label: Ship To State
+        label: מחוז למשלוח
         kind: String
       ShippingPostalCode:
-        label: Ship To Postal Code
+        label: מיקוד למשלוח
         kind: String
       ShippingCountry:
-        label: Ship To Country
+        label: מדינה למשלוח
         kind: Select
         options:
           options:
@@ -8605,10 +8605,10 @@ modules:
             value: Zimbabwe
           selectType: default
       ShippingName:
-        label: Ship To Name
+        label: שם למשלוח
         kind: String
       ShippingHandling:
-        label: Shipping and Handling
+        label: אריזה ומשלוח
         kind: Number
         options:
           format: "0"
@@ -8624,21 +8624,21 @@ modules:
         kind: Select
         options:
           options:
-          - text: Draft
+          - text: טיוטה
             value: Draft
-          - text: Needs Review
+          - text: נדרשת בדיקה
             value: Needs Review
-          - text: In Review
+          - text: בבדיקה
             value: In Review
-          - text: Approved
+          - text: אושרה
             value: Approved
-          - text: Rejected
+          - text: נדחתה
             value: Rejected
-          - text: Presented
+          - text: הוצגה
             value: Presented
-          - text: Accepted
+          - text: התקבלה
             value: Accepted
-          - text: Denied
+          - text: נדחתה
             value: Denied
           selectType: default
       Subtotal:
@@ -8653,7 +8653,7 @@ modules:
             - test: "value < 0"
               error: Sub total can not be a negative number
       Tax:
-        label: Tax
+        label: מסים
         kind: Number
         options:
           format: "0.00"
@@ -8673,7 +8673,7 @@ modules:
         expressions:
           valueExpr: max(max((Subtotal?Subtotal:0) - (Discount?Discount:0), 0) + (ShippingHandling?ShippingHandling:0))
       GrandTotal:
-        label: Grand Total (calculated)
+        label: סה"כ כולל מסים
         kind: Number
         options:
           format: "0.00"
@@ -9001,7 +9001,7 @@ modules:
             value: New
           - text: Pending review
             value: Pending review
-          - text: Accepted
+          - text: התקבלה
             value: Accepted
           - text: Obsolete
             value: Obsolete
