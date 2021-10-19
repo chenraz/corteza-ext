@@ -842,7 +842,7 @@ modules:
         expressions:
           valueExpr: "\"Ticket#\" + strftime(new.createdAt, \"%Y%m%d%H%M%S%b\")"
       ProductId:
-        label: Product
+        label: מוצר
         kind: Record
         options:
           labelField: Name
@@ -1641,7 +1641,7 @@ modules:
           - AccountName
           selectType: default
       ProductId:
-        label: Product
+        label: מוצר
         kind: Record
         options:
           labelField: Name
@@ -1803,7 +1803,7 @@ modules:
           selectType: multiple
         multi: true
       ProductId:
-        label: Product
+        label: מוצר
         kind: Record
         options:
           labelField: Name
@@ -1823,7 +1823,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       ProductCode:
-        label: Product Code
+        label: קוד מוצר
         kind: String
       Description:
         label: Product Description
@@ -1883,7 +1883,7 @@ modules:
           precision: 2
           prefix: $
       ProductSelect:
-        label: Products
+        label: מוצרים
         kind: Select
         options:
           options: []

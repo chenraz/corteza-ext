@@ -689,15 +689,15 @@ charts:
           field: StageName
           meta:
             fields:
-            - text: Qualification
+            - text: בדיקת התאמה
               value: Qualification
-            - text: Need Analysis
+            - text: ניתוח
               value: Need Analysis
-            - text: Proposal
+            - text: הצעת מחיר
               value: Proposal
-            - text: Negotiation
+            - text: מו"מ
               value: Negotiation
-            - text: Closed Won
+            - text: הומר בהצלחה
               value: Closed Won
           modifier: (no grouping / buckets)
         filter: YEAR(created_at) = YEAR(NOW()) AND Amount IS NOT NULL
@@ -718,15 +718,15 @@ charts:
           field: StageName
           meta:
             fields:
-            - text: Qualification
+            - text: בדיקת התאמה
               value: Qualification
-            - text: Need Analysis
+            - text: ניתוח
               value: Need Analysis
-            - text: Proposal
+            - text: הצעת מחיר
               value: Proposal
-            - text: Negotiation
+            - text: מו"מ
               value: Negotiation
-            - text: Closed Won
+            - text: הומר בהצלחה
               value: Closed Won
           modifier: (no grouping / buckets)
         filter: YEAR(created_at) = YEAR(NOW())
@@ -802,7 +802,7 @@ charts:
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Products
+          label: מוצרים
       colorScheme: tableau.Tableau10
   ProductsPerFamily:
     (envoy): { onExisting: "skip" }
@@ -868,7 +868,7 @@ charts:
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Quotes
+          label: הצעות מחיר
       colorScheme: tableau.Tableau20
   SalesVsTarget:
     (envoy): { onExisting: "skip" }

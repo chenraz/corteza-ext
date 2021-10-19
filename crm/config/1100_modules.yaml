@@ -1680,7 +1680,7 @@ modules:
             value: Other
           selectType: default
       ProductId:
-        label: Product
+        label: מוצר
         kind: Record
         options:
           labelField: Name
@@ -4174,7 +4174,7 @@ modules:
         label: Record Label
         kind: String
       Files:
-        label: Files
+        label: קבצים
         kind: File
         options:
           allowDocuments: true
@@ -4253,7 +4253,7 @@ modules:
         options:
           multiLine: true
       Discount:
-        label: Discount
+        label: הנחה
         kind: Number
         options:
           format: "0.00"
@@ -4271,7 +4271,7 @@ modules:
           multiLine: false
           useRichTextEditor: false
       ListPrice:
-        label: List Price
+        label: מחיר רשום
         kind: Number
         options:
           format: "0.00"
@@ -4288,13 +4288,13 @@ modules:
           - Name
           selectType: ""
       Quantity:
-        label: Quantity
+        label: כמות
         kind: Number
         options:
           format: "0"
           precision: 0
       UnitPrice:
-        label: Sales Price
+        label: מחיר מכירה
         kind: Number
         options:
           format: "0.00"
@@ -4325,7 +4325,7 @@ modules:
           precision: 2
           suffix: €
       TotalPrice:
-        label: Total Price
+        label: סה"כ מחיר
         kind: Number
         options:
           format: "0.00"
@@ -4344,7 +4344,7 @@ modules:
           selectType: ""
         required: true
       ProductId:
-        label: Product
+        label: מוצר
         kind: Record
         options:
           labelField: Name
@@ -5833,7 +5833,7 @@ modules:
           - RecordLabel
           selectType: ""
       ProductId:
-        label: Product
+        label: מוצר
         kind: Record
         options:
           labelField: Name
@@ -5903,7 +5903,7 @@ modules:
           - QuoteNumber
           selectType: ""
       Files:
-        label: Files
+        label: קבצים
         kind: File
         options:
           allowDocuments: true
@@ -5977,7 +5977,7 @@ modules:
           format: "0"
           precision: 0
       ForecastCategory:
-        label: Forecast Category
+        label: קטגורית תחזית
         kind: Select
         options:
           options:
@@ -6032,19 +6032,19 @@ modules:
           selectType: default
         multi: true
       NextStep:
-        label: Next Step
+        label: שלב הבא
         kind: String
       Name:
         label: שם ההזדמנות
         kind: String
       OwnerId:
-        label: Opportunity Owner
+        label: בעל ההזדמנות
         kind: User
         options:
           presetWithAuthenticated: true
           selectType: default
       PricebookId:
-        label: Price Book
+        label: ספר מחיר
         kind: Record
         options:
           labelField: Name
@@ -6053,7 +6053,7 @@ modules:
           - Name
           selectType: default
       CampaignId:
-        label: ראשי Campaign Source
+        label: מקור קמפיין ראשי
         kind: Record
         multi: true
         options:
@@ -6076,7 +6076,7 @@ modules:
           precision: 0
           suffix: '%'
       TotalOpportunityQuantity:
-        label: Quantity
+        label: כמות
         kind: Number
         options:
           format: "0"
@@ -6086,17 +6086,17 @@ modules:
         kind: Select
         options:
           options:
-          - text: Qualification
+          - text: בדיקת התאמה
             value: Qualification
-          - text: Need Analysis
+          - text: ניתוח
             value: Need Analysis
-          - text: Proposal
+          - text: הצעת מחיר
             value: Proposal
-          - text: Negotiation
+          - text: מו"מ
             value: Negotiation
-          - text: Closed Won
+          - text: הומר בהצלחה
             value: Closed Won
-          - text: Closed Lost
+          - text: נכשל
             value: Closed Lost
           selectType: default
       Type:
@@ -6104,9 +6104,9 @@ modules:
         kind: Select
         options:
           options:
-          - text: Exisiting Business
+          - text: עסק קיים
             value: Exisiting Business
-          - text: New Business
+          - text: עסק חדש
             value: New Business
           selectType: default
       IsWon:
@@ -6144,7 +6144,7 @@ modules:
         label: Record Label
         kind: String
       Files:
-        label: Files
+        label: קבצים
         kind: File
         options:
           allowDocuments: true
@@ -6229,7 +6229,7 @@ modules:
         label: Date
         kind: DateTime
       Discount:
-        label: Discount
+        label: הנחה
         kind: Number
         options:
           format: "0.00"
@@ -6239,7 +6239,7 @@ modules:
         label: Line Description
         kind: String
       ListPrice:
-        label: List Price
+        label: מחיר רשום
         kind: Number
         options:
           format: "0.00"
@@ -6269,7 +6269,7 @@ modules:
           - Name
           selectType: ""
       ProductId:
-        label: Product
+        label: מוצר
         kind: Record
         options:
           labelField: Name
@@ -6277,16 +6277,16 @@ modules:
           queryFields: []
           selectType: ""
       ProductCode:
-        label: Product Code
+        label: קוד מוצר
         kind: String
       Quantity:
-        label: Quantity
+        label: כמות
         kind: Number
         options:
           format: "0"
           precision: 0
       UnitPrice:
-        label: Sales Price
+        label: מחיר מכירה
         kind: Number
         options:
           format: "0.00"
@@ -6299,14 +6299,14 @@ modules:
           format: "0"
           precision: 0
       Subtotal:
-        label: Subtotal
+        label: סכום
         kind: Number
         options:
           format: "0.00"
           precision: 2
           suffix: €
       TotalPrice:
-        label: Total Price
+        label: סה"כ מחיר
         kind: Number
         options:
           format: "0.00"
@@ -6347,14 +6347,14 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       UnitPrice:
-        label: List Price
+        label: מחיר רשום
         kind: Number
         options:
           format: "0.00"
           precision: 2
           suffix: €
       PricebookId:
-        label: Price Book
+        label: ספר מחיר
         kind: Record
         options:
           labelField: Name
@@ -6363,7 +6363,7 @@ modules:
           - Name
           selectType: ""
       ProductId:
-        label: Product
+        label: מוצר
         kind: Record
         options:
           labelField: Name
@@ -6373,7 +6373,7 @@ modules:
           - Name
           selectType: ""
       ProductCode:
-        label: Product Code
+        label: קוד מוצר
         kind: String
       Name:
         label: Product Name
@@ -6401,7 +6401,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       ProductCode:
-        label: Product Code
+        label: קוד מוצר
         kind: String
       Description:
         label: Product Description
@@ -6416,7 +6416,7 @@ modules:
           options:
           - text: Services
             value: Services
-          - text: Products
+          - text: מוצרים
             value: Products
           selectType: default
       Name:
@@ -6431,7 +6431,7 @@ modules:
           maxSize: 0
           mode: single
       File:
-        label: Files
+        label: קבצים
         kind: File
         options:
           allowDocuments: true
@@ -7547,7 +7547,7 @@ modules:
         label: אימייל
         kind: Email
       ExpirationDate:
-        label: Expiration Date
+        label: תאריך תפוגה
         kind: DateTime
       Fax:
         label: פקס
@@ -7581,10 +7581,10 @@ modules:
           - Name
           selectType: ""
       Name:
-        label: Quote Name
+        label: שם הצעה
         kind: String
       QuoteNumber:
-        label: Quote Number
+        label: מספר הצעה
         kind: Number
         options:
           format: "0000000"
@@ -8642,7 +8642,7 @@ modules:
             value: Denied
           selectType: default
       Subtotal:
-        label: Subtotal (calculated)
+        label: מחיר לפני מסים
         kind: Number
         options:
           format: "0.00"
@@ -8664,7 +8664,7 @@ modules:
             - test: "value < 0"
               error: Tax can not be a negative number
       TotalPrice:
-        label: Total Price (calculated)
+        label: סה"כ מחיר
         kind: Number
         options:
           format: "0.00"
@@ -8692,7 +8692,7 @@ modules:
         label: Date
         kind: DateTime
       Discount:
-        label: Discount
+        label: הנחה
         kind: Number
         options:
           format: "0.00"
@@ -8702,7 +8702,7 @@ modules:
         label: Line Description
         kind: String
       ListPrice:
-        label: List Price
+        label: מחיר רשום
         kind: Number
         options:
           format: "0.00"
@@ -8730,7 +8730,7 @@ modules:
           - Name
           selectType: ""
       ProductId:
-        label: Product
+        label: מוצר
         kind: Record
         options:
           labelField: Name
@@ -8740,16 +8740,16 @@ modules:
           - Name
           selectType: ""
       ProductCode:
-        label: Product Code
+        label: קוד מוצר
         kind: String
       Quantity:
-        label: Quantity
+        label: כמות
         kind: Number
         options:
           format: "0"
           precision: 0
       UnitPrice:
-        label: Sales Price
+        label: מחיר מכירה
         kind: Number
         options:
           format: "0.00"
@@ -8762,14 +8762,14 @@ modules:
           format: "0"
           precision: 0
       Subtotal:
-        label: Subtotal
+        label: סכום
         kind: Number
         options:
           format: "0.00"
           precision: 2
           suffix: €
       TotalPrice:
-        label: Total Price
+        label: סה"כ מחיר
         kind: Number
         options:
           format: "0.00"
@@ -8853,14 +8853,14 @@ modules:
           format: "0"
           precision: 0
       OpportunityProbability:
-        label: Probability
+        label: סיכוי
         kind: Number
         options:
           format: "0"
           precision: 0
           suffix: '%'
       OpportunityForecaseCategory:
-        label: Forecast Category
+        label: קטגורית תחזית
         kind: String
       OpportunityStagename:
         label: שלב
@@ -9020,7 +9020,7 @@ modules:
           - Subject
           selectType: ""
       ProductId:
-        label: Product
+        label: מוצר
         kind: Record
         options:
           labelField: Name

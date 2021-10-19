@@ -864,7 +864,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [9, 0, 3, 8]
-    - title: Contacts per Country
+    - title: אנשי קשר פר מדינה
       options:
         chart: ContactsPerCountry
       style:
@@ -1051,7 +1051,7 @@ pages:
     (envoy): { onExisting: "skip" }
     title: הזדמנויות
     blocks:
-    - title: List of Opportunities
+    - title: רשימת הזדמנויות
       options:
         allowExport: true
         draggable: false
@@ -1078,7 +1078,7 @@ pages:
         selectionButtons: []
       kind: RecordList
       xywh: [0, 0, 8, 16]
-    - title: Opportunity Pipeline
+    - title: הזדמנויות בצנרת
       options:
         chart: OpportunitySalesPipeline
       style:
@@ -1092,7 +1092,7 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [10, 0, 2, 6]
-    - title: Opportunities vs. Target
+    - title: הזדמנויות מול יעדים
       options:
         chart: NumberOfOpportunitiesVsTarget
       style:
@@ -1105,7 +1105,7 @@ pages:
         module: Opportunity
         title: עמוד רשומה במודול "הזדמנויות"
         blocks:
-        - title: Opportunity Detail
+        - title: פרטי הזדמנות
           options:
             fields:
             - name: Name
@@ -1117,7 +1117,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [0, 0, 4, 10]
-        - title: Additional Information
+        - title: מידע נוסף
           options:
             fields:
             - name: OwnerId
@@ -1130,7 +1130,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [8, 0, 4, 10]
-        - title: Contact Roles
+        - title: אנשי קשר
           options:
             allowExport: true
             draggable: false
@@ -1155,7 +1155,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [6, 26, 6, 8]
-        - title: Stage
+        - title: שלב
           options:
             fields:
             - name: StageName
@@ -1281,7 +1281,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [8, 34, 4, 8]
-        - title: Quotes
+        - title: הצעות מחיר
           options:
             allowExport: true
             draggable: false
@@ -1309,7 +1309,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 26, 6, 8]
-        - title: Opportunity Actions
+        - title: פעולות על ההזדמנות
           options:
             buttons:
             - enabled: true
@@ -1319,7 +1319,7 @@ pages:
               workflow: CRM-Opportunity-ApplyPriceBook
               stepID: 3
             - enabled: true
-              label: Create a new Quote for this Opportunity
+              label: יצירת הצעת מחיר חדשה להזדמנות
               resourceType: compose:record
               workflow: CRM-Opportunity-NewQuote
               stepID: 3
@@ -1406,7 +1406,7 @@ pages:
     visible: true
   - handle: Quotes
     (envoy): { onExisting: "skip" }
-    title: Quotes
+    title: הצעות מחיר
     blocks:
     - title: List of Quotes
       options:
@@ -2514,7 +2514,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: RecordList
           xywh: [0, 19, 12, 9]
-        - title: Files
+        - title: קבצים
           options:
             fields:
             - name: Photo
@@ -2538,7 +2538,7 @@ pages:
         visible: false
       - handle: PriceBook
         (envoy): { onExisting: "skip" }
-        title: Price book
+        title: ספר מחיר
         blocks:
         - title: Price Books
           options:
@@ -3163,14 +3163,14 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [0, 14, 6, 8]
-        - title: Opportunity Pipeline
+        - title: הזדמנויות בצנרת
           options:
             chart: OpportunityStatusFunnel
           style:
             variants: {border: primary, headerText: primary}
           kind: Chart
           xywh: [9, 0, 3, 6]
-        - title: Opportunities vs. Target
+        - title: הזדמנויות מול יעדים
           options:
             chart: NumberOfOpportunitiesVsTarget
           style:
@@ -3550,7 +3550,7 @@ pages:
                 variants: {border: primary, headerText: primary}
               kind: Record
               xywh: [0, 0, 4, 20]
-            - title: Files
+            - title: קבצים
               options:
                 fields:
                 - name: Files
