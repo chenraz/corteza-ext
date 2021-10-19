@@ -1823,7 +1823,7 @@ modules:
           multiLine: true
           useRichTextEditor: true
       DoNotCall:
-        label: Do Not Call
+        label: לא להתקשר
         kind: Bool
         options:
           falseLabel: "No"
@@ -1833,7 +1833,7 @@ modules:
         kind: Email
         private: true
       HasOptedOutOfEmail:
-        label: Email Opt Out
+        label: לא לשלוח מיילים
         kind: Bool
         options:
           falseLabel: "No"
@@ -1889,19 +1889,19 @@ modules:
             value: Other
           selectType: default
       MailingStreet:
-        label: Mailing Street
+        label:  רחוב
         kind: String
         private: true
       MailingCity:
-        label: Mailing City
+        label:  ישוב
         kind: String
         private: true
       MailingState:
-        label: Mailing State
+        label:  מחוז
         kind: String
         private: true
       MailingPostalCode:
-        label: Mailing Postal Code
+        label:  מיקוד
         kind: String
         private: true
       MailingCountry:
@@ -2963,7 +2963,7 @@ modules:
         kind: Url
         private: true
       IsPrimary:
-        label: ראשי contact for account
+        label: איש קשר ראשי לחשבון
         kind: Bool
         options:
           falseLabel: "No"
@@ -2973,7 +2973,7 @@ modules:
         kind: String
         private: true
       OwnerId:
-        label: איש קשר Owner
+        label: בעל איש הקשר
         kind: User
         options:
           presetWithAuthenticated: true
@@ -5387,7 +5387,7 @@ modules:
           multiLine: true
           useRichTextEditor: true
       DoNotCall:
-        label: Do Not Call
+        label: לא להתקשר
         kind: Bool
         options:
           falseLabel: "No"
@@ -5397,7 +5397,7 @@ modules:
         kind: String
         private: true
       HasOptedOutOfEmail:
-        label: Email Opt Out
+        label: לא לשלוח מיילים
         kind: Bool
         options:
           falseLabel: "No"
