@@ -857,7 +857,7 @@ pages:
         selectionButtons: []
       kind: RecordList
       xywh: [0, 0, 9, 16]
-    - title: Number of Contacts with Senior Title
+    - title: מספר אנשי קשר לפי תואר
       options:
         chart: ContactsPerSeniorLeveltitle
       style:
