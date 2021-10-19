@@ -855,7 +855,7 @@ charts:
         metrics:
         - field: count
           fill: true
-          label: Quotes per month
+          label: מספר הצעות חודשי
           lineTension: 0.4
           type: bar
         - field: count

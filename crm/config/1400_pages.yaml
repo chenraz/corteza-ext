@@ -1407,7 +1407,7 @@ pages:
     (envoy): { onExisting: "skip" }
     title: הצעות מחיר
     blocks:
-    - title: List of Quotes
+    - title: רשימת הצעות מחיר
       options:
         allowExport: true
         draggable: false
@@ -1437,14 +1437,14 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: RecordList
       xywh: [0, 0, 9, 16]
-    - title: Quotes Status
+    - title: סטאטוס הצעות מחיר
       options:
         chart: QuotesByStatus
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [9, 0, 3, 8]
-    - title: Number of Quotes per Month
+    - title: מספר הצעות חודשי
       options:
         chart: QuotesPerMonth
       style:
@@ -1457,7 +1457,7 @@ pages:
         module: Quote
         title: עמוד רשומה במודול "הצעות מחיר"
         blocks:
-        - title: Quote Information
+        - title: נתוני הצעת מחיר
           options:
             fields:
             - name: QuoteNumber
@@ -1470,7 +1470,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [0, 0, 4, 12]
-        - title: Totals
+        - title: סיכום
           options:
             fields:
             - name: PricebookId
@@ -1484,7 +1484,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [8, 0, 4, 12]
-        - title: Primary contact data
+        - title: איש קשר ראשי
           options:
             fields:
             - name: AccountId
@@ -1497,7 +1497,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [4, 0, 4, 9]
-        - title: Bill To
+        - title: חשבונית עבור
           options:
             fields:
             - name: BillingName
@@ -1510,7 +1510,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [0, 20, 4, 9]
-        - title: Quote To
+        - title: הצעת מחיר עבור
           options:
             fields:
             - name: QuoteToName
@@ -1523,7 +1523,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [4, 20, 4, 9]
-        - title: Ship To
+        - title: משלוח עבור
           options:
             fields:
             - name: ShippingName
@@ -1655,12 +1655,12 @@ pages:
         - options:
             buttons:
             - enabled: true
-              label: Send this Quote via email to the primary contact
+              label: שליחת הצעת המחיר במייל לאיש קשר ראשי
               resourceType: compose:record
               workflow: CRM-Quote-SendToPriContact
               stepID: 3
             - enabled: true
-              label: Send this Quote to a custom email
+              label: שליחת ההצעה למייל כלשהו
               resourceType: compose:record
               workflow: CRM-Quote-SendToCustomEmail
               stepID: 3
