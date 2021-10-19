@@ -1167,7 +1167,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [4, 0, 4, 10]
-        - title: Products
+        - title: מוצרים
           options:
             allowExport: true
             draggable: true
@@ -1313,8 +1313,7 @@ pages:
           options:
             buttons:
             - enabled: true
-              label: Update prices of Products by applying the selected Price
-                Book and inserted discounts
+              label: עדכון מחירים מספר מוצרים ונתוני הנחה
               resourceType: compose:record
               workflow: CRM-Opportunity-ApplyPriceBook
               stepID: 3
@@ -2380,7 +2379,7 @@ pages:
     visible: true
   - handle: Products
     (envoy): { onExisting: "skip" }
-    title: Products
+    title: מוצרים
     blocks:
     - title: List of Products
       options:
