@@ -2221,7 +2221,7 @@ pages:
       - handle: RecordPageForModuleCampaign
         (envoy): { onExisting: "skip" }
         module: Campaigns
-        title: עמוד רשומה במודול "Campaign"
+        title: עמוד רשומה במודול "קמפיין"
         blocks:
         - title: פרטי הקמפיין
           options:

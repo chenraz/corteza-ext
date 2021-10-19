@@ -1451,15 +1451,15 @@ modules:
         kind: Select
         options:
           options:
-          - text: Aborted
+          - text: הופסק
             value: Aborted
-          - text: הושלמה
+          - text: הושלם
             value: Completed
           - text: בטיפול
             value: In Progress
-          - text: Planned
+          - text: מתוכנן
             value: Planned
-          - text: Tentative
+          - text: על תנאי
             value: Tentative
           selectType: default
       Type:
@@ -1467,44 +1467,44 @@ modules:
         kind: Select
         options:
           options:
-          - text: Lead Generation - Direct Mail
+          - text: לידים - אימייל
             value: Lead Generation - Direct Mail
-          - text: Lead Generation - Conference
+          - text: לידים - כנס
             value: Lead Generation - Conference
-          - text: Lead Generation - Email Blast
+          - text: לידים - Email Blast
             value: Lead Generation - Email Blast
-          - text: Lead Generation - PPC
+          - text: לידים - ממומן
             value: Lead Generation - PPC
-          - text: Lead Generation - Seminar
+          - text: לידים - סמינר
             value: Lead Generation - Seminar
-          - text: Lead Generation - Trade Show
+          - text: לידים - ועידה
             value: Lead Generation - Trade Show
-          - text: Lead Generation - Webinar
+          - text: לידים - וובינר
             value: Lead Generation - Webinar
-          - text: Lead Generation - Website
+          - text: לידים - אתר אינטרנט
             value: Lead Generation - Website
-          - text: Brand Building - Print advertisement
+          - text: פיתוח עסקי - פרסום דפוס
             value: Brand Building - Print advertisement
-          - text: Brand Building - Radio advertisement
+          - text: פיתוח עסקי - פרסום ברדיו
             value: Brand Building - Radio advertisement
-          - text: Brand Building - TV advertisement
+          - text: פיתוח עסקי - פרסום בטלויזיה
             value: Brand Building - TV advertisement
-          - text: Brand Building - Sponsoring
+          - text: פיתוח עסקי - חסויות
             value: Brand Building - Sponsoring
-          - text: Brand Building - Social Media
+          - text: פיתוח עסקי - מדיה חברתית
             value: Brand Building - Social Media
-          - text: Lead Generation - Contacting personal network
+          - text: לידים - רשת מכרים אישית
             value: Lead Generation - Contacting personal network
           selectType: default
       AmountAllOpportunities:
-        label: Value Opportunities in Campaign
+        label: ערך הזדמנויות בקמפיין
         kind: Number
         options:
           format: "0.00"
           precision: 2
           suffix: €
       AmountWonOpportunities:
-        label: Value Won Opportunities in Campaign
+        label: ערך הזדמנויות מוצלחות בקמפיין
         kind: Number
         options:
           format: "0.00"
