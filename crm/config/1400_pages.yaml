@@ -271,9 +271,9 @@ pages:
       - handle: RecordPageForModuleLead
         (envoy): { onExisting: "skip" }
         module: Lead
-        title: עמוד רשומה במודול "לדידים"
+        title: עמוד רשומה במודול "לידים"
         blocks:
-        - title: Personal Data
+        - title: מידע אישי
           options:
             fields:
             - name: FirstName
@@ -291,7 +291,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [0, 0, 3, 15]
-        - title: Twitter feed
+        - title: פיד טוויטר
           options:
             profileSourceField: Twitter
             profileUrl: ""
@@ -299,7 +299,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: SocialFeed
           xywh: [9, 0, 3, 31]
-        - title: Company Data
+        - title: מידע ארגוני
           options:
             fields:
             - name: Company
@@ -316,7 +316,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [3, 0, 3, 15]
-        - title: Other Information
+        - title: מידע נוסף
           options:
             fields:
             - name: Rating
@@ -409,16 +409,16 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [4, 23, 5, 8]
-        - title: Lead Actions
+        - title: פעולות על הליד
           options:
             buttons:
             - enabled: true
-              label: Convert this Lead into an Account
+              label: המרת ליד לחשבון
               resourceType: compose:record
               workflow: CRM-Lead-ToAccount
               stepID: 3
             - enabled: true
-              label: Convert this Lead into an Account and Opportunity
+              label: המרת ליד לחשבון והזדמנות
               resourceType: compose:record
               workflow: CRM-Lead-ToAccountAndOpportunity
               stepID: 77
@@ -877,7 +877,7 @@ pages:
         module: Contact
         title: עמוד רשומה במודול "אנשי קשר"
         blocks:
-        - title: Personal Data
+        - title: מידע אישי
           options:
             fields:
             - name: FirstName
@@ -907,7 +907,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [3, 0, 3, 13]
-        - title: Other Information
+        - title: מידע נוסף
           options:
             fields:
             - name: ownedBy
@@ -1373,7 +1373,7 @@ pages:
                 variants: {border: primary, headerText: primary}
               kind: Record
               xywh: [4, 0, 4, 16]
-            - title: Other Information
+            - title: מידע נוסף
               options:
                 fields:
                 - name: createdAt
@@ -1785,7 +1785,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [3, 0, 3, 10]
-        - title: Other Information
+        - title: מידע נוסף
           options:
             fields:
             - name: createdAt
@@ -1982,7 +1982,7 @@ pages:
                 - name: Status
               kind: Record
               xywh: [0, 0, 4, 13]
-            - title: Other Information
+            - title: מידע נוסף
               options:
                 fields:
                 - name: AccountId
@@ -2796,7 +2796,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Record
           xywh: [0, 0, 3, 16]
-        - title: Other Information
+        - title: מידע נוסף
           options:
             fields:
             - name: LeadId
