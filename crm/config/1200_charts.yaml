@@ -121,23 +121,23 @@ charts:
         metrics:
         - aggregate: SUM
           field: BudgetedCost
-          label: Budgeted Cost
+          label: עלות מתוקצבת
           type: bar
         - aggregate: SUM
           field: ActualCost
-          label: Actual Cost
+          label: עלות בפועל
           type: bar
         - aggregate: SUM
           field: ExpectedRevenue
-          label: Expected Revenue
+          label: צפי הכנסות
           type: bar
         - aggregate: SUM
           field: AmountAllOpportunities
-          label: Amount All Opportunities
+          label: סכום כל ההזדמנויות
           type: bar
         - aggregate: SUM
           field: AmountWonOpportunities
-          label: Amount All Won Opportunities
+          label: סכום כל ההזדמנויות המוצלחות
           type: bar
         module: Campaigns
         renderer: {}
@@ -482,7 +482,7 @@ charts:
         yAxis:
           axisType: linear
           beginAtZero: true
-          label: Leads per country
+          label: משפך פר מדינה
       colorScheme: tableau.Tableau10
   LeadsByRating:
     (envoy): { onExisting: "skip" }
@@ -773,14 +773,14 @@ charts:
         metrics:
         - field: count
           fill: true
-          label: Number of Price Books
+          label: מספר ספרי מחיר
           lineTension: 0.4
           type: line
         module: Pricebook
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Price books
+          label: ספרי מחיר
       colorScheme: tableau.Tableau10
   ProductsAddedPerMonth:
     (envoy): { onExisting: "skip" }
