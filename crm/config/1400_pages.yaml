@@ -232,7 +232,7 @@ pages:
         variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
       kind: Chart
       xywh: [9, 0, 3, 8]
-    - title: New Leads Per Month
+    - title: לידים חדשים פר חודש
       options:
         chart: LeadsPerMonth
       style:
@@ -271,7 +271,7 @@ pages:
       - handle: RecordPageForModuleLead
         (envoy): { onExisting: "skip" }
         module: Lead
-        title: Record page for module "Lead"
+        title: עמוד רשומה במודול "לדידים"
         blocks:
         - title: Personal Data
           options:
@@ -813,7 +813,7 @@ pages:
           - handle: RecordPageForModuleAccountContactRole
             (envoy): { onExisting: "skip" }
             module: AccountContactRole
-            title: Record page for module "AccountContactRole"
+            title: עמוד רשומה במודול "AccountContactRole"
             blocks:
             - title: Account Contact Role Details
               options:
@@ -875,7 +875,7 @@ pages:
       - handle: RecordPageForModuleContact
         (envoy): { onExisting: "skip" }
         module: Contact
-        title: Record page for module "Contact"
+        title: עמוד רשומה במודול "אנשי קשר"
         blocks:
         - title: Personal Data
           options:
@@ -1103,7 +1103,7 @@ pages:
       - handle: RecordPageForModuleOpportunity
         (envoy): { onExisting: "skip" }
         module: Opportunity
-        title: Record page for module "Opportunity"
+        title: עמוד רשומה במודול "הזדמנויות"
         blocks:
         - title: Opportunity Detail
           options:
@@ -1332,7 +1332,7 @@ pages:
           - handle: RecordPageForModuleOpportunityContactRole
             (envoy): { onExisting: "skip" }
             module: OpportunityContactRole
-            title: Record page for module "OpportunityContactRole"
+            title: עמוד רשומה במודול "OpportunityContactRole"
             blocks:
             - title: Opportunity Contact Role Details
               options:
@@ -1347,7 +1347,7 @@ pages:
           - handle: RecordPageForModuleOpportunityLineItem
             (envoy): { onExisting: "skip" }
             module: OpportunityLineItem
-            title: Record page for module "OpportunityLineItem"
+            title: עמוד רשומה במודול "פריט הזדמנות"
             blocks:
             - title: Opportunity Line Item Details
               options:
@@ -1388,7 +1388,7 @@ pages:
           - handle: RecordPageForModuleOpportunityCompetitor
             (envoy): { onExisting: "skip" }
             module: OpportunityCompetitor
-            title: Record page for module "OpportunityCompetitor"
+            title: עמוד רשומה במודול "OpportunityCompetitor"
             blocks:
             - title: Opportunity Competitor Details
               options:
@@ -1456,7 +1456,7 @@ pages:
       - handle: RecordPageForModuleQuote
         (envoy): { onExisting: "skip" }
         module: Quote
-        title: Record page for module "Quote"
+        title: עמוד רשומה במודול "הצעות מחיר"
         blocks:
         - title: Quote Information
           options:
@@ -1674,7 +1674,7 @@ pages:
           - handle: RecordPageForModuleQuoteLineItem
             (envoy): { onExisting: "skip" }
             module: QuoteLineItem
-            title: Record page for module "QuoteLineItem"
+            title: עמוד רשומה במודול "פריט הזדמנות"
             blocks:
             - title: Quote Line Item Information
               options:
@@ -1747,7 +1747,7 @@ pages:
       - handle: RecordPageForModuleContract
         (envoy): { onExisting: "skip" }
         module: Contract
-        title: Record page for module "Contract"
+        title: עמוד רשומה במודול "הסכמים"
         blocks:
         - title: Contract Details
           options:
@@ -1951,7 +1951,7 @@ pages:
           - handle: RecordPageForModuleContractContactRole
             (envoy): { onExisting: "skip" }
             module: ContractContactRole
-            title: Record page for module "ContractContactRole"
+            title: עמוד רשומה במודול "ContractContactRole"
             blocks:
             - title: Contract Contact Role Details
               options:
@@ -1966,7 +1966,7 @@ pages:
           - handle: RecordPageForModuleEntitlement
             (envoy): { onExisting: "skip" }
             module: Entitlement
-            title: Record page for module "Entitlement"
+            title: עמוד רשומה במודול "Entitlement"
             blocks:
             - title: Entitlement Details
               options:
@@ -2033,7 +2033,7 @@ pages:
               - handle: RecordPageForModuleEntitlementContact
                 (envoy): { onExisting: "skip" }
                 module: EntitlementContact
-                title: Record page for module "EntitlementContact"
+                title: עמוד רשומה במודול "EntitlementContact"
                 blocks:
                 - title: Entitlement Contact Details
                   options:
@@ -2047,7 +2047,7 @@ pages:
               - handle: RecordPageForModuleEntitlementTemplate
                 (envoy): { onExisting: "skip" }
                 module: EntitlementTemplate
-                title: Record page for module "EntitlementTemplate"
+                title: עמוד רשומה במודול "EntitlementTemplate"
                 blocks:
                 - title: Entitlement Template Details
                   options:
@@ -2065,7 +2065,7 @@ pages:
           - handle: RecordPageForModuleContractLineItem
             (envoy): { onExisting: "skip" }
             module: ContractLineItem
-            title: Record page for module "ContractLineItem"
+            title: עמוד רשומה במודול "ContractLineItem"
             blocks:
             - title: Contract Line Item Details
               options:
@@ -2222,7 +2222,7 @@ pages:
       - handle: RecordPageForModuleCampaign
         (envoy): { onExisting: "skip" }
         module: Campaigns
-        title: Record page for module "Campaign"
+        title: עמוד רשומה במודול "Campaign"
         blocks:
         - title: Campaign Details
           options:
@@ -2425,7 +2425,7 @@ pages:
       - handle: RecordPageForModuleProduct
         (envoy): { onExisting: "skip" }
         module: Product
-        title: Record page for module "Product"
+        title: עמוד רשומה במודול "מוצר"
         blocks:
         - title: Product Description
           options:
@@ -2584,7 +2584,7 @@ pages:
           - handle: RecordPageForModulePricebook
             (envoy): { onExisting: "skip" }
             module: Pricebook
-            title: Record page for module "Pricebook"
+            title: עמוד רשומה במודול "ספר מחירים"
             blocks:
             - title: Price Book Details
               options:
@@ -2651,7 +2651,7 @@ pages:
               - handle: RecordPageForModulePricebookEntry
                 (envoy): { onExisting: "skip" }
                 module: PricebookEntry
-                title: Record page for module "PricebookEntry"
+                title: עמוד רשומה במודול "פריט ספר מחירים"
                 blocks:
                 - title: Details
                   options:
@@ -2783,7 +2783,7 @@ pages:
       - handle: RecordPageForModuleEvent
         (envoy): { onExisting: "skip" }
         module: Event
-        title: Record page for module "Event"
+        title: עמוד רשומה במודול "אירוע"
         blocks:
         - title: Event Data
           options:
@@ -2884,7 +2884,7 @@ pages:
       - handle: RecordPageForModuleTask
         (envoy): { onExisting: "skip" }
         module: Task
-        title: Record page for module "Task"
+        title: עמוד רשומה במודול "משימה"
         blocks:
         - title: Task Details
           options:
@@ -3537,7 +3537,7 @@ pages:
           - handle: RecordPageForModuleNote
             (envoy): { onExisting: "skip" }
             module: Note
-            title: Record page for module "Note"
+            title: עמוד רשומה במודול "הערה"
             blocks:
             - title: Note
               options:
@@ -3645,7 +3645,7 @@ pages:
           - handle: RecordPageForModuleCase
             (envoy): { onExisting: "skip" }
             module: Case
-            title: Record page for module "Case"
+            title: עמוד רשומה במודול "Case"
             blocks:
             - title: Case Main Information
               options:
@@ -3830,7 +3830,7 @@ pages:
               - handle: RecordPageForModuleCaseUpdate
                 (envoy): { onExisting: "skip" }
                 module: CaseUpdate
-                title: Record page for module "CaseUpdate"
+                title: עמוד רשומה במודול "CaseUpdate"
                 blocks:
                 - title: Case Update
                   options:
@@ -3898,7 +3898,7 @@ pages:
           - handle: RecordPageForModuleSolution
             (envoy): { onExisting: "skip" }
             module: Solution
-            title: Record page for module "Solution"
+            title: עמוד רשומה במודול "Solution"
             blocks:
             - title: Solution Details
               options:
@@ -3947,7 +3947,7 @@ pages:
           - handle: RecordPageForModuleDefaultSettings
             (envoy): { onExisting: "skip" }
             module: Settings
-            title: Record page for module "DefaultSettings"
+            title: עמוד רשומה במודול "DefaultSettings"
             blocks:
             - title: Quote Settings
               options:
@@ -4003,7 +4003,7 @@ pages:
       - handle: RecordPageForModuleQuestion
         (envoy): { onExisting: "skip" }
         module: Question
-        title: Record page for module "Question"
+        title: עמוד רשומה במודול "Question"
         blocks:
         - title: Question Details
           options:
@@ -4064,7 +4064,7 @@ pages:
           - handle: RecordPageForModuleReply
             (envoy): { onExisting: "skip" }
             module: Reply
-            title: Record page for module "Reply"
+            title: עמוד רשומה במודול "Reply"
             blocks:
             - title: Reply Details
               options:
@@ -4094,7 +4094,7 @@ pages:
           - handle: RecordPageForModuleVote
             (envoy): { onExisting: "skip" }
             module: Vote
-            title: Record page for module "Vote"
+            title: עמוד רשומה במודול "Vote"
             blocks:
             - title: Vote Score
               options:
@@ -4146,7 +4146,7 @@ pages:
           - handle: RecordPageForModuleIdea
             (envoy): { onExisting: "skip" }
             module: Idea
-            title: Record page for module "Idea"
+            title: עמוד רשומה במודול "Idea"
             blocks:
             - title: Idea Details
               options:
@@ -4209,7 +4209,7 @@ pages:
           - handle: RecordPageForModuleEmailTemplate
             (envoy): { onExisting: "skip" }
             module: EmailTemplate
-            title: Record page for module "EmailTemplate"
+            title: עמוד רשומה במודול "EmailTemplate"
             blocks:
             - title: Email Template Details
               options:
