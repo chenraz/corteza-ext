@@ -281,14 +281,14 @@ charts:
         metrics:
         - field: count
           fill: true
-          label: Contacts per country
+          label: אנשי קשר לפי מדינה
           lineTension: 0.4
           type: line
         module: Contact
         renderer: {}
         yAxis:
           beginAtZero: true
-          label: Contacts
+          label: אנשי קשר 
       colorScheme: tableau.Tableau20
   ContactsPerSeniorLeveltitle:
     (envoy): { onExisting: "skip" }
