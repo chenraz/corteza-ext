@@ -1829,7 +1829,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       Email:
-        label: Email
+        label: אימייל
         kind: Email
         private: true
       HasOptedOutOfEmail:
@@ -1853,7 +1853,7 @@ modules:
         kind: String
         private: true
       LeadSource:
-        label: Lead Source
+        label: מקור ליד
         kind: Select
         options:
           options:
@@ -2400,11 +2400,11 @@ modules:
           selectType: default
         private: true
       MobilePhone:
-        label: Mobile
+        label: נייד
         kind: String
         private: true
       Salutation:
-        label: Salutation
+        label: תואר
         kind: String
         private: true
       FirstName:
@@ -4788,35 +4788,35 @@ modules:
     name: Lead
     fields:
       Street:
-        label: Address Street
+        label: רחוב
         kind: String
         private: true
         expressions:
           sanitizers:
             - "trim(value)"
       City:
-        label: Address City
+        label: ישוב
         kind: String
         private: true
         expressions:
           sanitizers:
             - "trim(value)"
       State:
-        label: Address State
+        label: מחוז
         kind: String
         private: true
         expressions:
           sanitizers:
             - "trim(value)"
       PostalCode:
-        label: Address Postal Code
+        label: מיקוד
         kind: String
         private: true
         expressions:
           sanitizers:
             - "trim(value)"
       Country:
-        label: Address Country
+        label: מדינה
         kind: Select
         options:
           options:
@@ -5351,7 +5351,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       ConvertedAccountId:
-        label: Converted Account
+        label: חשבון מומר
         kind: Record
         options:
           labelField: AccountName
@@ -5360,7 +5360,7 @@ modules:
           - AccountName
           selectType: each
       ConvertedContactId:
-        label: Converted Contact
+        label: איש קשר מומר
         kind: Record
         options:
           labelField: RecordLabel
@@ -5369,10 +5369,10 @@ modules:
           - RecordLabel
           selectType: each
       ConvertedDate:
-        label: Converted Date
+        label: תאריך המרה
         kind: DateTime
       ConvertedOpportunityId:
-        label: Converted Opportunity
+        label: הזדמנות מומרת
         kind: Record
         options:
           labelField: Name
@@ -5393,7 +5393,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       Email:
-        label: Email
+        label: אימייל
         kind: String
         private: true
       HasOptedOutOfEmail:
@@ -5494,13 +5494,13 @@ modules:
           - RecordLabel
           selectType: default
       OwnerId:
-        label: Lead Owner
+        label: בעל הליד
         kind: User
         options:
           presetWithAuthenticated: true
           selectType: each
       LeadSource:
-        label: Lead Source
+        label: מקור ליד
         kind: Select
         options:
           options:
@@ -5536,7 +5536,7 @@ modules:
             value: Other
           selectType: default
       Status:
-        label: Lead Status
+        label: סטאטוס
         kind: Select
         options:
           options:
@@ -5554,10 +5554,10 @@ modules:
             value: Dead
           selectType: default
       MobilePhone:
-        label: Mobile
+        label: נייד
         kind: String
       Salutation:
-        label: Salutation
+        label: תואר
         kind: String
       FirstName:
         label: שם פרטי
@@ -5569,7 +5569,7 @@ modules:
         private: true
         required: true
       NumberOfEmployees:
-        label: No. of Employees (exact)
+        label: מס מועסקים (מדוייק)
         kind: Number
         options:
           format: "0"
@@ -5621,7 +5621,7 @@ modules:
         kind: Url
         private: true
       NumberOfEmployeesRange:
-        label: No. of Employees (range)
+        label: מס מועסקים (טווח)
         kind: Select
         options:
           options:
@@ -5645,7 +5645,7 @@ modules:
             value: 2500 - 4999
           - text: 5000 - 9999
             value: 5000 - 9999
-          - text: Over 10000
+          - text: מעל 10000
             value: Over 10000
           selectType: default
       SICCode:
@@ -5995,7 +5995,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       LeadSource:
-        label: Lead Source
+        label: מקור ליד
         kind: Select
         options:
           options:
@@ -7544,7 +7544,7 @@ modules:
             - test: "value < 0"
               error: Discount can not be a negative number
       Email:
-        label: Email
+        label: אימייל
         kind: Email
       ExpirationDate:
         label: Expiration Date
