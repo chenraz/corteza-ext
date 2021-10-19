@@ -941,17 +941,17 @@ modules:
           multiLine: true
           useRichTextEditor: true
       DoNotCall:
-        label: Do Not Call
+        label: לא להתקשר
         kind: Bool
         options:
           falseLabel: "False"
-          trueLabel: Do Not Call
+          truelabel: לא להתקשר
       Email:
         label: Email
         kind: Email
         private: true
       HasOptedOutOfEmail:
-        label: Email Opt Out
+        label: לא לשלוח מיילים
         kind: Bool
         options:
           falseLabel: "No"
@@ -995,19 +995,19 @@ modules:
           - Other
           selectType: default
       MailingStreet:
-        label: Mailing Street
+        label:  רחוב
         kind: String
         private: true
       MailingCity:
-        label: Mailing City
+        label:  ישוב
         kind: String
         private: true
       MailingState:
-        label: Mailing State
+        label:  מחוז
         kind: String
         private: true
       MailingPostalCode:
-        label: Mailing Postal Code
+        label:  מיקוד
         kind: String
         private: true
       MailingCountry:
