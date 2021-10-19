@@ -1382,7 +1382,7 @@ modules:
           precision: 2
           suffix: €
       Name:
-        label: קמפיין Name
+        label: שם קמפיין
         kind: String
       NumberOfConvertedLeads:
         label: Converted Leads in Campaign
@@ -1415,19 +1415,19 @@ modules:
           precision: 2
           suffix: €
       NumberOfLeads:
-        label: Leads in Campaign
+        label: לידים בקמפיין
         kind: Number
         options:
           format: "0"
           precision: 0
       NumberOfOpportunities:
-        label: Opportunities in Campaign
+        label: הזדמנויות בקמפיין
         kind: Number
         options:
           format: "0"
           precision: 0
       ParentId:
-        label: Parent Campaign
+        label: קמפיין אב
         kind: Record
         options:
           labelField: ""
@@ -1511,19 +1511,19 @@ modules:
           precision: 2
           suffix: €
       NumberOfWonOpportunities:
-        label: Won Opportunities in Campaign
+        label: הזדמנויות שהומרו בהצלחה בקמפיין
         kind: Number
         options:
           format: "0"
           precision: 0
       NumberOfAccounts:
-        label: חשבונות in Campaign
+        label: חשבונות בקמפיין
         kind: Number
         options:
           format: ""
           precision: 0
       NumberOfContacts:
-        label: Contacts in Campaign
+        label: אנשי קשר בקמפיין
         kind: Number
         options:
           format: ""

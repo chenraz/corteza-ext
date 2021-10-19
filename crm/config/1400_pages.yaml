@@ -2105,7 +2105,7 @@ pages:
     (envoy): { onExisting: "skip" }
     title: קמפיינים
     blocks:
-    - title: List of Campaigns
+    - title: רשימת קמפיינים
       options:
         allowExport: true
         draggable: false
@@ -2223,7 +2223,7 @@ pages:
         module: Campaigns
         title: עמוד רשומה במודול "Campaign"
         blocks:
-        - title: Campaign Details
+        - title: פרטי הקמפיין
           options:
             fields:
             - name: Name
@@ -2234,7 +2234,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Record
           xywh: [0, 0, 3, 10]
-        - title: Campaign Planning
+        - title: תכנון קמפיין
           options:
             fields:
             - name: BudgetedCost
@@ -2245,7 +2245,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Record
           xywh: [3, 0, 3, 10]
-        - title: Campaign Results
+        - title: תוצאות קמפיין
           options:
             fields:
             - name: NumberOfLeads
@@ -2259,7 +2259,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: Record
           xywh: [6, 0, 3, 10]
-        - title: Generated Opportunities
+        - title: הזדמנויות בקמפיין
           options:
             allowExport: true
             draggable: false
@@ -2285,7 +2285,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: RecordList
           xywh: [6, 19, 6, 9]
-        - title: Campaign Status
+        - title: סטאטוס קמפיין
           options:
             fields:
             - name: ownedBy
@@ -2323,7 +2323,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: RecordList
           xywh: [0, 10, 6, 9]
-        - title: Contacts in Campaign
+        - title: אנשי קשר בקמפיין
           options:
             allowExport: true
             draggable: false
@@ -2349,7 +2349,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: RecordList
           xywh: [6, 10, 6, 9]
-        - title: Accounts in Campaign
+        - title: חשבונות בקמפיין
           options:
             allowExport: true
             draggable: false
@@ -3491,7 +3491,7 @@ pages:
     visible: true
   - handle: More
     (envoy): { onExisting: "skip" }
-    title: More
+    title: עמודים נוספים
     blocks:
     - title: Additional CRM modules
       options:
@@ -3850,7 +3850,7 @@ pages:
         visible: true
       - handle: Solutions
         (envoy): { onExisting: "skip" }
-        title: Solutions
+        title: פתרונות
         blocks:
         - title: List of Solutions
           options:
@@ -3916,11 +3916,11 @@ pages:
         visible: true
       - handle: DefaultSettings
         (envoy): { onExisting: "skip" }
-        title: Default Settings
+        title: הגדרות
         description: A list of defaults values which are called upon in automation
           processes.
         blocks:
-        - title: Default settings
+        - title: הגדרות
           options:
             draggable: false
             editFields: []
