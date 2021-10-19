@@ -430,9 +430,9 @@ pages:
         visible: true
       - handle: MyLeads
         (envoy): { onExisting: "skip" }
-        title: My Leads
+        title: הלידים שלי
         blocks:
-        - title: My Leads
+        - title: הלידים שלי
           options:
             allowExport: true
             draggable: false
@@ -466,7 +466,7 @@ pages:
         visible: true
       - handle: AllNewLeads
         (envoy): { onExisting: "skip" }
-        title: All New Leads
+        title: כל הלידים החדשים
         blocks:
         - title: לידים חדשים
           options:
