@@ -1536,7 +1536,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [8, 20, 4, 9]
-        - title: Quote Line Items
+        - title: פריטי הצעת המחיר
           options:
             allowExport: true
             draggable: true
@@ -1699,7 +1699,7 @@ pages:
     (envoy): { onExisting: "skip" }
     title: הסכמים
     blocks:
-    - title: List of Contracts
+    - title: רשימת הסכמים
       options:
         allowExport: true
         draggable: false
@@ -1728,14 +1728,14 @@ pages:
         variants: {border: primary, headerText: primary}
       kind: RecordList
       xywh: [0, 0, 9, 18]
-    - title: Active Contracts by Strarting Month
+    - title: הסכמים פעילים לפי חודש התחלה
       options:
         chart: ContractsPerStartingMonth
       style:
         variants: {border: primary, headerText: primary}
       kind: Chart
       xywh: [9, 9, 3, 9]
-    - title: Contracts by Status
+    - title: הסכמים לפי סטאטוס
       options:
         chart: ContractsByStatus
       style:
@@ -1748,7 +1748,7 @@ pages:
         module: Contract
         title: עמוד רשומה במודול "הסכמים"
         blocks:
-        - title: Contract Details
+        - title: פרטי הסכם
           options:
             fields:
             - name: AccountId
@@ -1761,7 +1761,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [0, 0, 3, 10]
-        - title: Contract Billing Address
+        - title: כתובת לחשבונית
           options:
             fields:
             - name: BillingStreet
@@ -1773,7 +1773,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [9, 0, 3, 10]
-        - title: Contract Description and Special Terms
+        - title: תאור הסכם ותנאים מיוחדים
           options:
             fields:
             - name: OwnerId
@@ -1795,7 +1795,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
           xywh: [6, 0, 3, 10]
-        - title: Contract Shipping Address
+        - title: כתובת למשלוח
           options:
             fields:
             - name: ShippingStreet
@@ -1883,7 +1883,7 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [8, 19, 4, 8]
-        - title: Contacts related to the Contract
+        - title: אנשי קשר
           options:
             allowExport: true
             draggable: false
@@ -1908,7 +1908,7 @@ pages:
             variants: {border: primary, headerText: primary}
           kind: RecordList
           xywh: [6, 10, 3, 9]
-        - title: Contract Line Items
+        - title: פריטי הסכם
           options:
             allowExport: true
             draggable: true

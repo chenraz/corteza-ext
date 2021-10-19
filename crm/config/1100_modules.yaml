@@ -3557,7 +3557,7 @@ modules:
         label: שם הסכם
         kind: String
       ContractNumber:
-        label: Contract Number
+        label: מספר הסכם
         kind: Number
         options:
           format: "0000000"
@@ -3574,7 +3574,7 @@ modules:
         options:
           onlyDate: true
       ContractTerm:
-        label: Term (months)
+        label: תקופה (חודשים)
         kind: Number
         options:
           format: "0"
