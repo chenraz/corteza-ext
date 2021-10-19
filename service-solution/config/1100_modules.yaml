@@ -712,7 +712,7 @@ modules:
           allowImages: false
           mode: list
       CaseId:
-        label: Case
+        label: קייס
         kind: Record
         options:
           labelField: Number
@@ -1826,7 +1826,7 @@ modules:
         label: קוד מוצר
         kind: String
       Description:
-        label: Product Description
+        label: תאור מוצר
         kind: String
         options:
           multiLine: true
@@ -1931,7 +1931,7 @@ modules:
     name: Update
     fields:
       CaseId:
-        label: Case
+        label: קייס
         kind: Record
         options:
           labelField: Number

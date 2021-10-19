@@ -1744,7 +1744,7 @@ modules:
     name: CaseUpdate
     fields:
       CaseId:
-        label: Case
+        label: קייס
         kind: Record
         options:
           labelField: Subject
@@ -4199,7 +4199,7 @@ modules:
           - LastName
           selectType: ""
       ContractId:
-        label: Contract
+        label: הסכם
         kind: Record
         options:
           labelField: Name
@@ -4566,7 +4566,7 @@ modules:
     name: Event
     fields:
       IsAllDayEvent:
-        label: All-Day Event
+        label: אירוע כל היום
         kind: Bool
         options:
           falseLabel: "No"
@@ -4578,7 +4578,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       OwnerId:
-        label: Assigned To
+        label: שוייך ל
         kind: User
         options:
           presetWithAuthenticated: true
@@ -4598,10 +4598,10 @@ modules:
           format: "0"
           precision: 0
       EndDateTime:
-        label: End
+        label: סיום
         kind: DateTime
       Location:
-        label: Location
+        label: מיקום
         kind: String
       IsPrivate:
         label: Private
@@ -4638,7 +4638,7 @@ modules:
             value: Other
           selectType: default
       LeadId:
-        label: Lead
+        label: ליד
         kind: Record
         options:
           labelField: RecordLabel
@@ -4665,7 +4665,7 @@ modules:
           - RecordLabel
           selectType: ""
       OpportunityId:
-        label: Opportunity
+        label: הזדמנות
         kind: Record
         options:
           labelField: RecordLabel
@@ -4675,7 +4675,7 @@ modules:
           - Name
           selectType: ""
       QuoteId:
-        label: Quote
+        label: הצעת מחיר
         kind: Record
         options:
           labelField: Name
@@ -4686,7 +4686,7 @@ modules:
           - QuoteNumber
           selectType: ""
       ContractId:
-        label: Contract
+        label: הסכם
         kind: Record
         options:
           labelField: Name
@@ -4697,7 +4697,7 @@ modules:
           - ContractNumber
           selectType: ""
       CaseId:
-        label: Case
+        label: קייס
         kind: Record
         options:
           labelField: Subject
@@ -5485,7 +5485,7 @@ modules:
             value: Utilities
           selectType: default
       MasterRecordId:
-        label: Lead
+        label: ליד
         kind: Record
         options:
           labelField: RecordLabel
@@ -5711,7 +5711,7 @@ modules:
           - ContractId
           selectType: ""
       ContractId:
-        label: Contract
+        label: הסכם
         kind: Record
         options:
           labelField: Name
@@ -5749,7 +5749,7 @@ modules:
           - Name
           selectType: ""
       CaseId:
-        label: Case
+        label: קייס
         kind: Record
         options:
           labelField: Subject
@@ -5769,7 +5769,7 @@ modules:
           - Subject
           selectType: ""
       OpportunityId:
-        label: Opportunity
+        label: הזדמנות
         kind: Record
         options:
           labelField: Name
@@ -5806,7 +5806,7 @@ modules:
           - Name
           selectType: ""
       LeadId:
-        label: Lead
+        label: ליד
         kind: Record
         options:
           labelField: RecordLabel
@@ -5892,7 +5892,7 @@ modules:
           - Subject
           selectType: ""
       QuoteId:
-        label: Quote
+        label: הצעת מחיר
         kind: Record
         options:
           labelField: Name
@@ -5941,7 +5941,7 @@ modules:
           falseLabel: "No"
           trueLabel: "Yes"
       ContractId:
-        label: Contract
+        label: הסכם
         kind: Record
         options:
           labelField: Name
@@ -6160,7 +6160,7 @@ modules:
         label: Competitor Name
         kind: String
       OpportunityId:
-        label: Opportunity
+        label: הזדמנות
         kind: Record
         options:
           labelField: Name
@@ -6193,7 +6193,7 @@ modules:
           queryFields:
           - RecordLabel
       OpportunityId:
-        label: Opportunity
+        label: הזדמנות
         kind: Record
         options:
           labelField: Name
@@ -6246,7 +6246,7 @@ modules:
           precision: 2
           suffix: €
       OpportunityId:
-        label: Opportunity
+        label: הזדמנות
         kind: Record
         options:
           labelField: Name
@@ -6404,7 +6404,7 @@ modules:
         label: קוד מוצר
         kind: String
       Description:
-        label: Product Description
+        label: תאור מוצר
         kind: String
         options:
           multiLine: true
@@ -8709,7 +8709,7 @@ modules:
           precision: 2
           suffix: €
       QuoteId:
-        label: Quote
+        label: הצעת מחיר
         kind: Record
         options:
           labelField: Name
@@ -9009,7 +9009,7 @@ modules:
             value: Duplicate
           selectType: default
       CaseId:
-        label: Case
+        label: קייס
         kind: Record
         options:
           labelField: Subject
@@ -9052,7 +9052,7 @@ modules:
           - AccountName
           selectType: default
       OwnerId:
-        label: Assigned To
+        label: שוייך ל
         kind: User
         options:
           presetWithAuthenticated: true
@@ -9149,7 +9149,7 @@ modules:
             value: Other
           selectType: default
       LeadId:
-        label: Lead
+        label: ליד
         kind: Record
         options:
           labelField: RecordLabel
@@ -9167,7 +9167,7 @@ modules:
           - RecordLabel
           selectType: default
       OpportunityId:
-        label: Opportunity
+        label: הזדמנות
         kind: Record
         options:
           labelField: Name
@@ -9177,7 +9177,7 @@ modules:
           - Name
           selectType: default
       QuoteId:
-        label: Quote
+        label: הצעת מחיר
         kind: Record
         options:
           labelField: Name
@@ -9188,7 +9188,7 @@ modules:
           - QuoteNumber
           selectType: default
       ContractId:
-        label: Contract
+        label: הסכם
         kind: Record
         options:
           labelField: Name
@@ -9199,7 +9199,7 @@ modules:
           - ContractNumber
           selectType: default
       CaseId:
-        label: Case
+        label: קייס
         kind: Record
         options:
           labelField: Subject
