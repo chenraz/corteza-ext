@@ -1236,19 +1236,19 @@ modules:
         kind: Select
         options:
           options:
-          - text: Channel Partner / Reseller
+          - text: רשת שותפים / זכיין
             value: Channel Partner / Reseller
-          - text: Customer - Channel
+          - text: לקוח - ערוץ
             value: Customer - Channel
-          - text: Customer - Direct
+          - text: לקוח - ישיר
             value: Customer - Direct
-          - text: Installation Partner
+          - text: שותף תשתיות
             value: Installation Partner
-          - text: Pending
+          - text: מושהה
             value: Pending
-          - text: Prospect
+          - text: פיתוח עסקי
             value: Prospect
-          - text: Technology Partner
+          - text: שתוף טכנולוגי
             value: Technology Partner
           - text: אחר
             value: Other
@@ -1258,23 +1258,23 @@ modules:
         kind: Select
         options:
           options:
-          - text: Less Than 500,000
+          - text: מתחת ל- 500,000
             value: Less Than 500,000
-          - text: 500,000 To 1 Million
+          - text: 500,000 עד 1 מיליון
             value: 500,000 To 1 Million
-          - text: 1 To 2.5 Million
+          - text: 1 עד 2.5 מיליון
             value: 1 To 2.5 Million
-          - text: 2.5 To 5 Million
+          - text: 2.5 עד 5 מיליון
             value: 2.5 To 5 Million
-          - text: 5 To 10 Million
+          - text: 5 עד 10 מיליון
             value: 5 To 10 Million
-          - text: 10 To 20 Million
+          - text: 10 עד 20 מיליון
             value: 10 To 20 Million
-          - text: 20 To 50 Million
+          - text: 20 עד 50 מיליון
             value: 20 To 50 Million
-          - text: 50 To 100 Million
+          - text: 50 עד 100 מיליון
             value: 50 To 100 Million
-          - text: 100 To 500 Million
+          - text: 100 עד 500 מיליון
             value: 100 To 500 Million
           selectType: default
       Website:
@@ -1843,13 +1843,13 @@ modules:
         kind: String
         private: true
       HasOptedOutOfFax:
-        label: פקס Opt Out
+        label: לא לשלוח פקס
         kind: Bool
         options:
           falseLabel: "No"
           trueLabel: "Yes"
       HomePhone:
-        label: Home Phone
+        label: טלפון בבית
         kind: String
         private: true
       LeadSource:
@@ -1889,19 +1889,19 @@ modules:
             value: Other
           selectType: default
       MailingStreet:
-        label:  רחוב
+        label: רחוב
         kind: String
         private: true
       MailingCity:
-        label:  ישוב
+        label: ישוב
         kind: String
         private: true
       MailingState:
-        label:  מחוז
+        label: מחוז
         kind: String
         private: true
       MailingPostalCode:
-        label:  מיקוד
+        label: מיקוד
         kind: String
         private: true
       MailingCountry:
@@ -5321,23 +5321,23 @@ modules:
         kind: Select
         options:
           options:
-          - text: Less Than 500,000
+          - text: מתחת ל- 500,000
             value: Less Than 500,000
-          - text: 500,000 To 1 Million
+          - text: 500,000 עד 1 מיליון
             value: 500,000 To 1 Million
-          - text: 1 To 2.5 Million
+          - text: 1 עד 2.5 מיליון
             value: 1 To 2.5 Million
-          - text: 2.5 To 5 Million
+          - text: 2.5 עד 5 מיליון
             value: 2.5 To 5 Million
-          - text: 5 To 10 Million
+          - text: 5 עד 10 מיליון
             value: 5 To 10 Million
-          - text: 10 To 20 Million
+          - text: 10 עד 20 מיליון
             value: 10 To 20 Million
-          - text: 20 To 50 Million
+          - text: 20 עד 50 מיליון
             value: 20 To 50 Million
-          - text: 50 To 100 Million
+          - text: 50 עד 100 מיליון
             value: 50 To 100 Million
-          - text: 100 To 500 Million
+          - text: 100 עד 500 מיליון
             value: 100 To 500 Million
           selectType: default
       Company:
@@ -5419,69 +5419,69 @@ modules:
           options:
           - text: ""
             value: ""
-          - text: Agriculture
+          - text: חקלאות
             value: Agriculture
-          - text: Apparel
+          - text: הלבשה
             value: Apparel
-          - text: Banking
+          - text: בנקאות
             value: Banking
-          - text: Biotechnology
+          - text: ביוטכנולוגיה
             value: Biotechnology
-          - text: Chemicals
+          - text: כמימיקלים
             value: Chemicals
-          - text: Communications
+          - text: קומיוניקציה
             value: Communications
-          - text: Construction
+          - text: בנייה
             value: Construction
-          - text: Consulting
+          - text: ייעוץ
             value: Consulting
-          - text: Education
+          - text: חינוץ
             value: Education
-          - text: Electronics
+          - text: אלקטרוניקה
             value: Electronics
-          - text: Energy
+          - text: אנרגיה
             value: Energy
-          - text: Engineering
+          - text: הנדסה
             value: Engineering
-          - text: Entertainment
+          - text: בידור
             value: Entertainment
-          - text: Environmental
+          - text: סביבה
             value: Environmental
-          - text: Finance
+          - text: כספים
             value: Finance
-          - text: Food & Beverage
+          - text: מזון
             value: Food & Beverage
-          - text: Government
+          - text: רשויות
             value: Government
-          - text: Healthcare
+          - text: בריאות
             value: Healthcare
-          - text: Hospitality
+          - text: אירוח
             value: Hospitality
-          - text: Insurance
+          - text: ביטוח
             value: Insurance
-          - text: Machinery
+          - text: מכונאות
             value: Machinery
-          - text: Manufacturing
+          - text: תעשיה
             value: Manufacturing
-          - text: Media
+          - text: תקשורת
             value: Media
           - text: Not For Profit
             value: Not For Profit
           - text: אחר
             value: Other
-          - text: Recreation
+          - text: הבראה
             value: Recreation
-          - text: Retail
+          - text: קמעונאות
             value: Retail
-          - text: Shipping
+          - text: שילוח
             value: Shipping
-          - text: Technology
+          - text: טכנולוגיה
             value: Technology
-          - text: Telecommunications
+          - text: טלקום
             value: Telecommunications
-          - text: Transportation
+          - text: תחבורה
             value: Transportation
-          - text: Utilities
+          - text: שירותים
             value: Utilities
           selectType: default
       MasterRecordId:
