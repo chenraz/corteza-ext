@@ -4726,7 +4726,7 @@ modules:
             value: Product
           - text: Sales
             value: Sales
-          - text: Services
+          - text: מוצרים
             value: Services
           - text: Support
             value: Support
@@ -6414,7 +6414,7 @@ modules:
         kind: Select
         options:
           options:
-          - text: Services
+          - text: מוצרים
             value: Services
           - text: מוצרים
             value: Products
