@@ -2652,7 +2652,7 @@ pages:
                 module: PricebookEntry
                 title: עמוד רשומה במודול "פריט ספר מחירים"
                 blocks:
-                - title: Details
+                - title: פרטים
                   options:
                     fields:
                     - name: PricebookId
