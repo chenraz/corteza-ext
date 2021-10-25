@@ -1373,14 +1373,14 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       BudgetedCost:
         label: עלות מתוקצבת
         kind: Number
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       Name:
         label: שם קמפיין
         kind: String
@@ -1413,7 +1413,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       NumberOfLeads:
         label: לידים בקמפיין
         kind: Number
@@ -1502,14 +1502,14 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       AmountWonOpportunities:
         label: ערך הזדמנויות מוצלחות בקמפיין
         kind: Number
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       NumberOfWonOpportunities:
         label: הזדמנויות שהומרו בהצלחה בקמפיין
         kind: Number
@@ -1533,7 +1533,7 @@ modules:
     name: Case
     fields:
       AccountId:
-        label: שם
+        label: שם החשבון
         kind: Record
         options:
           labelField: AccountName
@@ -3002,7 +3002,7 @@ modules:
     name: Contract
     fields:
       AccountId:
-        label: שם
+        label: שם החשבון
         kind: Record
         options:
           labelField: AccountName
@@ -4276,7 +4276,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       PricebookEntryId:
         label: Price Book Entry
         kind: Record
@@ -4299,7 +4299,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       StartDate:
         label: תאריך התחלה
         kind: DateTime
@@ -4323,14 +4323,14 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       TotalPrice:
         label: סה"כ מחיר
         kind: Number
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       ContractId:
         label: 'Contract '
         kind: Record
@@ -5916,7 +5916,7 @@ modules:
     name: Opportunity
     fields:
       AccountId:
-        label: שם
+        label: שם החשבון
         kind: Record
         options:
           labelField: AccountName
@@ -5930,7 +5930,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       CloseDate:
         label: תאריך סגירה
         kind: DateTime
@@ -5963,7 +5963,7 @@ modules:
         options:
           format: "0"
           precision: 2
-          suffix: €
+          suffix: ₪
       FiscalYear:
         label: Fiscal Period
         kind: Number
@@ -6234,7 +6234,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       Description:
         label: Line Description
         kind: String
@@ -6244,7 +6244,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       OpportunityId:
         label: הזדמנות
         kind: Record
@@ -6291,7 +6291,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       SortOrder:
         label: Sort Order
         kind: Number
@@ -6304,14 +6304,14 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       TotalPrice:
         label: סה"כ מחיר
         kind: Number
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
   Pricebook:
     (envoy): { onExisting: "skip" }
     name: Pricebook
@@ -6352,7 +6352,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       PricebookId:
         label: ספר מחיר
         kind: Record
@@ -7516,7 +7516,7 @@ modules:
             value: Zimbabwe
           selectType: default
       BillingName:
-        label: Bill To Name
+        label: שם לחשבונית
         kind: String
       ContactId:
         label: שם איש קשר
@@ -7538,7 +7538,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
         expressions:
           validators:
             - test: "value < 0"
@@ -8613,7 +8613,7 @@ modules:
         options:
           format: "0"
           precision: 2
-          suffix: €
+          suffix: ₪
         expressions:
           validators:
             - test: "value < 0"
@@ -8647,7 +8647,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
         expressions:
           validators:
             - test: "value < 0"
@@ -8669,7 +8669,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
         expressions:
           valueExpr: max(max((Subtotal?Subtotal:0) - (Discount?Discount:0), 0) + (ShippingHandling?ShippingHandling:0))
       GrandTotal:
@@ -8678,7 +8678,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
         expressions:
           valueExpr: "TotalPrice * (Tax ? 1+Tax/100 : 1)"
       RecordLabel:
@@ -8697,7 +8697,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       Description:
         label: Line Description
         kind: String
@@ -8707,7 +8707,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       QuoteId:
         label: הצעת מחיר
         kind: Record
@@ -8754,7 +8754,7 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       SortOrder:
         label: Sort Order
         kind: Number
@@ -8767,14 +8767,14 @@ modules:
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       TotalPrice:
         label: סה"כ מחיר
         kind: Number
         options:
           format: "0.00"
           precision: 2
-          suffix: €
+          suffix: ₪
       LineItemNumber:
         label: Line Item Number
         kind: String
