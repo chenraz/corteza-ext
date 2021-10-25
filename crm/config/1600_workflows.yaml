@@ -2875,7 +2875,7 @@ workflows:
                 - target: message
                   source: ""
                   expr: ""
-                  value: There is no email linked to the quote. Please fill in an email address in the "Primary contact data" block
+                  value: לא קושר אימייל להצעת המחיר. נא להזין פרטי איש קשר ראשי
                   type: String
                   tests: []
                 - target: variant
@@ -2891,7 +2891,7 @@ workflows:
                 visual:
                     id: "15"
                     parent: "1"
-                    value: 'Warning: There is no email linked to the quote. Please fill in an email address in the "Primary contact data" block.'
+                    value: 'אזהרה: לא קושר אימייל להצעת המחיר. נא להזין פרטי איש קשר ראשי.'
                     xywh:
                         - 2320
                         - 2200
@@ -3141,18 +3141,18 @@ workflows:
                 - target: title
                   source: ""
                   expr: ""
-                  value: Input Custom Email
+                  value: הזנת מייל מותאם
                   type: String
                   tests: []
                 - target: message
                   source: ""
                   expr: ""
-                  value: 'Please enter an email to send this quote to:'
+                  value: 'נא להזין מייל אליו תישלח ההצעה:'
                   type: String
                   tests: []
                 - target: label
                   source: ""
-                  expr: '"Email"'
+                  expr: '"אימייל"'
                   value: null
                   type: String
                   tests: []
