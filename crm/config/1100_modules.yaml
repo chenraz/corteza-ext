@@ -5,7 +5,7 @@ modules:
     name: Account
     fields:
       AccountName:
-        label: שם
+        label: שם חשבון
         kind: String
         required: true
       OwnerId:
