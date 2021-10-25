@@ -596,69 +596,69 @@ modules:
           options:
           - text: ""
             value: ""
-          - text: Agriculture
+          - text: חקלאות
             value: Agriculture
-          - text: Apparel
+          - text: הלבשה
             value: Apparel
-          - text: Banking
+          - text: בנקאות
             value: Banking
-          - text: Biotechnology
+          - text: ביוטכנולוגיה
             value: Biotechnology
-          - text: Chemicals
+          - text: כמימיקלים
             value: Chemicals
-          - text: Communications
+          - text: קומיוניקציה
             value: Communications
-          - text: Construction
+          - text: בנייה
             value: Construction
-          - text: Consulting
+          - text: ייעוץ
             value: Consulting
-          - text: Education
+          - text: חינוץ
             value: Education
-          - text: Electronics
+          - text: אלקטרוניקה
             value: Electronics
-          - text: Energy
+          - text: אנרגיה
             value: Energy
-          - text: Engineering
+          - text: הנדסה
             value: Engineering
-          - text: Entertainment
+          - text: בידור
             value: Entertainment
-          - text: Environmental
+          - text: סביבה
             value: Environmental
-          - text: Finance
+          - text: כספים
             value: Finance
-          - text: Food & Beverage
+          - text: מזון
             value: Food & Beverage
-          - text: Government
+          - text: רשויות
             value: Government
-          - text: Healthcare
+          - text: בריאות
             value: Healthcare
-          - text: Hospitality
+          - text: אירוח
             value: Hospitality
-          - text: Insurance
+          - text: ביטוח
             value: Insurance
-          - text: Machinery
+          - text: מכונאות
             value: Machinery
-          - text: Manufacturing
+          - text: תעשיה
             value: Manufacturing
-          - text: Media
+          - text: תקשורת
             value: Media
           - text: Not For Profit
             value: Not For Profit
           - text: אחר
             value: Other
-          - text: Recreation
+          - text: הבראה
             value: Recreation
-          - text: Retail
+          - text: קמעונאות
             value: Retail
-          - text: Shipping
+          - text: שילוח
             value: Shipping
-          - text: Technology
+          - text: טכנולוגיה
             value: Technology
-          - text: Telecommunications
+          - text: טלקום
             value: Telecommunications
-          - text: Transportation
+          - text: תחבורה
             value: Transportation
-          - text: Utilities
+          - text: שירותים
             value: Utilities
           selectType: default
       Ownership:
