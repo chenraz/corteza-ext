@@ -6226,7 +6226,7 @@ modules:
     name: OpportunityLineItem
     fields:
       ServiceDate:
-        label: Date
+        label: תאריך
         kind: DateTime
       Discount:
         label: הנחה
@@ -6236,7 +6236,7 @@ modules:
           precision: 2
           suffix: ₪
       Description:
-        label: Line Description
+        label: תאור פריט
         kind: String
       ListPrice:
         label: מחיר רשום
@@ -6256,10 +6256,10 @@ modules:
           - Name
           selectType: ""
       Name:
-        label: Opportunity Product Name
+        label: שם המוצר
         kind: String
       PricebookEntryId:
-        label: Price Book Entry
+        label: ספר מחירים
         kind: Record
         options:
           labelField: Name
@@ -6293,7 +6293,7 @@ modules:
           precision: 2
           suffix: ₪
       SortOrder:
-        label: Sort Order
+        label: סדר מיון
         kind: Number
         options:
           format: "0"

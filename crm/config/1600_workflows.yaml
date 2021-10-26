@@ -4260,13 +4260,13 @@ workflows:
                 - target: title
                   source: ""
                   expr: ""
-                  value: Success
+                  value: הצלחה
                   type: String
                   tests: []
                 - target: message
                   source: ""
                   expr: ""
-                  value: Pricebook applied
+                  value: ספר המחירים ייושם
                   type: String
                   tests: []
                 - target: variant
@@ -4282,7 +4282,7 @@ workflows:
                 visual:
                     id: "34"
                     parent: "1"
-                    value: 'Success: Pricebook applied'
+                    value: 'הצלחה: ספר המחירים ייושם'
                     xywh:
                         - 2040
                         - 2880
@@ -8822,13 +8822,13 @@ workflows:
                 - target: title
                   source: ""
                   expr: ""
-                  value: Success
+                  value: הצלחה
                   type: String
                   tests: []
                 - target: message
                   source: ""
                   expr: ""
-                  value: The new quote has been created.
+                  value: הצעת המחיר נוצרה בהצלחה.
                   type: String
                   tests: []
                 - target: variant
