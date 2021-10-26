@@ -4583,6 +4583,27 @@ workflows:
                         - 200
                         - 80
               labels: {}
+            - id: 91
+              kind: expressions
+              ref: ""
+              arguments:
+                - target: lineItem.values.Description
+                  expr: product.values.Description
+                  type: String
+              results: []
+              meta:
+                name: ""
+                description: ""
+                visual:
+                  id: "91"
+                  parent: "1"
+                  value: Set line item description
+                  xywh:
+                    - 3240
+                    - 2560
+                    - 200
+                    - 80
+
         paths:
             - expr: ""
               parentid: 5
@@ -4730,7 +4751,7 @@ workflows:
                     value: null
             - expr: ""
               parentid: 26
-              childid: 38
+              childid: 91
               meta:
                 name: ""
                 description: ""
@@ -4740,6 +4761,19 @@ workflows:
                     points: []
                     style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
                     value: null
+            - expr: ""
+              parentID: 91
+              childID: 38
+              meta:
+                name: ""
+                description: ""
+                visual:
+                  id: "92"
+                  parent: "1"
+                  points: []
+                  style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                  value: null
+
             - expr: ""
               parentid: 49
               childid: 51
