@@ -4590,6 +4590,9 @@ workflows:
                 - target: lineItem.values.Description
                   expr: product.values.Description
                   type: String
+                - target: lineItem.values.Photo
+                  expr: product.values.Photo
+                  type: String                  
               results: []
               meta:
                 name: ""
@@ -4597,7 +4600,7 @@ workflows:
                 visual:
                   id: "91"
                   parent: "1"
-                  value: Set line item description
+                  value: SSet line item product details
                   xywh:
                     - 3240
                     - 2560
