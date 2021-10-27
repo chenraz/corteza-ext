@@ -8689,7 +8689,7 @@ modules:
     name: QuoteLineItem
     fields:
       ServiceDate:
-        label: Date
+        label: תאריך
         kind: DateTime
       Discount:
         label: הנחה
@@ -8699,7 +8699,7 @@ modules:
           precision: 2
           suffix: ₪
       Description:
-        label: Line Description
+        label: תאור פריט
         kind: String
       ListPrice:
         label: מחיר רשום
@@ -8720,7 +8720,7 @@ modules:
           - QuoteNumber
           selectType: ""
       PricebookEntryId:
-        label: Price Book Entry
+        label: ספר מחירים
         kind: Record
         options:
           labelField: Name
@@ -8756,7 +8756,7 @@ modules:
           precision: 2
           suffix: ₪
       SortOrder:
-        label: Sort Order
+        label: סדר מיון
         kind: Number
         options:
           format: "0"
@@ -8776,10 +8776,10 @@ modules:
           precision: 2
           suffix: ₪
       LineItemNumber:
-        label: Line Item Number
+        label: מספר פריט
         kind: String
       LineItemDescription:
-        label: Line Item Description
+        label: תאור פריט
         kind: String
         options:
           multiLine: true
