@@ -3563,7 +3563,7 @@ workflows:
                 - 200
                 - 80
       steps:
-        - stepID: "3"
+        - id: 3
           kind: gateway
           ref: excl
           arguments: []
@@ -3580,7 +3580,7 @@ workflows:
                 - 2040
                 - 200
                 - 80
-        - stepID: "6"
+        - id: 6
           kind: function
           ref: composeRecordsSearch
           arguments:
@@ -3608,7 +3608,7 @@ workflows:
                 - 2040
                 - 200
                 - 80
-        - stepID: "11"
+        - id: 11
           kind: function
           ref: emailMessage
           arguments:
@@ -3636,7 +3636,7 @@ workflows:
                 - 2520
                 - 200
                 - 80
-        - stepID: "15"
+        - id: 15
           kind: prompt
           ref: notification
           arguments:
@@ -3662,7 +3662,7 @@ workflows:
                 - 2200
                 - 200
                 - 80
-        - stepID: "16"
+        - id: 16
           kind: prompt
           ref: notification
           arguments:
@@ -3688,7 +3688,7 @@ workflows:
                 - 2680
                 - 200
                 - 80
-        - stepID: "19"
+        - id: 19
           kind: function
           ref: templatesRender
           arguments:
@@ -3728,7 +3728,7 @@ workflows:
                 - 2360
                 - 200
                 - 80
-        - stepID: "31"
+        - id: 31
           kind: expressions
           ref: ""
           arguments:
@@ -3762,7 +3762,7 @@ workflows:
                 - 2360
                 - 200
                 - 80
-        - stepID: "56"
+        - id: 56
           kind: function
           ref: emailAttach
           arguments:
@@ -3788,7 +3788,7 @@ workflows:
                 - 2520
                 - 200
                 - 80
-        - stepID: "58"
+        - id: 58
           kind: function
           ref: emailSendMessage
           arguments:
@@ -3808,14 +3808,14 @@ workflows:
                 - 2520
                 - 200
                 - 80
-        - stepID: "88"
+        - id: 88
           kind: expressions
           ref: ""
           arguments:
             - target: PdfString
               expr: QuotePdf
               type: String
-          results: null
+          results: []
           meta:
             name: ""
             description: ""
@@ -3830,8 +3830,8 @@ workflows:
                 - 80
       paths:
         - expr: 'record.values.Email ? true : false'
-          parentID: "3"
-          childID: "6"
+          parentid: 3
+          childid: 6
           meta:
             name: ""
             description: ""
@@ -3841,8 +3841,8 @@ workflows:
               points: []
               style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
               value: '#1 - Yes'
-        - parentID: "3"
-          childID: "15"
+        - parentid: 3
+          childid: 15
           meta:
             name: ""
             description: ""
@@ -3852,8 +3852,8 @@ workflows:
               points: []
               style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
               value: '#2 - No'
-        - parentID: "6"
-          childID: "31"
+        - parentid: 6
+          childid: 31
           meta:
             name: ""
             description: ""
@@ -3869,8 +3869,8 @@ workflows:
                   "y": 2320
               style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
               value: null
-        - parentID: "88"
-          childID: "11"
+        - parentid: 88
+          childid: 11
           meta:
             name: ""
             description: ""
@@ -3880,8 +3880,8 @@ workflows:
               points: []
               style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
               value: null
-        - parentID: "31"
-          childID: "19"
+        - parentid: 31
+          childid: 19
           meta:
             name: ""
             description: ""
@@ -3891,8 +3891,8 @@ workflows:
               points: null
               style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
               value: null
-        - parentID: "19"
-          childID: "88"
+        - parentid: 19
+          childid: 88
           meta:
             name: ""
             description: ""
@@ -3902,8 +3902,8 @@ workflows:
               points: null
               style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
               value: null
-        - parentID: "11"
-          childID: "56"
+        - parentid: 11
+          childid: 56
           meta:
             name: ""
             description: ""
@@ -3913,8 +3913,8 @@ workflows:
               points: null
               style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
               value: null
-        - parentID: "56"
-          childID: "58"
+        - parentid: 56
+          childid: 58
           meta:
             name: ""
             description: ""
@@ -3924,8 +3924,8 @@ workflows:
               points: null
               style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
               value: null
-        - parentID: "58"
-          childID: "16"
+        - parentid: 58
+          childid: 16
           meta:
             name: ""
             description: ""
