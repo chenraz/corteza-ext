@@ -12,6 +12,14 @@ templates:
         meta:
             short: quote_pdf
             description: quote pdf
+    quote_pdf_email:
+        type: text/html
+        template: |
+            <p>מצורפת בזאת {{.quote.values.QuoteNumber}} - {{.quote.values.Name}}</p>
+            <p>זמין בכל שאלה</p>
+        meta:
+            short: quote_pdf_email
+            description: Quote pdf email body
     lead_converted_content:
         type: text/html
         template: |
