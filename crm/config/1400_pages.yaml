@@ -3965,6 +3965,7 @@ pages:
                 - name: QuoteNextNumber
                 - name: QuoteExpirationDays
                 - name: DefaultQuoteImage
+                - name: DefaultAboutImage
                 - name: EmailLogo
               style:
                 variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}

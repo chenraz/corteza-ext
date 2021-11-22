@@ -8967,6 +8967,9 @@ modules:
       DefaultQuoteImage:
         label: תמונה להצעת מחיר
         kind: File
+      DefaultAboutImage:
+        label: תמנה למקטע אודות
+        kind: file
       EmailLogo:
         label: לוגו לאימייל
         kind: File
