@@ -8969,7 +8969,7 @@ modules:
         kind: File
       DefaultAboutImage:
         label: תמנה למקטע אודות
-        kind: file
+        kind: File
       EmailLogo:
         label: לוגו לאימייל
         kind: File
