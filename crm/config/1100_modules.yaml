@@ -6451,46 +6451,6 @@ modules:
           queryFields:
           - Name
           selectType: default
-  Termbook:
-    (envoy): { onExisting: "skip" }
-    name: Termbook
-    fields:
-      Description:
-        label: תאור
-        kind: String
-        options:
-          multiLine: true
-      Name:
-        label: שם ספר תנאים
-        kind: String
-  TermbookEntry:
-    (envoy): { onExisting: "skip" }
-    name: TermbookEntry
-    fields:
-      TermbookId:
-        label: ספר תנאים
-        kind: Record
-        options:
-          labelField: Name
-          module: Termbook
-          queryFields:
-          - Name
-          selectType: ""
-      Description:
-        label: תאור התנאי
-        kind: String
-        options:
-          multiLine: true
-        multi: true
-      Name:
-        label: שם תנאי
-        kind: String
-      Order:
-        label: Order
-        kind: Number
-        options:
-          multiLine: false
-          useRichTextEditor: false
   Question:
     (envoy): { onExisting: "skip" }
     name: Question
@@ -8838,6 +8798,34 @@ modules:
         kind: String
         options:
           multiLine: true
+  QuoteTermItem:
+    (envoy): { onExisting: "skip" }
+    name: QuoteTermItem
+    fields:
+      QuoteId:
+        label: הצעת מחיר
+        kind: Record
+        options:
+          labelField: Name
+          module: Quote
+          queryFields:
+          - Name
+          selectType: ""
+      Description:
+        label: תאור התנאי
+        kind: String
+        options:
+          multiLine: true
+        multi: true
+      Name:
+        label: שם תנאי
+        kind: String
+      Order:
+        label: Order
+        kind: Number
+        options:
+          multiLine: false
+          useRichTextEditor: false
   Reply:
     (envoy): { onExisting: "skip" }
     name: Reply
@@ -9273,6 +9261,46 @@ modules:
           - CaseNumber
           - Subject
           selectType: default
+  Termbook:
+    (envoy): { onExisting: "skip" }
+    name: Termbook
+    fields:
+      Description:
+        label: תאור
+        kind: String
+        options:
+          multiLine: true
+      Name:
+        label: שם ספר תנאים
+        kind: String
+  TermbookEntry:
+    (envoy): { onExisting: "skip" }
+    name: TermbookEntry
+    fields:
+      TermbookId:
+        label: ספר תנאים
+        kind: Record
+        options:
+          labelField: Name
+          module: Termbook
+          queryFields:
+          - Name
+          selectType: ""
+      Description:
+        label: תאור התנאי
+        kind: String
+        options:
+          multiLine: true
+        multi: true
+      Name:
+        label: שם תנאי
+        kind: String
+      Order:
+        label: Order
+        kind: Number
+        options:
+          multiLine: false
+          useRichTextEditor: false
   Vote:
     (envoy): { onExisting: "skip" }
     name: Vote

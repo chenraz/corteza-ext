@@ -1511,7 +1511,7 @@ pages:
           style:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
-          xywh: [0, 20, 4, 9]
+          xywh: [0, 29, 4, 8]
         - title: הצעת מחיר עבור
           options:
             fields:
@@ -1524,7 +1524,7 @@ pages:
           style:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
-          xywh: [4, 20, 4, 9]
+          xywh: [4, 29, 4, 8]
         - title: משלוח עבור
           options:
             fields:
@@ -1537,7 +1537,7 @@ pages:
           style:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: Record
-          xywh: [8, 20, 4, 9]
+          xywh: [8, 29, 4, 8]
         - title: פריטי הצעת המחיר
           options:
             allowExport: true
@@ -1578,6 +1578,36 @@ pages:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
           xywh: [0, 12, 12, 8]
+        - title: תנאים
+          options:
+            allowExport: true
+            draggable: true
+            editFields:
+            - name: Name
+            - name: Description
+            editable: true
+            fields:
+            - name: Name
+            - name: Description
+            hidePaging: true
+            hideRecordCloneButton: true
+            hideRecordEditButton: true
+            hideRecordReminderButton: true
+            hideRecordViewButton: true
+            hideSorting: true
+            module: QuoteTermItem
+            perPage: 20
+            positionField: Order
+            prefilter: QuoteId = ${recordID}
+            presort: ""
+            refField: QuoteId
+            selectMode: multi
+            selectable: true
+            selectionButtons: []
+          style:
+            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
+          kind: RecordList
+          xywh: [0, 20, 12, 9]
         - title: הערות 
           options:
             allowExport: true
@@ -1602,7 +1632,7 @@ pages:
           style:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
-          xywh: [0, 29, 4, 8]
+          xywh: [0, 46, 4, 8]
         - title: אירועים 
           options:
             allowExport: true
@@ -1627,7 +1657,7 @@ pages:
           style:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
-          xywh: [4, 29, 4, 8]
+          xywh: [4, 46, 4, 8]
         - title: משימות 
           options:
             allowExport: true
@@ -1653,7 +1683,7 @@ pages:
           style:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
           kind: RecordList
-          xywh: [8, 29, 4, 8]
+          xywh: [8, 46, 4, 8]
         - options:
             buttons:
             - enabled: true
