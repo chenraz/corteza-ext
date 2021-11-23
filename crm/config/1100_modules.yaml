@@ -8708,6 +8708,16 @@ modules:
           validators:
             - test: "value < 0"
               error: Tax can not be a negative number
+      TermookIds:
+        label: ספרי תנאים
+        kind: Record
+        options:
+          labelField: Name
+          module: Termbook
+          queryFields:
+          - Name
+          selectType: ""
+        multi: true
       TotalPrice:
         label: סה"כ מחיר
         kind: Number
