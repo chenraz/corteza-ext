@@ -6411,7 +6411,7 @@ modules:
         kind: String
         options:
           multiLine: true
-          useRichTextEditor: true
+          useRichTextEditor: false
       Family:
         label: משפחת מוצר
         kind: Select
@@ -7552,6 +7552,8 @@ modules:
       ExpirationDate:
         label: תאריך תפוגה
         kind: DateTime
+        options:
+          format: "DD/MM/YYYY"
       Fax:
         label: פקס
         kind: String

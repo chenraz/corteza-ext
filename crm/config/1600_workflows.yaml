@@ -3568,7 +3568,7 @@ workflows:
               parent: "1"
               value: Get LineItems
               xywh:
-                - 2600
+                - 2880
                 - 2040
                 - 200
                 - 80
@@ -3621,7 +3621,7 @@ workflows:
               value: 'הצלחה: הצעת המחיר נשלחה במייל'
               xywh:
                 - 2600
-                - 3000
+                - 3160
                 - 200
                 - 80
         - id: 31
@@ -3664,6 +3664,9 @@ workflows:
               expr: |
                 join(["http://local.cortezaproject.org:18080/api/compose",aboutImgUrl],"")
               type: String
+            - target: renderVariables.expirationDate
+              expr: ExpirationDate
+              type: String
           results: []
           meta:
             name: ""
@@ -3674,7 +3677,7 @@ workflows:
               value: Set Render Variables
               xywh:
                 - 2040
-                - 2680
+                - 2840
                 - 200
                 - 80
         - id: 99
@@ -3705,7 +3708,7 @@ workflows:
               value: Mail Message Template
               xywh:
                 - 2040
-                - 2840
+                - 3000
                 - 200
                 - 80
         - id: 113
@@ -3736,7 +3739,7 @@ workflows:
               value: Quote to HTML
               xywh:
                 - 2320
-                - 2680
+                - 2840
                 - 200
                 - 80
         - id: 119
@@ -3755,6 +3758,9 @@ workflows:
             - target: footerHtml
               expr: footerHtml.document
               type: String
+            - target: quoteName
+              expr: join([record.values.Name,record.values.QuoteNumber]," - ")
+              type: String
           results: []
           meta:
             name: ""
@@ -3762,10 +3768,10 @@ workflows:
             visual:
               id: "119"
               parent: "1"
-              value: Translate documents to string
+              value: Prepare Automation Script Vars
               xywh:
                 - 2320
-                - 2840
+                - 3000
                 - 200
                 - 80
         - id: 124
@@ -3783,7 +3789,8 @@ workflows:
                   "headerHtml": headerHtml,
                   "footerHtml": footerHtml,
                   "mailTo": record.values.Email,
-                  "mailSubject": "הצעת מחיר",
+                  "mailSubject":  quoteName,
+                  "quoteFileName":  join([quoteName],".pdf"),
                   "messageHtml": messageHtml
                 }
               type: Vars
@@ -3799,7 +3806,7 @@ workflows:
               value: Send PDF using Auto Script
               xywh:
                 - 2600
-                - 2840
+                - 3000
                 - 200
                 - 80
         - id: 152
@@ -3823,8 +3830,8 @@ workflows:
               parent: "1"
               value: get settings
               xywh:
-                - 3160
                 - 2040
+                - 2360
                 - 200
                 - 80
         - id: 153
@@ -3846,8 +3853,8 @@ workflows:
               parent: "1"
               value: Prepare settings
               xywh:
-                - 3440
-                - 2040
+                - 2320
+                - 2360
                 - 200
                 - 80
         - id: 154
@@ -3877,8 +3884,8 @@ workflows:
               parent: "1"
               value: get api token
               xywh:
-                - 3720
-                - 2040
+                - 2600
+                - 2360
                 - 200
                 - 80
         - id: 159
@@ -3908,7 +3915,7 @@ workflows:
               value: get cover image
               xywh:
                 - 2040
-                - 2520
+                - 2680
                 - 200
                 - 80
         - id: 163
@@ -3928,7 +3935,7 @@ workflows:
               value: Prepare cover image results
               xywh:
                 - 2320
-                - 2520
+                - 2680
                 - 200
                 - 80
         - id: 168
@@ -3955,7 +3962,7 @@ workflows:
               value: jsenv get cover image preview url
               xywh:
                 - 2600
-                - 2520
+                - 2680
                 - 200
                 - 80
         - id: 172
@@ -3983,7 +3990,7 @@ workflows:
               value: Quote to HTML Header
               xywh:
                 - 2600
-                - 2680
+                - 2840
                 - 200
                 - 80
         - id: 191
@@ -4010,7 +4017,7 @@ workflows:
               parent: "1"
               value: Get pri contact record
               xywh:
-                - 2880
+                - 3160
                 - 2040
                 - 200
                 - 80
@@ -4039,7 +4046,7 @@ workflows:
               value: Quote to HTML Footer
               xywh:
                 - 2880
-                - 2680
+                - 2840
                 - 200
                 - 80
         - id: 195
@@ -4061,7 +4068,7 @@ workflows:
               value: get product data
               xywh:
                 - 2320
-                - 2360
+                - 2520
                 - 200
                 - 80
         - id: 207
@@ -4081,7 +4088,7 @@ workflows:
               value: set product data
               xywh:
                 - 2600
-                - 2360
+                - 2520
                 - 200
                 - 80
         - id: 209
@@ -4109,7 +4116,7 @@ workflows:
               value: get LineItem Product record
               xywh:
                 - 2880
-                - 2360
+                - 2520
                 - 200
                 - 80
         - id: 213
@@ -4137,7 +4144,7 @@ workflows:
               value: http get product image attachment
               xywh:
                 - 3160
-                - 2360
+                - 2520
                 - 200
                 - 80
         - id: 218
@@ -4157,7 +4164,7 @@ workflows:
               value: cast product image to string
               xywh:
                 - 3440
-                - 2360
+                - 2520
                 - 200
                 - 80
         - id: 219
@@ -4184,7 +4191,7 @@ workflows:
               value: jsenv image preview
               xywh:
                 - 3720
-                - 2360
+                - 2520
                 - 200
                 - 80
         - id: 236
@@ -4205,7 +4212,7 @@ workflows:
               value: Prepare product Data Arrays
               xywh:
                 - 2040
-                - 2360
+                - 2520
                 - 200
                 - 80
         - id: 242
@@ -4236,7 +4243,7 @@ workflows:
               value: add product data
               xywh:
                 - 4000
-                - 2360
+                - 2520
                 - 200
                 - 80
         - id: 244
@@ -4253,7 +4260,7 @@ workflows:
               value: null
               xywh:
                 - 4280
-                - 2360
+                - 2520
                 - 200
                 - 80
         - id: 251
@@ -4281,7 +4288,7 @@ workflows:
               value: get about image
               xywh:
                 - 2880
-                - 2520
+                - 2680
                 - 200
                 - 80
         - id: 252
@@ -4301,7 +4308,7 @@ workflows:
               value: Prepare about image results
               xywh:
                 - 3160
-                - 2520
+                - 2680
                 - 200
                 - 80
         - id: 253
@@ -4328,13 +4335,75 @@ workflows:
               value: jsenv get about image preview url
               xywh:
                 - 3440
-                - 2520
+                - 2680
+                - 200
+                - 80
+        - id: 259
+          kind: gateway
+          ref: excl
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "259"
+              parent: "1"
+              value: Check quote name
+              xywh:
+                - 2600
+                - 2040
+                - 200
+                - 80
+        - id: 269
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: record.values.Name
+              expr: '"הצעת מחיר לפיתוח"'
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "269"
+              parent: "1"
+              value: Prepare quote name
+              xywh:
+                - 2600
+                - 2200
+                - 200
+                - 80
+        - id: 271
+          kind: function
+          ref: jsenvExecute
+          arguments:
+            - target: scope
+              expr: record.values.ExpirationDate
+              type: String
+            - target: source
+              value: return arguments[0].replace(/([\d]{4})-([\d]{2})-([\d]{2}).*/,"$3/$2/$1")
+              type: String
+          results:
+            - target: ExpirationDate
+              expr: resultString
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "271"
+              parent: "1"
+              value: jsenv set expiration date
+              xywh:
+                - 3440
+                - 2040
                 - 200
                 - 80
       paths:
         - expr: 'record.values.Email ? true : false'
           parentID: 3
-          childID: 6
+          childID: 259
           meta:
             name: ""
             description: ""
@@ -4553,7 +4622,7 @@ workflows:
               points: []
               style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
               value: null
-        - parentID: 191
+        - parentID: 271
           childID: 152
           meta:
             name: ""
@@ -4561,8 +4630,14 @@ workflows:
             visual:
               id: "227"
               parent: "1"
-              points: []
-              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              points:
+                - x: 3540
+                  "y": 2320
+                - x: 2000
+                  "y": 2320
+                - x: 2000
+                  "y": 2400
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
               value: null
         - parentID: 154
           childID: 236
@@ -4572,11 +4647,7 @@ workflows:
             visual:
               id: "228"
               parent: "1"
-              points:
-                - x: 3820
-                  "y": 2320
-                - x: 2140
-                  "y": 2320
+              points: []
               style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
               value: null
         - parentID: 236
@@ -4652,6 +4723,51 @@ workflows:
             description: ""
             visual:
               id: "256"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - expr: 'record.values.Name=="(unnamed)" ? true : false'
+          parentID: 259
+          childID: 269
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "261"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: '#1 - If'
+        - parentID: 259
+          childID: 6
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "267"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: '#2 - Else (if)'
+        - parentID: 269
+          childID: 6
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "270"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 191
+          childID: 271
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "272"
               parent: "1"
               points: []
               style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
