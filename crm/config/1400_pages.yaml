@@ -1706,6 +1706,124 @@ pages:
             visible: false
         visible: false
     visible: true
+  - handle: Terms
+    (envoy): { onExisting: "skip" }
+    title: תנאים
+    blocks:
+    - title: ספרי תנאים
+      options:
+        allowExport: true
+        draggable: false
+        editFields: []
+        editable: false
+        fields:
+        - name: Name
+        - name: Description
+        hideRecordCloneButton: true
+        hideRecordEditButton: false
+        hideRecordReminderButton: true
+        hideRecordViewButton: true
+        module: Termbook
+        perPage: 20
+        prefilter: ""
+        presort: Name ASC
+        selectMode: multi
+        selectable: true
+        selectionButtons: []
+      kind: RecordList
+      xywh: [0, 0, 12, 16]
+    pages:
+      - handle: Termbook
+        (envoy): { onExisting: "skip" }
+        title: ספר תנאים
+        blocks:
+        - title: ספר תנאים
+          options:
+            allowExport: true
+            draggable: false
+            editFields: []
+            editable: false
+            fields:
+            - name: Name
+            - name: Description
+            hideRecordCloneButton: true
+            hideRecordEditButton: false
+            hideRecordReminderButton: true
+            hideRecordViewButton: true
+            module: Termbook
+            perPage: 20
+            prefilter: ""
+            presort: Name ASC
+            selectMode: multi
+            selectable: true
+            selectionButtons: []
+          style:
+            variants: {border: primary, headerText: primary}
+          kind: RecordList
+          xywh: [0, 0, 12, 16]
+        pages:
+          - handle: RecordPageForModuleTermbook
+            (envoy): { onExisting: "skip" }
+            module: Termbook
+            title: עמוד רשומה במודול "ספר תנאים"
+            blocks:
+            - title: פרטי ספר תנאים
+              options:
+                fields:
+                - name: Name
+                - name: Description
+              kind: Record
+              xywh: [0, 0, 6, 14]
+            - title: תנאים בספר
+              options:
+                allowExport: true
+                draggable: true
+                editFields:
+                - name: Name
+                - name: Description
+                editable: true
+                fields:
+                - name: Name
+                - name: Description
+                hidePaging: true
+                hideRecordCloneButton: true
+                hideRecordEditButton: true
+                hideRecordReminderButton: true
+                hideRecordViewButton: true
+                hideSorting: true
+                module: TermbookEntry
+                perPage: 20
+                positionField: Order
+                prefilter: TermbookId = ${recordID}
+                presort: ""
+                refField: TermbookId
+                selectMode: multi
+                selectable: true
+                selectionButtons: []
+              style:
+                variants: {border: primary, headerText: primary}
+              kind: RecordList
+              xywh: [6, 0, 6, 14]
+            pages:
+              - handle: RecordPageForModuleTermbookEntry
+                (envoy): { onExisting: "skip" }
+                module: TermbookEntry
+                title: עמוד רשומה במודול "תנאים בספר תנאים"
+                blocks:
+                - title: תנאים
+                  options:
+                    fields:
+                    - name: TermbookId
+                    - name: Name
+                    - name: Description
+                  style:
+                    variants: {border: primary, headerText: primary}
+                  kind: Record
+                  xywh: [0, 0, 4, 15]
+                visible: false
+            visible: false
+        visible: true
+    visible: true
   - handle: Contracts
     (envoy): { onExisting: "skip" }
     title: הסכמים
@@ -2596,7 +2714,7 @@ pages:
             module: Pricebook
             title: עמוד רשומה במודול "ספר מחירים"
             blocks:
-            - title: נתוני ספר מחיר
+            - title: פרטי ספר מחיר
               options:
                 fields:
                 - name: Name
