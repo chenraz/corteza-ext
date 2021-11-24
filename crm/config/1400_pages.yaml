@@ -1700,12 +1700,20 @@ pages:
               label: שליחת הצעת המחיר במייל לאיש קשר ראשי
               resourceType: compose:record
               workflow: CRM-Quote-SendToPriContact
+              variant: light
               stepID: 3
             - enabled: true
               label: שליחת ההצעה למייל כלשהו
               resourceType: compose:record
               workflow: CRM-Quote-SendToCustomEmail
+              variant: light
               stepID: 3
+            - enabled: true
+              label: ייבוא מספרי תנאים
+              resourceType: compose:record
+              workflow: CRM-Quote-ApplyTermBooks
+              variant: dark
+              stepID: 4        
             sealed: false
           style:
             variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}

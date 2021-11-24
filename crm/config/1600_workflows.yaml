@@ -2723,6 +2723,446 @@ workflows:
                     points: []
                     style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
                     value: null
+    CRM-Quote-ApplyTermBooks:
+      enabled: true
+      meta:
+        name: CRM - Quote - Apply Term Books
+        description: ""
+        visual: null
+      keepSessions: 0
+      steps:
+        - id: 4
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: termbookIds
+              expr: record.values.TermookIds
+              type: Array
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "4"
+              parent: "1"
+              value: Set termbooks ids
+              xywh:
+                - 2400
+                - 1920
+                - 200
+                - 80
+        - id: 8
+          kind: gateway
+          ref: excl
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "8"
+              parent: "1"
+              value: Check Termbook Ids
+              xywh:
+                - 2680
+                - 1920
+                - 200
+                - 80
+        - id: 12
+          kind: prompt
+          ref: notification
+          arguments:
+            - target: title
+              value: אזהרה
+              type: String
+            - target: message
+              value: נא לבחור לפחות ספר תנאים אחד
+              type: String
+            - target: variant
+              value: warning
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "12"
+              parent: "1"
+              value: 'Warning: no termbooks'
+              xywh:
+                - 3120
+                - 1920
+                - 200
+                - 80
+        - id: 13
+          kind: iterator
+          ref: loopEach
+          arguments:
+            - target: items
+              expr: termbookIds
+              type: Array
+          results:
+            - target: termbookId
+              expr: item
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "13"
+              parent: "1"
+              value: Iterate term books
+              xywh:
+                - 2120
+                - 2080
+                - 200
+                - 80
+        - id: 16
+          kind: continue
+          ref: ""
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "16"
+              parent: "1"
+              value: null
+              xywh:
+                - 2120
+                - 2480
+                - 200
+                - 80
+        - id: 24
+          kind: iterator
+          ref: composeRecordsEach
+          arguments:
+            - target: module
+              value: TermbookEntry
+              type: Handle
+            - target: namespace
+              value: crm
+              type: Handle
+            - target: query
+              expr: '"TermbookId = " + termbookId'
+              type: String
+          results:
+            - target: TermbookEntry
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "24"
+              parent: "1"
+              value: Add items to quote
+              xywh:
+                - 2120
+                - 2280
+                - 200
+                - 80
+        - id: 28
+          kind: continue
+          ref: ""
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "28"
+              parent: "1"
+              value: null
+              xywh:
+                - 3408
+                - 2280
+                - 200
+                - 80
+        - id: 31
+          kind: function
+          ref: composeRecordsNew
+          arguments:
+            - target: module
+              value: QuoteTermItem
+              type: Handle
+            - target: namespace
+              value: crm
+              type: Handle
+          results:
+            - target: QuoteTermItem
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "31"
+              parent: "1"
+              value: 'Prepare quote term '
+              xywh:
+                - 2520
+                - 2280
+                - 200
+                - 80
+        - id: 32
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: QuoteTermItem.values.Name
+              expr: TermbookEntry.values.Name
+              type: String
+            - target: QuoteTermItem.values.Description
+              expr: TermbookEntry.values.Description
+              type: Array
+            - target: QuoteTermItem.values.QuoteId
+              expr: record.recordID
+              type: ID
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "32"
+              parent: "1"
+              value: Set quote term item fields
+              xywh:
+                - 2800
+                - 2280
+                - 200
+                - 80
+        - id: 35
+          kind: function
+          ref: composeRecordsCreate
+          arguments:
+            - target: record
+              expr: QuoteTermItem
+              type: ComposeRecord
+          results:
+            - target: QuoteTermItem
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "35"
+              parent: "1"
+              value: Save quote term item
+              xywh:
+                - 3080
+                - 2280
+                - 200
+                - 80
+        - id: 39
+          kind: prompt
+          ref: notification
+          arguments:
+            - target: title
+              value: ספרי תנאים יושמו
+              type: String
+            - target: message
+              value: כל התנאים מספרי התנאים שנבחרו יובאו להצעה
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "39"
+              parent: "1"
+              value: הצלחה
+              xywh:
+                - 2120
+                - 2640
+                - 200
+                - 80
+        - id: 42
+          kind: prompt
+          ref: recordPage
+          arguments:
+            - target: module
+              value: Quote
+              type: Handle
+            - target: namespace
+              value: crm
+              type: Handle
+            - target: record
+              expr: record
+              type: ComposeRecord
+            - target: edit
+              expr: "true"
+              type: Boolean
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "42"
+              parent: "1"
+              value: redirect to quote edit page
+              xywh:
+                - 2400
+                - 2640
+                - 200
+                - 80
+      paths:
+        - parentID: 4
+          childID: 8
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "7"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - expr: count(termbookIds) != 0
+          parentID: 8
+          childID: 13
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "9"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: '#1 - Has Termbooks'
+        - parentID: 8
+          childID: 12
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "11"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: '#2 - No termbooks'
+        - parentID: 13
+          childID: 24
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "15"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: Body
+        - parentID: 24
+          childID: 31
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "27"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: Body
+        - parentID: 31
+          childID: 32
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "33"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 32
+          childID: 35
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "36"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 35
+          childID: 28
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "37"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 24
+          childID: 16
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "38"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: End
+        - parentID: 13
+          childID: 39
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "41"
+              parent: "1"
+              points: []
+              style: exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: End
+        - parentID: 39
+          childID: 42
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "43"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+      triggers:
+        - resourceType: compose:record
+          eventType: onManual
+          constraints:
+            - name: namespace.handle
+              op: =
+              values:
+                - crm
+            - name: module.handle
+              op: =
+              values:
+                - Quote
+          enabled: true
+          stepID: 4
+          meta:
+            description: ""
+            visual:
+              edges:
+                - childID: "4"
+                  meta:
+                    description: ""
+                    label: ""
+                    visual:
+                      id: "6"
+                      parent: "1"
+                      points: []
+                      style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                      value: null
+                  parentID: "3"
+              id: "3"
+              parent: "1"
+              value: On manual Quote
+              xywh:
+                - 2120
+                - 1920
+                - 200
+                - 80
     CRM-Quote-SendToPriContact:
         meta:
             name: CRM - Quote - Send To Pri Contact
