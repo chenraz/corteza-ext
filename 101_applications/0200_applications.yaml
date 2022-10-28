@@ -1,0 +1,72 @@
+applications:
+  - name: קוד נמוך
+    (envoy): { skipIf: "!missing" }
+    enabled: true
+    unify:
+      listed: true
+      icon: applications/low-code-platform.png
+      logo: applications/low-code-platform.png
+      url: compose/
+
+  - name: מערכת ניהול לקוחות
+    (envoy): { skipIf: "!missing" }
+    enabled: true
+    unify:
+      listed: true
+      icon: applications/low-code-crm-app.png
+      logo: applications/low-code-crm-app.png
+      url: compose/ns/crm/pages
+
+  - name: ניהול תיקים
+    (envoy): { skipIf: "!missing" }
+    enabled: true
+    unify:
+      listed: true
+      icon: applications/low-code-service-solution-app.png
+      logo: applications/low-code-service-solution-app.png
+      url: compose/ns/service-solution/pages
+
+  - name: וידאו מאובטח
+    (envoy): { skipIf: "!missing" }
+    enabled: true
+    unify:
+      listed: true
+      icon: applications/video-conference.png
+      logo: applications/video-conference.png
+      url: bridge/jitsi/
+
+  - name: אזור ניהול
+    (envoy): { skipIf: "!missing" }
+    enabled: true
+    unify:
+      listed: true
+      icon: applications/admin-area.png
+      logo: applications/admin-area.png
+      url: admin/
+
+  - name: אוטומציה
+    (envoy): { skipIf: "!missing" }
+    enabled: true
+    unify:
+      listed: true
+      icon: applications/workflows.png
+      logo: applications/workflows.png
+      url: workflow/
+
+  - name: מחולל דוחות
+    (envoy): { skipIf: "!missing" }
+    enabled: true
+    unify:
+      listed: true
+      icon: applications/reporter.png
+      logo: applications/reporter.png
+      url: reporter/
+
+  - name: פרטיות
+    (envoy): { skipIf: "!missing" }
+    enabled: true
+    unify:
+      listed: true
+      icon: applications/privacy.png
+      logo: applications/privacy.png
+      url: privacy/
