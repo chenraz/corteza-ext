@@ -501,7 +501,7 @@ pages:
           xywh: [0, 0, 12, 16]
         visible: true
     visible: true
-  - handle: Accounts
+  - handle: <
     (envoy): { onExisting: "skip" }
     title: חשבונות
     blocks:
@@ -1744,6 +1744,157 @@ pages:
               xywh: [0, 0, 4, 15]
             visible: false
         visible: false
+
+      - handle: XplaceTemplates
+        (envoy):
+          onExisting: skip
+        title: "\u05D8\u05DE\u05E4\u05DC\u05D8\u05D9\u05DD \u05DC\u05D0\u05E7\u05E1\u05E4\
+          \u05DC\u05E1"
+        description: ''
+        visible: true
+        blocks:
+        - kind: RecordList
+          xywh:
+          - 0
+          - 0
+          - 12
+          - 18
+          style:
+            variants:
+              headerText: primary
+          title: "\u05E8\u05E9\u05D9\u05DE\u05EA \u05D8\u05DE\u05E4\u05DC\u05D8\u05D9\u05DD"
+          options:
+            fields:
+            - kind: String
+              name: Name
+              label: "\u05E9\u05DD"
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                multiLine: false
+                description:
+                  view: ''
+                multiDelimiter: \n
+                useRichTextEditor: false
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: String
+              name: Content
+              label: "\u05EA\u05D5\u05DB\u05DF"
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                multiLine: true
+                description:
+                  view: ''
+                multiDelimiter: \n
+                useRichTextEditor: false
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            perPage: 20
+            presort: ''
+            editable: true
+            draggable: false
+            prefilter: ''
+            editFields:
+            - kind: String
+              name: Name
+              label: "\u05E9\u05DD"
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                multiLine: false
+                description:
+                  view: ''
+                multiDelimiter: \n
+                useRichTextEditor: false
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: String
+              name: Content
+              label: "\u05EA\u05D5\u05DB\u05DF"
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                multiLine: true
+                description:
+                  view: ''
+                multiDelimiter: \n
+                useRichTextEditor: false
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            hideHeader: false
+            hidePaging: true
+            hideSearch: false
+            selectMode: multi
+            selectable: true
+            allowExport: true
+            hideSorting: false
+            hideAddButton: false
+            showTotalCount: true
+            selectionButtons: []
+            fullPageNavigation: true
+            hideRecordEditButton: true
+            hideRecordViewButton: true
+            hideRecordCloneButton: true
+            hideRecordReminderButton: true
+            hideRecordPermissionsButton: true
+            module: XplaceTemplate
+        pages:
+        - handle: RecordPageForXplaceTemplates
+          (envoy):
+            onExisting: skip
+          title: Record page for module "XplaceTemplate"
+          description: ''
+          visible: false
+          blocks:
+          - kind: Record
+            xywh:
+            - 0
+            - 0
+            - 12
+            - 16
+            style:
+              wrap:
+                kind: card
+              variants:
+                headerText: dark
+            options:
+              fields: []
+          module: XplaceTemplate
+
     visible: true
   - handle: Terms
     (envoy): { onExisting: "skip" }
