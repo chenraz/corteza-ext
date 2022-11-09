@@ -6092,7 +6092,7 @@ modules:
             value: Need Analysis
           - text: הצעת מחיר
             value: Proposal
-          - text: מו"מ
+          - text: משא ומתן
             value: Negotiation
           - text: הומר בהצלחה
             value: Closed Won
