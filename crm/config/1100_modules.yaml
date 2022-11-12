@@ -5670,6 +5670,9 @@ modules:
           - Name
           selectType: multiple
         multi: true
+      LeadReference:
+        lable: רפרנס לליד
+        kind: String
   Note:
     (envoy): { onExisting: "skip" }
     name: Note
