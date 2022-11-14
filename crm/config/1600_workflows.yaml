@@ -14448,1569 +14448,1157 @@ workflows:
                     style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
                     value: null
     CRM-Lead-ToAccountAndOpportunity:
-        meta:
-            name: CRM - Lead - To Account and Opportunity
-            description: Converts Lead to Account and Opportunity
-        enabled: true
-        keepSessions: 0
-        triggers:
-            - resourceType: compose:record
-              eventType: onManual
-              constraints:
-                - name: module
-                  op: =
-                  values:
-                    - Lead
-                - name: namespace.handle
-                  op: =
-                  values:
-                    - crm
-              enabled: true
-              stepID: 77
-              meta:
-                visual:
-                    edges:
-                        - childID: "77"
-                          meta:
-                            description: ""
-                            label: ""
-                            visual:
-                                id: "78"
-                                parent: "1"
-                                points: []
-                                style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                                value: null
-                          parentID: "49"
-                    id: "49"
-                    parent: "1"
-                    value: To Account and Opportunity
-                    xywh:
-                        - 1920
-                        - 2520
-                        - 200
-                        - 80
-        steps:
-            - id: 35
-              kind: gateway
-              ref: excl
-              arguments: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "35"
-                    parent: "1"
-                    value: Already converted?
-                    xywh:
-                        - 2488
-                        - 2520
-                        - 200
-                        - 80
-              labels: {}
-            - id: 37
-              kind: function
-              ref: composeRecordsNew
-              arguments:
-                - target: module
-                  source: ""
-                  expr: ""
-                  value: Account
-                  type: Handle
-                  tests: []
-                - target: namespace
-                  source: ""
-                  expr: namespace.namespaceID
-                  value: null
-                  type: ID
-                  tests: []
-              results:
-                - target: account
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "37"
-                    parent: "1"
-                    value: Prepare account record
-                    xywh:
-                        - 2496
-                        - 2720
-                        - 200
-                        - 80
-              labels: {}
-            - id: 38
-              kind: expressions
-              ref: ""
-              arguments:
-                - target: account.values.BillingStreet
-                  source: ""
-                  expr: record.values.Street
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.BillingCity
-                  source: ""
-                  expr: record.values.City
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.BillingState
-                  source: ""
-                  expr: record.values.State
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.BillingPostalCode
-                  source: ""
-                  expr: record.values.PostalCode
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.BillingCountry
-                  source: ""
-                  expr: record.values.Country
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.ShippingStreet
-                  source: ""
-                  expr: record.values.Street
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.ShippingCity
-                  source: ""
-                  expr: record.values.City
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.ShippingState
-                  source: ""
-                  expr: record.values.State
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.ShippingPostalCode
-                  source: ""
-                  expr: record.values.PostalCode
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.ShippingCountry
-                  source: ""
-                  expr: record.values.Country
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.AnnualRevenue
-                  source: ""
-                  expr: record.values.AnnualRevenue
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.Description
-                  source: ""
-                  expr: record.values.Description
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.AccountName
-                  source: ""
-                  expr: record.values.Company
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.Fax
-                  source: ""
-                  expr: record.values.Fax
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.Industry
-                  source: ""
-                  expr: record.values.Industry
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.OwnerId
-                  source: ""
-                  expr: record.values.OwnerId
-                  value: null
-                  type: ID
-                  tests: []
-                - target: account.values.AccountSource
-                  source: ""
-                  expr: record.values.LeadSource
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.Phone
-                  source: ""
-                  expr: record.values.Phone
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.NumberOfEmployees
-                  source: ""
-                  expr: record.values.NumberOfEmployees
-                  value: null
-                  type: Integer
-                  tests: []
-                - target: account.values.Rating
-                  source: ""
-                  expr: record.values.Rating
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.Website
-                  source: ""
-                  expr: record.values.Website
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.Twitter
-                  source: ""
-                  expr: record.values.Twitter
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.Facebook
-                  source: ""
-                  expr: record.values.Facebook
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.LinkedIn
-                  source: ""
-                  expr: record.values.LinkedIn
-                  value: null
-                  type: String
-                  tests: []
-                - target: account.values.OwnerId
-                  source: ""
-                  expr: record.values.OwnerId
-                  value: null
-                  type: ID
-                  tests: []
-                - target: account.values.CampaignId
-                  source: ""
-                  expr: record.values.CampaignId
-                  value: null
-                  type: Array
-                  tests: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "38"
-                    parent: "1"
-                    value: Populate account data
-                    xywh:
-                        - 2728
-                        - 2720
-                        - 200
-                        - 80
-              labels: {}
-            - id: 39
-              kind: function
-              ref: composeRecordsCreate
-              arguments:
-                - target: record
-                  source: account
-                  expr: ""
-                  value: null
-                  type: ComposeRecord
-                  tests: []
-              results:
-                - target: account
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "39"
-                    parent: "1"
-                    value: Create account
-                    xywh:
-                        - 2968
-                        - 2720
-                        - 200
-                        - 80
-              labels: {}
-            - id: 40
-              kind: function
-              ref: composeRecordsNew
-              arguments:
-                - target: module
-                  source: ""
-                  expr: ""
-                  value: Contact
-                  type: Handle
-                  tests: []
-                - target: namespace
-                  source: ""
-                  expr: namespace.namespaceID
-                  value: null
-                  type: ID
-                  tests: []
-              results:
-                - target: contact
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "40"
-                    parent: "1"
-                    value: Prepare contact record
-                    xywh:
-                        - 2512
-                        - 2904
-                        - 200
-                        - 80
-              labels: {}
-            - id: 41
-              kind: expressions
-              ref: ""
-              arguments:
-                - target: contact.values.MailingStreet
-                  source: ""
-                  expr: record.values.Street
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.MailingCity
-                  source: ""
-                  expr: record.values.City
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.MailingState
-                  source: ""
-                  expr: record.values.State
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.MailingPostalCode
-                  source: ""
-                  expr: record.values.PostalCode
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.MailingCountry
-                  source: ""
-                  expr: record.values.Country
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.Description
-                  source: ""
-                  expr: record.values.Description
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.DoNotCall
-                  source: ""
-                  expr: record.values.DoNotCall
-                  value: null
-                  type: Boolean
-                  tests: []
-                - target: contact.values.Email
-                  source: ""
-                  expr: record.values.Email
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.HasOptedOutOfEmail
-                  source: ""
-                  expr: record.values.HasOptedOutOfEmail
-                  value: null
-                  type: Boolean
-                  tests: []
-                - target: contact.values.Fax
-                  source: ""
-                  expr: record.values.Fax
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.HasOptedOutOfFax
-                  source: ""
-                  expr: record.values.HasOptedOutOfFax
-                  value: null
-                  type: Boolean
-                  tests: []
-                - target: contact.values.OwnerId
-                  source: ""
-                  expr: record.values.OwnerId
-                  value: null
-                  type: ID
-                  tests: []
-                - target: contact.values.LeadSource
-                  source: ""
-                  expr: record.values.LeadSource
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.Twitter
-                  source: ""
-                  expr: record.values.Twitter
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.Facebook
-                  source: ""
-                  expr: record.values.Facebook
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.LinkedIn
-                  source: ""
-                  expr: record.values.LinkedIn
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.Salutation
-                  source: ""
-                  expr: record.values.Salutation
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.FirstName
-                  source: ""
-                  expr: record.values.FirstName
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.LastName
-                  source: ""
-                  expr: record.values.LastName
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.MobilePhone
-                  source: ""
-                  expr: record.values.MobilePhone
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.Phone
-                  source: ""
-                  expr: record.values.Phone
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.Title
-                  source: ""
-                  expr: record.values.Title
-                  value: null
-                  type: String
-                  tests: []
-                - target: contact.values.IsPrimary
-                  source: ""
-                  expr: "true"
-                  value: null
-                  type: Boolean
-                  tests: []
-                - target: contact.values.AccountId
-                  source: ""
-                  expr: account.recordID
-                  value: null
-                  type: ID
-                  tests: []
-                - target: contact.values.OwnerId
-                  source: ""
-                  expr: record.values.OwnerId
-                  value: null
-                  type: ID
-                  tests: []
-                - target: contact.values.CampaignId
-                  source: ""
-                  expr: record.values.CampaignId
-                  value: null
-                  type: Array
-                  tests: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "41"
-                    parent: "1"
-                    value: Populate contact data
-                    xywh:
-                        - 2768
-                        - 2904
-                        - 200
-                        - 80
-              labels: {}
-            - id: 42
-              kind: function
-              ref: composeRecordsCreate
-              arguments:
-                - target: record
-                  source: contact
-                  expr: ""
-                  value: null
-                  type: ComposeRecord
-                  tests: []
-              results:
-                - target: contact
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "42"
-                    parent: "1"
-                    value: Create contact
-                    xywh:
-                        - 3032
-                        - 2904
-                        - 200
-                        - 80
-              labels: {}
-            - id: 43
-              kind: expressions
-              ref: ""
-              arguments:
-                - target: record.values.Status
-                  source: ""
-                  expr: '"Converted"'
-                  value: null
-                  type: String
-                  tests: []
-                - target: record.values.IsConverted
-                  source: ""
-                  expr: '"Yes"'
-                  value: null
-                  type: String
-                  tests: []
-                - target: record.values.ConvertedAccountId
-                  source: ""
-                  expr: account.recordID
-                  value: null
-                  type: ID
-                  tests: []
-                - target: record.values.ConvertedContactId
-                  source: ""
-                  expr: contact.recordID
-                  value: null
-                  type: ID
-                  tests: []
-                - target: record.values.ConvertedDate
-                  source: ""
-                  expr: account.createdAt
-                  value: null
-                  type: DateTime
-                  tests: []
-                - target: record.values.ConvertedOpportunityId
-                  source: ""
-                  expr: opportunity.recordID
-                  value: null
-                  type: ID
-                  tests: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "43"
-                    parent: "1"
-                    value: Update lead data
-                    xywh:
-                        - 2480
-                        - 3400
-                        - 200
-                        - 80
-              labels: {}
-            - id: 44
-              kind: function
-              ref: composeRecordsUpdate
-              arguments:
-                - target: record
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ComposeRecord
-                  tests: []
-              results:
-                - target: record
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "44"
-                    parent: "1"
-                    value: Save lead
-                    xywh:
-                        - 2760
-                        - 3400
-                        - 200
-                        - 80
-              labels: {}
-            - id: 64
-              kind: function
-              ref: composeRecordsNew
-              arguments:
-                - target: module
-                  source: ""
-                  expr: ""
-                  value: Opportunity
-                  type: Handle
-                  tests: []
-                - target: namespace
-                  source: ""
-                  expr: namespace.namespaceID
-                  value: null
-                  type: ID
-                  tests: []
-              results:
-                - target: opportunity
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "64"
-                    parent: "1"
-                    value: Prepare opportunity record
-                    xywh:
-                        - 2512
-                        - 3064
-                        - 200
-                        - 80
-              labels: {}
-            - id: 65
-              kind: expressions
-              ref: ""
-              arguments:
-                - target: opportunity.values.Description
-                  source: ""
-                  expr: record.values.Description
-                  value: null
-                  type: String
-                  tests: []
-                - target: opportunity.values.OwnerId
-                  source: ""
-                  expr: record.values.OwnerId
-                  value: null
-                  type: ID
-                  tests: []
-                - target: opportunity.values.LeadSource
-                  source: ""
-                  expr: record.values.LeadSource
-                  value: null
-                  type: String
-                  tests: []
-                - target: opportunity.values.Name
-                  source: ""
-                  expr: '"(unnamed)"'
-                  value: null
-                  type: String
-                  tests: []
-                - target: opportunity.values.AccountId
-                  source: ""
-                  expr: account.recordID
-                  value: null
-                  type: ID
-                  tests: []
-                - target: opportunity.values.IsClosed
-                  source: ""
-                  expr: '"No"'
-                  value: null
-                  type: String
-                  tests: []
-                - target: opportunity.values.IsWon
-                  source: ""
-                  expr: '"No"'
-                  value: null
-                  type: String
-                  tests: []
-                - target: opportunity.values.CloseDate
-                  source: ""
-                  expr: modDate(now(), settings.values.OpportunityCloseDateDays)
-                  value: null
-                  type: DateTime
-                  tests: []
-                - target: opportunity.values.Probability
-                  source: ""
-                  expr: settings.values.OpportunityProbability
-                  value: null
-                  type: Float
-                  tests: []
-                - target: opportunity.values.ForecastCategory
-                  source: ""
-                  expr: settings.values.OpportunityForecaseCategory
-                  value: null
-                  type: String
-                  tests: []
-                - target: opportunity.values.StageName
-                  source: ""
-                  expr: settings.values.OpportunityStagename
-                  value: null
-                  type: String
-                  tests: []
-                - target: opportunity.values.CampaignId
-                  source: ""
-                  expr: record.values.CampaignId
-                  value: null
-                  type: Array
-                  tests: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "65"
-                    parent: "1"
-                    value: Populate opportunity data
-                    xywh:
-                        - 2768
-                        - 3064
-                        - 200
-                        - 80
-              labels: {}
-            - id: 66
-              kind: function
-              ref: composeRecordsCreate
-              arguments:
-                - target: record
-                  source: opportunity
-                  expr: ""
-                  value: null
-                  type: ComposeRecord
-                  tests: []
-              results:
-                - target: opportunity
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "66"
-                    parent: "1"
-                    value: Create opportunity
-                    xywh:
-                        - 3032
-                        - 3064
-                        - 200
-                        - 80
-              labels: {}
-            - id: 69
-              kind: function
-              ref: composeRecordsNew
-              arguments:
-                - target: module
-                  source: ""
-                  expr: ""
-                  value: OpportunityContactRole
-                  type: Handle
-                  tests: []
-                - target: namespace
-                  source: ""
-                  expr: namespace.namespaceID
-                  value: null
-                  type: ID
-                  tests: []
-              results:
-                - target: contactRole
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "69"
-                    parent: "1"
-                    value: Prepare opportunity contact role record
-                    xywh:
-                        - 2488
-                        - 3216
-                        - 200
-                        - 80
-              labels: {}
-            - id: 70
-              kind: expressions
-              ref: ""
-              arguments:
-                - target: contactRole.values.ContactId
-                  source: ""
-                  expr: contact.recordID
-                  value: null
-                  type: ID
-                  tests: []
-                - target: contactRole.values.OpportunityId
-                  source: ""
-                  expr: opportunity.recordID
-                  value: null
-                  type: ID
-                  tests: []
-                - target: contactRole.values.IsPrimary
-                  source: ""
-                  expr: "true"
-                  value: null
-                  type: Boolean
-                  tests: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "70"
-                    parent: "1"
-                    value: Populate opportunity contact role data
-                    xywh:
-                        - 2784
-                        - 3224
-                        - 200
-                        - 80
-              labels: {}
-            - id: 71
-              kind: function
-              ref: composeRecordsCreate
-              arguments:
-                - target: record
-                  source: contactRole
-                  expr: ""
-                  value: null
-                  type: ComposeRecord
-                  tests: []
-              results:
-                - target: contactRole
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "71"
-                    parent: "1"
-                    value: Create opportunity contact role
-                    xywh:
-                        - 3064
-                        - 3224
-                        - 200
-                        - 80
-              labels: {}
-            - id: 77
-              kind: function
-              ref: composeRecordsLast
-              arguments:
-                - target: module
-                  source: ""
-                  expr: ""
-                  value: Settings
-                  type: Handle
-                  tests: []
-                - target: namespace
-                  source: ""
-                  expr: namespace.namespaceID
-                  value: null
-                  type: ID
-                  tests: []
-              results:
-                - target: settings
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "77"
-                    parent: "1"
-                    value: Fetch settings
-                    xywh:
-                        - 2208
-                        - 2520
-                        - 200
-                        - 80
-              labels: {}
-            - id: 113
-              kind: prompt
-              ref: notification
-              arguments:
-                - target: title
-                  source: ""
-                  expr: ""
-                  value: הצלחה
-                  type: String
-                  tests: []
-                - target: message
-                  source: ""
-                  expr: ""
-                  value: הליד הומר
-                  type: String
-                  tests: []
-                - target: variant
-                  source: ""
-                  expr: ""
-                  value: הצלחה
-                  type: String
-                  tests: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "113"
-                    parent: "1"
-                    value: Lead converted
-                    xywh:
-                        - 2480
-                        - 3720
-                        - 200
-                        - 80
-              labels: {}
-            - id: 115
-              kind: prompt
-              ref: recordPage
-              arguments:
-                - target: module
-                  source: ""
-                  expr: ""
-                  value: Account
-                  type: Handle
-                  tests: []
-                - target: namespace
-                  source: ""
-                  expr: ""
-                  value: crm
-                  type: Handle
-                  tests: []
-                - target: record
-                  source: opportunity
-                  expr: ""
-                  value: null
-                  type: ComposeRecord
-                  tests: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "115"
-                    parent: "1"
-                    value: Redirect to opportunity page
-                    xywh:
-                        - 2768
-                        - 3720
-                        - 200
-                        - 80
-              labels: {}
-            - id: 118
-              kind: function
-              ref: emailSend
-              arguments:
-                - target: subject
-                  source: ""
-                  expr: subject.document
-                  value: null
-                  type: Reader
-                  tests: []
-                - target: to
-                  source: ""
-                  expr: owner
-                  value: null
-                  type: User
-                  tests: []
-                - target: html
-                  source: ""
-                  expr: content.document
-                  value: null
-                  type: Reader
-                  tests: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "118"
-                    parent: "1"
-                    value: Send email
-                    xywh:
-                        - 3608
-                        - 3560
-                        - 200
-                        - 80
-              labels: {}
-            - id: 119
-              kind: function
-              ref: usersLookup
-              arguments:
-                - target: lookup
-                  source: ""
-                  expr: record.values.OwnerId
-                  value: null
-                  type: ID
-                  tests: []
-              results:
-                - target: owner
-                  source: ""
-                  expr: user
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "119"
-                    parent: "1"
-                    value: Get owner
-                    xywh:
-                        - 3328
-                        - 3560
-                        - 200
-                        - 80
-              labels: {}
-            - id: 132
-              kind: gateway
-              ref: excl
-              arguments: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "132"
-                    parent: "1"
-                    value: Has owner?
-                    xywh:
-                        - 3040
-                        - 3400
-                        - 200
-                        - 80
-              labels: {}
-            - id: 139
-              kind: prompt
-              ref: notification
-              arguments:
-                - target: title
-                  source: ""
-                  expr: ""
-                  value: Info
-                  type: String
-                  tests: []
-                - target: message
-                  source: ""
-                  expr: ""
-                  value: This lead is already converted
-                  type: String
-                  tests: []
-                - target: variant
-                  source: ""
-                  expr: ""
-                  value: info
-                  type: String
-                  tests: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "139"
-                    parent: "1"
-                    value: Lead already converted
-                    xywh:
-                        - 2840
-                        - 2520
-                        - 200
-                        - 80
-              labels: {}
-            - id: 140
-              kind: function
-              ref: templatesRender
-              arguments:
-                - target: lookup
-                  source: ""
-                  expr: ""
-                  value: lead_converted_subject
-                  type: Handle
-                  tests: []
-                - target: documentName
-                  source: ""
-                  expr: ""
-                  value: subject
-                  type: String
-                  tests: []
-                - target: documentType
-                  source: ""
-                  expr: ""
-                  value: text/plain
-                  type: String
-                  tests: []
-                - target: variables
-                  source: ""
-                  expr: subjectRenderVariables
-                  value: null
-                  type: Vars
-                  tests: []
-              results:
-                - target: subject
-                  source: ""
-                  expr: document
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "140"
-                    parent: "1"
-                    value: Prepare email subject
-                    xywh:
-                        - 2760
-                        - 3560
-                        - 200
-                        - 80
-              labels: {}
-            - id: 142
-              kind: function
-              ref: templatesRender
-              arguments:
-                - target: lookup
-                  source: ""
-                  expr: ""
-                  value: lead_converted_content
-                  type: Handle
-                  tests: []
-                - target: documentName
-                  source: ""
-                  expr: ""
-                  value: content
-                  type: String
-                  tests: []
-                - target: documentType
-                  source: ""
-                  expr: ""
-                  value: text/html
-                  type: String
-                  tests: []
-                - target: variables
-                  source: ""
-                  expr: contentRenderVariables
-                  value: null
-                  type: Vars
-                  tests: []
-              results:
-                - target: content
-                  source: ""
-                  expr: document
-                  value: null
-                  type: ""
-                  tests: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "142"
-                    parent: "1"
-                    value: Prepare email content
-                    xywh:
-                        - 3040
-                        - 3560
-                        - 200
-                        - 80
-              labels: {}
-            - id: 145
-              kind: expressions
-              ref: ""
-              arguments:
-                - target: subjectRenderVariables
-                  source: ""
-                  expr: ""
-                  value: null
-                  type: Vars
-                  tests: []
-                - target: subjectRenderVariables.lead
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ComposeRecord
-                  tests: []
-                - target: contentRenderVariables
-                  source: ""
-                  expr: ""
-                  value: null
-                  type: Vars
-                  tests: []
-                - target: contentRenderVariables.lead
-                  source: ""
-                  expr: record
-                  value: null
-                  type: ComposeRecord
-                  tests: []
-                - target: contentRenderVariables.account
-                  source: ""
-                  expr: account
-                  value: null
-                  type: ComposeRecord
-                  tests: []
-              results: []
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "145"
-                    parent: "1"
-                    value: Prepare render Vars
-                    xywh:
-                        - 2480
-                        - 3560
-                        - 200
-                        - 80
-              labels: {}
-        paths:
-            - expr: record.values.Status == "Converted"
-              parentid: 35
-              childid: 139
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "50"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: '#1 - If'
-            - expr: ""
-              parentid: 35
-              childid: 37
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "51"
-                    parent: "1"
-                    points: []
-                    style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
-                    value: '#2 - Else (if)'
-            - expr: ""
-              parentid: 37
-              childid: 38
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "53"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 38
-              childid: 39
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "54"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 39
-              childid: 40
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "55"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 40
-              childid: 41
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "56"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 41
-              childid: 42
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "57"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 43
-              childid: 44
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "59"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 77
-              childid: 35
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "63"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: ""
-            - expr: ""
-              parentid: 64
-              childid: 65
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "67"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 65
-              childid: 66
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "68"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 42
-              childid: 64
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "74"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 66
-              childid: 69
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "75"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 113
-              childid: 115
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "120"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 118
-              childid: 113
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "123"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 119
-              childid: 118
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "124"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 70
-              childid: 71
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "129"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 71
-              childid: 43
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "130"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 69
-              childid: 70
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "131"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 44
-              childid: 132
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "133"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: record.values.OwnerId != 0
-              parentid: 132
-              childid: 145
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "134"
-                    parent: "1"
-                    points: []
-                    style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
-                    value: '#1 - If'
-            - expr: ""
-              parentid: 132
-              childid: 113
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "135"
-                    parent: "1"
-                    points:
-                        - x: 3880
-                          "y": 3440
-                        - x: 3880
-                          "y": 3680
-                        - x: 2440
-                          "y": 3680
-                        - x: 2440
-                          "y": 3760
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: '#2 - Else (if)'
-            - expr: ""
-              parentid: 140
-              childid: 142
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "143"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 142
-              childid: 119
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "144"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-            - expr: ""
-              parentid: 145
-              childid: 140
-              meta:
-                name: ""
-                description: ""
-                visual:
-                    id: "146"
-                    parent: "1"
-                    points: []
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
+      enabled: true
+      meta:
+        name: CRM - Lead - To Account and Opportunity
+        description: Converts Lead to Account and Opportunity
+        visual: null
+      keepSessions: 0
+      steps:
+        - id: 35
+          kind: gateway
+          ref: excl
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "35"
+              parent: "1"
+              value: Already converted?
+              xywh:
+                - 2488
+                - 2520
+                - 200
+                - 80
+        - id: 37
+          kind: function
+          ref: composeRecordsNew
+          arguments:
+            - target: module
+              value: Account
+              type: Handle
+            - target: namespace
+              expr: namespace.namespaceID
+              type: ID
+          results:
+            - target: account
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "37"
+              parent: "1"
+              value: Prepare account record
+              xywh:
+                - 2496
+                - 2720
+                - 200
+                - 80
+        - id: 38
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: account.values.BillingStreet
+              expr: record.values.Street
+              type: String
+            - target: account.values.BillingCity
+              expr: record.values.City
+              type: String
+            - target: account.values.BillingState
+              expr: record.values.State
+              type: String
+            - target: account.values.BillingPostalCode
+              expr: record.values.PostalCode
+              type: String
+            - target: account.values.BillingCountry
+              expr: record.values.Country
+              type: String
+            - target: account.values.ShippingStreet
+              expr: record.values.Street
+              type: String
+            - target: account.values.ShippingCity
+              expr: record.values.City
+              type: String
+            - target: account.values.ShippingState
+              expr: record.values.State
+              type: String
+            - target: account.values.ShippingPostalCode
+              expr: record.values.PostalCode
+              type: String
+            - target: account.values.ShippingCountry
+              expr: record.values.Country
+              type: String
+            - target: account.values.AnnualRevenue
+              expr: record.values.AnnualRevenue
+              type: String
+            - target: account.values.Description
+              expr: record.values.Description
+              type: String
+            - target: account.values.AccountName
+              expr: record.values.Company
+              type: String
+            - target: account.values.Fax
+              expr: record.values.Fax
+              type: String
+            - target: account.values.Industry
+              expr: record.values.Industry
+              type: String
+            - target: account.values.OwnerId
+              expr: record.values.OwnerId
+              type: ID
+            - target: account.values.AccountSource
+              expr: record.values.LeadSource
+              type: String
+            - target: account.values.Phone
+              expr: record.values.Phone
+              type: String
+            - target: account.values.NumberOfEmployees
+              expr: record.values.NumberOfEmployees
+              type: Integer
+            - target: account.values.Rating
+              expr: record.values.Rating
+              type: String
+            - target: account.values.Website
+              expr: record.values.Website
+              type: String
+            - target: account.values.Twitter
+              expr: record.values.Twitter
+              type: String
+            - target: account.values.Facebook
+              expr: record.values.Facebook
+              type: String
+            - target: account.values.LinkedIn
+              expr: record.values.LinkedIn
+              type: String
+            - target: account.values.OwnerId
+              expr: record.values.OwnerId
+              type: ID
+            - target: account.values.CampaignId
+              expr: record.values.CampaignId
+              type: Array
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "38"
+              parent: "1"
+              value: Populate account data
+              xywh:
+                - 2728
+                - 2720
+                - 200
+                - 80
+        - id: 39
+          kind: function
+          ref: composeRecordsCreate
+          arguments:
+            - target: record
+              source: account
+              type: ComposeRecord
+          results:
+            - target: account
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "39"
+              parent: "1"
+              value: Create account
+              xywh:
+                - 2968
+                - 2720
+                - 200
+                - 80
+        - id: 40
+          kind: function
+          ref: composeRecordsNew
+          arguments:
+            - target: module
+              value: Contact
+              type: Handle
+            - target: namespace
+              expr: namespace.namespaceID
+              type: ID
+          results:
+            - target: contact
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "40"
+              parent: "1"
+              value: Prepare contact record
+              xywh:
+                - 2512
+                - 2904
+                - 200
+                - 80
+        - id: 41
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: contact.values.MailingStreet
+              expr: record.values.Street
+              type: String
+            - target: contact.values.MailingCity
+              expr: record.values.City
+              type: String
+            - target: contact.values.MailingState
+              expr: record.values.State
+              type: String
+            - target: contact.values.MailingPostalCode
+              expr: record.values.PostalCode
+              type: String
+            - target: contact.values.MailingCountry
+              expr: record.values.Country
+              type: String
+            - target: contact.values.Description
+              expr: record.values.Description
+              type: String
+            - target: contact.values.DoNotCall
+              expr: record.values.DoNotCall
+              type: Boolean
+            - target: contact.values.Email
+              expr: record.values.Email
+              type: String
+            - target: contact.values.HasOptedOutOfEmail
+              expr: record.values.HasOptedOutOfEmail
+              type: Boolean
+            - target: contact.values.Fax
+              expr: record.values.Fax
+              type: String
+            - target: contact.values.HasOptedOutOfFax
+              expr: record.values.HasOptedOutOfFax
+              type: Boolean
+            - target: contact.values.OwnerId
+              expr: record.values.OwnerId
+              type: ID
+            - target: contact.values.LeadSource
+              expr: record.values.LeadSource
+              type: String
+            - target: contact.values.Twitter
+              expr: record.values.Twitter
+              type: String
+            - target: contact.values.Facebook
+              expr: record.values.Facebook
+              type: String
+            - target: contact.values.LinkedIn
+              expr: record.values.LinkedIn
+              type: String
+            - target: contact.values.Salutation
+              expr: record.values.Salutation
+              type: String
+            - target: contact.values.FirstName
+              expr: record.values.FirstName
+              type: String
+            - target: contact.values.LastName
+              expr: record.values.LastName
+              type: String
+            - target: contact.values.MobilePhone
+              expr: record.values.MobilePhone
+              type: String
+            - target: contact.values.Phone
+              expr: record.values.Phone
+              type: String
+            - target: contact.values.Title
+              expr: record.values.Title
+              type: String
+            - target: contact.values.IsPrimary
+              expr: "true"
+              type: Boolean
+            - target: contact.values.AccountId
+              expr: account.recordID
+              type: ID
+            - target: contact.values.OwnerId
+              expr: record.values.OwnerId
+              type: ID
+            - target: contact.values.CampaignId
+              expr: record.values.CampaignId
+              type: Array
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "41"
+              parent: "1"
+              value: Populate contact data
+              xywh:
+                - 2768
+                - 2904
+                - 200
+                - 80
+        - id: 42
+          kind: function
+          ref: composeRecordsCreate
+          arguments:
+            - target: record
+              source: contact
+              type: ComposeRecord
+          results:
+            - target: contact
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "42"
+              parent: "1"
+              value: Create contact
+              xywh:
+                - 3032
+                - 2904
+                - 200
+                - 80
+        - id: 43
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: record.values.Status
+              expr: '"Converted"'
+              type: String
+            - target: record.values.IsConverted
+              expr: '"Yes"'
+              type: String
+            - target: record.values.ConvertedAccountId
+              expr: account.recordID
+              type: ID
+            - target: record.values.ConvertedContactId
+              expr: contact.recordID
+              type: ID
+            - target: record.values.ConvertedDate
+              expr: account.createdAt
+              type: DateTime
+            - target: record.values.ConvertedOpportunityId
+              expr: opportunity.recordID
+              type: ID
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "43"
+              parent: "1"
+              value: Update lead data
+              xywh:
+                - 2480
+                - 3400
+                - 200
+                - 80
+        - id: 44
+          kind: function
+          ref: composeRecordsUpdate
+          arguments:
+            - target: record
+              expr: record
+              type: ComposeRecord
+          results:
+            - target: record
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "44"
+              parent: "1"
+              value: Save lead
+              xywh:
+                - 2760
+                - 3400
+                - 200
+                - 80
+        - id: 64
+          kind: function
+          ref: composeRecordsNew
+          arguments:
+            - target: module
+              value: Opportunity
+              type: Handle
+            - target: namespace
+              expr: namespace.namespaceID
+              type: ID
+          results:
+            - target: opportunity
+              expr: record
+              type: ComposeRecord
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "64"
+              parent: "1"
+              value: Prepare opportunity record
+              xywh:
+                - 2512
+                - 3064
+                - 200
+                - 80
+        - id: 65
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: opportunity.values.Description
+              expr: record.values.Description
+              type: String
+            - target: opportunity.values.OwnerId
+              expr: record.values.OwnerId
+              type: ID
+            - target: opportunity.values.LeadSource
+              expr: record.values.LeadSource
+              type: String
+            - target: opportunity.values.Name
+              expr: '"(unnamed)"'
+              type: String
+            - target: opportunity.values.AccountId
+              expr: account.recordID
+              type: ID
+            - target: opportunity.values.IsClosed
+              expr: '"No"'
+              type: String
+            - target: opportunity.values.IsWon
+              expr: '"No"'
+              type: String
+            - target: opportunity.values.CloseDate
+              expr: modDate(now(), settings.values.OpportunityCloseDateDays)
+              type: DateTime
+            - target: opportunity.values.Probability
+              expr: settings.values.OpportunityProbability
+              type: Float
+            - target: opportunity.values.ForecastCategory
+              expr: settings.values.OpportunityForecaseCategory
+              type: String
+            - target: opportunity.values.StageName
+              expr: settings.values.OpportunityStagename
+              type: String
+            - target: opportunity.values.CampaignId
+              expr: record.values.CampaignId
+              type: Array
+            - target: opportunity.values.Name
+              expr: trimRight(trimLeft(record.values.Description, "<p>"), "</p>")
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "65"
+              parent: "1"
+              value: Populate opportunity data
+              xywh:
+                - 2768
+                - 3064
+                - 200
+                - 80
+        - id: 66
+          kind: function
+          ref: composeRecordsCreate
+          arguments:
+            - target: record
+              source: opportunity
+              type: ComposeRecord
+          results:
+            - target: opportunity
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "66"
+              parent: "1"
+              value: Create opportunity
+              xywh:
+                - 3032
+                - 3064
+                - 200
+                - 80
+        - id: 69
+          kind: function
+          ref: composeRecordsNew
+          arguments:
+            - target: module
+              value: OpportunityContactRole
+              type: Handle
+            - target: namespace
+              expr: namespace.namespaceID
+              type: ID
+          results:
+            - target: contactRole
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "69"
+              parent: "1"
+              value: Prepare opportunity contact role record
+              xywh:
+                - 2488
+                - 3216
+                - 200
+                - 80
+        - id: 70
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: contactRole.values.ContactId
+              expr: contact.recordID
+              type: ID
+            - target: contactRole.values.OpportunityId
+              expr: opportunity.recordID
+              type: ID
+            - target: contactRole.values.IsPrimary
+              expr: "true"
+              type: Boolean
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "70"
+              parent: "1"
+              value: Populate opportunity contact role data
+              xywh:
+                - 2784
+                - 3224
+                - 200
+                - 80
+        - id: 71
+          kind: function
+          ref: composeRecordsCreate
+          arguments:
+            - target: record
+              source: contactRole
+              type: ComposeRecord
+          results:
+            - target: contactRole
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "71"
+              parent: "1"
+              value: Create opportunity contact role
+              xywh:
+                - 3064
+                - 3224
+                - 200
+                - 80
+        - id: 77
+          kind: function
+          ref: composeRecordsLast
+          arguments:
+            - target: module
+              value: Settings
+              type: Handle
+            - target: namespace
+              expr: namespace.namespaceID
+              type: ID
+          results:
+            - target: settings
+              expr: record
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "77"
+              parent: "1"
+              value: Fetch settings
+              xywh:
+                - 2208
+                - 2520
+                - 200
+                - 80
+        - id: 113
+          kind: prompt
+          ref: notification
+          arguments:
+            - target: title
+              value: הצלחה
+              type: String
+            - target: message
+              value: הליד הומר
+              type: String
+            - target: variant
+              value: הצלחה
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "113"
+              parent: "1"
+              value: Lead converted
+              xywh:
+                - 2480
+                - 3720
+                - 200
+                - 80
+        - id: 115
+          kind: prompt
+          ref: recordPage
+          arguments:
+            - target: module
+              value: Account
+              type: Handle
+            - target: namespace
+              value: crm
+              type: Handle
+            - target: record
+              source: opportunity
+              type: ComposeRecord
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "115"
+              parent: "1"
+              value: Redirect to opportunity page
+              xywh:
+                - 2768
+                - 3720
+                - 200
+                - 80
+        - id: 118
+          kind: function
+          ref: emailSend
+          arguments:
+            - target: subject
+              expr: subject.document
+              type: Reader
+            - target: to
+              expr: owner
+              type: User
+            - target: html
+              expr: content.document
+              type: Reader
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "118"
+              parent: "1"
+              value: Send email
+              xywh:
+                - 3608
+                - 3560
+                - 200
+                - 80
+        - id: 119
+          kind: function
+          ref: usersLookup
+          arguments:
+            - target: lookup
+              expr: record.values.OwnerId
+              type: ID
+          results:
+            - target: owner
+              expr: user
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "119"
+              parent: "1"
+              value: Get owner
+              xywh:
+                - 3328
+                - 3560
+                - 200
+                - 80
+        - id: 132
+          kind: gateway
+          ref: excl
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "132"
+              parent: "1"
+              value: Has owner?
+              xywh:
+                - 3040
+                - 3400
+                - 200
+                - 80
+        - id: 139
+          kind: prompt
+          ref: notification
+          arguments:
+            - target: title
+              value: Info
+              type: String
+            - target: message
+              value: This lead is already converted
+              type: String
+            - target: variant
+              value: info
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "139"
+              parent: "1"
+              value: Lead already converted
+              xywh:
+                - 2840
+                - 2520
+                - 200
+                - 80
+        - id: 140
+          kind: function
+          ref: templatesRender
+          arguments:
+            - target: lookup
+              value: lead_converted_subject
+              type: Handle
+            - target: documentName
+              value: subject
+              type: String
+            - target: documentType
+              value: text/plain
+              type: String
+            - target: variables
+              expr: subjectRenderVariables
+              type: Vars
+          results:
+            - target: subject
+              expr: document
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "140"
+              parent: "1"
+              value: Prepare email subject
+              xywh:
+                - 2760
+                - 3560
+                - 200
+                - 80
+        - id: 142
+          kind: function
+          ref: templatesRender
+          arguments:
+            - target: lookup
+              value: lead_converted_content
+              type: Handle
+            - target: documentName
+              value: content
+              type: String
+            - target: documentType
+              value: text/html
+              type: String
+            - target: variables
+              expr: contentRenderVariables
+              type: Vars
+          results:
+            - target: content
+              expr: document
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "142"
+              parent: "1"
+              value: Prepare email content
+              xywh:
+                - 3040
+                - 3560
+                - 200
+                - 80
+        - id: 145
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: subjectRenderVariables
+              type: Vars
+            - target: subjectRenderVariables.lead
+              expr: record
+              type: ComposeRecord
+            - target: contentRenderVariables
+              type: Vars
+            - target: contentRenderVariables.lead
+              expr: record
+              type: ComposeRecord
+            - target: contentRenderVariables.account
+              expr: account
+              type: ComposeRecord
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "145"
+              parent: "1"
+              value: Prepare render Vars
+              xywh:
+                - 2480
+                - 3560
+                - 200
+                - 80
+      paths:
+        - expr: record.values.Status == "Converted"
+          parentID: 35
+          childID: 139
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "50"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: '#1 - If'
+        - parentID: 35
+          childID: 37
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "51"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: '#2 - Else (if)'
+        - parentID: 37
+          childID: 38
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "53"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 38
+          childID: 39
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "54"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 39
+          childID: 40
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "55"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 40
+          childID: 41
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "56"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 41
+          childID: 42
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "57"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 43
+          childID: 44
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "59"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 77
+          childID: 35
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "63"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: ""
+        - parentID: 64
+          childID: 65
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "67"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 65
+          childID: 66
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "68"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 42
+          childID: 64
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "74"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 66
+          childID: 69
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "75"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 113
+          childID: 115
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "120"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 118
+          childID: 113
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "123"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 119
+          childID: 118
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "124"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 70
+          childID: 71
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "129"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 71
+          childID: 43
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "130"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 69
+          childID: 70
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "131"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 44
+          childID: 132
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "133"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - expr: record.values.OwnerId != 0
+          parentID: 132
+          childID: 145
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "134"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: '#1 - If'
+        - parentID: 132
+          childID: 113
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "135"
+              parent: "1"
+              points:
+                - x: 3880
+                  "y": 3440
+                - x: 3880
+                  "y": 3680
+                - x: 2440
+                  "y": 3680
+                - x: 2440
+                  "y": 3760
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: '#2 - Else (if)'
+        - parentID: 140
+          childID: 142
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "143"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 142
+          childID: 119
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "144"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 145
+          childID: 140
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "146"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+      triggers:
+        - resourceType: compose:record
+          eventType: onManual
+          constraints:
+            - name: module
+              op: =
+              values:
+                - Lead
+            - name: namespace.handle
+              op: =
+              values:
+                - crm
+          enabled: true
+          id: 77
+          meta:
+            description: ""
+            visual:
+              defaultName: false
+              edges:
+                - childID: 77
+                  meta:
+                    description: ""
+                    label: ""
+                    visual:
+                      id: "78"
+                      parent: "1"
+                      points: []
+                      style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                      value: null
+                  parentID: 49
+              id: "49"
+              parent: "1"
+              value: To Account and Opportunity
+              xywh:
+                - 1920
+                - 2520
+                - 200
+                - 80
     CRM-Contact-CreateNewCase:
         meta:
             name: CRM - Contact - Create New Case
