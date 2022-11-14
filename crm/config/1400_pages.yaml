@@ -1456,7 +1456,7 @@ pages:
       - handle: RecordPageForModuleQuote
         (envoy):
           onExisting: skip
-        title: עמוד רשומה במודול הצעת מחיר
+        title: עמוד רשומה במודול "הצעות מחיר"
         description: ''
         visible: false
         blocks:
@@ -2022,31 +2022,31 @@ pages:
             - label: שליחת הצעת המחיר ב-PDF לאיש קשר ראשי
               stepID: '3'
               enabled: true
-              workflowID: '259188943013019919'
               resourceType: compose:record
+              workflow: CRM-Quote-Pdf-SendToPriContact
             - label: שליחת PDF לכתובת מייל כלשהי
               stepID: '3'
               enabled: true
-              workflowID: '259188943013150991'
               resourceType: compose:record
+              workflow: CRM-Quote-Pdf-SendToCustomEmail
             - label: שליחת הצעת המחיר במייל לאיש קשר ראשי
               stepID: '3'
               enabled: true
               variant: light
-              workflowID: '259188942996504847'
               resourceType: compose:record
+              workflow: CRM-Quote-SendToPriContact
             - label: שליחת ההצעה למייל כלשהו
               stepID: '3'
               enabled: true
               variant: light
-              workflowID: '259188942996635919'
               resourceType: compose:record
+              workflow: CRM-Quote-SendToCustomEmail
             - label: ייבוא מספרי תנאים
               stepID: '4'
               enabled: true
               variant: dark
-              workflowID: '259188942996373775'
               resourceType: compose:record
+              workflow: CRM-Quote-ApplyTermBooks
         module: Quote
         pages:
         - handle: RecordPageForModuleQuoteLineItem
