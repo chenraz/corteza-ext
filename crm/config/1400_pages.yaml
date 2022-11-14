@@ -1454,25 +1454,241 @@ pages:
       xywh: [9, 8, 3, 8]
     pages:
       - handle: RecordPageForModuleQuote
-        (envoy): { onExisting: "skip" }
-        module: Quote
+        (envoy):
+          onExisting: skip
         title: עמוד רשומה במודול "הצעות מחיר"
+        description: ''
+        visible: false
         blocks:
-        - title: נתוני הצעת מחיר
+        - kind: Record
+          xywh:
+          - 0
+          - 0
+          - 4
+          - 12
+          style:
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: נתוני הצעת מחיר
           options:
             fields:
-            - name: QuoteNumber
-            - name: Name
-            - name: OpportunityId
-            - name: TermookIds
-            - name: ExpirationDate
-            - name: Status
-            - name: Description
+            - kind: Number
+              name: QuoteNumber
+              label: מספר הצעה
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                format: '0000000'
+                prefix: ''
+                suffix: ''
+                precision: 0
+                description:
+                  view: ''
+                multiDelimiter: \n
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: String
+              name: Name
+              label: שם הצעה
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                multiLine: false
+                description:
+                  view: ''
+                multiDelimiter: \n
+                useRichTextEditor: false
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: Record
+              name: OpportunityId
+              label: שם ההזדמנות
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                moduleID: '259188943651143951'
+                labelField: Name
+                selectType: ''
+                description:
+                  view: ''
+                queryFields:
+                - AccountId
+                - Name
+                multiDelimiter: \n
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: false
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: Record
+              name: TermookIds
+              label: ספרי תנאים
+              isMulti: true
+              options:
+                hint:
+                  view: ''
+                moduleID: '259188942929133839'
+                labelField: Name
+                selectType: ''
+                description:
+                  view: ''
+                queryFields:
+                - Name
+                multiDelimiter: \n
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: false
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: DateTime
+              name: ExpirationDate
+              label: תאריך תפוגה
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                format: DD/MM/YYYY
+                onlyDate: false
+                onlyTime: false
+                description:
+                  view: ''
+                multiDelimiter: \n
+                onlyPastValues: false
+                outputRelative: false
+                onlyFutureValues: false
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: Select
+              name: Status
+              label: סטאטוס
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                options:
+                - text: טיוטה
+                  value: Draft
+                - text: נדרשת בדיקה
+                  value: Needs Review
+                - text: בבדיקה
+                  value: In Review
+                - text: אושרה
+                  value: Approved
+                - text: נדחתה
+                  value: Rejected
+                - text: הוצגה
+                  value: Presented
+                - text: התקבלה
+                  value: Accepted
+                - text: נדחתה
+                  value: Denied
+                selectType: default
+                description:
+                  view: ''
+                multiDelimiter: \n
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: String
+              name: Description
+              label: תאור
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                multiLine: true
+                description:
+                  view: ''
+                multiDelimiter: \n
+                useRichTextEditor: false
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: Record
+              name: XplaceTemplate
+              label: טמפלט לאקספלס
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                moduleID: '259306700413075727'
+                labelField: Name
+                selectType: default
+                description:
+                  view: ''
+                queryFields:
+                - Name
+                - Content
+                multiDelimiter: \n
+              isSystem: false
+              isPrivate: false
+              maxLength: 0
+              isRequired: false
+              isSortable: false
+              expressions: {}
+              defaultValue: []
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+        - kind: Record
+          xywh:
+          - 8
+          - 0
+          - 4
+          - 12
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [0, 0, 4, 12]
-        - title: סיכום
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: סיכום
           options:
             fields:
             - name: PricebookId
@@ -1482,11 +1698,19 @@ pages:
             - name: TotalPrice
             - name: Tax
             - name: GrandTotal
+        - kind: Record
+          xywh:
+          - 4
+          - 0
+          - 4
+          - 8
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [8, 0, 4, 12]
-        - title: איש קשר ראשי
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: איש קשר ראשי
           options:
             fields:
             - name: AccountId
@@ -1495,11 +1719,19 @@ pages:
             - name: Phone
             - name: createdBy
             - name: createdAt
+        - kind: Record
+          xywh:
+          - 0
+          - 29
+          - 4
+          - 8
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [4, 0, 4, 9]
-        - title: חשבונית עבור
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: חשבונית עבור
           options:
             fields:
             - name: BillingName
@@ -1508,11 +1740,19 @@ pages:
             - name: BillingState
             - name: BillingPostalCode
             - name: BillingCountry
+        - kind: Record
+          xywh:
+          - 4
+          - 29
+          - 4
+          - 8
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [0, 29, 4, 8]
-        - title: הצעת מחיר עבור
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: הצעת מחיר עבור
           options:
             fields:
             - name: QuoteToName
@@ -1521,11 +1761,19 @@ pages:
             - name: QuoteToState
             - name: QuoteToPostalCode
             - name: QuoteToCountry
+        - kind: Record
+          xywh:
+          - 8
+          - 29
+          - 4
+          - 8
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [4, 29, 4, 8]
-        - title: משלוח עבור
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: משלוח עבור
           options:
             fields:
             - name: ShippingName
@@ -1534,23 +1782,20 @@ pages:
             - name: ShippingState
             - name: ShippingPostalCode
             - name: ShippingCountry
+        - kind: RecordList
+          xywh:
+          - 0
+          - 12
+          - 12
+          - 8
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [8, 29, 4, 8]
-        - title: פריטי הצעת המחיר
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: פריטי הצעת המחיר
           options:
-            allowExport: true
-            draggable: true
-            editFields:
-            - name: ProductId
-            - name: ListPrice
-            - name: UnitPrice
-            - name: Quantity
-            - name: Subtotal
-            - name: Discount
-            - name: TotalPrice
-            editable: true
             fields:
             - name: ProductId
             - name: ListPrice
@@ -1559,192 +1804,282 @@ pages:
             - name: Subtotal
             - name: Discount
             - name: TotalPrice
-            hidePaging: true
-            hideRecordCloneButton: true
-            hideRecordEditButton: true
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            hideSorting: true
-            module: QuoteLineItem
             perPage: 20
+            presort: ''
+            editable: true
+            refField: QuoteId
+            draggable: true
+            prefilter: QuoteId = ${recordID}
+            editFields:
+            - name: ProductId
+            - name: ListPrice
+            - name: UnitPrice
+            - name: Quantity
+            - name: Subtotal
+            - name: Discount
+            - name: TotalPrice
+            hideHeader: false
+            hidePaging: true
+            hideSearch: false
+            selectMode: multi
+            selectable: true
+            allowExport: true
+            hideSorting: true
+            hideAddButton: false
             positionField: SortOrder
-            prefilter: QuoteId = ${recordID}
-            presort: ""
-            refField: QuoteId
-            selectMode: multi
-            selectable: true
+            showTotalCount: true
             selectionButtons: []
+            fullPageNavigation: true
+            hideRecordEditButton: true
+            hideRecordViewButton: true
+            hideRecordCloneButton: true
+            hideRecordReminderButton: true
+            hideRecordPermissionsButton: true
+            module: QuoteLineItem
+        - kind: RecordList
+          xywh:
+          - 0
+          - 20
+          - 12
+          - 9
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [0, 12, 12, 8]
-        - title: תנאים
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: תנאים
           options:
-            allowExport: true
-            draggable: true
-            editFields:
-            - name: Name
-            - name: Description
-            editable: true
             fields:
             - name: Name
             - name: Description
-            hidePaging: true
-            hideRecordCloneButton: true
-            hideRecordEditButton: true
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            hideSorting: true
-            module: QuoteTermItem
             perPage: 20
-            positionField: Order
-            prefilter: QuoteId = ${recordID}
-            presort: ""
+            presort: ''
+            editable: true
             refField: QuoteId
+            draggable: true
+            prefilter: QuoteId = ${recordID}
+            editFields:
+            - name: Name
+            - name: Description
+            hideHeader: false
+            hidePaging: true
+            hideSearch: false
             selectMode: multi
             selectable: true
-            selectionButtons: []
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [0, 20, 12, 9]
-        - title: הערות 
-          options:
             allowExport: true
-            draggable: false
-            editFields: []
-            editable: false
+            hideSorting: true
+            hideAddButton: false
+            positionField: Order
+            showTotalCount: true
+            selectionButtons: []
+            fullPageNavigation: true
+            hideRecordEditButton: true
+            hideRecordViewButton: true
+            hideRecordCloneButton: true
+            hideRecordReminderButton: true
+            hideRecordPermissionsButton: true
+            module: QuoteTermItem
+        - kind: RecordList
+          xywh:
+          - 0
+          - 37
+          - 4
+          - 8
+          style:
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: הערות
+          options:
             fields:
             - name: Title
             - name: Body
             - name: createdAt
-            hideRecordCloneButton: true
-            hideRecordEditButton: false
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            module: Note
             perPage: 20
-            prefilter: QuoteId = ${recordID}
             presort: createdAt DESC
+            editable: false
+            draggable: false
+            prefilter: QuoteId = ${recordID}
+            editFields: []
+            hideHeader: false
+            hidePaging: false
+            hideSearch: false
             selectMode: multi
             selectable: true
-            selectionButtons: []
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [0, 46, 4, 8]
-        - title: אירועים 
-          options:
             allowExport: true
-            draggable: false
-            editFields: []
-            editable: false
+            hideSorting: false
+            hideAddButton: false
+            showTotalCount: true
+            selectionButtons: []
+            fullPageNavigation: true
+            hideRecordEditButton: false
+            hideRecordViewButton: true
+            hideRecordCloneButton: true
+            hideRecordReminderButton: true
+            hideRecordPermissionsButton: true
+            module: Note
+        - kind: RecordList
+          xywh:
+          - 4
+          - 37
+          - 4
+          - 8
+          style:
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: אירועים
+          options:
             fields:
             - name: Type
             - name: Subject
             - name: ActivityDate
-            hideRecordCloneButton: true
-            hideRecordEditButton: false
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            module: Event
             perPage: 20
-            prefilter: QuoteId = ${recordID}
             presort: ActivityDate DESC
+            editable: false
+            draggable: false
+            prefilter: QuoteId = ${recordID}
+            editFields: []
+            hideHeader: false
+            hidePaging: false
+            hideSearch: false
             selectMode: multi
             selectable: true
-            selectionButtons: []
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [4, 46, 4, 8]
-        - title: משימות 
-          options:
             allowExport: true
-            draggable: false
-            editFields: []
-            editable: false
+            hideSorting: false
+            hideAddButton: false
+            showTotalCount: true
+            selectionButtons: []
+            fullPageNavigation: true
+            hideRecordEditButton: false
+            hideRecordViewButton: true
+            hideRecordCloneButton: true
+            hideRecordReminderButton: true
+            hideRecordPermissionsButton: true
+            module: Event
+        - kind: RecordList
+          xywh:
+          - 8
+          - 37
+          - 4
+          - 8
+          style:
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: משימות
+          options:
             fields:
             - name: Type
             - name: Subject
             - name: Status
             - name: ActivityDate
-            hideRecordCloneButton: true
-            hideRecordEditButton: false
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            module: Task
             perPage: 20
-            prefilter: QuoteId = ${recordID}
             presort: ActivityDate DESC
+            editable: false
+            draggable: false
+            prefilter: QuoteId = ${recordID}
+            editFields: []
+            hideHeader: false
+            hidePaging: false
+            hideSearch: false
             selectMode: multi
             selectable: true
+            allowExport: true
+            hideSorting: false
+            hideAddButton: false
+            showTotalCount: true
             selectionButtons: []
+            fullPageNavigation: true
+            hideRecordEditButton: false
+            hideRecordViewButton: true
+            hideRecordCloneButton: true
+            hideRecordReminderButton: true
+            hideRecordPermissionsButton: true
+            module: Task
+        - kind: Automation
+          xywh:
+          - 4
+          - 8
+          - 4
+          - 4
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [8, 46, 4, 8]
-        - options:
-            buttons:
-            - enabled: true
-              label: שליחת הצעת המחיר ב-PDF לאיש קשר ראשי
-              resourceType: compose:record
-              workflow: CRM-Quote-Pdf-SendToPriContact
-              stepID: 3
-            - enabled: true
-              label: שליחת PDF לכתובת מייל כלשהי
-              resourceType: compose:record
-              workflow: CRM-Quote-Pdf-SendToCustomEmail
-              stepID: 3                
-            - enabled: true
-              label: שליחת הצעת המחיר במייל לאיש קשר ראשי
-              resourceType: compose:record
-              workflow: CRM-Quote-SendToPriContact
-              variant: light
-              stepID: 3
-            - enabled: true
-              label: שליחת ההצעה למייל כלשהו
-              resourceType: compose:record
-              workflow: CRM-Quote-SendToCustomEmail
-              variant: light
-              stepID: 3
-            - enabled: true
-              label: ייבוא מספרי תנאים
-              resourceType: compose:record
-              workflow: CRM-Quote-ApplyTermBooks
-              variant: dark
-              stepID: 4        
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          options:
             sealed: false
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Automation
-          xywh: [4, 9, 4, 3]
+            buttons:
+            - label: שליחת הצעת המחיר ב-PDF לאיש קשר ראשי
+              stepID: '3'
+              enabled: true
+              workflowID: '259188943013019919'
+              resourceType: compose:record
+            - label: שליחת PDF לכתובת מייל כלשהי
+              stepID: '3'
+              enabled: true
+              workflowID: '259188943013150991'
+              resourceType: compose:record
+            - label: שליחת הצעת המחיר במייל לאיש קשר ראשי
+              stepID: '3'
+              enabled: true
+              variant: light
+              workflowID: '259188942996504847'
+              resourceType: compose:record
+            - label: שליחת ההצעה למייל כלשהו
+              stepID: '3'
+              enabled: true
+              variant: light
+              workflowID: '259188942996635919'
+              resourceType: compose:record
+            - label: ייבוא מספרי תנאים
+              stepID: '4'
+              enabled: true
+              variant: dark
+              workflowID: '259188942996373775'
+              resourceType: compose:record
+        module: Quote
         pages:
-          - handle: RecordPageForModuleQuoteLineItem
-            (envoy): { onExisting: "skip" }
-            module: QuoteLineItem
-            title: עמוד רשומה במודול "פריט הזדמנות"
-            blocks:
-            - title: Quote Line Item Information
-              options:
-                fields:
-                - name: QuoteId
-                - name: LineItemNumber
-                - name: LineItemDescription
-                - name: ProductId
-                - name: ListPrice
-                - name: UnitPrice
-                - name: Quantity
-                - name: Subtotal
-                - name: Discount
-                - name: TotalPrice
-              style:
-                variants: {border: primary, headerText: primary}
-              kind: Record
-              xywh: [0, 0, 4, 15]
-            visible: false
-        visible: false
-
+        - handle: RecordPageForModuleQuoteLineItem
+          (envoy):
+            onExisting: skip
+          title: עמוד רשומה במודול "פריט הזדמנות"
+          description: ''
+          visible: false
+          blocks:
+          - kind: Record
+            xywh:
+            - 0
+            - 0
+            - 4
+            - 15
+            style:
+              variants:
+                border: primary
+                headerText: primary
+            title: Quote Line Item Information
+            options:
+              fields:
+              - name: QuoteId
+              - name: LineItemNumber
+              - name: LineItemDescription
+              - name: ProductId
+              - name: ListPrice
+              - name: UnitPrice
+              - name: Quantity
+              - name: Subtotal
+              - name: Discount
+              - name: TotalPrice
+          module: QuoteLineItem
       - handle: XplaceTemplates
         (envoy):
           onExisting: skip
@@ -1894,7 +2229,6 @@ pages:
             options:
               fields: []
           module: XplaceTemplate
-
     visible: true
   - handle: Terms
     (envoy): { onExisting: "skip" }
