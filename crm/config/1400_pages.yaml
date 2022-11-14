@@ -1456,7 +1456,7 @@ pages:
       - handle: RecordPageForModuleQuote
         (envoy):
           onExisting: skip
-        title: עמוד רשומה במודול "הצעות מחיר"
+        title: עמוד רשומה במודול הצעת מחיר
         description: ''
         visible: false
         blocks:
