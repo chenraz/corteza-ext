@@ -501,7 +501,7 @@ pages:
           xywh: [0, 0, 12, 16]
         visible: true
     visible: true
-  - handle: <
+  - handle: Accounts
     (envoy): { onExisting: "skip" }
     title: חשבונות
     blocks:
