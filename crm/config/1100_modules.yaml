@@ -6494,34 +6494,94 @@ modules:
           format: 0
           precision: 0
   Quote:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Quote
     fields:
       AccountId:
         label: שם
         kind: Record
         options:
+          hint:
+            view: ''
+          moduleID: '259188943264940303'
           labelField: AccountName
-          module: Account
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - AccountName
-          selectType: ""
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       AdditionalStreet:
         label: Additional To Street
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       AdditionalCity:
         label: Additional To City
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       AdditionalState:
         label: Additional To State
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       AdditionalPostalCode:
         label: Additional To Postal Code
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       AdditionalCountry:
         label: Additional To Country
         kind: Select
         options:
+          hint:
+            view: ''
           options:
           - text: Afghanistan
             value: Afghanistan
@@ -7012,25 +7072,94 @@ modules:
           - text: Zimbabwe
             value: Zimbabwe
           selectType: default
+          description:
+            view: ''
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       AdditionalName:
         label: Additional To Name
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       BillingStreet:
         label: רחוב לחשובנית
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       BillingCity:
         label: ישוב לחשובנית
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       BillingState:
         label: מחוז לחשובנית
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       BillingPostalCode:
         label: מיקוד לחשובנית
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       BillingCountry:
         label: מדינה לחשובנית
         kind: Select
         options:
+          hint:
+            view: ''
           options:
           - text: Afghanistan
             value: Afghanistan
@@ -7521,98 +7650,297 @@ modules:
           - text: Zimbabwe
             value: Zimbabwe
           selectType: default
+          description:
+            view: ''
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       BillingName:
         label: שם לחשבונית
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       ContactId:
         label: שם איש קשר
         kind: Record
         options:
+          hint:
+            view: ''
+          moduleID: '259188943399682319'
           labelField: RecordLabel
-          module: Contact
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - RecordLabel
-          selectType: ""
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       Description:
         label: תאור
         kind: String
         options:
+          hint:
+            view: ''
           multiLine: true
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       Discount:
         label: הנחה נוספת
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          precision: 2
+          description:
+            view: ''
+          multiDelimiter: \n
         expressions:
           validators:
-            - test: "value < 0"
-              error: Discount can not be a negative number
+          - test: value < 0
+            error: Discount can not be a negative number
+            validatorID: '1'
+        required: false
+        multi: false
+        place: 15
       Email:
         label: אימייל
         kind: Email
+        options:
+          hint:
+            view: ''
+          description:
+            view: ''
+          outputPlain: true
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 16
       ExpirationDate:
         label: תאריך תפוגה
         kind: DateTime
         options:
-          format: "DD/MM/YYYY"
+          hint:
+            view: ''
+          format: DD/MM/YYYY
+          onlyDate: false
+          onlyTime: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          onlyPastValues: false
+          outputRelative: false
+          onlyFutureValues: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       Fax:
         label: פקס
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       LineItemCount:
         label: Line Items
         kind: Number
         options:
-          format: "0"
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
           precision: 0
+          description:
+            view: ''
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 19
       OpportunityId:
         label: שם ההזדמנות
         kind: Record
         options:
+          hint:
+            view: ''
+          moduleID: '259188943651143951'
           labelField: Name
-          module: Opportunity
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - AccountId
           - Name
-          selectType: ""
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 20
       Phone:
         label: טלפון
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 21
       PricebookId:
         label: ספר מחירים
         kind: Record
         options:
+          hint:
+            view: ''
+          moduleID: '259188942812152079'
           labelField: Name
-          module: Pricebook
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - Name
-          selectType: ""
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 22
       Name:
         label: שם הצעה
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 23
       QuoteNumber:
         label: מספר הצעה
         kind: Number
         options:
-          format: "0000000"
+          hint:
+            view: ''
+          format: '0000000'
+          prefix: ''
+          suffix: ''
           precision: 0
+          description:
+            view: ''
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 24
       QuoteToStreet:
         label: רחוב להצעת מחיר
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 25
       QuoteToCity:
         label: ישוב להצעת מחיר
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 26
       QuoteToState:
         label: מחוז להצעת מחיר
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 27
       QuoteToPostalCode:
         label: מיקוד להצעת מחיר
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 28
       QuoteToCountry:
         label: מדינה להצעת מחיר
         kind: Select
         options:
+          hint:
+            view: ''
           options:
           - text: Afghanistan
             value: Afghanistan
@@ -8103,25 +8431,94 @@ modules:
           - text: Zimbabwe
             value: Zimbabwe
           selectType: default
+          description:
+            view: ''
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 29
       QuoteToName:
         label: שם להצעת מחיר
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 30
       ShippingStreet:
         label: רחוב למשלוח
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 31
       ShippingCity:
         label: ישוב למשלוח
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 32
       ShippingState:
         label: מחוז למשלוח
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 33
       ShippingPostalCode:
         label: מיקוד למשלוח
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 34
       ShippingCountry:
         label: מדינה למשלוח
         kind: Select
         options:
+          hint:
+            view: ''
           options:
           - text: Afghanistan
             value: Afghanistan
@@ -8612,25 +9009,55 @@ modules:
           - text: Zimbabwe
             value: Zimbabwe
           selectType: default
+          description:
+            view: ''
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 35
       ShippingName:
         label: שם למשלוח
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 36
       ShippingHandling:
         label: אריזה ומשלוח
         kind: Number
         options:
-          format: "0"
-          precision: 2
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
           suffix: ₪
+          precision: 2
+          description:
+            view: ''
+          multiDelimiter: \n
         expressions:
           validators:
-            - test: "value < 0"
-              error: Shipping and Handling can not be a negative number
-
+          - test: value < 0
+            error: Shipping and Handling can not be a negative number
+            validatorID: '1'
+        required: false
+        multi: false
+        place: 37
       Status:
         label: סטאטוס
         kind: Select
         options:
+          hint:
+            view: ''
           options:
           - text: טיוטה
             value: Draft
@@ -8649,59 +9076,158 @@ modules:
           - text: נדחתה
             value: Denied
           selectType: default
+          description:
+            view: ''
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 38
       Subtotal:
         label: מחיר לפני מסים
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          precision: 2
+          description:
+            view: ''
+          multiDelimiter: \n
         expressions:
           validators:
-            - test: "value < 0"
-              error: Sub total can not be a negative number
+          - test: value < 0
+            error: Sub total can not be a negative number
+            validatorID: '1'
+        required: false
+        multi: false
+        place: 39
       Tax:
         label: מסים
         kind: Number
         options:
-          format: "0.00"
-          precision: "2"
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: '%'
+          precision: 2
+          description:
+            view: ''
+          multiDelimiter: \n
         expressions:
           validators:
-            - test: "value < 0"
-              error: Tax can not be a negative number
+          - test: value < 0
+            error: Tax can not be a negative number
+            validatorID: '1'
+        required: false
+        multi: false
+        place: 40
       TermookIds:
         label: ספרי תנאים
         kind: Record
         options:
+          hint:
+            view: ''
+          moduleID: '259188942929133839'
           labelField: Name
-          module: Termbook
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - Name
-          selectType: ""
+          multiDelimiter: \n
+        expressions: {}
+        required: false
         multi: true
+        place: 41
       TotalPrice:
         label: סה"כ מחיר
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          precision: 2
+          description:
+            view: ''
+          multiDelimiter: \n
         expressions:
-          valueExpr: max(max((Subtotal?Subtotal:0) - (Discount?Discount:0), 0) + (ShippingHandling?ShippingHandling:0))
+          value: max(max((Subtotal?Subtotal:0) - (Discount?Discount:0), 0) + (ShippingHandling?ShippingHandling:0))
+        required: false
+        multi: false
+        place: 42
       GrandTotal:
         label: סה"כ כולל מסים
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          precision: 2
+          description:
+            view: ''
+          multiDelimiter: \n
         expressions:
-          valueExpr: "TotalPrice * (Tax ? 1+Tax/100 : 1)"
+          value: 'TotalPrice * (Tax ? 1+Tax/100 : 1)'
+        required: false
+        multi: false
+        place: 43
       RecordLabel:
         label: Record Label
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 44
+      LeadReference:
+        label: רפרנס לליד
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 45
+      XplaceTemplate:
+        label: טמפלט לאקספלס
+        kind: Record
+        options:
+          hint:
+            view: ''
+          moduleID: '259306700413075727'
+          labelField: Name
+          selectType: default
+          description:
+            view: ''
+          queryFields:
+          - Name
+          - Content
+          multiDelimiter: \n
+        expressions: {}
+        required: false
+        multi: false
+        place: 46
   QuoteLineItem:
     (envoy): { onExisting: "skip" }
     name: QuoteLineItem
