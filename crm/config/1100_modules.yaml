@@ -6504,7 +6504,6 @@ modules:
         options:
           hint:
             view: ''
-          moduleID: '259188943264940303'
           labelField: AccountName
           selectType: ''
           description:
@@ -6512,6 +6511,7 @@ modules:
           queryFields:
           - AccountName
           multiDelimiter: \n
+          module: Account
         expressions: {}
         required: false
         multi: false
@@ -7678,7 +7678,6 @@ modules:
         options:
           hint:
             view: ''
-          moduleID: '259188943399682319'
           labelField: RecordLabel
           selectType: ''
           description:
@@ -7686,6 +7685,7 @@ modules:
           queryFields:
           - RecordLabel
           multiDelimiter: \n
+          module: Contact
         expressions: {}
         required: false
         multi: false
@@ -7797,7 +7797,6 @@ modules:
         options:
           hint:
             view: ''
-          moduleID: '259188943651143951'
           labelField: Name
           selectType: ''
           description:
@@ -7806,6 +7805,7 @@ modules:
           - AccountId
           - Name
           multiDelimiter: \n
+          module: Opportunity
         expressions: {}
         required: false
         multi: false
@@ -7831,7 +7831,6 @@ modules:
         options:
           hint:
             view: ''
-          moduleID: '259188942812152079'
           labelField: Name
           selectType: ''
           description:
@@ -7839,6 +7838,7 @@ modules:
           queryFields:
           - Name
           multiDelimiter: \n
+          module: Pricebook
         expressions: {}
         required: false
         multi: false
@@ -9131,7 +9131,6 @@ modules:
         options:
           hint:
             view: ''
-          moduleID: '259188942929133839'
           labelField: Name
           selectType: ''
           description:
@@ -9139,6 +9138,7 @@ modules:
           queryFields:
           - Name
           multiDelimiter: \n
+          module: Termbook
         expressions: {}
         required: false
         multi: true
@@ -9215,7 +9215,6 @@ modules:
         options:
           hint:
             view: ''
-          moduleID: '259306700413075727'
           labelField: Name
           selectType: default
           description:
@@ -9224,6 +9223,7 @@ modules:
           - Name
           - Content
           multiDelimiter: \n
+          module: XplaceTemplate
         expressions: {}
         required: false
         multi: false
