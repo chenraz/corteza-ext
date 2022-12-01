@@ -4784,41 +4784,101 @@ modules:
           format: "0"
           precision: 0
   Lead:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Lead
     fields:
       Street:
         label: רחוב
         kind: String
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 0
       City:
         label: ישוב
         kind: String
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 1
       State:
         label: מחוז
         kind: String
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 2
       PostalCode:
         label: מיקוד
         kind: String
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 3
       Country:
         label: מדינה
         kind: Select
         options:
+          hint:
+            edit: ''
+            view: ''
           options:
           - text: Afghanistan
             value: Afghanistan
@@ -5309,17 +5369,44 @@ modules:
           - text: Zimbabwe
             value: Zimbabwe
           selectType: default
-        private: true
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       GeneratedAddress:
         label: Generated Address
         kind: String
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
         expressions:
-          valueExpr: trim(trim(trim(Street?Street:"") + "\n" + trim(trim(trim(PostalCode?PostalCode:"") + " " + trim(City?City:"")) + " " + trim(State?State:""))) + "\n" + trim(Country?Country:""))
+          value: trim(trim(trim(Street?Street:"") + "\n" + trim(trim(trim(PostalCode?PostalCode:"")
+            + " " + trim(City?City:"")) + " " + trim(State?State:""))) + "\n" + trim(Country?Country:""))
+        required: false
+        multi: false
+        place: 5
       AnnualRevenue:
         label: הכנסות שנתיות
         kind: Select
         options:
+          hint:
+            edit: ''
+            view: ''
           options:
           - text: מתחת ל- 500,000
             value: Less Than 500,000
@@ -5340,85 +5427,256 @@ modules:
           - text: 100 עד 500 מיליון
             value: 100 To 500 Million
           selectType: default
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       Company:
         label: ארגון
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
         required: true
+        multi: false
+        place: 7
       IsConverted:
         label: Converted
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          hint:
+            edit: ''
+            view: ''
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+          description:
+            edit: ''
+            view: ''
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       ConvertedAccountId:
         label: חשבון מומר
         kind: Record
         options:
+          hint:
+            edit: ''
+            view: ''
           labelField: AccountName
-          module: Account
+          selectType: each
+          description:
+            edit: ''
+            view: ''
           queryFields:
           - AccountName
-          selectType: each
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Account
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       ConvertedContactId:
         label: איש קשר מומר
         kind: Record
         options:
+          hint:
+            edit: ''
+            view: ''
           labelField: RecordLabel
-          module: Contact
+          selectType: each
+          description:
+            edit: ''
+            view: ''
           queryFields:
           - RecordLabel
-          selectType: each
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       ConvertedDate:
         label: תאריך המרה
         kind: DateTime
+        options:
+          hint:
+            edit: ''
+            view: ''
+          format: ''
+          onlyDate: false
+          onlyTime: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          onlyPastValues: false
+          outputRelative: false
+          onlyFutureValues: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       ConvertedOpportunityId:
         label: הזדמנות מומרת
         kind: Record
         options:
+          hint:
+            edit: ''
+            view: ''
           labelField: Name
-          module: Opportunity
+          selectType: default
+          description:
+            edit: ''
+            view: ''
           queryFields:
           - AccountId,Name
-          selectType: default
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Opportunity
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       Description:
         label: תאור
         kind: String
         options:
+          hint:
+            view: ''
           multiLine: true
-          useRichTextEditor: true
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       DoNotCall:
         label: לא להתקשר
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          hint:
+            edit: ''
+            view: ''
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+          description:
+            edit: ''
+            view: ''
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       Email:
         label: אימייל
         kind: String
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 15
       HasOptedOutOfEmail:
         label: לא לשלוח מיילים
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          hint:
+            edit: ''
+            view: ''
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+          description:
+            edit: ''
+            view: ''
+        expressions: {}
+        required: false
+        multi: false
+        place: 16
       Fax:
         label: פקס
         kind: String
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       HasOptedOutOfFax:
         label: פקס Opt Out
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          hint:
+            edit: ''
+            view: ''
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+          description:
+            edit: ''
+            view: ''
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       Industry:
         label: ענף
         kind: Select
         options:
+          hint:
+            edit: ''
+            view: ''
           options:
-          - text: ""
-            value: ""
+          - text: ''
+            value: ''
           - text: חקלאות
             value: Agriculture
           - text: הלבשה
@@ -5484,25 +5742,66 @@ modules:
           - text: שירותים
             value: Utilities
           selectType: default
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 19
       MasterRecordId:
         label: ליד
         kind: Record
         options:
+          hint:
+            edit: ''
+            view: ''
           labelField: RecordLabel
-          module: Lead
+          selectType: default
+          description:
+            edit: ''
+            view: ''
           queryFields:
           - RecordLabel
-          selectType: default
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Lead
+        expressions: {}
+        required: false
+        multi: false
+        place: 20
       OwnerId:
         label: בעל הליד
         kind: User
         options:
-          presetWithAuthenticated: true
+          hint:
+            edit: ''
+            view: ''
+          roles: []
           selectType: each
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          presetWithAuthenticated: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 21
       LeadSource:
         label: מקור ליד
         kind: Select
         options:
+          hint:
+            edit: ''
+            view: ''
           options:
           - text: הפניית לקוח
             value: Customer Referral
@@ -5535,10 +5834,23 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 22
       Status:
         label: סטאטוס
         kind: Select
         options:
+          hint:
+            edit: ''
+            view: ''
           options:
           - text: חדש
             value: New
@@ -5553,35 +5865,147 @@ modules:
           - text: לא רלוונטי
             value: Dead
           selectType: default
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 23
       MobilePhone:
         label: נייד
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 24
       Salutation:
         label: תואר
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 25
       FirstName:
         label: שם פרטי
         kind: String
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 26
       LastName:
         label: שם משפחה
         kind: String
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
         required: true
+        multi: false
+        place: 27
       NumberOfEmployees:
         label: מס מועסקים (מדוייק)
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 28
       Phone:
         label: טלפון
         kind: String
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 29
       Rating:
         label: דירוג
         kind: Select
         options:
+          hint:
+            edit: ''
+            view: ''
           options:
           - text: ☆☆☆☆☆
             value: ☆☆☆☆☆
@@ -5596,34 +6020,146 @@ modules:
           - text: ★★★★★
             value: ★★★★★
           selectType: default
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 30
       Title:
         label: כותרת
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 31
       IsUnreadByOwner:
         label: Unread By Owner
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          hint:
+            edit: ''
+            view: ''
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+          description:
+            edit: ''
+            view: ''
+        expressions: {}
+        required: false
+        multi: false
+        place: 32
       Website:
         label: אתר
         kind: Url
+        options:
+          hint:
+            edit: ''
+            view: ''
+          trimPath: false
+          trimQuery: false
+          onlySecure: false
+          description:
+            edit: ''
+            view: ''
+          outputPlain: false
+          trimFragment: false
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 33
       Twitter:
         label: טוויטר
         kind: Url
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          trimPath: false
+          trimQuery: false
+          onlySecure: false
+          description:
+            edit: ''
+            view: ''
+          outputPlain: false
+          trimFragment: false
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 34
       Facebook:
         label: פייסבוק
         kind: Url
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          trimPath: false
+          trimQuery: false
+          onlySecure: false
+          description:
+            edit: ''
+            view: ''
+          outputPlain: false
+          trimFragment: false
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 35
       LinkedIn:
         label: לינקדאין
         kind: Url
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          trimPath: false
+          trimQuery: false
+          onlySecure: false
+          description:
+            edit: ''
+            view: ''
+          outputPlain: false
+          trimFragment: false
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 36
       NumberOfEmployeesRange:
         label: מס מועסקים (טווח)
         kind: Select
         options:
+          hint:
+            edit: ''
+            view: ''
           options:
           - text: 1 - 9
             value: 1 - 9
@@ -5648,31 +6184,107 @@ modules:
           - text: מעל 10000
             value: Over 10000
           selectType: default
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 37
       SICCode:
         label: SIC קוד
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 38
       RecordLabel:
         label: Record Label
         kind: String
-        private: true
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
         expressions:
-          valueExpr: "trim((FirstName ? FirstName : \"\") + \" \" + (LastName ? LastName : \"\"))"
+          value: 'trim((FirstName ? FirstName : "") + " " + (LastName ? LastName : ""))'
+        required: false
+        multi: false
+        place: 39
       CampaignId:
         label: קמפיין
         kind: Record
         options:
+          hint:
+            edit: ''
+            view: ''
           labelField: Name
-          module: Campaigns
+          selectType: multiple
+          description:
+            edit: ''
+            view: ''
           queryFields:
           - Name
-          selectType: multiple
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Campaigns
+        expressions: {}
+        required: false
         multi: true
+        place: 40
       LeadReference:
-        lable: רפרנס לליד
+        label: מזהה מקור הליד
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 41
   Note:
     (envoy): { onExisting: "skip" }
     name: Note
@@ -5915,74 +6527,239 @@ modules:
           mode: list
         multi: true
   Opportunity:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Opportunity
     fields:
       AccountId:
         label: שם החשבון
         kind: Record
         options:
+          hint:
+            edit: ''
+            view: ''
           labelField: AccountName
-          module: Account
+          selectType: each
+          description:
+            edit: ''
+            view: ''
           queryFields:
           - AccountName
-          selectType: each
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Account
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Amount:
         label: סכום
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       CloseDate:
         label: תאריך סגירה
         kind: DateTime
+        options:
+          hint:
+            edit: ''
+            view: ''
+          format: ''
+          onlyDate: false
+          onlyTime: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          onlyPastValues: false
+          outputRelative: false
+          onlyFutureValues: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       IsClosed:
         label: Closed
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          hint:
+            edit: ''
+            view: ''
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+          description:
+            edit: ''
+            view: ''
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       ContractId:
         label: הסכם
         kind: Record
         options:
+          hint:
+            edit: ''
+            view: ''
           labelField: Name
-          module: Contract
+          selectType: default
+          description:
+            edit: ''
+            view: ''
           queryFields:
           - AccountId
           - Name
           - ContractNumber
-          selectType: default
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Contract
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Description:
         label: תאור
         kind: String
         options:
+          hint:
+            edit: ''
+            view: ''
           multiLine: true
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       ExpectedRevenue:
         label: צפי הכנסות
         kind: Number
         options:
-          format: "0"
-          precision: 2
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       FiscalYear:
         label: Fiscal Period
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       FiscalQuarter:
         label: Fiscal Period
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       ForecastCategory:
         label: קטגורית תחזית
         kind: Select
         options:
+          hint:
+            edit: ''
+            view: ''
           options:
           - text: Pipeline
             value: Pipeline
@@ -5991,16 +6768,39 @@ modules:
           - text: Commit
             value: Commit
           selectType: default
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       HasOpportunityLineItem:
         label: Has Line Item
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          hint:
+            edit: ''
+            view: ''
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+          description:
+            edit: ''
+            view: ''
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       LeadSource:
         label: מקור ליד
         kind: Select
         options:
+          hint:
+            edit: ''
+            view: ''
           options:
           - text: הפניית לקוח
             value: Customer Referral
@@ -6033,61 +6833,201 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
         multi: true
+        place: 11
       NextStep:
         label: שלב הבא
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       Name:
         label: שם ההזדמנות
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       OwnerId:
         label: בעל ההזדמנות
         kind: User
         options:
-          presetWithAuthenticated: true
+          hint:
+            edit: ''
+            view: ''
+          roles: []
           selectType: default
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          presetWithAuthenticated: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       PricebookId:
         label: ספר מחיר
         kind: Record
         options:
+          hint:
+            edit: ''
+            view: ''
           labelField: Name
-          module: Pricebook
+          selectType: default
+          description:
+            edit: ''
+            view: ''
           queryFields:
           - Name
-          selectType: default
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Pricebook
+        expressions: {}
+        required: false
+        multi: false
+        place: 15
       CampaignId:
         label: מקור קמפיין ראשי
         kind: Record
-        multi: true
         options:
+          hint:
+            edit: ''
+            view: ''
           labelField: Name
-          module: Campaigns
+          selectType: default
+          description:
+            edit: ''
+            view: ''
           queryFields:
           - Name
-          selectType: default
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Campaigns
+        expressions: {}
+        required: false
+        multi: true
+        place: 16
       IsPrivate:
         label: Private
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          hint:
+            edit: ''
+            view: ''
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+          description:
+            edit: ''
+            view: ''
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       Probability:
         label: סיכוי (%)
         kind: Number
         options:
-          format: "0"
-          precision: 0
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
           suffix: '%'
+          display: number
+          variant: success
+          animated: false
+          precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       TotalOpportunityQuantity:
         label: כמות
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 19
       StageName:
         label: שלב
         kind: Select
         options:
+          hint:
+            edit: ''
+            view: ''
           options:
           - text: בדיקת התאמה
             value: Qualification
@@ -6102,59 +7042,235 @@ modules:
           - text: נכשל
             value: Closed Lost
           selectType: default
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 20
       Type:
         label: סוג
         kind: Select
         options:
+          hint:
+            edit: ''
+            view: ''
           options:
           - text: עסק קיים
             value: Exisiting Business
           - text: עסק חדש
             value: New Business
           selectType: default
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 21
       IsWon:
         label: Won
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          hint:
+            edit: ''
+            view: ''
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+          description:
+            edit: ''
+            view: ''
+        expressions: {}
+        required: false
+        multi: false
+        place: 22
       Budget:
         label: Budget
         kind: String
         options:
+          hint:
+            edit: ''
+            view: ''
           multiLine: true
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 23
       Authority:
         label: Authority
         kind: String
         options:
+          hint:
+            edit: ''
+            view: ''
           multiLine: true
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 24
       Need:
         label: Need
         kind: String
         options:
+          hint:
+            edit: ''
+            view: ''
           multiLine: true
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 25
       Timeline:
         label: Timeline
         kind: String
         options:
+          hint:
+            edit: ''
+            view: ''
           multiLine: true
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 26
       Competition:
         label: Competition
         kind: String
         options:
+          hint:
+            edit: ''
+            view: ''
           multiLine: true
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 27
       RecordLabel:
         label: Record Label
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 28
       Files:
         label: קבצים
         kind: File
         options:
-          allowDocuments: true
-          allowImages: true
-          maxSize: 0
+          hint:
+            edit: ''
+            view: ''
           mode: list
+          inline: true
+          maxSize: 0
+          mimetypes: ''
+          allowImages: true
+          description:
+            edit: ''
+            view: ''
+          hideFileName: false
+          allowDocuments: true
+        expressions: {}
+        required: false
         multi: true
+        place: 29
+      LeadRef:
+        label: רשומת ליד
+        kind: Record
+        options:
+          hint:
+            edit: ''
+            view: ''
+          labelField: Description
+          selectType: default
+          description:
+            edit: ''
+            view: ''
+          queryFields:
+          - LeadReference
+          - Description
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Lead
+        expressions: {}
+        required: false
+        multi: false
+        place: 30
+      CoverTemplate:
+        label: טמפלט למכתב מלווה
+        kind: Record
+        options:
+          hint:
+            view: ''
+          labelField: Name
+          selectType: default
+          description:
+            view: ''
+          queryFields:
+          - Name
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: CoverTemplate
+        expressions: {}
+        required: false
+        multi: false
+        place: 31
   OpportunityCompetitor:
     (envoy): { onExisting: "skip" }
     name: OpportunityCompetitor
@@ -6503,14 +7619,17 @@ modules:
         kind: Record
         options:
           hint:
+            edit: ''
             view: ''
           labelField: AccountName
           selectType: ''
           description:
+            edit: ''
             view: ''
           queryFields:
           - AccountName
           multiDelimiter: \n
+          recordLabelField: ''
           module: Account
         expressions: {}
         required: false
@@ -6521,9 +7640,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -6536,9 +7657,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -6551,9 +7674,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -6566,9 +7691,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -6581,6 +7708,7 @@ modules:
         kind: Select
         options:
           hint:
+            edit: ''
             view: ''
           options:
           - text: Afghanistan
@@ -7073,6 +8201,7 @@ modules:
             value: Zimbabwe
           selectType: default
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
         expressions: {}
@@ -7084,9 +8213,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7099,9 +8230,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7114,9 +8247,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7129,9 +8264,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7144,9 +8281,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7159,6 +8298,7 @@ modules:
         kind: Select
         options:
           hint:
+            edit: ''
             view: ''
           options:
           - text: Afghanistan
@@ -7651,6 +8791,7 @@ modules:
             value: Zimbabwe
           selectType: default
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
         expressions: {}
@@ -7662,9 +8803,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7677,14 +8820,17 @@ modules:
         kind: Record
         options:
           hint:
+            edit: ''
             view: ''
           labelField: RecordLabel
           selectType: ''
           description:
+            edit: ''
             view: ''
           queryFields:
           - RecordLabel
           multiDelimiter: \n
+          recordLabelField: ''
           module: Contact
         expressions: {}
         required: false
@@ -7695,9 +8841,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: true
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7709,14 +8857,24 @@ modules:
         label: הנחה נוספת
         kind: Number
         options:
+          max: 100
           hint:
+            edit: ''
             view: ''
           format: '0.00'
           prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
           description:
+            edit: ''
             view: ''
+          showProgress: false
+          showRelative: true
           multiDelimiter: \n
         expressions:
           validators:
@@ -7731,8 +8889,10 @@ modules:
         kind: Email
         options:
           hint:
+            edit: ''
             view: ''
           description:
+            edit: ''
             view: ''
           outputPlain: true
           multiDelimiter: \n
@@ -7745,11 +8905,13 @@ modules:
         kind: DateTime
         options:
           hint:
+            edit: ''
             view: ''
           format: DD/MM/YYYY
           onlyDate: false
           onlyTime: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           onlyPastValues: false
@@ -7764,9 +8926,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7778,14 +8942,24 @@ modules:
         label: Line Items
         kind: Number
         options:
+          max: 100
           hint:
+            edit: ''
             view: ''
           format: '0'
           prefix: ''
           suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
           description:
+            edit: ''
             view: ''
+          showProgress: false
+          showRelative: true
           multiDelimiter: \n
         expressions: {}
         required: false
@@ -7796,15 +8970,18 @@ modules:
         kind: Record
         options:
           hint:
+            edit: ''
             view: ''
           labelField: Name
           selectType: ''
           description:
+            edit: ''
             view: ''
           queryFields:
           - AccountId
           - Name
           multiDelimiter: \n
+          recordLabelField: ''
           module: Opportunity
         expressions: {}
         required: false
@@ -7815,9 +8992,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7830,14 +9009,17 @@ modules:
         kind: Record
         options:
           hint:
+            edit: ''
             view: ''
           labelField: Name
           selectType: ''
           description:
+            edit: ''
             view: ''
           queryFields:
           - Name
           multiDelimiter: \n
+          recordLabelField: ''
           module: Pricebook
         expressions: {}
         required: false
@@ -7848,9 +9030,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7862,14 +9046,24 @@ modules:
         label: מספר הצעה
         kind: Number
         options:
+          max: 100
           hint:
+            edit: ''
             view: ''
           format: '0000000'
           prefix: ''
           suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
           description:
+            edit: ''
             view: ''
+          showProgress: false
+          showRelative: true
           multiDelimiter: \n
         expressions: {}
         required: false
@@ -7880,9 +9074,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7895,9 +9091,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7910,9 +9108,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7925,9 +9125,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -7940,6 +9142,7 @@ modules:
         kind: Select
         options:
           hint:
+            edit: ''
             view: ''
           options:
           - text: Afghanistan
@@ -8432,6 +9635,7 @@ modules:
             value: Zimbabwe
           selectType: default
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
         expressions: {}
@@ -8443,9 +9647,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -8458,9 +9664,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -8473,9 +9681,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -8488,9 +9698,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -8503,9 +9715,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -8518,6 +9732,7 @@ modules:
         kind: Select
         options:
           hint:
+            edit: ''
             view: ''
           options:
           - text: Afghanistan
@@ -9010,6 +10225,7 @@ modules:
             value: Zimbabwe
           selectType: default
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
         expressions: {}
@@ -9021,9 +10237,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -9035,14 +10253,24 @@ modules:
         label: אריזה ומשלוח
         kind: Number
         options:
+          max: 100
           hint:
+            edit: ''
             view: ''
           format: '0'
           prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
           description:
+            edit: ''
             view: ''
+          showProgress: false
+          showRelative: true
           multiDelimiter: \n
         expressions:
           validators:
@@ -9057,6 +10285,7 @@ modules:
         kind: Select
         options:
           hint:
+            edit: ''
             view: ''
           options:
           - text: טיוטה
@@ -9077,6 +10306,7 @@ modules:
             value: Denied
           selectType: default
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
         expressions: {}
@@ -9087,14 +10317,24 @@ modules:
         label: מחיר לפני מסים
         kind: Number
         options:
+          max: 100
           hint:
+            edit: ''
             view: ''
           format: '0.00'
           prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
           description:
+            edit: ''
             view: ''
+          showProgress: false
+          showRelative: true
           multiDelimiter: \n
         expressions:
           validators:
@@ -9108,14 +10348,24 @@ modules:
         label: מסים
         kind: Number
         options:
+          max: 100
           hint:
+            edit: ''
             view: ''
           format: '0.00'
           prefix: ''
           suffix: '%'
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
           description:
+            edit: ''
             view: ''
+          showProgress: false
+          showRelative: true
           multiDelimiter: \n
         expressions:
           validators:
@@ -9130,14 +10380,17 @@ modules:
         kind: Record
         options:
           hint:
+            edit: ''
             view: ''
           labelField: Name
           selectType: ''
           description:
+            edit: ''
             view: ''
           queryFields:
           - Name
           multiDelimiter: \n
+          recordLabelField: ''
           module: Termbook
         expressions: {}
         required: false
@@ -9147,14 +10400,24 @@ modules:
         label: סה"כ מחיר
         kind: Number
         options:
+          max: 100
           hint:
+            edit: ''
             view: ''
           format: '0.00'
           prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
           description:
+            edit: ''
             view: ''
+          showProgress: false
+          showRelative: true
           multiDelimiter: \n
         expressions:
           value: max(max((Subtotal?Subtotal:0) - (Discount?Discount:0), 0) + (ShippingHandling?ShippingHandling:0))
@@ -9165,14 +10428,24 @@ modules:
         label: סה"כ כולל מסים
         kind: Number
         options:
+          max: 100
           hint:
+            edit: ''
             view: ''
           format: '0.00'
           prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
           description:
+            edit: ''
             view: ''
+          showProgress: false
+          showRelative: true
           multiDelimiter: \n
         expressions:
           value: 'TotalPrice * (Tax ? 1+Tax/100 : 1)'
@@ -9184,9 +10457,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -9199,9 +10474,11 @@ modules:
         kind: String
         options:
           hint:
+            edit: ''
             view: ''
           multiLine: false
           description:
+            edit: ''
             view: ''
           multiDelimiter: \n
           useRichTextEditor: false
@@ -9209,8 +10486,8 @@ modules:
         required: false
         multi: false
         place: 45
-      XplaceTemplate:
-        label: טמפלט לאקספלס
+      CoverTemplate:
+        label: טמפלט מכתב מלווה
         kind: Record
         options:
           hint:
@@ -9221,13 +10498,49 @@ modules:
             view: ''
           queryFields:
           - Name
-          - Content
           multiDelimiter: \n
-          module: XplaceTemplate
+          recordLabelField: ''
+          module: CoverTemplate
         expressions: {}
         required: false
         multi: false
         place: 46
+      CoverText:
+        label: טקסט מכתב מלווה
+        kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: true
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 47
+      ReminderText:
+        label: טקסט לתזכורת
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: true
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 48
   QuoteLineItem:
     (envoy): { onExisting: "skip" }
     name: QuoteLineItem
@@ -9403,145 +10716,750 @@ modules:
           queryFields:
           - Title
   Settings:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Settings
     fields:
       QuoteExpirationDays:
         label: Days for a quote to expire
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       QuoteNextNumber:
         label: Next number for a quote (updates after saving a new quote)
         kind: Number
         options:
-          format: "0000000"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0000000'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       OpportunityCloseDateDays:
         label: Days for an opportunity to close
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       OpportunityProbability:
         label: סיכוי
         kind: Number
         options:
-          format: "0"
-          precision: 0
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
           suffix: '%'
+          display: number
+          variant: success
+          animated: false
+          precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       OpportunityForecaseCategory:
         label: קטגורית תחזית
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       OpportunityStagename:
         label: שלב
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       ContractNextNumber:
         label: Next number for a contract (updates after saving a new contract)
         kind: Number
         options:
-          format: "0000000"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0000000'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       ContractDefaultTime:
         label: Default time for a contract (in months)
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       CaseNextNumber:
         label: Next number for a case (updates after saving a new case)
         kind: Number
         options:
-          format: "0000000"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0000000'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       SolutionNextNumber:
         label: Next number for a solution (updates after saving a new solution)
         kind: Number
         options:
-          format: "0000000"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0000000'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       ScoreBudget:
         label: Budget
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       ScoreAuthority:
         label: Authority
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       ScoreNeed:
         label: Need
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       ScoreTimescale:
         label: Timescale
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       ScoreTurnover:
         label: Turnover
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       ScoreYearsInBusiness:
         label: Yrs in Business
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 15
       ScoreSource:
         label: Source
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 16
       ScoreProductKnowlege:
         label: Product Knowlege
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       ScoreTechnicalDepth:
         label: Technical Depth
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       ScoreCompetition:
         label: Competition
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 19
       ScoreCriticality:
-        label:
+        label: ScoreCriticality
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 20
       ScoreRepeatPurchase:
         label: Repeat Purchase
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 21
       DefaultQuoteImage:
         label: תמונה להצעת מחיר
         kind: File
+        options:
+          hint:
+            edit: ''
+            view: ''
+          mode: '
+
+            '
+          inline: true
+          maxSize: 0
+          mimetypes: ''
+          allowImages: true
+          description:
+            edit: ''
+            view: ''
+          hideFileName: false
+          allowDocuments: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 22
       DefaultAboutImage:
         label: תמנה למקטע אודות
         kind: File
+        options:
+          hint:
+            edit: ''
+            view: ''
+          mode: '
+
+            '
+          inline: true
+          maxSize: 0
+          mimetypes: ''
+          allowImages: true
+          description:
+            edit: ''
+            view: ''
+          hideFileName: false
+          allowDocuments: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 23
       EmailLogo:
         label: לוגו לאימייל
         kind: File
+        options:
+          hint:
+            edit: ''
+            view: ''
+          mode: '
+
+            '
+          inline: true
+          maxSize: 0
+          mimetypes: ''
+          allowImages: true
+          description:
+            edit: ''
+            view: ''
+          hideFileName: false
+          allowDocuments: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 24
+      Domain:
+        label: דומיין
+        kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 25
+      Api_Auth_Client_User_Id:
+        label: מזהה משתמש לאימות
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 26
+      Api_Auth_Client_Secret:
+        label: סוד משתמש אימות
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 27
   Solution:
     (envoy): { onExisting: "skip" }
     name: Solution
@@ -9902,4 +11820,39 @@ modules:
         place: 0
         required: false
     name: XplaceTemplate
+  CoverTemplate:
+    (envoy):
+      onExisting: skip
+    name: CoverTemplate
+    fields:
+      Content:
+        label: תוכן
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: true
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
+      Name:
+        label: שם
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
 

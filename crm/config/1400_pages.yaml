@@ -269,11 +269,27 @@ pages:
       xywh: [0, 0, 9, 16]
     pages:
       - handle: RecordPageForModuleLead
-        (envoy): { onExisting: "skip" }
-        module: Lead
+        (envoy):
+          onExisting: skip
         title: עמוד רשומה במודול "לידים"
+        description: ''
+        visible: true
         blocks:
-        - title: מידע אישי
+        - kind: Record
+          xywh:
+          - 0
+          - 0
+          - 3
+          - 15
+          style:
+            wrap:
+              kind: card
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: מידע אישי
           options:
             fields:
             - name: FirstName
@@ -287,19 +303,41 @@ pages:
             - name: Twitter
             - name: LinkedIn
             - name: Facebook
+        - kind: SocialFeed
+          xywh:
+          - 9
+          - 0
+          - 3
+          - 31
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [0, 0, 3, 15]
-        - title: פיד טוויטר
+            wrap:
+              kind: card
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: פיד טוויטר
           options:
+            fields: []
+            profileUrl: ''
             profileSourceField: Twitter
-            profileUrl: ""
+            module: '0'
+        - kind: Record
+          xywh:
+          - 3
+          - 0
+          - 3
+          - 15
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: SocialFeed
-          xywh: [9, 0, 3, 31]
-        - title: מידע ארגוני
+            wrap:
+              kind: card
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: מידע ארגוני
           options:
             fields:
             - name: Company
@@ -312,122 +350,585 @@ pages:
             - name: Street
             - name: State
             - name: PostalCode
+        - kind: Record
+          xywh:
+          - 6
+          - 0
+          - 3
+          - 15
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [3, 0, 3, 15]
-        - title: מידע נוסף
+            wrap:
+              kind: card
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: מידע נוסף
           options:
             fields:
-            - name: Rating
-            - name: CampaignId
-            - name: Status
-            - name: LeadSource
-            - name: OwnerId
-            - name: Description
-            - name: ConvertedAccountId
-            - name: ConvertedContactId
-            - name: ConvertedOpportunityId
-            - name: ConvertedDate
+            - kind: Select
+              name: Rating
+              label: דירוג
+              config:
+                dal:
+                  encodingStrategy: null
+                privacy:
+                  usageDisclosure: ''
+                  sensitivityLevelID: '0'
+                recordRevisions:
+                  enabled: false
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                options:
+                - text: ☆☆☆☆☆
+                  value: ☆☆☆☆☆
+                - text: ★☆☆☆☆
+                  value: ★☆☆☆☆
+                - text: ★★☆☆☆
+                  value: ★★☆☆☆
+                - text: ★★★☆☆
+                  value: ★★★☆☆
+                - text: ★★★★☆
+                  value: ★★★★☆
+                - text: ★★★★★
+                  value: ★★★★★
+                selectType: default
+                description:
+                  view: ''
+                multiDelimiter: \n
+              isSystem: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              isFilterable: true
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: Record
+              name: CampaignId
+              label: קמפיין
+              config:
+                dal:
+                  encodingStrategy: null
+                privacy:
+                  usageDisclosure: ''
+                  sensitivityLevelID: '0'
+                recordRevisions:
+                  enabled: false
+              isMulti: true
+              options:
+                hint:
+                  view: ''
+                moduleID: '310766123559813125'
+                labelField: Name
+                selectType: multiple
+                description:
+                  view: ''
+                queryFields:
+                - Name
+                multiDelimiter: \n
+                recordLabelField: ''
+              isSystem: false
+              maxLength: 0
+              isRequired: false
+              isSortable: false
+              expressions: {}
+              defaultValue: []
+              isFilterable: true
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: Select
+              name: Status
+              label: סטאטוס
+              config:
+                dal:
+                  encodingStrategy: null
+                privacy:
+                  usageDisclosure: ''
+                  sensitivityLevelID: '0'
+                recordRevisions:
+                  enabled: false
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                options:
+                - text: חדש
+                  value: New
+                - text: שוייך
+                  value: Assigned
+                - text: בטיפול
+                  value: In Progress
+                - text: הומר
+                  value: Converted
+                - text: שוחזר
+                  value: Recycled
+                - text: לא רלוונטי
+                  value: Dead
+                selectType: default
+                description:
+                  view: ''
+                multiDelimiter: \n
+              isSystem: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              isFilterable: true
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: Select
+              name: LeadSource
+              label: מקור ליד
+              config:
+                dal:
+                  encodingStrategy: null
+                privacy:
+                  usageDisclosure: ''
+                  sensitivityLevelID: '0'
+                recordRevisions:
+                  enabled: false
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                options:
+                - text: הפניית לקוח
+                  value: Customer Referral
+                - text: ישיר
+                  value: Direct
+                - text: הפניית מועסק
+                  value: Employee Referral
+                - text: אירוע
+                  value: Event
+                - text: לקוח קיים
+                  value: Existing Customer
+                - text: שיחה נכנסת
+                  value: Inbound Call
+                - text: רשימת תפוצה
+                  value: Outbound List
+                - text: הפנייה משותף
+                  value: Partner Referral
+                - text: כנס
+                  value: Seminar
+                - text: מדיה חברתית
+                  value: Social Media
+                - text: וובינר
+                  value: Webinar
+                - text: אתר (אורגני)
+                  value: Website (Organic)
+                - text: אתר (ממומן)
+                  value: Website (PPC)
+                - text: פה לאוזן
+                  value: Word of Mouth
+                - text: אחר
+                  value: Other
+                selectType: default
+                description:
+                  view: ''
+                multiDelimiter: \n
+              isSystem: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              isFilterable: true
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: User
+              name: OwnerId
+              label: בעל הליד
+              config:
+                dal:
+                  encodingStrategy: null
+                privacy:
+                  usageDisclosure: ''
+                  sensitivityLevelID: '0'
+                recordRevisions:
+                  enabled: false
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                roles: []
+                selectType: each
+                description:
+                  view: ''
+                multiDelimiter: \n
+                presetWithAuthenticated: true
+              isSystem: false
+              maxLength: 0
+              isRequired: false
+              isSortable: false
+              expressions: {}
+              defaultValue: []
+              isFilterable: true
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: String
+              name: Description
+              label: תאור
+              config:
+                dal:
+                  encodingStrategy: null
+                privacy:
+                  usageDisclosure: ''
+                  sensitivityLevelID: '0'
+                recordRevisions:
+                  enabled: false
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                multiLine: true
+                description:
+                  view: ''
+                multiDelimiter: \n
+                useRichTextEditor: true
+              isSystem: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              isFilterable: true
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: Record
+              name: ConvertedAccountId
+              label: חשבון מומר
+              config:
+                dal:
+                  encodingStrategy: null
+                privacy:
+                  usageDisclosure: ''
+                  sensitivityLevelID: '0'
+                recordRevisions:
+                  enabled: false
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                moduleID: '310766123542970373'
+                labelField: AccountName
+                selectType: each
+                description:
+                  view: ''
+                queryFields:
+                - AccountName
+                multiDelimiter: \n
+                recordLabelField: ''
+              isSystem: false
+              maxLength: 0
+              isRequired: false
+              isSortable: false
+              expressions: {}
+              defaultValue: []
+              isFilterable: true
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: Record
+              name: ConvertedContactId
+              label: איש קשר מומר
+              config:
+                dal:
+                  encodingStrategy: null
+                privacy:
+                  usageDisclosure: ''
+                  sensitivityLevelID: '0'
+                recordRevisions:
+                  enabled: false
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                moduleID: '310766123794628613'
+                labelField: RecordLabel
+                selectType: each
+                description:
+                  view: ''
+                queryFields:
+                - RecordLabel
+                multiDelimiter: \n
+                recordLabelField: ''
+              isSystem: false
+              maxLength: 0
+              isRequired: false
+              isSortable: false
+              expressions: {}
+              defaultValue: []
+              isFilterable: true
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: Record
+              name: ConvertedOpportunityId
+              label: הזדמנות מומרת
+              config:
+                dal:
+                  encodingStrategy: null
+                privacy:
+                  usageDisclosure: ''
+                  sensitivityLevelID: '0'
+                recordRevisions:
+                  enabled: false
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                moduleID: '310766124180701189'
+                labelField: Name
+                selectType: default
+                description:
+                  view: ''
+                queryFields:
+                - AccountId,Name
+                multiDelimiter: \n
+                recordLabelField: ''
+              isSystem: false
+              maxLength: 0
+              isRequired: false
+              isSortable: false
+              expressions: {}
+              defaultValue: []
+              isFilterable: true
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: DateTime
+              name: ConvertedDate
+              label: תאריך המרה
+              config:
+                dal:
+                  encodingStrategy: null
+                privacy:
+                  usageDisclosure: ''
+                  sensitivityLevelID: '0'
+                recordRevisions:
+                  enabled: false
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                format: ''
+                onlyDate: false
+                onlyTime: false
+                description:
+                  view: ''
+                multiDelimiter: \n
+                onlyPastValues: false
+                outputRelative: false
+                onlyFutureValues: false
+              isSystem: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              isFilterable: true
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+            - kind: String
+              name: LeadReference
+              label: LeadReference
+              config:
+                dal:
+                  encodingStrategy: null
+                privacy:
+                  usageDisclosure: ''
+                  sensitivityLevelID: '0'
+                recordRevisions:
+                  enabled: false
+              isMulti: false
+              options:
+                hint:
+                  view: ''
+                multiLine: false
+                description:
+                  view: ''
+                multiDelimiter: \n
+                useRichTextEditor: false
+              isSystem: false
+              maxLength: 0
+              isRequired: false
+              isSortable: true
+              expressions: {}
+              defaultValue: []
+              isFilterable: true
+              canReadRecordValue: true
+              canUpdateRecordValue: true
+        - kind: RecordList
+          xywh:
+          - 0
+          - 15
+          - 6
+          - 8
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [6, 0, 3, 15]
-        - title: הערות 
+            wrap:
+              kind: card
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: הערות
           options:
-            allowExport: true
-            draggable: false
-            editFields: []
-            editable: false
             fields:
             - name: Title
             - name: Body
             - name: createdAt
-            hideRecordCloneButton: true
-            hideRecordEditButton: false
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            module: Note
             perPage: 20
-            prefilter: LeadId = ${recordID}
             presort: createdAt DESC
+            editable: false
+            draggable: false
+            prefilter: LeadId = ${recordID}
+            editFields: []
+            hideHeader: false
+            hidePaging: false
+            hideSearch: false
             selectMode: multi
             selectable: true
-            selectionButtons: []
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [0, 15, 6, 8]
-        - title: אירועים 
-          options:
             allowExport: true
-            draggable: false
-            editFields: []
-            editable: false
+            hideSorting: false
+            linkToParent: true
+            openInNewTab: false
+            hideAddButton: false
+            showTotalCount: true
+            hideImportButton: false
+            selectionButtons: []
+            fullPageNavigation: true
+            hideRecordEditButton: false
+            hideRecordViewButton: true
+            hideRecordCloneButton: true
+            hideRecordReminderButton: true
+            hideRecordPermissionsButton: true
+            module: Note
+        - kind: RecordList
+          xywh:
+          - 0
+          - 23
+          - 4
+          - 8
+          style:
+            wrap:
+              kind: card
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: אירועים
+          options:
             fields:
             - name: Type
             - name: Subject
             - name: ActivityDate
-            hideRecordCloneButton: true
-            hideRecordEditButton: false
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            module: Event
             perPage: 20
-            prefilter: LeadId = ${recordID}
             presort: ActivityDate DESC
+            editable: false
+            draggable: false
+            prefilter: LeadId = ${recordID}
+            editFields: []
+            hideHeader: false
+            hidePaging: false
+            hideSearch: false
             selectMode: multi
             selectable: true
-            selectionButtons: []
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [0, 23, 4, 8]
-        - title: משימות 
-          options:
             allowExport: true
-            draggable: false
-            editFields: []
-            editable: false
+            hideSorting: false
+            linkToParent: true
+            openInNewTab: false
+            hideAddButton: false
+            showTotalCount: true
+            hideImportButton: false
+            selectionButtons: []
+            fullPageNavigation: true
+            hideRecordEditButton: false
+            hideRecordViewButton: true
+            hideRecordCloneButton: true
+            hideRecordReminderButton: true
+            hideRecordPermissionsButton: true
+            module: Event
+        - kind: RecordList
+          xywh:
+          - 4
+          - 23
+          - 5
+          - 8
+          style:
+            wrap:
+              kind: card
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: משימות
+          options:
             fields:
             - name: Type
             - name: Subject
             - name: Status
             - name: ActivityDate
-            hideRecordCloneButton: true
-            hideRecordEditButton: false
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            module: Task
             perPage: 20
-            prefilter: LeadId = ${recordID}
             presort: ActivityDate DESC
+            editable: false
+            draggable: false
+            prefilter: LeadId = ${recordID}
+            editFields: []
+            hideHeader: false
+            hidePaging: false
+            hideSearch: false
             selectMode: multi
             selectable: true
+            allowExport: true
+            hideSorting: false
+            linkToParent: true
+            openInNewTab: false
+            hideAddButton: false
+            showTotalCount: true
+            hideImportButton: false
             selectionButtons: []
+            fullPageNavigation: true
+            hideRecordEditButton: false
+            hideRecordViewButton: true
+            hideRecordCloneButton: true
+            hideRecordReminderButton: true
+            hideRecordPermissionsButton: true
+            module: Task
+        - kind: Automation
+          xywh:
+          - 6
+          - 15
+          - 3
+          - 8
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [4, 23, 5, 8]
-        - title: פעולות על הליד
+            wrap:
+              kind: card
+            variants:
+              bodyBg: white
+              border: primary
+              headerBg: white
+              headerText: primary
+          title: פעולות על הליד
           options:
+            sealed: false
             buttons:
-            - enabled: true
-              label: המרת ליד לחשבון
+            - label: המרת ליד לחשבון
+              stepID: '3'
+              enabled: true
               resourceType: compose:record
               workflow: CRM-Lead-ToAccount
-              stepID: 3
-            - enabled: true
-              label: המרת ליד לחשבון והזדמנות
+            - label: המרת ליד לחשבון והזדמנות
+              stepID: '77'
+              enabled: true
               resourceType: compose:record
               workflow: CRM-Lead-ToAccountAndOpportunity
-              stepID: 77
-            sealed: false
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Automation
-          xywh: [6, 15, 3, 8]
-        visible: true
+        module: Lead
       - handle: MyLeads
         (envoy): { onExisting: "skip" }
         title: הלידים שלי
@@ -1100,309 +1601,1175 @@ pages:
       kind: Chart
       xywh: [8, 0, 2, 6]
     pages:
-      - handle: RecordPageForModuleOpportunity
-        (envoy): { onExisting: "skip" }
-        module: Opportunity
-        title: עמוד רשומה במודול "הזדמנויות"
+    - handle: RecordPageForModuleOpportunity
+      (envoy):
+        onExisting: skip
+      title: עמוד רשומה במודול "הזדמנויות"
+      description: ''
+      visible: false
+      blocks:
+      - kind: Record
+        xywh:
+        - 0
+        - 0
+        - 4
+        - 10
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: פרטי הזדמנות
+        options:
+          fields:
+          - kind: String
+            name: Name
+            label: שם ההזדמנות
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              multiLine: false
+              description:
+                edit: ''
+                view: ''
+              multiDelimiter: \n
+              useRichTextEditor: false
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Record
+            name: AccountId
+            label: שם החשבון
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              moduleID: '310766123542970373'
+              labelField: AccountName
+              selectType: each
+              description:
+                edit: ''
+                view: ''
+              queryFields:
+              - AccountName
+              multiDelimiter: \n
+              recordLabelField: ''
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: false
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Record
+            name: CoverTemplate
+            label: טמפלט למכתב מלווה
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                view: ''
+              moduleID: '310766122838589445'
+              labelField: Name
+              selectType: default
+              description:
+                view: ''
+              queryFields:
+              - Name
+              multiDelimiter: \n
+              recordLabelField: ''
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: false
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Record
+            name: PricebookId
+            label: ספר מחיר
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              moduleID: '310766122637459461'
+              labelField: Name
+              selectType: default
+              description:
+                edit: ''
+                view: ''
+              queryFields:
+              - Name
+              multiDelimiter: \n
+              recordLabelField: ''
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: false
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Number
+            name: Probability
+            label: סיכוי (%)
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              max: 100
+              hint:
+                edit: ''
+                view: ''
+              format: '0'
+              prefix: ''
+              suffix: '%'
+              display: number
+              variant: success
+              animated: false
+              precision: 0
+              showValue: true
+              thresholds: []
+              description:
+                edit: ''
+                view: ''
+              showProgress: false
+              showRelative: true
+              multiDelimiter: \n
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Number
+            name: Amount
+            label: סכום
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              max: 100
+              hint:
+                edit: ''
+                view: ''
+              format: '0.00'
+              prefix: ''
+              suffix: ₪
+              display: number
+              variant: success
+              animated: false
+              precision: 2
+              showValue: true
+              thresholds: []
+              description:
+                edit: ''
+                view: ''
+              showProgress: false
+              showRelative: true
+              multiDelimiter: \n
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+      - kind: Record
+        xywh:
+        - 8
+        - 0
+        - 4
+        - 10
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: מידע נוסף
+        options:
+          fields:
+          - kind: User
+            name: OwnerId
+            label: בעל ההזדמנות
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                view: ''
+              roles: []
+              selectType: default
+              description:
+                view: ''
+              multiDelimiter: \n
+              presetWithAuthenticated: true
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: false
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Record
+            name: CampaignId
+            label: מקור קמפיין ראשי
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: true
+            options:
+              hint:
+                view: ''
+              moduleID: '310766123559813125'
+              labelField: Name
+              selectType: default
+              description:
+                view: ''
+              queryFields:
+              - Name
+              multiDelimiter: \n
+              recordLabelField: ''
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: false
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Select
+            name: ForecastCategory
+            label: קטגורית תחזית
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                view: ''
+              options:
+              - text: Pipeline
+                value: Pipeline
+              - text: Best Case
+                value: Best Case
+              - text: Commit
+                value: Commit
+              selectType: default
+              description:
+                view: ''
+              multiDelimiter: \n
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Select
+            name: Type
+            label: סוג
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                view: ''
+              options:
+              - text: עסק קיים
+                value: Exisiting Business
+              - text: עסק חדש
+                value: New Business
+              selectType: default
+              description:
+                view: ''
+              multiDelimiter: \n
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: DateTime
+            name: createdAt
+            label: נוצר בתאריך
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                view: ''
+              format: ''
+              onlyDate: false
+              onlyTime: false
+              description:
+                view: ''
+              multiDelimiter: \n
+              onlyPastValues: false
+              outputRelative: false
+              onlyFutureValues: false
+            isSystem: true
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: File
+            name: Files
+            label: קבצים
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: true
+            options:
+              hint:
+                view: ''
+              mode: list
+              inline: true
+              maxSize: 0
+              mimetypes: ''
+              allowImages: true
+              description:
+                view: ''
+              hideFileName: false
+              allowDocuments: true
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: false
+            expressions: {}
+            defaultValue: []
+            isFilterable: false
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Record
+            name: XplaceTemplate
+            label: טמפלט לאקספלס
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                view: ''
+              moduleID: '310766122838589445'
+              labelField: Name
+              selectType: default
+              description:
+                view: ''
+              queryFields: []
+              multiDelimiter: \n
+              recordLabelField: ''
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: false
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+      - kind: RecordList
+        xywh:
+        - 6
+        - 18
+        - 6
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: אנשי קשר
+        options:
+          fields:
+          - name: ContactId
+          - name: IsPrimary
+          - name: Role
+          perPage: 20
+          presort: IsPrimary DESC
+          editable: false
+          draggable: false
+          prefilter: OpportunityId = ${recordID}
+          editFields: []
+          hideHeader: false
+          hidePaging: false
+          hideSearch: false
+          selectMode: multi
+          selectable: true
+          allowExport: true
+          hideSorting: false
+          linkToParent: true
+          openInNewTab: false
+          hideAddButton: false
+          showTotalCount: true
+          hideImportButton: false
+          selectionButtons: []
+          fullPageNavigation: true
+          hideRecordEditButton: false
+          hideRecordViewButton: true
+          hideRecordCloneButton: true
+          hideRecordReminderButton: true
+          hideRecordPermissionsButton: true
+          module: OpportunityContactRole
+      - kind: Record
+        xywh:
+        - 4
+        - 0
+        - 4
+        - 10
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: שלב
+        options:
+          fields:
+          - kind: Select
+            name: StageName
+            label: שלב
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              options:
+              - text: בדיקת התאמה
+                value: Qualification
+              - text: ניתוח
+                value: Need Analysis
+              - text: הצעת מחיר
+                value: Proposal
+              - text: משא ומתן
+                value: Negotiation
+              - text: הומר בהצלחה
+                value: Closed Won
+              - text: נכשל
+                value: Closed Lost
+              selectType: default
+              description:
+                edit: ''
+                view: ''
+              multiDelimiter: \n
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Select
+            name: LeadSource
+            label: מקור ליד
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: true
+            options:
+              hint:
+                edit: ''
+                view: ''
+              options:
+              - text: הפניית לקוח
+                value: Customer Referral
+              - text: ישיר
+                value: Direct
+              - text: הפניית מועסק
+                value: Employee Referral
+              - text: אירוע
+                value: Event
+              - text: לקוח קיים
+                value: Existing Customer
+              - text: שיחה נכנסת
+                value: Inbound Call
+              - text: רשימת תפוצה
+                value: Outbound List
+              - text: הפנייה משותף
+                value: Partner Referral
+              - text: כנס
+                value: Seminar
+              - text: מדיה חברתית
+                value: Social Media
+              - text: וובינר
+                value: Webinar
+              - text: אתר (אורגני)
+                value: Website (Organic)
+              - text: אתר (ממומן)
+                value: Website (PPC)
+              - text: פה לאוזן
+                value: Word of Mouth
+              - text: אחר
+                value: Other
+              selectType: default
+              description:
+                edit: ''
+                view: ''
+              multiDelimiter: \n
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Record
+            name: LeadRef
+            label: רשומת ליד
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              moduleID: '310766124667043845'
+              labelField: Description
+              selectType: default
+              description:
+                edit: ''
+                view: ''
+              queryFields:
+              - LeadReference
+              - Description
+              multiDelimiter: \n
+              recordLabelField: ''
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: false
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: String
+            name: NextStep
+            label: שלב הבא
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              multiLine: false
+              description:
+                edit: ''
+                view: ''
+              multiDelimiter: \n
+              useRichTextEditor: false
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: DateTime
+            name: CloseDate
+            label: תאריך סגירה
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              format: ''
+              onlyDate: false
+              onlyTime: false
+              description:
+                edit: ''
+                view: ''
+              multiDelimiter: \n
+              onlyPastValues: false
+              outputRelative: false
+              onlyFutureValues: false
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: String
+            name: Description
+            label: תאור
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              multiLine: true
+              description:
+                edit: ''
+                view: ''
+              multiDelimiter: \n
+              useRichTextEditor: true
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+      - kind: RecordList
+        xywh:
+        - 0
+        - 10
+        - 8
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: מוצרים
+        options:
+          fields:
+          - name: ProductId
+          - name: ProductCode
+          - name: ListPrice
+          - name: UnitPrice
+          - name: Quantity
+          - name: Subtotal
+          - name: Discount
+          - name: TotalPrice
+          perPage: 20
+          presort: ''
+          editable: true
+          refField: OpportunityId
+          draggable: true
+          prefilter: OpportunityId = ${recordID}
+          editFields:
+          - name: ProductId
+          - name: Quantity
+          - name: UnitPrice
+          - name: Discount
+          hideHeader: false
+          hidePaging: true
+          hideSearch: false
+          selectMode: multi
+          selectable: true
+          allowExport: true
+          hideSorting: true
+          linkToParent: true
+          openInNewTab: false
+          hideAddButton: false
+          positionField: SortOrder
+          showTotalCount: true
+          hideImportButton: false
+          selectionButtons: []
+          fullPageNavigation: true
+          hideRecordEditButton: true
+          hideRecordViewButton: true
+          hideRecordCloneButton: true
+          hideRecordReminderButton: true
+          hideRecordPermissionsButton: true
+          module: OpportunityLineItem
+      - kind: RecordList
+        xywh:
+        - 0
+        - 26
+        - 4
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: הערות
+        options:
+          fields:
+          - name: Title
+          - name: Body
+          - name: createdAt
+          perPage: 20
+          presort: createdAt DESC
+          editable: false
+          draggable: false
+          prefilter: OpportunityId = ${recordID}
+          editFields: []
+          hideHeader: false
+          hidePaging: false
+          hideSearch: false
+          selectMode: multi
+          selectable: true
+          allowExport: true
+          hideSorting: false
+          linkToParent: true
+          openInNewTab: false
+          hideAddButton: false
+          showTotalCount: true
+          hideImportButton: false
+          selectionButtons: []
+          fullPageNavigation: true
+          hideRecordEditButton: false
+          hideRecordViewButton: true
+          hideRecordCloneButton: true
+          hideRecordReminderButton: true
+          hideRecordPermissionsButton: true
+          module: Note
+      - kind: RecordList
+        xywh:
+        - 4
+        - 26
+        - 4
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: אירועים
+        options:
+          fields:
+          - name: Type
+          - name: Subject
+          - name: ActivityDate
+          perPage: 20
+          presort: ActivityDate DESC
+          editable: false
+          draggable: false
+          prefilter: OpportunityId = ${recordID}
+          editFields: []
+          hideHeader: false
+          hidePaging: false
+          hideSearch: false
+          selectMode: multi
+          selectable: true
+          allowExport: true
+          hideSorting: false
+          linkToParent: true
+          openInNewTab: false
+          hideAddButton: false
+          showTotalCount: true
+          hideImportButton: false
+          selectionButtons: []
+          fullPageNavigation: true
+          hideRecordEditButton: false
+          hideRecordViewButton: true
+          hideRecordCloneButton: true
+          hideRecordReminderButton: true
+          hideRecordPermissionsButton: true
+          module: Event
+      - kind: RecordList
+        xywh:
+        - 8
+        - 26
+        - 4
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: משימות
+        options:
+          fields:
+          - name: Type
+          - name: Subject
+          - name: Status
+          - name: ActivityDate
+          perPage: 20
+          presort: ActivityDate DESC
+          editable: false
+          draggable: false
+          prefilter: OpportunityId = ${recordID}
+          editFields: []
+          hideHeader: false
+          hidePaging: false
+          hideSearch: false
+          selectMode: multi
+          selectable: true
+          allowExport: true
+          hideSorting: false
+          linkToParent: true
+          openInNewTab: false
+          hideAddButton: false
+          showTotalCount: true
+          hideImportButton: false
+          selectionButtons: []
+          fullPageNavigation: true
+          hideRecordEditButton: false
+          hideRecordViewButton: true
+          hideRecordCloneButton: true
+          hideRecordReminderButton: true
+          hideRecordPermissionsButton: true
+          module: Task
+      - kind: RecordList
+        xywh:
+        - 0
+        - 18
+        - 6
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: הצעות מחיר
+        options:
+          fields:
+          - name: QuoteNumber
+          - name: Name
+          - name: ExpirationDate
+          - name: Subtotal
+          - name: TotalPrice
+          perPage: 20
+          presort: createdAt DESC
+          editable: false
+          draggable: false
+          prefilter: OpportunityId = ${recordID}
+          editFields: []
+          hideHeader: false
+          hidePaging: false
+          hideSearch: false
+          selectMode: multi
+          selectable: true
+          allowExport: true
+          hideSorting: false
+          linkToParent: true
+          openInNewTab: false
+          hideAddButton: true
+          showTotalCount: true
+          hideImportButton: false
+          selectionButtons: []
+          fullPageNavigation: true
+          hideRecordEditButton: false
+          hideRecordViewButton: true
+          hideRecordCloneButton: true
+          hideRecordReminderButton: true
+          hideRecordPermissionsButton: true
+          module: Quote
+      - kind: Automation
+        xywh:
+        - 8
+        - 10
+        - 4
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: פעולות על ההזדמנות
+        options:
+          sealed: false
+          buttons:
+          - label: עדכון מחירים מספר מוצרים ונתוני הנחה
+            stepID: '3'
+            enabled: true
+            resourceType: compose:record
+            workflow: CRM-Opportunity-ApplyPriceBook
+          - label: יצירת הצעת מחיר חדשה להזדמנות
+            stepID: '3'
+            enabled: true
+            resourceType: compose:record
+            workflow: CRM-Opportunity-NewQuote
+      module: Opportunity
+      pages:
+      - handle: RecordPageForModuleOpportunityContactRole
+        (envoy):
+          onExisting: skip
+        title: עמוד רשומה במודול "OpportunityContactRole"
+        description: ''
+        visible: false
         blocks:
-        - title: פרטי הזדמנות
+        - kind: Record
+          xywh:
+          - 0
+          - 0
+          - 4
+          - 16
+          style: {}
+          title: Opportunity Contact Role Details
           options:
             fields:
-            - name: Name
-            - name: AccountId
-            - name: PricebookId
-            - name: Probability
-            - name: Amount
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [0, 0, 4, 10]
-        - title: מידע נוסף
-          options:
-            fields:
-            - name: OwnerId
-            - name: CampaignId
-            - name: ForecastCategory
-            - name: Type
-            - name: createdAt
-            - name: Files
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [8, 0, 4, 10]
-        - title: אנשי קשר
-          options:
-            allowExport: true
-            draggable: false
-            editFields: []
-            editable: false
-            fields:
+            - name: OpportunityId
             - name: ContactId
-            - name: IsPrimary
             - name: Role
-            hideRecordCloneButton: true
-            hideRecordEditButton: false
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            module: OpportunityContactRole
-            perPage: 20
-            prefilter: OpportunityId = ${recordID}
-            presort: IsPrimary DESC
-            selectMode: multi
-            selectable: true
-            selectionButtons: []
+            - name: IsPrimary
+        module: OpportunityContactRole
+      - handle: RecordPageForModuleOpportunityLineItem
+        (envoy):
+          onExisting: skip
+        title: עמוד רשומה במודול "פריט הזדמנות"
+        description: ''
+        visible: false
+        blocks:
+        - kind: Record
+          xywh:
+          - 0
+          - 0
+          - 4
+          - 16
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [6, 26, 6, 8]
-        - title: שלב
+            variants:
+              border: primary
+              headerText: primary
+          title: Opportunity Line Item Details
           options:
             fields:
-            - name: StageName
-            - name: LeadSource
-            - name: NextStep
-            - name: CloseDate
+            - name: OpportunityId
+            - name: ProductId
             - name: Description
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Record
-          xywh: [4, 0, 4, 10]
-        - title: מוצרים
-          options:
-            allowExport: true
-            draggable: true
-            editFields:
-            - name: ProductId
-            - name: Quantity
             - name: UnitPrice
+            - name: Quantity
             - name: Discount
-            editable: true
+        - kind: Record
+          xywh:
+          - 4
+          - 0
+          - 4
+          - 16
+          style:
+            variants:
+              border: primary
+              headerText: primary
+          title: ערכים שהוזנו אוטומטית
+          options:
             fields:
-            - name: ProductId
             - name: ProductCode
             - name: ListPrice
-            - name: UnitPrice
-            - name: Quantity
             - name: Subtotal
-            - name: Discount
             - name: TotalPrice
-            hidePaging: true
-            hideRecordCloneButton: true
-            hideRecordEditButton: true
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            hideSorting: true
-            module: OpportunityLineItem
-            perPage: 20
-            positionField: SortOrder
-            prefilter: OpportunityId = ${recordID}
-            presort: ""
-            refField: OpportunityId
-            selectMode: multi
-            selectable: true
-            selectionButtons: []
+            - name: Photo
+        - kind: Record
+          xywh:
+          - 8
+          - 0
+          - 4
+          - 16
           style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [0, 18, 8, 8]
-        - title: הערות 
+            variants:
+              border: primary
+              headerText: primary
+          title: מידע נוסף
           options:
-            allowExport: true
-            draggable: false
-            editFields: []
-            editable: false
             fields:
-            - name: Title
-            - name: Body
             - name: createdAt
-            hideRecordCloneButton: true
-            hideRecordEditButton: false
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            module: Note
-            perPage: 20
-            prefilter: OpportunityId = ${recordID}
-            presort: createdAt DESC
-            selectMode: multi
-            selectable: true
-            selectionButtons: []
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [0, 34, 4, 8]
-        - title: אירועים 
-          options:
-            allowExport: true
-            draggable: false
-            editFields: []
-            editable: false
-            fields:
-            - name: Type
-            - name: Subject
-            - name: ActivityDate
-            hideRecordCloneButton: true
-            hideRecordEditButton: false
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            module: Event
-            perPage: 20
-            prefilter: OpportunityId = ${recordID}
-            presort: ActivityDate DESC
-            selectMode: multi
-            selectable: true
-            selectionButtons: []
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [4, 34, 4, 8]
-        - title: משימות 
-          options:
-            allowExport: true
-            draggable: false
-            editFields: []
-            editable: false
-            fields:
-            - name: Type
-            - name: Subject
-            - name: Status
-            - name: ActivityDate
-            hideRecordCloneButton: true
-            hideRecordEditButton: false
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            module: Task
-            perPage: 20
-            prefilter: OpportunityId = ${recordID}
-            presort: ActivityDate DESC
-            selectMode: multi
-            selectable: true
-            selectionButtons: []
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [8, 34, 4, 8]
-        - title: הצעות מחיר
-          options:
-            allowExport: true
-            draggable: false
-            editFields: []
-            editable: false
-            fields:
-            - name: QuoteNumber
-            - name: Name
-            - name: ExpirationDate
-            - name: Subtotal
-            - name: TotalPrice
-            hideAddButton: true
-            hideRecordCloneButton: true
-            hideRecordEditButton: false
-            hideRecordReminderButton: true
-            hideRecordViewButton: true
-            module: Quote
-            perPage: 20
-            prefilter: OpportunityId = ${recordID}
-            presort: createdAt DESC
-            selectMode: multi
-            selectable: true
-            selectionButtons: []
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: RecordList
-          xywh: [0, 26, 6, 8]
-        - title: פעולות על ההזדמנות
-          options:
-            buttons:
-            - enabled: true
-              label: עדכון מחירים מספר מוצרים ונתוני הנחה
-              resourceType: compose:record
-              workflow: CRM-Opportunity-ApplyPriceBook
-              stepID: 3
-            - enabled: true
-              label: יצירת הצעת מחיר חדשה להזדמנות
-              resourceType: compose:record
-              workflow: CRM-Opportunity-NewQuote
-              stepID: 3
-            sealed: false
-          style:
-            variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-          kind: Automation
-          xywh: [8, 18, 4, 8]
-        pages:
-          - handle: RecordPageForModuleOpportunityContactRole
-            (envoy): { onExisting: "skip" }
-            module: OpportunityContactRole
-            title: עמוד רשומה במודול "OpportunityContactRole"
-            blocks:
-            - title: Opportunity Contact Role Details
-              options:
-                fields:
-                - name: OpportunityId
-                - name: ContactId
-                - name: Role
-                - name: IsPrimary
-              kind: Record
-              xywh: [0, 0, 4, 16]
-            visible: false
-          - handle: RecordPageForModuleOpportunityLineItem
-            (envoy): { onExisting: "skip" }
-            module: OpportunityLineItem
-            title: עמוד רשומה במודול "פריט הזדמנות"
-            blocks:
-            - title: Opportunity Line Item Details
-              options:
-                fields:
-                - name: OpportunityId
-                - name: ProductId
-                - name: Description
-                - name: UnitPrice
-                - name: Quantity
-                - name: Discount
-              style:
-                variants: {border: primary, headerText: primary}
-              kind: Record
-              xywh: [0, 0, 4, 16]
-            - title: ערכים שהוזנו אוטומטית
-              options:
-                fields:
-                - name: ProductCode
-                - name: ListPrice
-                - name: Subtotal
-                - name: TotalPrice
-                - name: Photo
-              style:
-                variants: {border: primary, headerText: primary}
-              kind: Record
-              xywh: [4, 0, 4, 16]
-            - title: מידע נוסף
-              options:
-                fields:
-                - name: createdAt
-                - name: createdBy
-                - name: updatedAt
-                - name: updatedBy
-              style:
-                variants: {border: primary, headerText: primary}
-              kind: Record
-              xywh: [8, 0, 4, 16]
-            visible: false
-          - handle: RecordPageForModuleOpportunityCompetitor
-            (envoy): { onExisting: "skip" }
-            module: OpportunityCompetitor
-            title: עמוד רשומה במודול "OpportunityCompetitor"
-            blocks:
-            - title: Opportunity Competitor Details
-              options:
-                fields:
-                - name: OpportunityId
-                - name: CompetitorName
-                - name: Strengths
-                - name: Weaknesses
-              style:
-                variants: {border: primary, headerText: primary}
-              kind: Record
-              xywh: [0, 0, 5, 17]
-            visible: false
+            - name: createdBy
+            - name: updatedAt
+            - name: updatedBy
+        module: OpportunityLineItem
+      - handle: RecordPageForModuleOpportunityCompetitor
+        (envoy):
+          onExisting: skip
+        title: עמוד רשומה במודול "OpportunityCompetitor"
+        description: ''
         visible: false
+        blocks:
+        - kind: Record
+          xywh:
+          - 0
+          - 0
+          - 5
+          - 17
+          style:
+            variants:
+              border: primary
+              headerText: primary
+          title: Opportunity Competitor Details
+          options:
+            fields:
+            - name: OpportunityId
+            - name: CompetitorName
+            - name: Strengths
+            - name: Weaknesses
+        module: OpportunityCompetitor
     visible: true
   - handle: Quotes
     (envoy): { onExisting: "skip" }
@@ -1453,10 +2820,832 @@ pages:
       kind: Chart
       xywh: [9, 8, 3, 8]
     pages:
-      - handle: RecordPageForModuleQuote
+    - handle: RecordPageForModuleQuote
+      (envoy):
+        onExisting: skip
+      title: עמוד רשומה במודול "הצעות מחיר"
+      description: ''
+      visible: false
+      blocks:
+      - kind: Record
+        xywh:
+        - 0
+        - 0
+        - 4
+        - 12
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: נתוני הצעת מחיר
+        options:
+          fields:
+          - kind: Number
+            name: QuoteNumber
+            label: מספר הצעה
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              max: 100
+              hint:
+                edit: ''
+                view: ''
+              format: '0000000'
+              prefix: ''
+              suffix: ''
+              display: number
+              variant: success
+              animated: false
+              precision: 0
+              showValue: true
+              thresholds: []
+              description:
+                edit: ''
+                view: ''
+              showProgress: false
+              showRelative: true
+              multiDelimiter: \\n
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: String
+            name: Name
+            label: שם הצעה
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              multiLine: false
+              description:
+                edit: ''
+                view: ''
+              multiDelimiter: \\n
+              useRichTextEditor: false
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Record
+            name: OpportunityId
+            label: שם ההזדמנות
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              moduleID: '310766124180701189'
+              labelField: Name
+              selectType: ''
+              description:
+                edit: ''
+                view: ''
+              queryFields:
+              - AccountId
+              - Name
+              multiDelimiter: \\n
+              recordLabelField: ''
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: false
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Record
+            name: CoverTemplate
+            label: טמפלט מכתב מלווה
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                view: ''
+              moduleID: '310766122838589445'
+              labelField: Name
+              selectType: default
+              description:
+                view: ''
+              queryFields:
+              - Name
+              multiDelimiter: \\n
+              recordLabelField: ''
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: false
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Record
+            name: TermookIds
+            label: ספרי תנאים
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: true
+            options:
+              hint:
+                edit: ''
+                view: ''
+              moduleID: '310766122805362693'
+              labelField: Name
+              selectType: ''
+              description:
+                edit: ''
+                view: ''
+              queryFields:
+              - Name
+              multiDelimiter: \\n
+              recordLabelField: ''
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: false
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: DateTime
+            name: ExpirationDate
+            label: תאריך תפוגה
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              format: DD/MM/YYYY
+              onlyDate: false
+              onlyTime: false
+              description:
+                edit: ''
+                view: ''
+              multiDelimiter: \\n
+              onlyPastValues: false
+              outputRelative: false
+              onlyFutureValues: false
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: Select
+            name: Status
+            label: סטאטוס
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              options:
+              - text: טיוטה
+                value: Draft
+              - text: נדרשת בדיקה
+                value: Needs Review
+              - text: בבדיקה
+                value: In Review
+              - text: אושרה
+                value: Approved
+              - text: נדחתה
+                value: Rejected
+              - text: הוצגה
+                value: Presented
+              - text: התקבלה
+                value: Accepted
+              - text: נדחתה
+                value: Denied
+              selectType: default
+              description:
+                edit: ''
+                view: ''
+              multiDelimiter: \\n
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+          - kind: String
+            name: Description
+            label: תאור
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              multiLine: true
+              description:
+                edit: ''
+                view: ''
+              multiDelimiter: \\n
+              useRichTextEditor: false
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+      - kind: Record
+        xywh:
+        - 8
+        - 0
+        - 4
+        - 12
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: סיכום
+        options:
+          fields:
+          - name: PricebookId
+          - name: Subtotal
+          - name: Discount
+          - name: ShippingHandling
+          - name: TotalPrice
+          - name: Tax
+          - name: GrandTotal
+      - kind: Record
+        xywh:
+        - 4
+        - 0
+        - 4
+        - 7
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: איש קשר ראשי
+        options:
+          fields:
+          - name: AccountId
+          - name: ContactId
+          - name: Email
+          - name: Phone
+          - name: createdBy
+          - name: createdAt
+      - kind: Record
+        xywh:
+        - 0
+        - 40
+        - 4
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: חשבונית עבור
+        options:
+          fields:
+          - name: BillingName
+          - name: BillingStreet
+          - name: BillingCity
+          - name: BillingState
+          - name: BillingPostalCode
+          - name: BillingCountry
+      - kind: Record
+        xywh:
+        - 4
+        - 40
+        - 4
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: הצעת מחיר עבור
+        options:
+          fields:
+          - name: QuoteToName
+          - name: QuoteToStreet
+          - name: QuoteToCity
+          - name: QuoteToState
+          - name: QuoteToPostalCode
+          - name: QuoteToCountry
+      - kind: Record
+        xywh:
+        - 8
+        - 40
+        - 4
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: משלוח עבור
+        options:
+          fields:
+          - name: ShippingName
+          - name: ShippingStreet
+          - name: ShippingCity
+          - name: ShippingState
+          - name: ShippingPostalCode
+          - name: ShippingCountry
+      - kind: RecordList
+        xywh:
+        - 0
+        - 23
+        - 12
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: פריטי הצעת המחיר
+        options:
+          fields:
+          - name: ProductId
+          - name: ListPrice
+          - name: UnitPrice
+          - name: Quantity
+          - name: Subtotal
+          - name: Discount
+          - name: TotalPrice
+          perPage: 20
+          presort: ''
+          editable: true
+          refField: QuoteId
+          draggable: true
+          prefilter: QuoteId = ${recordID}
+          editFields:
+          - name: ProductId
+          - name: ListPrice
+          - name: UnitPrice
+          - name: Quantity
+          - name: Subtotal
+          - name: Discount
+          - name: TotalPrice
+          hideHeader: false
+          hidePaging: true
+          hideSearch: false
+          selectMode: multi
+          selectable: true
+          allowExport: true
+          hideSorting: true
+          linkToParent: true
+          openInNewTab: false
+          hideAddButton: false
+          positionField: SortOrder
+          showTotalCount: true
+          hideImportButton: false
+          selectionButtons: []
+          fullPageNavigation: true
+          hideRecordEditButton: true
+          hideRecordViewButton: true
+          hideRecordCloneButton: true
+          hideRecordReminderButton: true
+          hideRecordPermissionsButton: true
+          module: QuoteLineItem
+      - kind: RecordList
+        xywh:
+        - 0
+        - 31
+        - 12
+        - 9
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: תנאים
+        options:
+          fields:
+          - name: Name
+          - name: Description
+          perPage: 20
+          presort: ''
+          editable: true
+          refField: QuoteId
+          draggable: true
+          prefilter: QuoteId = ${recordID}
+          editFields:
+          - name: Name
+          - name: Description
+          hideHeader: false
+          hidePaging: true
+          hideSearch: false
+          selectMode: multi
+          selectable: true
+          allowExport: true
+          hideSorting: true
+          linkToParent: true
+          openInNewTab: false
+          hideAddButton: false
+          positionField: Order
+          showTotalCount: true
+          hideImportButton: false
+          selectionButtons: []
+          fullPageNavigation: true
+          hideRecordEditButton: true
+          hideRecordViewButton: true
+          hideRecordCloneButton: true
+          hideRecordReminderButton: true
+          hideRecordPermissionsButton: true
+          module: QuoteTermItem
+      - kind: RecordList
+        xywh:
+        - 0
+        - 48
+        - 4
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: הערות
+        options:
+          fields:
+          - name: Title
+          - name: Body
+          - name: createdAt
+          perPage: 20
+          presort: createdAt DESC
+          editable: false
+          draggable: false
+          prefilter: QuoteId = ${recordID}
+          editFields: []
+          hideHeader: false
+          hidePaging: false
+          hideSearch: false
+          selectMode: multi
+          selectable: true
+          allowExport: true
+          hideSorting: false
+          linkToParent: true
+          openInNewTab: false
+          hideAddButton: false
+          showTotalCount: true
+          hideImportButton: false
+          selectionButtons: []
+          fullPageNavigation: true
+          hideRecordEditButton: false
+          hideRecordViewButton: true
+          hideRecordCloneButton: true
+          hideRecordReminderButton: true
+          hideRecordPermissionsButton: true
+          module: Note
+      - kind: RecordList
+        xywh:
+        - 4
+        - 48
+        - 4
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: אירועים
+        options:
+          fields:
+          - name: Type
+          - name: Subject
+          - name: ActivityDate
+          perPage: 20
+          presort: ActivityDate DESC
+          editable: false
+          draggable: false
+          prefilter: QuoteId = ${recordID}
+          editFields: []
+          hideHeader: false
+          hidePaging: false
+          hideSearch: false
+          selectMode: multi
+          selectable: true
+          allowExport: true
+          hideSorting: false
+          linkToParent: true
+          openInNewTab: false
+          hideAddButton: false
+          showTotalCount: true
+          hideImportButton: false
+          selectionButtons: []
+          fullPageNavigation: true
+          hideRecordEditButton: false
+          hideRecordViewButton: true
+          hideRecordCloneButton: true
+          hideRecordReminderButton: true
+          hideRecordPermissionsButton: true
+          module: Event
+      - kind: RecordList
+        xywh:
+        - 8
+        - 48
+        - 4
+        - 8
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        title: משימות
+        options:
+          fields:
+          - name: Type
+          - name: Subject
+          - name: Status
+          - name: ActivityDate
+          perPage: 20
+          presort: ActivityDate DESC
+          editable: false
+          draggable: false
+          prefilter: QuoteId = ${recordID}
+          editFields: []
+          hideHeader: false
+          hidePaging: false
+          hideSearch: false
+          selectMode: multi
+          selectable: true
+          allowExport: true
+          hideSorting: false
+          linkToParent: true
+          openInNewTab: false
+          hideAddButton: false
+          showTotalCount: true
+          hideImportButton: false
+          selectionButtons: []
+          fullPageNavigation: true
+          hideRecordEditButton: false
+          hideRecordViewButton: true
+          hideRecordCloneButton: true
+          hideRecordReminderButton: true
+          hideRecordPermissionsButton: true
+          module: Task
+      - kind: Automation
+        xywh:
+        - 4
+        - 7
+        - 4
+        - 5
+        style:
+          wrap:
+            kind: card
+          variants:
+            bodyBg: white
+            border: primary
+            headerBg: white
+            headerText: primary
+        options:
+          sealed: false
+          buttons:
+          - label: שליחת הצעת המחיר ב-PDF לאיש קשר ראשי
+            stepID: '3'
+            enabled: true
+            resourceType: compose:record
+            workflow: CRM-Quote-Pdf-SendToPriContact
+          - label: שליחת PDF לכתובת מייל כלשהי
+            stepID: '3'
+            enabled: true
+            resourceType: compose:record
+            workflow: CRM-Quote-Pdf-SendToCustomEmail
+          - label: שליחת הצעת המחיר במייל לאיש קשר ראשי
+            stepID: '3'
+            enabled: true
+            variant: light
+            resourceType: compose:record
+            workflow: CRM-Quote-SendToPriContact
+          - label: שליחת ההצעה למייל כלשהו
+            stepID: '3'
+            enabled: true
+            variant: light
+            resourceType: compose:record
+            workflow: CRM-Quote-SendToCustomEmail
+          - label: ייבוא מספרי תנאים
+            stepID: '4'
+            enabled: true
+            variant: dark
+            resourceType: compose:record
+            workflow: CRM-Quote-ApplyTermBooks
+          - label: תזכורת
+            stepID: '6'
+            enabled: true
+            variant: primary
+            resourceType: compose:record
+            workflow: CRM-Quote-SendReminderWithPDFToPriContact
+      - kind: Record
+        xywh:
+        - 3
+        - 12
+        - 9
+        - 11
+        style:
+          wrap:
+            kind: card
+          variants:
+            headerText: dark
+        title: מכתב מלווה
+        options:
+          fields:
+          - kind: String
+            name: CoverText
+            label: טקסט מכתב מלווה
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                edit: ''
+                view: ''
+              multiLine: true
+              description:
+                edit: ''
+                view: ''
+              multiDelimiter: \n
+              useRichTextEditor: false
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue: []
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+      - kind: Record
+        xywh:
+        - 0
+        - 12
+        - 3
+        - 11
+        style:
+          wrap:
+            kind: card
+          variants:
+            headerText: dark
+        title: נוסח תזכורת
+        options:
+          fields:
+          - kind: String
+            name: ReminderText
+            label: טקסט לתזכורת
+            config:
+              dal:
+                encodingStrategy: null
+              privacy:
+                usageDisclosure: ''
+                sensitivityLevelID: '0'
+              recordRevisions:
+                enabled: false
+            isMulti: false
+            options:
+              hint:
+                view: ''
+              multiLine: true
+              description:
+                view: ''
+              multiDelimiter: \n
+              useRichTextEditor: false
+            isSystem: false
+            maxLength: 0
+            isRequired: false
+            isSortable: true
+            expressions: {}
+            defaultValue:
+            - name: ''
+              value: "\uFEFFהי,\\n\\nאני רואה שעדיין לא בחרתם ספק לפרויקט. אשמח לשוחח\
+                \ ולייעץ, לשמוע את ההתלבטויות, ולספק הצעת מחיר מתוקנת אם צריך.\\n\\nאני\
+                \ זמין כאן באתר, בנייד 054-3181735, או במייל: chen@tilnet.co.il\\n\\nשיהיה\
+                \ המשך יום נעים,\\n\\nחן"
+            isFilterable: true
+            canReadRecordValue: true
+            canUpdateRecordValue: true
+      module: Quote
+      pages:
+      - handle: RecordPageForModuleQuoteLineItem
         (envoy):
           onExisting: skip
-        title: עמוד רשומה במודול "הצעות מחיר"
+        title: עמוד רשומה במודול "פריט הזדמנות"
         description: ''
         visible: false
         blocks:
@@ -1465,338 +3654,17 @@ pages:
           - 0
           - 0
           - 4
-          - 12
+          - 15
           style:
             variants:
-              bodyBg: white
               border: primary
-              headerBg: white
               headerText: primary
-          title: נתוני הצעת מחיר
+          title: Quote Line Item Information
           options:
             fields:
-            - kind: Number
-              name: QuoteNumber
-              label: מספר הצעה
-              isMulti: false
-              options:
-                hint:
-                  view: ''
-                format: '0000000'
-                prefix: ''
-                suffix: ''
-                precision: 0
-                description:
-                  view: ''
-                multiDelimiter: \n
-              isSystem: false
-              isPrivate: false
-              maxLength: 0
-              isRequired: false
-              isSortable: true
-              expressions: {}
-              defaultValue: []
-              canReadRecordValue: true
-              canUpdateRecordValue: true
-            - kind: String
-              name: Name
-              label: שם הצעה
-              isMulti: false
-              options:
-                hint:
-                  view: ''
-                multiLine: false
-                description:
-                  view: ''
-                multiDelimiter: \n
-                useRichTextEditor: false
-              isSystem: false
-              isPrivate: false
-              maxLength: 0
-              isRequired: false
-              isSortable: true
-              expressions: {}
-              defaultValue: []
-              canReadRecordValue: true
-              canUpdateRecordValue: true
-            - kind: Record
-              name: OpportunityId
-              label: שם ההזדמנות
-              isMulti: false
-              options:
-                hint:
-                  view: ''
-                moduleID: '259188943651143951'
-                labelField: Name
-                selectType: ''
-                description:
-                  view: ''
-                queryFields:
-                - AccountId
-                - Name
-                multiDelimiter: \n
-              isSystem: false
-              isPrivate: false
-              maxLength: 0
-              isRequired: false
-              isSortable: false
-              expressions: {}
-              defaultValue: []
-              canReadRecordValue: true
-              canUpdateRecordValue: true
-            - kind: Record
-              name: TermookIds
-              label: ספרי תנאים
-              isMulti: true
-              options:
-                hint:
-                  view: ''
-                moduleID: '259188942929133839'
-                labelField: Name
-                selectType: ''
-                description:
-                  view: ''
-                queryFields:
-                - Name
-                multiDelimiter: \n
-              isSystem: false
-              isPrivate: false
-              maxLength: 0
-              isRequired: false
-              isSortable: false
-              expressions: {}
-              defaultValue: []
-              canReadRecordValue: true
-              canUpdateRecordValue: true
-            - kind: DateTime
-              name: ExpirationDate
-              label: תאריך תפוגה
-              isMulti: false
-              options:
-                hint:
-                  view: ''
-                format: DD/MM/YYYY
-                onlyDate: false
-                onlyTime: false
-                description:
-                  view: ''
-                multiDelimiter: \n
-                onlyPastValues: false
-                outputRelative: false
-                onlyFutureValues: false
-              isSystem: false
-              isPrivate: false
-              maxLength: 0
-              isRequired: false
-              isSortable: true
-              expressions: {}
-              defaultValue: []
-              canReadRecordValue: true
-              canUpdateRecordValue: true
-            - kind: Select
-              name: Status
-              label: סטאטוס
-              isMulti: false
-              options:
-                hint:
-                  view: ''
-                options:
-                - text: טיוטה
-                  value: Draft
-                - text: נדרשת בדיקה
-                  value: Needs Review
-                - text: בבדיקה
-                  value: In Review
-                - text: אושרה
-                  value: Approved
-                - text: נדחתה
-                  value: Rejected
-                - text: הוצגה
-                  value: Presented
-                - text: התקבלה
-                  value: Accepted
-                - text: נדחתה
-                  value: Denied
-                selectType: default
-                description:
-                  view: ''
-                multiDelimiter: \n
-              isSystem: false
-              isPrivate: false
-              maxLength: 0
-              isRequired: false
-              isSortable: true
-              expressions: {}
-              defaultValue: []
-              canReadRecordValue: true
-              canUpdateRecordValue: true
-            - kind: String
-              name: Description
-              label: תאור
-              isMulti: false
-              options:
-                hint:
-                  view: ''
-                multiLine: true
-                description:
-                  view: ''
-                multiDelimiter: \n
-                useRichTextEditor: false
-              isSystem: false
-              isPrivate: false
-              maxLength: 0
-              isRequired: false
-              isSortable: true
-              expressions: {}
-              defaultValue: []
-              canReadRecordValue: true
-              canUpdateRecordValue: true
-            - kind: Record
-              name: XplaceTemplate
-              label: טמפלט לאקספלס
-              isMulti: false
-              options:
-                hint:
-                  view: ''
-                moduleID: '259306700413075727'
-                labelField: Name
-                selectType: default
-                description:
-                  view: ''
-                queryFields:
-                - Name
-                - Content
-                multiDelimiter: \n
-              isSystem: false
-              isPrivate: false
-              maxLength: 0
-              isRequired: false
-              isSortable: false
-              expressions: {}
-              defaultValue: []
-              canReadRecordValue: true
-              canUpdateRecordValue: true
-        - kind: Record
-          xywh:
-          - 8
-          - 0
-          - 4
-          - 12
-          style:
-            variants:
-              bodyBg: white
-              border: primary
-              headerBg: white
-              headerText: primary
-          title: סיכום
-          options:
-            fields:
-            - name: PricebookId
-            - name: Subtotal
-            - name: Discount
-            - name: ShippingHandling
-            - name: TotalPrice
-            - name: Tax
-            - name: GrandTotal
-        - kind: Record
-          xywh:
-          - 4
-          - 0
-          - 4
-          - 8
-          style:
-            variants:
-              bodyBg: white
-              border: primary
-              headerBg: white
-              headerText: primary
-          title: איש קשר ראשי
-          options:
-            fields:
-            - name: AccountId
-            - name: ContactId
-            - name: Email
-            - name: Phone
-            - name: createdBy
-            - name: createdAt
-        - kind: Record
-          xywh:
-          - 0
-          - 29
-          - 4
-          - 8
-          style:
-            variants:
-              bodyBg: white
-              border: primary
-              headerBg: white
-              headerText: primary
-          title: חשבונית עבור
-          options:
-            fields:
-            - name: BillingName
-            - name: BillingStreet
-            - name: BillingCity
-            - name: BillingState
-            - name: BillingPostalCode
-            - name: BillingCountry
-        - kind: Record
-          xywh:
-          - 4
-          - 29
-          - 4
-          - 8
-          style:
-            variants:
-              bodyBg: white
-              border: primary
-              headerBg: white
-              headerText: primary
-          title: הצעת מחיר עבור
-          options:
-            fields:
-            - name: QuoteToName
-            - name: QuoteToStreet
-            - name: QuoteToCity
-            - name: QuoteToState
-            - name: QuoteToPostalCode
-            - name: QuoteToCountry
-        - kind: Record
-          xywh:
-          - 8
-          - 29
-          - 4
-          - 8
-          style:
-            variants:
-              bodyBg: white
-              border: primary
-              headerBg: white
-              headerText: primary
-          title: משלוח עבור
-          options:
-            fields:
-            - name: ShippingName
-            - name: ShippingStreet
-            - name: ShippingCity
-            - name: ShippingState
-            - name: ShippingPostalCode
-            - name: ShippingCountry
-        - kind: RecordList
-          xywh:
-          - 0
-          - 12
-          - 12
-          - 8
-          style:
-            variants:
-              bodyBg: white
-              border: primary
-              headerBg: white
-              headerText: primary
-          title: פריטי הצעת המחיר
-          options:
-            fields:
+            - name: QuoteId
+            - name: LineItemNumber
+            - name: LineItemDescription
             - name: ProductId
             - name: ListPrice
             - name: UnitPrice
@@ -1804,282 +3672,10 @@ pages:
             - name: Subtotal
             - name: Discount
             - name: TotalPrice
-            perPage: 20
-            presort: ''
-            editable: true
-            refField: QuoteId
-            draggable: true
-            prefilter: QuoteId = ${recordID}
-            editFields:
-            - name: ProductId
-            - name: ListPrice
-            - name: UnitPrice
-            - name: Quantity
-            - name: Subtotal
-            - name: Discount
-            - name: TotalPrice
-            hideHeader: false
-            hidePaging: true
-            hideSearch: false
-            selectMode: multi
-            selectable: true
-            allowExport: true
-            hideSorting: true
-            hideAddButton: false
-            positionField: SortOrder
-            showTotalCount: true
-            selectionButtons: []
-            fullPageNavigation: true
-            hideRecordEditButton: true
-            hideRecordViewButton: true
-            hideRecordCloneButton: true
-            hideRecordReminderButton: true
-            hideRecordPermissionsButton: true
-            module: QuoteLineItem
-        - kind: RecordList
-          xywh:
-          - 0
-          - 20
-          - 12
-          - 9
-          style:
-            variants:
-              bodyBg: white
-              border: primary
-              headerBg: white
-              headerText: primary
-          title: תנאים
-          options:
-            fields:
-            - name: Name
-            - name: Description
-            perPage: 20
-            presort: ''
-            editable: true
-            refField: QuoteId
-            draggable: true
-            prefilter: QuoteId = ${recordID}
-            editFields:
-            - name: Name
-            - name: Description
-            hideHeader: false
-            hidePaging: true
-            hideSearch: false
-            selectMode: multi
-            selectable: true
-            allowExport: true
-            hideSorting: true
-            hideAddButton: false
-            positionField: Order
-            showTotalCount: true
-            selectionButtons: []
-            fullPageNavigation: true
-            hideRecordEditButton: true
-            hideRecordViewButton: true
-            hideRecordCloneButton: true
-            hideRecordReminderButton: true
-            hideRecordPermissionsButton: true
-            module: QuoteTermItem
-        - kind: RecordList
-          xywh:
-          - 0
-          - 37
-          - 4
-          - 8
-          style:
-            variants:
-              bodyBg: white
-              border: primary
-              headerBg: white
-              headerText: primary
-          title: הערות
-          options:
-            fields:
-            - name: Title
-            - name: Body
-            - name: createdAt
-            perPage: 20
-            presort: createdAt DESC
-            editable: false
-            draggable: false
-            prefilter: QuoteId = ${recordID}
-            editFields: []
-            hideHeader: false
-            hidePaging: false
-            hideSearch: false
-            selectMode: multi
-            selectable: true
-            allowExport: true
-            hideSorting: false
-            hideAddButton: false
-            showTotalCount: true
-            selectionButtons: []
-            fullPageNavigation: true
-            hideRecordEditButton: false
-            hideRecordViewButton: true
-            hideRecordCloneButton: true
-            hideRecordReminderButton: true
-            hideRecordPermissionsButton: true
-            module: Note
-        - kind: RecordList
-          xywh:
-          - 4
-          - 37
-          - 4
-          - 8
-          style:
-            variants:
-              bodyBg: white
-              border: primary
-              headerBg: white
-              headerText: primary
-          title: אירועים
-          options:
-            fields:
-            - name: Type
-            - name: Subject
-            - name: ActivityDate
-            perPage: 20
-            presort: ActivityDate DESC
-            editable: false
-            draggable: false
-            prefilter: QuoteId = ${recordID}
-            editFields: []
-            hideHeader: false
-            hidePaging: false
-            hideSearch: false
-            selectMode: multi
-            selectable: true
-            allowExport: true
-            hideSorting: false
-            hideAddButton: false
-            showTotalCount: true
-            selectionButtons: []
-            fullPageNavigation: true
-            hideRecordEditButton: false
-            hideRecordViewButton: true
-            hideRecordCloneButton: true
-            hideRecordReminderButton: true
-            hideRecordPermissionsButton: true
-            module: Event
-        - kind: RecordList
-          xywh:
-          - 8
-          - 37
-          - 4
-          - 8
-          style:
-            variants:
-              bodyBg: white
-              border: primary
-              headerBg: white
-              headerText: primary
-          title: משימות
-          options:
-            fields:
-            - name: Type
-            - name: Subject
-            - name: Status
-            - name: ActivityDate
-            perPage: 20
-            presort: ActivityDate DESC
-            editable: false
-            draggable: false
-            prefilter: QuoteId = ${recordID}
-            editFields: []
-            hideHeader: false
-            hidePaging: false
-            hideSearch: false
-            selectMode: multi
-            selectable: true
-            allowExport: true
-            hideSorting: false
-            hideAddButton: false
-            showTotalCount: true
-            selectionButtons: []
-            fullPageNavigation: true
-            hideRecordEditButton: false
-            hideRecordViewButton: true
-            hideRecordCloneButton: true
-            hideRecordReminderButton: true
-            hideRecordPermissionsButton: true
-            module: Task
-        - kind: Automation
-          xywh:
-          - 4
-          - 8
-          - 4
-          - 4
-          style:
-            variants:
-              bodyBg: white
-              border: primary
-              headerBg: white
-              headerText: primary
-          options:
-            sealed: false
-            buttons:
-            - label: שליחת הצעת המחיר ב-PDF לאיש קשר ראשי
-              stepID: '3'
-              enabled: true
-              resourceType: compose:record
-              workflow: CRM-Quote-Pdf-SendToPriContact
-            - label: שליחת PDF לכתובת מייל כלשהי
-              stepID: '3'
-              enabled: true
-              resourceType: compose:record
-              workflow: CRM-Quote-Pdf-SendToCustomEmail
-            - label: שליחת הצעת המחיר במייל לאיש קשר ראשי
-              stepID: '3'
-              enabled: true
-              variant: light
-              resourceType: compose:record
-              workflow: CRM-Quote-SendToPriContact
-            - label: שליחת ההצעה למייל כלשהו
-              stepID: '3'
-              enabled: true
-              variant: light
-              resourceType: compose:record
-              workflow: CRM-Quote-SendToCustomEmail
-            - label: ייבוא מספרי תנאים
-              stepID: '4'
-              enabled: true
-              variant: dark
-              resourceType: compose:record
-              workflow: CRM-Quote-ApplyTermBooks
-        module: Quote
-        pages:
-        - handle: RecordPageForModuleQuoteLineItem
-          (envoy):
-            onExisting: skip
-          title: עמוד רשומה במודול "פריט הזדמנות"
-          description: ''
-          visible: false
-          blocks:
-          - kind: Record
-            xywh:
-            - 0
-            - 0
-            - 4
-            - 15
-            style:
-              variants:
-                border: primary
-                headerText: primary
-            title: Quote Line Item Information
-            options:
-              fields:
-              - name: QuoteId
-              - name: LineItemNumber
-              - name: LineItemDescription
-              - name: ProductId
-              - name: ListPrice
-              - name: UnitPrice
-              - name: Quantity
-              - name: Subtotal
-              - name: Discount
-              - name: TotalPrice
-          module: QuoteLineItem
+        module: QuoteLineItem
+
+      
+      
       - handle: XplaceTemplates
         (envoy):
           onExisting: skip
@@ -4596,53 +6192,198 @@ pages:
           kind: RecordList
           xywh: [0, 0, 12, 7]
         pages:
-          - handle: RecordPageForModuleDefaultSettings
-            (envoy): { onExisting: "skip" }
-            module: Settings
-            title: עמוד רשומה במודול "DefaultSettings"
-            blocks:
-            - title: Quote Settings
-              options:
-                fields:
-                - name: QuoteNextNumber
-                - name: QuoteExpirationDays
-                - name: DefaultQuoteImage
-                - name: DefaultAboutImage
-                - name: EmailLogo
-              style:
-                variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-              kind: Record
-              xywh: [3, 0, 3, 12]
-            - title: Opportunity Settings
-              options:
-                fields:
-                - name: OpportunityCloseDateDays
-                - name: OpportunityProbability
-                - name: OpportunityForecaseCategory
-                - name: OpportunityStagename
-              style:
-                variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-              kind: Record
-              xywh: [0, 0, 3, 12]
-            - title: Contract Settings
-              options:
-                fields:
-                - name: ContractNextNumber
-                - name: ContractDefaultTime
-              style:
-                variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-              kind: Record
-              xywh: [6, 0, 3, 12]
-            - title: Case Settings
-              options:
-                fields:
-                - name: CaseNextNumber
-                - name: SolutionNextNumber
-              style:
-                variants: {bodyBg: white, border: primary, headerBg: white, headerText: primary}
-              kind: Record
-              xywh: [9, 0, 3, 12]
-            visible: false
+        - handle: RecordPageForModuleDefaultSettings
+          (envoy):
+            onExisting: skip
+          title: עמוד רשומה במודול "DefaultSettings"
+          description: ''
+          visible: false
+          blocks:
+          - kind: Record
+            xywh:
+            - 3
+            - 6
+            - 3
+            - 12
+            style:
+              wrap:
+                kind: card
+              variants:
+                bodyBg: white
+                border: primary
+                headerBg: white
+                headerText: primary
+            title: Quote Settings
+            options:
+              fields:
+              - name: QuoteNextNumber
+              - name: QuoteExpirationDays
+              - name: DefaultQuoteImage
+              - name: DefaultAboutImage
+              - name: EmailLogo
+          - kind: Record
+            xywh:
+            - 0
+            - 6
+            - 3
+            - 12
+            style:
+              wrap:
+                kind: card
+              variants:
+                bodyBg: white
+                border: primary
+                headerBg: white
+                headerText: primary
+            title: Opportunity Settings
+            options:
+              fields:
+              - name: OpportunityCloseDateDays
+              - name: OpportunityProbability
+              - name: OpportunityForecaseCategory
+              - name: OpportunityStagename
+          - kind: Record
+            xywh:
+            - 6
+            - 6
+            - 3
+            - 12
+            style:
+              wrap:
+                kind: card
+              variants:
+                bodyBg: white
+                border: primary
+                headerBg: white
+                headerText: primary
+            title: Contract Settings
+            options:
+              fields:
+              - name: ContractNextNumber
+              - name: ContractDefaultTime
+          - kind: Record
+            xywh:
+            - 9
+            - 6
+            - 3
+            - 12
+            style:
+              wrap:
+                kind: card
+              variants:
+                bodyBg: white
+                border: primary
+                headerBg: white
+                headerText: primary
+            title: Case Settings
+            options:
+              fields:
+              - name: CaseNextNumber
+              - name: SolutionNextNumber
+          - kind: Record
+            xywh:
+            - 0
+            - 0
+            - 12
+            - 6
+            style:
+              wrap:
+                kind: card
+              variants:
+                headerText: dark
+            title: הרשאות
+            options:
+              fields:
+              - kind: String
+                name: Domain
+                label: דומיין
+                config:
+                  dal:
+                    encodingStrategy: null
+                  privacy:
+                    usageDisclosure: ''
+                    sensitivityLevelID: '0'
+                  recordRevisions:
+                    enabled: false
+                isMulti: false
+                options:
+                  hint:
+                    edit: ''
+                    view: ''
+                  multiLine: false
+                  description:
+                    edit: ''
+                    view: ''
+                  multiDelimiter: \n
+                  useRichTextEditor: false
+                isSystem: false
+                maxLength: 0
+                isRequired: false
+                isSortable: true
+                expressions: {}
+                defaultValue: []
+                isFilterable: true
+                canReadRecordValue: true
+                canUpdateRecordValue: true
+              - kind: String
+                name: Api_Auth_Client_User_Id
+                label: מזהה משתמש לאימות
+                config:
+                  dal:
+                    encodingStrategy: null
+                  privacy:
+                    usageDisclosure: ''
+                    sensitivityLevelID: '0'
+                  recordRevisions:
+                    enabled: false
+                isMulti: false
+                options:
+                  hint:
+                    view: ''
+                  multiLine: false
+                  description:
+                    view: ''
+                  multiDelimiter: \n
+                  useRichTextEditor: false
+                isSystem: false
+                maxLength: 0
+                isRequired: false
+                isSortable: true
+                expressions: {}
+                defaultValue: []
+                isFilterable: true
+                canReadRecordValue: true
+                canUpdateRecordValue: true
+              - kind: String
+                name: Api_Auth_Client_Secret
+                label: סוד משתמש אימות
+                config:
+                  dal:
+                    encodingStrategy: null
+                  privacy:
+                    usageDisclosure: ''
+                    sensitivityLevelID: '0'
+                  recordRevisions:
+                    enabled: false
+                isMulti: false
+                options:
+                  hint:
+                    view: ''
+                  multiLine: false
+                  description:
+                    view: ''
+                  multiDelimiter: \n
+                  useRichTextEditor: false
+                isSystem: false
+                maxLength: 0
+                isRequired: false
+                isSortable: true
+                expressions: {}
+                defaultValue: []
+                isFilterable: true
+                canReadRecordValue: true
+                canUpdateRecordValue: true
+          module: Settings
         visible: true
     visible: true
   - handle: UnpublishedModules

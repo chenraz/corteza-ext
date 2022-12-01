@@ -17034,3 +17034,1379 @@ workflows:
                     points: []
                     style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
                     value: End
+    CRM-Quote-SendReminderWithPDFToPriContact:
+      enabled: true
+      meta:
+        name: CRM - Quote - Send reminder with PDF To Pri Contact
+        description: ""
+      keepSessions: 0
+      steps:
+        - stepID: 6
+          kind: gateway
+          ref: excl
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "6"
+              parent: "1"
+              value: Check recipient
+              xywh:
+                - 808
+                - 1040
+                - 200
+                - 80
+        - stepID: 7
+          kind: function
+          ref: composeRecordsSearch
+          arguments:
+            - target: module
+              value: QuoteLineItem
+              type: Handle
+            - target: namespace
+              value: crm
+              type: Handle
+            - target: query
+              expr: '"QuoteId = " + record.recordID'
+              type: String
+          results:
+            - target: lineItems
+              expr: records
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "7"
+              parent: "1"
+              value: Get LineItems
+              xywh:
+                - 1448
+                - 1040
+                - 200
+                - 80
+        - stepID: 8
+          kind: prompt
+          ref: notification
+          arguments:
+            - target: title
+              value: אזהרה
+              type: String
+            - target: message
+              value: לא קושר אימייל להצעת המחיר. נא להזין פרטי איש קשר ראשי
+              type: String
+            - target: variant
+              value: אזהרה
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "8"
+              parent: "1"
+              value: 'אזהרה: לא קושר אימייל להצעת המחיר. נא להזין פרטי איש קשר ראשי.'
+              xywh:
+                - 808
+                - 1200
+                - 200
+                - 80
+        - stepID: 9
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: renderVariables
+              type: Vars
+            - target: renderVariables.quote
+              expr: record
+              type: ComposeRecord
+            - target: renderVariables.lineItems
+              expr: lineItems
+              type: Array
+            - target: renderOptions
+              expr: |-
+                {
+                    "documentSize": "A4",
+                    "contentScale": "1",
+                    "orientation": "portrait",
+                    "margin": "0.3"
+                  }
+              type: Vars
+            - target: renderVariables.coverImgUrl
+              expr: join(["http://local.cortezaproject.org:18080/api/compose",coverImgUrl],'')
+              type: String
+            - target: renderVariables.now
+              expr: strftime(now(),"%d/%m/%Y")
+              type: String
+            - target: renderVariables.priContact
+              expr: priContact
+              type: ComposeRecord
+            - target: renderVariables.productImages
+              expr: productImages
+              type: Vars
+            - target: renderVariables.productNames
+              expr: productNames
+              type: Vars
+            - target: renderVariables.aboutImgUrl
+              expr: |
+                join(["http://local.cortezaproject.org:18080/api/compose",aboutImgUrl],"")
+              type: String
+            - target: renderVariables.expirationDate
+              expr: ExpirationDate
+              type: String
+            - target: renderVariables.termItems
+              expr: termItems
+              type: Array
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "9"
+              parent: "1"
+              value: Set Render Variables
+              xywh:
+                - 528
+                - 1840
+                - 200
+                - 80
+        - stepID: 10
+          kind: function
+          ref: templatesRender
+          arguments:
+            - target: lookup
+              value: quote_pdf_reminder_email
+              type: Handle
+            - target: documentName
+              value: body
+              type: String
+            - target: documentType
+              value: text/html
+              type: String
+            - target: variables
+              expr: renderVariables
+              type: Vars
+          results:
+            - target: mailHtml
+              expr: document
+              type: RenderedDocument
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "10"
+              parent: "1"
+              value: Mail Message Template
+              xywh:
+                - 528
+                - 2000
+                - 200
+                - 80
+        - stepID: 11
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: DefaultQuoteImage
+              expr: settings.values.DefaultQuoteImage
+              type: String
+            - target: DefaultAboutImage
+              expr: settings.values.DefaultAboutImage
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "11"
+              parent: "1"
+              value: Prepare settings
+              xywh:
+                - 808
+                - 1360
+                - 200
+                - 80
+        - stepID: 12
+          kind: function
+          ref: oauth2Authenticate
+          arguments:
+            - target: client
+              expr: settings.values.Api_Auth_Client_User_Id
+              type: String
+            - target: secret
+              expr: settings.values.Api_Auth_Client_Secret
+              type: String
+            - target: scope
+              value: profile api
+              type: String
+            - target: tokenUrl
+              expr: join([settings.values.Domain,"/auth/oauth2/token"],'')
+              type: String
+          results:
+            - target: accessToken
+              expr: accessToken
+              type: String
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "12"
+              parent: "1"
+              value: get api token
+              xywh:
+                - 1080
+                - 1360
+                - 200
+                - 80
+        - stepID: 13
+          kind: function
+          ref: httpRequestSend
+          arguments:
+            - target: url
+              expr: join([ settings.values.Domain, "api/compose/namespace",record.namespaceID, "attachment/record", DefaultQuoteImage],"/")
+              type: String
+            - target: method
+              value: GET
+              type: String
+            - target: headerAuthBearer
+              expr: accessToken
+              type: String
+          results:
+            - target: attachemtResStatus
+              expr: status
+              type: String
+            - target: attachmentReader
+              expr: body
+              type: Reader
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "13"
+              parent: "1"
+              value: get cover image
+              xywh:
+                - 528
+                - 1680
+                - 200
+                - 80
+        - stepID: 14
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: attachmentString
+              expr: attachmentReader
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "14"
+              parent: "1"
+              value: Prepare cover image results
+              xywh:
+                - 808
+                - 1680
+                - 200
+                - 80
+        - stepID: 15
+          kind: function
+          ref: jsenvExecute
+          arguments:
+            - target: scope
+              expr: attachmentString
+              type: String
+            - target: source
+              value: |-
+                const js = JSON.parse(arguments[0])
+                return js.response.url;
+              type: String
+          results:
+            - target: coverImgUrl
+              expr: resultString
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "15"
+              parent: "1"
+              value: jsenv get cover image preview url
+              xywh:
+                - 1088
+                - 1680
+                - 200
+                - 80
+        - stepID: 16
+          kind: function
+          ref: templatesRender
+          arguments:
+            - target: lookup
+              value: quote_pdf_header
+              type: Handle
+            - target: documentName
+              value: body
+              type: String
+            - target: documentType
+              value: text/html
+              type: String
+          results:
+            - target: headerHtml
+              expr: document
+              type: RenderedDocument
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "16"
+              parent: "1"
+              value: Quote to HTML Header
+              xywh:
+                - 1088
+                - 1840
+                - 200
+                - 80
+        - stepID: 17
+          kind: function
+          ref: composeRecordsLookup
+          arguments:
+            - target: module
+              value: Contact
+              type: Handle
+            - target: namespace
+              value: crm
+              type: Handle
+            - target: record
+              expr: record.values.ContactId
+              type: ID
+          results:
+            - target: priContact
+              expr: record
+              type: ComposeRecord
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "17"
+              parent: "1"
+              value: Get pri contact record
+              xywh:
+                - 2008
+                - 1040
+                - 200
+                - 80
+        - stepID: 18
+          kind: function
+          ref: templatesRender
+          arguments:
+            - target: lookup
+              value: quote_pdf_footer
+              type: Handle
+            - target: documentName
+              value: body
+              type: String
+            - target: documentType
+              value: text/html
+              type: String
+          results:
+            - target: footerHtml
+              expr: document
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "18"
+              parent: "1"
+              value: Quote to HTML Footer
+              xywh:
+                - 1368
+                - 1840
+                - 200
+                - 80
+        - stepID: 19
+          kind: iterator
+          ref: loopEach
+          arguments:
+            - target: items
+              expr: lineItems
+              type: Array
+          results:
+            - target: lineItem
+              expr: item
+              type: Any
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "19"
+              parent: "1"
+              value: get product data
+              xywh:
+                - 808
+                - 1520
+                - 200
+                - 80
+        - stepID: 20
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: ProductId
+              expr: lineItem.values.ProductId
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "20"
+              parent: "1"
+              value: set product data
+              xywh:
+                - 1088
+                - 1520
+                - 200
+                - 80
+        - stepID: 21
+          kind: function
+          ref: httpRequestSend
+          arguments:
+            - target: url
+              expr: join([ settings.values.Domain, "api/compose/namespace",record.namespaceID, "attachment/record", LineItemProduct.values.Photo],"/")
+              type: String
+            - target: method
+              value: GET
+              type: String
+            - target: headerAuthBearer
+              expr: accessToken
+              type: String
+          results:
+            - target: productImage
+              expr: body
+              type: Reader
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "21"
+              parent: "1"
+              value: http get product image attachment
+              xywh:
+                - 1648
+                - 1520
+                - 200
+                - 80
+        - stepID: 22
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: productImage
+              expr: productImage
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "22"
+              parent: "1"
+              value: cast product image to string
+              xywh:
+                - 1928
+                - 1520
+                - 200
+                - 80
+        - stepID: 23
+          kind: function
+          ref: jsenvExecute
+          arguments:
+            - target: scope
+              expr: productImage
+              type: String
+            - target: source
+              value: |-
+                const js = JSON.parse(arguments[0])
+                return js.response.url;
+              type: String
+          results:
+            - target: imagePreviewUrl
+              expr: resultString
+              type: String
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "23"
+              parent: "1"
+              value: jsenv image preview
+              xywh:
+                - 2208
+                - 1520
+                - 200
+                - 80
+        - stepID: 24
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: productImages
+              type: Vars
+            - target: productNames
+              type: Vars
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "24"
+              parent: "1"
+              value: Prepare product Data Arrays
+              xywh:
+                - 528
+                - 1520
+                - 200
+                - 80
+        - stepID: 25
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: imageItem
+              expr: |-
+                {
+                  ProductId: join(["http://local.cortezaproject.org:18080/api/compose",imagePreviewUrl],'')}
+              type: Vars
+            - target: productImages
+              expr: merge(productImages,imageItem)
+              type: Vars
+            - target: nameItem
+              expr: '{ProductId: LineItemProduct.values.Name}'
+              type: Vars
+            - target: productNames
+              expr: merge(productNames,nameItem)
+              type: Vars
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "25"
+              parent: "1"
+              value: add product data
+              xywh:
+                - 2488
+                - 1520
+                - 200
+                - 80
+        - stepID: 26
+          kind: continue
+          ref: ""
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "26"
+              parent: "1"
+              value: null
+              xywh:
+                - 2768
+                - 1520
+                - 200
+                - 80
+        - stepID: 27
+          kind: function
+          ref: httpRequestSend
+          arguments:
+            - target: url
+              expr: join([ settings.values.Domain, "api/compose/namespace",record.namespaceID, "attachment/record", DefaultAboutImage],"/")
+              type: String
+            - target: method
+              value: GET
+              type: String
+            - target: headerAuthBearer
+              expr: accessToken
+              type: String
+          results:
+            - target: attachmentReader
+              expr: body
+              type: Reader
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "27"
+              parent: "1"
+              value: get about image
+              xywh:
+                - 1368
+                - 1680
+                - 200
+                - 80
+        - stepID: 28
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: attachmentString
+              expr: attachmentReader
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "28"
+              parent: "1"
+              value: Prepare about image results
+              xywh:
+                - 1648
+                - 1680
+                - 200
+                - 80
+        - stepID: 29
+          kind: function
+          ref: jsenvExecute
+          arguments:
+            - target: scope
+              expr: attachmentString
+              type: Any
+            - target: source
+              value: |-
+                const js = JSON.parse(arguments[0])
+                return `https://crm.tilnet.co.il/api/compose${js.response.url}`;
+              type: String
+          results:
+            - target: aboutImgUrl
+              expr: resultString
+              type: String
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "29"
+              parent: "1"
+              value: jsenv get about image preview url
+              xywh:
+                - 1928
+                - 1680
+                - 200
+                - 80
+        - stepID: 30
+          kind: gateway
+          ref: excl
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "30"
+              parent: "1"
+              value: Check quote name
+              xywh:
+                - 1088
+                - 1040
+                - 200
+                - 80
+        - stepID: 31
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: record.values.Name
+              expr: '"הצעת מחיר לפיתוח"'
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "31"
+              parent: "1"
+              value: Prepare quote name
+              xywh:
+                - 1088
+                - 1200
+                - 200
+                - 80
+        - stepID: 32
+          kind: function
+          ref: jsenvExecute
+          arguments:
+            - target: scope
+              expr: record.values.ExpirationDate
+              type: String
+            - target: source
+              value: return arguments[0].replace(/([\d]{4})-([\d]{2})-([\d]{2}).*/,"$3/$2/$1")
+              type: String
+          results:
+            - target: ExpirationDate
+              expr: resultString
+              type: String
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "32"
+              parent: "1"
+              value: jsenv set expiration date
+              xywh:
+                - 2288
+                - 1040
+                - 200
+                - 80
+        - stepID: 33
+          kind: function
+          ref: composeRecordsSearch
+          arguments:
+            - target: module
+              value: QuoteTermItem
+              type: Handle
+            - target: namespace
+              value: crm
+              type: Handle
+            - target: query
+              expr: '"QuoteId = " + record.recordID'
+              type: String
+          results:
+            - target: termItems
+              expr: records
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "33"
+              parent: "1"
+              value: Get TermItems
+              xywh:
+                - 1728
+                - 1040
+                - 200
+                - 80
+        - stepID: 35
+          kind: function
+          ref: composeRecordsLookup
+          arguments:
+            - target: module
+              value: Product
+              type: Handle
+            - target: namespace
+              value: crm
+              type: Handle
+            - target: record
+              expr: ProductId
+              type: ID
+          results:
+            - target: LineItemProduct
+              expr: record
+              type: ComposeRecord
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "35"
+              parent: "1"
+              value: get LineItem Product record
+              xywh:
+                - 1368
+                - 1520
+                - 200
+                - 80
+        - stepID: 36
+          kind: function
+          ref: corredorExec
+          arguments:
+            - target: script
+              value: /server-scripts/tilnet-scripts/crm/send-pdf.js:default
+              type: String
+            - target: args
+              expr: |-
+                {
+                  "record":record,
+                  "templateHtml": templateHtml,
+                  "headerHtml": headerHtml,
+                  "footerHtml": footerHtml,
+                  "mailTo": record.values.Email,
+                  "mailSubject":  quoteName,
+                  "quoteFileName":  join([quoteName],".pdf"),
+                  "messageHtml": messageHtml
+                }
+              type: Vars
+          results:
+            - target: res
+              expr: results
+              type: Vars
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "36"
+              parent: "1"
+              value: Send PDF using Auto Script
+              xywh:
+                - 1088
+                - 2000
+                - 200
+                - 80
+        - stepID: 37
+          kind: prompt
+          ref: notification
+          arguments:
+            - target: title
+              value: הצלחה
+              type: String
+            - target: message
+              value: הצעת המחיר נשלחה במייל
+              type: String
+            - target: variant
+              value: הצלחה
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "37"
+              parent: "1"
+              value: 'הצלחה: תזכורת נשלחה במייל'
+              xywh:
+                - 1088
+                - 2160
+                - 200
+                - 80
+        - stepID: 38
+          kind: function
+          ref: templatesRender
+          arguments:
+            - target: lookup
+              value: quote_pdf
+              type: Handle
+            - target: documentName
+              value: body
+              type: String
+            - target: documentType
+              value: text/html
+              type: String
+            - target: variables
+              expr: renderVariables
+              type: Vars
+          results:
+            - target: html
+              expr: document
+              type: RenderedDocument
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "38"
+              parent: "1"
+              value: Quote to HTML
+              xywh:
+                - 800
+                - 1840
+                - 200
+                - 80
+        - stepID: 39
+          kind: function
+          ref: composeRecordsLast
+          arguments:
+            - target: module
+              value: Settings
+              type: Handle
+            - target: namespace
+              value: crm
+              type: Handle
+          results:
+            - target: settings
+              expr: record
+              type: ComposeRecord
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "39"
+              parent: "1"
+              value: get settings
+              xywh:
+                - 528
+                - 1360
+                - 200
+                - 80
+        - stepID: 40
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: templateHtml
+              expr: html.document
+              type: String
+            - target: messageHtml
+              expr: mailHtml.document
+              type: String
+            - target: headerHtml
+              expr: headerHtml.document
+              type: String
+            - target: footerHtml
+              expr: footerHtml.document
+              type: String
+            - target: quoteName
+              expr: join([record.values.Name,record.values.QuoteNumber]," - ")
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: false
+              id: "40"
+              parent: "1"
+              value: Prepare Automation Script Vars
+              xywh:
+                - 808
+                - 2000
+                - 200
+                - 80
+      paths:
+        - expr: 'record.values.Email ? true : false'
+          parentID: 6
+          childID: 30
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "41"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: '#1 - Yes'
+        - parentID: 6
+          childID: 8
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "42"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: '#2 - No'
+        - parentID: 9
+          childID: 38
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "43"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 18
+          childID: 10
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "44"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 10
+          childID: 40
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "45"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 39
+          childID: 11
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "46"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 13
+          childID: 14
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "48"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 29
+          childID: 9
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "49"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 14
+          childID: 15
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "50"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 40
+          childID: 36
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "51"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 38
+          childID: 16
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "52"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 36
+          childID: 37
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "53"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 16
+          childID: 18
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "54"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 19
+          childID: 20
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "55"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: Body
+        - parentID: 20
+          childID: 35
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "56"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 35
+          childID: 21
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "57"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 21
+          childID: 22
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "58"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 23
+          childID: 25
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "59"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 7
+          childID: 33
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "60"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 32
+          childID: 39
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "61"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 12
+          childID: 24
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "62"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 24
+          childID: 19
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "63"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 22
+          childID: 23
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "64"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 25
+          childID: 26
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "65"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 19
+          childID: 13
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "66"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: End
+        - parentID: 27
+          childID: 28
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "67"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 28
+          childID: 29
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "68"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 15
+          childID: 27
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "69"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - expr: 'record.values.Name=="(unnamed)" ? true : false'
+          parentID: 30
+          childID: 31
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "70"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: '#1 - If'
+        - parentID: 30
+          childID: 7
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "71"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: '#2 - Else (if)'
+        - parentID: 17
+          childID: 32
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "72"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 33
+          childID: 17
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "73"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 31
+          childID: 7
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "74"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 11
+          childID: 12
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "80"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+      triggers:
+        - resourceType: compose:record
+          eventType: onManual
+          constraints:
+            - name: module.handle
+              op: =
+              values:
+                - Quote
+            - name: namespace.handle
+              op: =
+              values:
+                - crm
+          enabled: true
+          stepID: 6
+          meta:
+            description: ""
+            visual:
+              defaultName: false
+              edges:
+                - childID: 6
+                  meta:
+                    description: ""
+                    label: ""
+                    visual:
+                      id: "75"
+                      parent: "1"
+                      points: []
+                      style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                      value: null
+                  parentID: 34
+              id: "34"
+              parent: "1"
+              value: On Manual Quote
+              xywh:
+                - 528
+                - 1040
+                - 200
+                - 80
