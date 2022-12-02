@@ -14889,7 +14889,7 @@ workflows:
               expr: record.values.CampaignId
               type: Array
             - target: opportunity.values.Name
-              expr: trimRight(trimLeft(record.values.Description, "<p>"), "</p>")
+              expr: record.values.Description
               type: String
           results: []
           meta:
