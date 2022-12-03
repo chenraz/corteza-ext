@@ -3964,10 +3964,9 @@ workflows:
       meta:
         name: CRM - Quote - Send PDF To Pri Contact
         description: Send this Quote as PDF via email to the primary contact
-        visual: null
       keepSessions: 0
       steps:
-        - id: 3
+        - stepID: 3
           kind: gateway
           ref: excl
           arguments: []
@@ -3976,6 +3975,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "3"
               parent: "1"
               value: Check recipient
@@ -3984,7 +3984,7 @@ workflows:
                 - 2040
                 - 200
                 - 80
-        - id: 6
+        - stepID: 6
           kind: function
           ref: composeRecordsSearch
           arguments:
@@ -4004,6 +4004,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "6"
               parent: "1"
               value: Get LineItems
@@ -4012,7 +4013,7 @@ workflows:
                 - 2040
                 - 200
                 - 80
-        - id: 15
+        - stepID: 15
           kind: prompt
           ref: notification
           arguments:
@@ -4030,6 +4031,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "15"
               parent: "1"
               value: 'אזהרה: לא קושר אימייל להצעת המחיר. נא להזין פרטי איש קשר ראשי.'
@@ -4038,7 +4040,7 @@ workflows:
                 - 2200
                 - 200
                 - 80
-        - id: 16
+        - stepID: 16
           kind: prompt
           ref: notification
           arguments:
@@ -4056,6 +4058,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "16"
               parent: "1"
               value: 'הצלחה: הצעת המחיר נשלחה במייל'
@@ -4064,7 +4067,7 @@ workflows:
                 - 3160
                 - 200
                 - 80
-        - id: 31
+        - stepID: 31
           kind: expressions
           ref: ""
           arguments:
@@ -4115,6 +4118,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "31"
               parent: "1"
               value: Set Render Variables
@@ -4123,7 +4127,7 @@ workflows:
                 - 2840
                 - 200
                 - 80
-        - id: 99
+        - stepID: 99
           kind: function
           ref: templatesRender
           arguments:
@@ -4146,6 +4150,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "99"
               parent: "1"
               value: Mail Message Template
@@ -4154,7 +4159,7 @@ workflows:
                 - 3000
                 - 200
                 - 80
-        - id: 113
+        - stepID: 113
           kind: function
           ref: templatesRender
           arguments:
@@ -4177,6 +4182,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "113"
               parent: "1"
               value: Quote to HTML
@@ -4185,7 +4191,7 @@ workflows:
                 - 2840
                 - 200
                 - 80
-        - id: 119
+        - stepID: 119
           kind: expressions
           ref: ""
           arguments:
@@ -4209,6 +4215,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "119"
               parent: "1"
               value: Prepare Automation Script Vars
@@ -4217,7 +4224,7 @@ workflows:
                 - 3000
                 - 200
                 - 80
-        - id: 124
+        - stepID: 124
           kind: function
           ref: corredorExec
           arguments:
@@ -4244,6 +4251,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "124"
               parent: "1"
               value: Send PDF using Auto Script
@@ -4252,7 +4260,7 @@ workflows:
                 - 3000
                 - 200
                 - 80
-        - id: 152
+        - stepID: 152
           kind: function
           ref: composeRecordsLast
           arguments:
@@ -4269,6 +4277,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "152"
               parent: "1"
               value: get settings
@@ -4277,7 +4286,7 @@ workflows:
                 - 2360
                 - 200
                 - 80
-        - id: 153
+        - stepID: 153
           kind: expressions
           ref: ""
           arguments:
@@ -4292,6 +4301,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "153"
               parent: "1"
               value: Prepare settings
@@ -4300,7 +4310,7 @@ workflows:
                 - 2360
                 - 200
                 - 80
-        - id: 154
+        - stepID: 154
           kind: function
           ref: oauth2Authenticate
           arguments:
@@ -4314,15 +4324,17 @@ workflows:
               value: profile api
               type: String
             - target: tokenUrl
-              value: http://local.cortezaproject.org:18080/auth/oauth2/token
+              expr: join([settings.values.Domain,"/auth/oauth2/token"],'')
               type: String
           results:
             - target: accessToken
               expr: accessToken
+              type: String
           meta:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "154"
               parent: "1"
               value: get api token
@@ -4331,12 +4343,12 @@ workflows:
                 - 2360
                 - 200
                 - 80
-        - id: 159
+        - stepID: 159
           kind: function
           ref: httpRequestSend
           arguments:
             - target: url
-              expr: format("%v%v/%v/%v", "http://local.cortezaproject.org:18080/api/compose/namespace/",record.namespaceID, "attachment/record", DefaultQuoteImage)
+              expr: format("%v%v%v/%v/%v", settings.values.Domain, "/api/compose/namespace/",record.namespaceID, "attachment/record", DefaultQuoteImage)
               type: String
             - target: method
               value: GET
@@ -4347,12 +4359,15 @@ workflows:
           results:
             - target: attachemtResStatus
               expr: status
+              type: String
             - target: attachmentReader
               expr: body
+              type: Reader
           meta:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "159"
               parent: "1"
               value: get cover image
@@ -4361,7 +4376,7 @@ workflows:
                 - 2680
                 - 200
                 - 80
-        - id: 163
+        - stepID: 163
           kind: expressions
           ref: ""
           arguments:
@@ -4373,6 +4388,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "163"
               parent: "1"
               value: Prepare cover image results
@@ -4381,7 +4397,7 @@ workflows:
                 - 2680
                 - 200
                 - 80
-        - id: 168
+        - stepID: 168
           kind: function
           ref: jsenvExecute
           arguments:
@@ -4396,10 +4412,12 @@ workflows:
           results:
             - target: coverImgUrl
               expr: resultString
+              type: String
           meta:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "168"
               parent: "1"
               value: jsenv get cover image preview url
@@ -4408,7 +4426,7 @@ workflows:
                 - 2680
                 - 200
                 - 80
-        - id: 172
+        - stepID: 172
           kind: function
           ref: templatesRender
           arguments:
@@ -4428,6 +4446,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "172"
               parent: "1"
               value: Quote to HTML Header
@@ -4436,7 +4455,7 @@ workflows:
                 - 2840
                 - 200
                 - 80
-        - id: 191
+        - stepID: 191
           kind: function
           ref: composeRecordsLookup
           arguments:
@@ -4456,6 +4475,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "191"
               parent: "1"
               value: Get pri contact record
@@ -4464,7 +4484,7 @@ workflows:
                 - 2040
                 - 200
                 - 80
-        - id: 192
+        - stepID: 192
           kind: function
           ref: templatesRender
           arguments:
@@ -4484,6 +4504,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "192"
               parent: "1"
               value: Quote to HTML Footer
@@ -4492,7 +4513,7 @@ workflows:
                 - 2840
                 - 200
                 - 80
-        - id: 195
+        - stepID: 195
           kind: iterator
           ref: loopEach
           arguments:
@@ -4506,6 +4527,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "195"
               parent: "1"
               value: get product data
@@ -4514,7 +4536,7 @@ workflows:
                 - 2520
                 - 200
                 - 80
-        - id: 207
+        - stepID: 207
           kind: expressions
           ref: ""
           arguments:
@@ -4526,6 +4548,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "207"
               parent: "1"
               value: set product data
@@ -4534,7 +4557,7 @@ workflows:
                 - 2520
                 - 200
                 - 80
-        - id: 209
+        - stepID: 209
           kind: function
           ref: composeRecordsLookup
           arguments:
@@ -4554,6 +4577,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "209"
               parent: "1"
               value: get LineItem Product record
@@ -4562,12 +4586,12 @@ workflows:
                 - 2520
                 - 200
                 - 80
-        - id: 213
+        - stepID: 213
           kind: function
           ref: httpRequestSend
           arguments:
             - target: url
-              expr: join([ "http://local.cortezaproject.org:18080/api/compose/namespace",record.namespaceID, "attachment/record", LineItemProduct.values.Photo],"/")
+              expr: join([ settings.values.Domain, "api/compose/namespace",record.namespaceID, "attachment/record", LineItemProduct.values.Photo],"/")
               type: String
             - target: method
               value: GET
@@ -4578,10 +4602,12 @@ workflows:
           results:
             - target: productImage
               expr: body
+              type: Reader
           meta:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "213"
               parent: "1"
               value: http get product image attachment
@@ -4590,27 +4616,31 @@ workflows:
                 - 2520
                 - 200
                 - 80
-        - id: 218
+        - stepID: 218
           kind: expressions
           ref: ""
           arguments:
             - target: productImage
               expr: productImage
               type: String
+            - target: productImageUrl
+              expr: join([ settings.values.Domain, "api/compose/namespace",record.namespaceID, "attachment/record", LineItemProduct.values.Photo],"/")
+              type: String
           results: []
           meta:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "218"
               parent: "1"
-              value: cast product image to string
+              value: prepare product image request
               xywh:
                 - 3440
                 - 2520
                 - 200
                 - 80
-        - id: 219
+        - stepID: 219
           kind: function
           ref: jsenvExecute
           arguments:
@@ -4625,10 +4655,12 @@ workflows:
           results:
             - target: imagePreviewUrl
               expr: resultString
+              type: String
           meta:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "219"
               parent: "1"
               value: jsenv image preview
@@ -4637,7 +4669,7 @@ workflows:
                 - 2520
                 - 200
                 - 80
-        - id: 236
+        - stepID: 236
           kind: expressions
           ref: ""
           arguments:
@@ -4650,6 +4682,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "236"
               parent: "1"
               value: Prepare product Data Arrays
@@ -4658,7 +4691,7 @@ workflows:
                 - 2520
                 - 200
                 - 80
-        - id: 242
+        - stepID: 242
           kind: expressions
           ref: ""
           arguments:
@@ -4681,6 +4714,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "242"
               parent: "1"
               value: add product data
@@ -4689,7 +4723,7 @@ workflows:
                 - 2520
                 - 200
                 - 80
-        - id: 244
+        - stepID: 244
           kind: continue
           ref: ""
           arguments: []
@@ -4698,6 +4732,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "244"
               parent: "1"
               value: null
@@ -4706,12 +4741,12 @@ workflows:
                 - 2520
                 - 200
                 - 80
-        - id: 251
+        - stepID: 251
           kind: function
           ref: httpRequestSend
           arguments:
             - target: url
-              expr: format("%v%v/%v/%v", "http://local.cortezaproject.org:18080/api/compose/namespace/",record.namespaceID, "attachment/record", DefaultAboutImage)
+              expr: format("%v%v%v/%v/%v",settings.values.Domain, "/api/compose/namespace/",record.namespaceID, "attachment/record", DefaultAboutImage)
               type: String
             - target: method
               value: GET
@@ -4722,10 +4757,12 @@ workflows:
           results:
             - target: attachmentReader
               expr: body
+              type: Reader
           meta:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "251"
               parent: "1"
               value: get about image
@@ -4734,7 +4771,7 @@ workflows:
                 - 2680
                 - 200
                 - 80
-        - id: 252
+        - stepID: 252
           kind: expressions
           ref: ""
           arguments:
@@ -4746,6 +4783,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "252"
               parent: "1"
               value: Prepare about image results
@@ -4754,7 +4792,7 @@ workflows:
                 - 2680
                 - 200
                 - 80
-        - id: 253
+        - stepID: 253
           kind: function
           ref: jsenvExecute
           arguments:
@@ -4773,6 +4811,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "253"
               parent: "1"
               value: jsenv get about image preview url
@@ -4781,7 +4820,7 @@ workflows:
                 - 2680
                 - 200
                 - 80
-        - id: 259
+        - stepID: 259
           kind: gateway
           ref: excl
           arguments: []
@@ -4790,6 +4829,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "259"
               parent: "1"
               value: Check quote name
@@ -4798,7 +4838,7 @@ workflows:
                 - 2040
                 - 200
                 - 80
-        - id: 269
+        - stepID: 269
           kind: expressions
           ref: ""
           arguments:
@@ -4810,6 +4850,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "269"
               parent: "1"
               value: Prepare quote name
@@ -4818,7 +4859,7 @@ workflows:
                 - 2200
                 - 200
                 - 80
-        - id: 271
+        - stepID: 271
           kind: function
           ref: jsenvExecute
           arguments:
@@ -4835,6 +4876,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "271"
               parent: "1"
               value: jsenv set expiration date
@@ -4843,7 +4885,7 @@ workflows:
                 - 2040
                 - 200
                 - 80
-        - id: 273
+        - stepID: 273
           kind: function
           ref: composeRecordsSearch
           arguments:
@@ -4863,6 +4905,7 @@ workflows:
             name: ""
             description: ""
             visual:
+              defaultName: false
               id: "273"
               parent: "1"
               value: Get TermItems
@@ -5251,7 +5294,7 @@ workflows:
             visual:
               id: "275"
               parent: "1"
-              points: null
+              points: []
               style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;
               value: null
       triggers:
@@ -5271,8 +5314,9 @@ workflows:
           meta:
             description: ""
             visual:
+              defaultName: false
               edges:
-                - childID: "3"
+                - childID: 3
                   meta:
                     description: ""
                     label: ""
@@ -5282,7 +5326,7 @@ workflows:
                       points: []
                       style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
                       value: null
-                  parentID: "2"
+                  parentID: 2
               id: "2"
               parent: "1"
               value: On Manual Quote
