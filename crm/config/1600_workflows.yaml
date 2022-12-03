@@ -4089,7 +4089,7 @@ workflows:
                   }
               type: Vars
             - target: renderVariables.coverImgUrl
-              expr: join(["http://local.cortezaproject.org:18080/api/compose",coverImgUrl],'')
+              expr: join([settings.values.Domain, "/api/compose",coverImgUrl],'')
               type: String
             - target: renderVariables.now
               expr: strftime(now(),"%d/%m/%Y")
@@ -4105,7 +4105,7 @@ workflows:
               type: Vars
             - target: renderVariables.aboutImgUrl
               expr: |
-                join(["http://local.cortezaproject.org:18080/api/compose",aboutImgUrl],"")
+                join([settings.values.Domain, "/api/compose",aboutImgUrl],"")
               type: String
             - target: renderVariables.expirationDate
               expr: ExpirationDate
@@ -4247,6 +4247,7 @@ workflows:
           results:
             - target: res
               expr: results
+              type: Vars
           meta:
             name: ""
             description: ""
@@ -4698,7 +4699,7 @@ workflows:
             - target: imageItem
               expr: |-
                 {
-                  ProductId: join(["http://local.cortezaproject.org:18080/api/compose",imagePreviewUrl],'')}
+                  ProductId: join([settings.values.Domain, "/api/compose",imagePreviewUrl],'')}
               type: Vars
             - target: productImages
               expr: merge(productImages,imageItem)
