@@ -11785,41 +11785,6 @@ modules:
         options:
           format: "0"
           precision: 0
-  XplaceTemplate:
-    (envoy):
-      onExisting: skip
-    fields:
-      Content:
-        expressions: {}
-        kind: String
-        label: "\u05EA\u05D5\u05DB\u05DF"
-        multi: false
-        options:
-          description:
-            view: ''
-          hint:
-            view: ''
-          multiDelimiter: \n
-          multiLine: true
-          useRichTextEditor: false
-        place: 0
-        required: false
-      Name:
-        expressions: {}
-        kind: String
-        label: "\u05E9\u05DD"
-        multi: false
-        options:
-          description:
-            view: ''
-          hint:
-            view: ''
-          multiDelimiter: \n
-          multiLine: false
-          useRichTextEditor: false
-        place: 0
-        required: false
-    name: XplaceTemplate
   CoverTemplate:
     (envoy):
       onExisting: skip
