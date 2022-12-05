@@ -18455,3 +18455,271 @@ workflows:
                 - 1040
                 - 200
                 - 80
+    CRM-Quote-UpdateCoverLetter:
+      enabled: true
+      meta:
+        name: CRM - Quote - Update CoverLetter
+        description: Update cover text after a change in CoverTemplate
+      keepSessions: 0
+      steps:
+        - stepID: 16
+          kind: gateway
+          ref: excl
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: true
+              id: "16"
+              parent: "1"
+              value: Exclusive
+              xywh:
+                - 2200
+                - 1840
+                - 200
+                - 80
+        - stepID: 18
+          kind: termination
+          ref: ""
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: true
+              id: "18"
+              parent: "1"
+              value: Terminate workflow execution
+              xywh:
+                - 2200
+                - 2000
+                - 200
+                - 80
+        - stepID: 23
+          kind: function
+          ref: composeRecordsLookup
+          arguments:
+            - target: module
+              value: CoverTemplate
+              type: Handle
+            - target: namespace
+              value: crm
+              type: Handle
+            - target: record
+              expr: coverTemplateId
+              type: ID
+          results:
+            - target: coverLetterRec
+              expr: record
+              type: ComposeRecord
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: true
+              id: "23"
+              parent: "1"
+              value: Compose record lookup
+              xywh:
+                - 2680
+                - 1840
+                - 200
+                - 80
+        - stepID: 24
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: coverLetter
+              expr: coverLetterRec.values.Content
+              type: String
+            - target: record.values.CoverText
+              expr: coverLetterRec.values.Content
+              type: String
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: true
+              id: "24"
+              parent: "1"
+              value: Define and mutate scope variables
+              xywh:
+                - 2680
+                - 2000
+                - 200
+                - 80
+        - stepID: 27
+          kind: expressions
+          ref: ""
+          arguments:
+            - target: coverTemplateId
+              expr: record.values.CoverTemplate
+              type: ID
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: true
+              id: "27"
+              parent: "1"
+              value: Define and mutate scope variables
+              xywh:
+                - 2680
+                - 1680
+                - 200
+                - 80
+        - stepID: 29
+          kind: termination
+          ref: ""
+          arguments: []
+          results: []
+          meta:
+            name: ""
+            description: ""
+            visual:
+              defaultName: true
+              id: "29"
+              parent: "1"
+              value: Terminate workflow execution
+              xywh:
+                - 2680
+                - 2160
+                - 200
+                - 80
+      paths:
+        - expr: oldRecord.values.CoverTemplate != record.values.CoverTemplate
+          parentID: 16
+          childID: 27
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "20"
+              parent: "1"
+              points: []
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: Cover template chaged
+        - parentID: 16
+          childID: 18
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "21"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: Cover Template didn't change
+        - parentID: 23
+          childID: 24
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "25"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 27
+          childID: 23
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "28"
+              parent: "1"
+              points: []
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: null
+        - parentID: 24
+          childID: 29
+          meta:
+            name: ""
+            description: ""
+            visual:
+              id: "30"
+              parent: "1"
+              points: null
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: null
+      triggers:
+        - resourceType: compose:record
+          eventType: beforeUpdate
+          constraints:
+            - name: namespace.handle
+              op: =
+              values:
+                - crm
+            - name: module.handle
+              op: =
+              values:
+                - Quote
+          enabled: true
+          stepID: 16
+          meta:
+            description: ""
+            visual:
+              defaultName: false
+              edges:
+                - childID: 16
+                  meta:
+                    description: ""
+                    label: ""
+                    visual:
+                      id: "22"
+                      parent: "1"
+                      points: []
+                      style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                      value: null
+                  parentID: 6
+              id: "6"
+              parent: "1"
+              value: Quote Before Update Quote
+              xywh:
+                - 1920
+                - 2000
+                - 200
+                - 80
+        - resourceType: compose:record
+          eventType: beforeCreate
+          constraints:
+            - name: module.handle
+              op: =
+              values:
+                - Quote
+            - name: namespace.handle
+              op: =
+              values:
+                - crm
+          enabled: true
+          stepID: 16
+          meta:
+            description: ""
+            visual:
+              defaultName: false
+              edges:
+                - childID: 16
+                  meta:
+                    description: ""
+                    label: ""
+                    visual:
+                      id: "17"
+                      parent: "1"
+                      points: []
+                      style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                      value: null
+                  parentID: 9
+              id: "9"
+              parent: "1"
+              value: Quote Before Create Quote
+              xywh:
+                - 1920
+                - 1840
+                - 200
+                - 80
