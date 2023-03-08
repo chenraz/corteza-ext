@@ -1549,15 +1549,20 @@ pages:
         visible: false
     visible: true
   - handle: Opportunities
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     title: הזדמנויות
+    visible: true
     blocks:
-    - title: רשימת הזדמנויות
+    - kind: RecordList
+      xywh:
+      - 0
+      - 0
+      - 8
+      - 16
+      style: {}
+      title: רשימת הזדמנויות
       options:
-        allowExport: true
-        draggable: false
-        editFields: []
-        editable: false
         fields:
         - name: Name
         - name: Amount
@@ -1566,46 +1571,66 @@ pages:
         - name: createdAt
         - name: CloseDate
         - name: OwnerId
-        hideRecordCloneButton: true
-        hideRecordEditButton: false
-        hideRecordReminderButton: true
-        hideRecordViewButton: true
-        module: Opportunity
         perPage: 20
-        prefilter: ""
         presort: createdAt DESC
+        editable: false
+        draggable: false
+        prefilter: ''
+        editFields: []
         selectMode: multi
         selectable: true
+        allowExport: true
         selectionButtons: []
-      kind: RecordList
-      xywh: [0, 0, 8, 16]
-    - title: הזדמנויות בצנרת
-      options:
-        chart: OpportunitySalesPipeline
+        hideRecordEditButton: false
+        hideRecordViewButton: true
+        hideRecordCloneButton: true
+        hideRecordReminderButton: true
+        module: Opportunity
+    - kind: Chart
+      xywh:
+      - 8
+      - 6
+      - 4
+      - 10
       style:
-        variants: {border: primary, headerText: primary}
-      kind: Chart
-      xywh: [8, 6, 4, 10]
-    - title: מכירות מול יעדים
+        variants:
+          border: primary
+          headerText: primary
+      title: הזדמנויות בצנרת
       options:
-        chart: SalesVsTarget
+        chartID: '313636425742745602'
+    - kind: Chart
+      xywh:
+      - 10
+      - 0
+      - 2
+      - 6
       style:
-        variants: {border: primary, headerText: primary}
-      kind: Chart
-      xywh: [10, 0, 2, 6]
-    - title: הזדמנויות מול יעדים
+        variants:
+          border: primary
+          headerText: primary
+      title: מכירות מול יעדים
       options:
-        chart: NumberOfOpportunitiesVsTarget
+        chartID: '313636425759260674'
+    - kind: Chart
+      xywh:
+      - 8
+      - 0
+      - 2
+      - 6
       style:
-        variants: {border: primary, headerText: primary}
-      kind: Chart
-      xywh: [8, 0, 2, 6]
+        variants:
+          border: primary
+          headerText: primary
+      title: הזדמנויות מול יעדים
+      options:
+        chartID: '313636425742548994'
+    description: ''
     pages:
     - handle: RecordPageForModuleOpportunity
       (envoy):
         onExisting: skip
       title: עמוד רשומה במודול "הזדמנויות"
-      description: ''
       visible: false
       blocks:
       - kind: Record
@@ -2659,13 +2684,13 @@ pages:
             enabled: true
             resourceType: compose:record
             workflow: CRM-Opportunity-NewQuote
+      description: ''
       module: Opportunity
       pages:
       - handle: RecordPageForModuleOpportunityContactRole
         (envoy):
           onExisting: skip
         title: עמוד רשומה במודול "OpportunityContactRole"
-        description: ''
         visible: false
         blocks:
         - kind: Record
@@ -2682,12 +2707,12 @@ pages:
             - name: ContactId
             - name: Role
             - name: IsPrimary
+        description: ''
         module: OpportunityContactRole
       - handle: RecordPageForModuleOpportunityLineItem
         (envoy):
           onExisting: skip
         title: עמוד רשומה במודול "פריט הזדמנות"
-        description: ''
         visible: false
         blocks:
         - kind: Record
@@ -2744,12 +2769,12 @@ pages:
             - name: createdBy
             - name: updatedAt
             - name: updatedBy
+        description: ''
         module: OpportunityLineItem
       - handle: RecordPageForModuleOpportunityCompetitor
         (envoy):
           onExisting: skip
         title: עמוד רשומה במודול "OpportunityCompetitor"
-        description: ''
         visible: false
         blocks:
         - kind: Record
@@ -2769,15 +2794,12 @@ pages:
             - name: CompetitorName
             - name: Strengths
             - name: Weaknesses
+        description: ''
         module: OpportunityCompetitor
-    
-    
-    
     - handle: CoverTemplate
       (envoy):
         onExisting: skip
       title: טמפלטים למכתב נלווה
-      description: ''
       visible: true
       blocks:
       - kind: RecordList
@@ -2899,12 +2921,12 @@ pages:
           hideRecordReminderButton: true
           hideRecordPermissionsButton: true
           module: CoverTemplate
+      description: ''
       pages:
       - handle: RecordPageForCoverTemplate
         (envoy):
           onExisting: skip
         title: עמוד רשומה במודול "CoverTemplate"
-        description: ''
         visible: false
         blocks:
         - kind: Record
@@ -2920,66 +2942,329 @@ pages:
               headerText: dark
           options:
             fields: []
+        description: ''
         module: CoverTemplate
-        
-    
-    
-    
-    visible: true
   - handle: Quotes
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     title: הצעות מחיר
+    visible: true
     blocks:
-    - title: רשימת הצעות מחיר
+    - kind: RecordList
+      xywh:
+      - 0
+      - 0
+      - 9
+      - 16
+      style:
+        wrap:
+          kind: card
+        variants:
+          border: primary
+          headerText: primary
+      title: רשימת הצעות מחיר
       options:
-        allowExport: true
-        draggable: false
-        editFields: []
-        editable: false
         fields:
-        - name: QuoteNumber
-        - name: OpportunityId
-        - name: Discount
-        - name: TotalPrice
-        - name: Tax
-        - name: GrandTotal
-        - name: ExpirationDate
-        - name: createdAt
-        hideRecordCloneButton: true
-        hideRecordEditButton: false
-        hideRecordReminderButton: true
-        hideRecordViewButton: true
-        module: Quote
+        - kind: Number
+          name: QuoteNumber
+          label: מספר הצעה
+          config:
+            dal:
+              encodingStrategy: null
+            privacy:
+              usageDisclosure: ''
+              sensitivityLevelID: '0'
+            recordRevisions:
+              enabled: false
+          isMulti: false
+          options:
+            max: 100
+            hint:
+              edit: ''
+              view: ''
+            format: '0000000'
+            prefix: ''
+            suffix: ''
+            display: number
+            variant: success
+            animated: false
+            precision: 0
+            showValue: true
+            thresholds: []
+            description:
+              edit: ''
+              view: ''
+            showProgress: false
+            showRelative: true
+            multiDelimiter: \n
+          isSystem: false
+          maxLength: 0
+          isRequired: false
+          isSortable: true
+          expressions: {}
+          defaultValue: []
+          isFilterable: true
+          canReadRecordValue: true
+          canUpdateRecordValue: true
+        - kind: Select
+          name: Status
+          label: סטאטוס
+          config:
+            dal:
+              encodingStrategy: null
+            privacy:
+              usageDisclosure: ''
+              sensitivityLevelID: '0'
+            recordRevisions:
+              enabled: false
+          isMulti: false
+          options:
+            hint:
+              edit: ''
+              view: ''
+            options:
+            - text: טיוטה
+              value: Draft
+            - text: נדרשת בדיקה
+              value: Needs Review
+            - text: בבדיקה
+              value: In Review
+            - text: אושרה
+              value: Approved
+            - text: בתיקון
+              value: Rejected
+            - text: הוצגה
+              value: Presented
+            - text: נשלחה תזכורת
+              value: Reminder
+            - text: התקבלה
+              value: Accepted
+            - text: נדחתה
+              value: Denied
+            selectType: default
+            description:
+              edit: ''
+              view: ''
+            multiDelimiter: \n
+          isSystem: false
+          maxLength: 0
+          isRequired: false
+          isSortable: true
+          expressions: {}
+          defaultValue: []
+          isFilterable: true
+          canReadRecordValue: true
+          canUpdateRecordValue: true
+        - kind: Record
+          name: OpportunityId
+          label: שם ההזדמנות
+          config:
+            dal:
+              encodingStrategy: null
+            privacy:
+              usageDisclosure: ''
+              sensitivityLevelID: '0'
+            recordRevisions:
+              enabled: false
+          isMulti: false
+          options:
+            hint:
+              edit: ''
+              view: ''
+            moduleID: '313636422823378946'
+            labelField: Name
+            selectType: ''
+            description:
+              edit: ''
+              view: ''
+            queryFields:
+            - AccountId
+            - Name
+            multiDelimiter: \n
+            recordLabelField: ''
+          isSystem: false
+          maxLength: 0
+          isRequired: false
+          isSortable: false
+          expressions: {}
+          defaultValue: []
+          isFilterable: true
+          canReadRecordValue: true
+          canUpdateRecordValue: true
+        - kind: Number
+          name: GrandTotal
+          label: סה"כ כולל מסים
+          config:
+            dal:
+              encodingStrategy: null
+            privacy:
+              usageDisclosure: ''
+              sensitivityLevelID: '0'
+            recordRevisions:
+              enabled: false
+          isMulti: false
+          options:
+            max: 100
+            hint:
+              edit: ''
+              view: ''
+            format: '0.00'
+            prefix: ''
+            suffix: ₪
+            display: number
+            variant: success
+            animated: false
+            precision: 2
+            showValue: true
+            thresholds: []
+            description:
+              edit: ''
+              view: ''
+            showProgress: false
+            showRelative: true
+            multiDelimiter: \n
+          isSystem: false
+          maxLength: 0
+          isRequired: false
+          isSortable: true
+          expressions:
+            value: 'TotalPrice * (Tax ? 1+Tax/100 : 1)'
+          defaultValue: []
+          isFilterable: true
+          canReadRecordValue: true
+          canUpdateRecordValue: true
+        - kind: DateTime
+          name: ExpirationDate
+          label: תאריך תפוגה
+          config:
+            dal:
+              encodingStrategy: null
+            privacy:
+              usageDisclosure: ''
+              sensitivityLevelID: '0'
+            recordRevisions:
+              enabled: false
+          isMulti: false
+          options:
+            hint:
+              edit: ''
+              view: ''
+            format: DD/MM/YYYY
+            onlyDate: false
+            onlyTime: false
+            description:
+              edit: ''
+              view: ''
+            multiDelimiter: \n
+            onlyPastValues: false
+            outputRelative: false
+            onlyFutureValues: false
+          isSystem: false
+          maxLength: 0
+          isRequired: false
+          isSortable: true
+          expressions: {}
+          defaultValue: []
+          isFilterable: true
+          canReadRecordValue: true
+          canUpdateRecordValue: true
+        - kind: DateTime
+          name: createdAt
+          label: נוצר בתאריך
+          config:
+            dal:
+              encodingStrategy: null
+            privacy:
+              usageDisclosure: ''
+              sensitivityLevelID: '0'
+            recordRevisions:
+              enabled: false
+          isMulti: false
+          options:
+            hint:
+              view: ''
+            format: ''
+            onlyDate: false
+            onlyTime: false
+            description:
+              view: ''
+            multiDelimiter: '
+
+              '
+            onlyPastValues: false
+            outputRelative: false
+            onlyFutureValues: false
+          isSystem: true
+          maxLength: 0
+          isRequired: false
+          isSortable: true
+          expressions: {}
+          defaultValue: []
+          isFilterable: true
+          canReadRecordValue: true
+          canUpdateRecordValue: true
         perPage: 20
-        prefilter: ""
         presort: createdAt DESC
+        editable: false
+        draggable: false
+        prefilter: ''
+        editFields: []
+        hideHeader: false
+        hidePaging: false
+        hideSearch: false
         selectMode: multi
         selectable: true
+        allowExport: true
+        hideSorting: false
+        linkToParent: true
+        openInNewTab: false
+        hideAddButton: false
+        showTotalCount: true
+        hideImportButton: false
         selectionButtons: []
+        fullPageNavigation: true
+        hideRecordEditButton: false
+        hideRecordViewButton: true
+        hideRecordCloneButton: true
+        hideRecordReminderButton: true
+        hideRecordPermissionsButton: true
+        module: Quote
+    - kind: Chart
+      xywh:
+      - 9
+      - 0
+      - 3
+      - 8
       style:
-        variants: {border: primary, headerText: primary}
-      kind: RecordList
-      xywh: [0, 0, 9, 16]
-    - title: סטאטוס הצעות מחיר
+        wrap:
+          kind: card
+        variants:
+          border: primary
+          headerText: primary
+      title: סטאטוס הצעות מחיר
       options:
-        chart: QuotesByStatus
+        chartID: '313636425742876674'
+    - kind: Chart
+      xywh:
+      - 9
+      - 8
+      - 3
+      - 8
       style:
-        variants: {border: primary, headerText: primary}
-      kind: Chart
-      xywh: [9, 0, 3, 8]
-    - title: מספר הצעות חודשי
+        wrap:
+          kind: card
+        variants:
+          border: primary
+          headerText: primary
+      title: מספר הצעות חודשי
       options:
-        chart: QuotesPerMonth
-      style:
-        variants: {border: primary, headerText: primary}
-      kind: Chart
-      xywh: [9, 8, 3, 8]
+        chartID: '313636425759195138'
+    description: ''
     pages:
     - handle: RecordPageForModuleQuote
       (envoy):
         onExisting: skip
       title: עמוד רשומה במודול "הצעות מחיר"
-      description: ''
       visible: false
       blocks:
       - kind: Record
@@ -3702,6 +3987,12 @@ pages:
             variant: primary
             resourceType: compose:record
             workflow: CRM-Quote-SendReminderWithPDFToPriContact
+          - label: עדכון מחירים מספר מוצרים ונתוני הנחה
+            stepID: '3'
+            enabled: true
+            variant: success
+            resourceType: compose:record
+            workflow: CRM-Quote-ApplyPriceBook
       - kind: Record
         xywh:
         - 3
@@ -3789,19 +4080,19 @@ pages:
             defaultValue:
             - name: ''
               value: "\uFEFFהי,\\n\\nאני רואה שעדיין לא בחרתם ספק לפרויקט. אשמח לשוחח\
-                \ ולייעץ, לשמוע את ההתלבטויות, ולספק הצעת מחיר מתוקנת אם צריך.\\n\\nאני\
-                \ זמין כאן באתר, בנייד 054-3181735, או במייל: chen@tilnet.co.il\\n\\nשיהיה\
-                \ המשך יום נעים,\\n\\nחן"
+                \ ולייעץ, לשמוע את ההתלבטויות, ולספק הצעת מחיר מתוקנת אם צריך.\\n\\\
+                nאני זמין כאן באתר, בנייד 054-3181735, או במייל: chen@tilnet.co.il\\\
+                n\\nשיהיה המשך יום נעים,\\n\\nחן"
             isFilterable: true
             canReadRecordValue: true
             canUpdateRecordValue: true
+      description: ''
       module: Quote
       pages:
       - handle: RecordPageForModuleQuoteLineItem
         (envoy):
           onExisting: skip
         title: עמוד רשומה במודול "פריט הזדמנות"
-        description: ''
         visible: false
         blocks:
         - kind: Record
@@ -3827,8 +4118,8 @@ pages:
             - name: Subtotal
             - name: Discount
             - name: TotalPrice
+        description: ''
         module: QuoteLineItem
-    visible: true
   - handle: Terms
     (envoy): { onExisting: "skip" }
     title: תנאים
