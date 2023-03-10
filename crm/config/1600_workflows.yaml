@@ -3960,7 +3960,7 @@ workflows:
                     style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
                     value: null
     CRM-Quote-Pdf-SendToPriContact:
-      enabled: "true"
+      enabled: true
       meta:
         name: CRM - Quote - Send PDF To Pri Contact
         visual: null
@@ -3981,9 +3981,9 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "3"
           results: []
           arguments: []
+          id: 3
         - ref: composeRecordsSearch
           kind: function
           meta:
@@ -3999,7 +3999,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "6"
           results:
             - expr: records
               type: ComposeRecord
@@ -4017,6 +4016,7 @@ workflows:
             - type: String
               value: SortOrder
               target: sort
+          id: 6
         - ref: notification
           kind: prompt
           meta:
@@ -4032,7 +4032,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "15"
           results: []
           arguments:
             - type: String
@@ -4044,6 +4043,7 @@ workflows:
             - type: String
               value: אזהרה
               target: variant
+          id: 15
         - ref: notification
           kind: prompt
           meta:
@@ -4059,7 +4059,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "16"
           results: []
           arguments:
             - type: String
@@ -4071,6 +4070,7 @@ workflows:
             - type: String
               value: הצלחה
               target: variant
+          id: 16
         - ref: ""
           kind: expressions
           meta:
@@ -4086,7 +4086,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "31"
           results: []
           arguments:
             - type: Vars
@@ -4134,6 +4133,7 @@ workflows:
             - expr: productFamilies
               type: Vars
               target: renderVariables.productFamilies
+          id: 31
         - ref: templatesRender
           kind: function
           meta:
@@ -4149,7 +4149,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "99"
           results:
             - expr: document
               target: mailHtml
@@ -4166,6 +4165,7 @@ workflows:
             - expr: renderVariables
               type: Vars
               target: variables
+          id: 99
         - ref: templatesRender
           kind: function
           meta:
@@ -4181,7 +4181,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "113"
           results:
             - expr: document
               target: html
@@ -4198,6 +4197,7 @@ workflows:
             - expr: renderVariables
               type: Vars
               target: variables
+          id: 113
         - ref: ""
           kind: expressions
           meta:
@@ -4213,7 +4213,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "119"
           results: []
           arguments:
             - expr: html.document
@@ -4231,6 +4230,7 @@ workflows:
             - expr: join([record.values.Name,record.values.QuoteNumber]," - ")
               type: String
               target: quoteName
+          id: 119
         - ref: corredorExec
           kind: function
           meta:
@@ -4246,7 +4246,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "124"
           results:
             - expr: results
               type: Vars
@@ -4268,6 +4267,7 @@ workflows:
                 }
               type: Vars
               target: args
+          id: 124
         - ref: composeRecordsLast
           kind: function
           meta:
@@ -4283,7 +4283,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "152"
           results:
             - expr: record
               target: settings
@@ -4294,6 +4293,7 @@ workflows:
             - type: Handle
               value: crm
               target: namespace
+          id: 152
         - ref: ""
           kind: expressions
           meta:
@@ -4309,7 +4309,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "153"
           results: []
           arguments:
             - expr: settings.values.DefaultQuoteImage
@@ -4318,6 +4317,7 @@ workflows:
             - expr: settings.values.DefaultAboutImage
               type: String
               target: DefaultAboutImage
+          id: 153
         - ref: oauth2Authenticate
           kind: function
           meta:
@@ -4333,7 +4333,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "154"
           results:
             - expr: accessToken
               type: String
@@ -4351,6 +4350,7 @@ workflows:
             - expr: join([settings.values.Domain,"/auth/oauth2/token"],'')
               type: String
               target: tokenUrl
+          id: 154
         - ref: httpRequestSend
           kind: function
           meta:
@@ -4366,7 +4366,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "159"
           results:
             - expr: status
               type: String
@@ -4384,6 +4383,7 @@ workflows:
             - expr: accessToken
               type: String
               target: headerAuthBearer
+          id: 159
         - ref: ""
           kind: expressions
           meta:
@@ -4399,12 +4399,12 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "163"
           results: []
           arguments:
             - expr: attachmentReader
               type: String
               target: attachmentString
+          id: 163
         - ref: jsenvExecute
           kind: function
           meta:
@@ -4420,7 +4420,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "168"
           results:
             - expr: resultString
               type: String
@@ -4434,6 +4433,7 @@ workflows:
                 const js = JSON.parse(arguments[0])
                 return js.response.url;
               target: source
+          id: 168
         - ref: templatesRender
           kind: function
           meta:
@@ -4449,7 +4449,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "172"
           results:
             - expr: document
               target: headerHtml
@@ -4463,6 +4462,7 @@ workflows:
             - type: String
               value: text/html
               target: documentType
+          id: 172
         - ref: composeRecordsLookup
           kind: function
           meta:
@@ -4478,7 +4478,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "191"
           results:
             - expr: record
               target: priContact
@@ -4492,6 +4491,7 @@ workflows:
             - expr: record.values.ContactId
               type: ID
               target: record
+          id: 191
         - ref: templatesRender
           kind: function
           meta:
@@ -4507,7 +4507,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "192"
           results:
             - expr: document
               target: footerHtml
@@ -4521,6 +4520,7 @@ workflows:
             - type: String
               value: text/html
               target: documentType
+          id: 192
         - ref: loopEach
           kind: iterator
           meta:
@@ -4536,7 +4536,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "195"
           results:
             - expr: item
               type: Any
@@ -4545,6 +4544,7 @@ workflows:
             - expr: lineItems
               type: Array
               target: items
+          id: 195
         - ref: ""
           kind: expressions
           meta:
@@ -4560,12 +4560,12 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "207"
           results: []
           arguments:
             - expr: lineItem.values.ProductId
               type: String
               target: ProductId
+          id: 207
         - ref: composeRecordsLookup
           kind: function
           meta:
@@ -4581,7 +4581,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "209"
           results:
             - expr: record
               type: ComposeRecord
@@ -4596,6 +4595,7 @@ workflows:
             - expr: ProductId
               type: ID
               target: record
+          id: 209
         - ref: httpRequestSend
           kind: function
           meta:
@@ -4611,7 +4611,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "213"
           results:
             - expr: body
               type: Reader
@@ -4626,6 +4625,7 @@ workflows:
             - expr: accessToken
               type: String
               target: headerAuthBearer
+          id: 213
         - ref: ""
           kind: expressions
           meta:
@@ -4641,7 +4641,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "218"
           results: []
           arguments:
             - expr: productImage
@@ -4650,6 +4649,7 @@ workflows:
             - expr: join([ settings.values.Domain, "api/compose/namespace",record.namespaceID, "attachment/record", LineItemProduct.values.Photo],"/")
               type: String
               target: productImageUrl
+          id: 218
         - ref: jsenvExecute
           kind: function
           meta:
@@ -4665,7 +4665,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "219"
           results:
             - expr: resultString
               type: String
@@ -4679,6 +4678,7 @@ workflows:
                 const js = JSON.parse(arguments[0])
                 return js.response.url;
               target: source
+          id: 219
         - ref: ""
           kind: expressions
           meta:
@@ -4694,7 +4694,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "236"
           results: []
           arguments:
             - type: Vars
@@ -4703,6 +4702,7 @@ workflows:
               target: productNames
             - type: Vars
               target: productFamilies
+          id: 236
         - ref: ""
           kind: expressions
           meta:
@@ -4718,7 +4718,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "242"
           results: []
           arguments:
             - expr: |-
@@ -4741,6 +4740,7 @@ workflows:
             - expr: merge(productFamilies,familyItem)
               type: Vars
               target: productFamilies
+          id: 242
         - ref: ""
           kind: continue
           meta:
@@ -4756,9 +4756,9 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "244"
           results: []
           arguments: []
+          id: 244
         - ref: httpRequestSend
           kind: function
           meta:
@@ -4774,7 +4774,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "251"
           results:
             - expr: body
               type: Reader
@@ -4789,6 +4788,7 @@ workflows:
             - expr: accessToken
               type: String
               target: headerAuthBearer
+          id: 251
         - ref: ""
           kind: expressions
           meta:
@@ -4804,12 +4804,12 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "252"
           results: []
           arguments:
             - expr: attachmentReader
               type: String
               target: attachmentString
+          id: 252
         - ref: jsenvExecute
           kind: function
           meta:
@@ -4825,7 +4825,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "253"
           results:
             - expr: resultString
               target: aboutImgUrl
@@ -4838,6 +4837,7 @@ workflows:
                 const js = JSON.parse(arguments[0])
                 return js.response.url;
               target: source
+          id: 253
         - ref: excl
           kind: gateway
           meta:
@@ -4853,9 +4853,9 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "259"
           results: []
           arguments: []
+          id: 259
         - ref: ""
           kind: expressions
           meta:
@@ -4871,12 +4871,12 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "269"
           results: []
           arguments:
             - expr: '"הצעת מחיר לפיתוח"'
               type: String
               target: record.values.Name
+          id: 269
         - ref: jsenvExecute
           kind: function
           meta:
@@ -4892,7 +4892,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "271"
           results:
             - expr: resultString
               target: ExpirationDate
@@ -4903,6 +4902,7 @@ workflows:
             - type: String
               value: return arguments[0].replace(/([\d]{4})-([\d]{2})-([\d]{2}).*/,"$3/$2/$1")
               target: source
+          id: 271
         - ref: composeRecordsSearch
           kind: function
           meta:
@@ -4918,7 +4918,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "273"
           results:
             - expr: records
               type: ComposeRecord
@@ -4936,6 +4935,7 @@ workflows:
             - type: String
               value: Order
               target: sort
+          id: 273
         - ref: ""
           kind: expressions
           meta:
@@ -4951,12 +4951,12 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "279"
           results: []
           arguments:
             - expr: '"Presented"'
               type: String
               target: record.values.Status
+          id: 279
         - ref: composeRecordsUpdate
           kind: function
           meta:
@@ -4972,7 +4972,6 @@ workflows:
               parent: "1"
               defaultName: true
             description: ""
-          stepID: "282"
           results:
             - expr: record
               type: ComposeRecord
@@ -4981,6 +4980,7 @@ workflows:
             - expr: record
               type: ComposeRecord
               target: record
+          id: 282
         - ref: recordPage
           kind: prompt
           meta:
@@ -4996,7 +4996,6 @@ workflows:
               parent: "1"
               defaultName: true
             description: ""
-          stepID: "288"
           results: []
           arguments:
             - type: Handle
@@ -5008,6 +5007,7 @@ workflows:
             - expr: record.recordID
               type: ID
               target: record
+          id: 288
       paths:
         - expr: 'record.values.Email ? true : false'
           meta:
@@ -5019,8 +5019,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "259"
-          parentID: "3"
+          childid: 259
+          parentid: 3
         - meta:
             name: ""
             visual:
@@ -5030,8 +5030,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "15"
-          parentID: "3"
+          childid: 15
+          parentid: 3
         - meta:
             name: ""
             visual:
@@ -5041,8 +5041,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "113"
-          parentID: "31"
+          childid: 113
+          parentid: 31
         - meta:
             name: ""
             visual:
@@ -5052,8 +5052,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "99"
-          parentID: "192"
+          childid: 99
+          parentid: 192
         - meta:
             name: ""
             visual:
@@ -5063,8 +5063,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "119"
-          parentID: "99"
+          childid: 119
+          parentid: 99
         - meta:
             name: ""
             visual:
@@ -5074,8 +5074,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "153"
-          parentID: "152"
+          childid: 153
+          parentid: 152
         - meta:
             name: ""
             visual:
@@ -5085,8 +5085,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "154"
-          parentID: "153"
+          childid: 154
+          parentid: 153
         - meta:
             name: ""
             visual:
@@ -5096,8 +5096,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "163"
-          parentID: "159"
+          childid: 163
+          parentid: 159
         - meta:
             name: ""
             visual:
@@ -5107,8 +5107,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "31"
-          parentID: "253"
+          childid: 31
+          parentid: 253
         - meta:
             name: ""
             visual:
@@ -5118,8 +5118,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "168"
-          parentID: "163"
+          childid: 168
+          parentid: 163
         - meta:
             name: ""
             visual:
@@ -5129,8 +5129,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "124"
-          parentID: "119"
+          childid: 124
+          parentid: 119
         - meta:
             name: ""
             visual:
@@ -5140,8 +5140,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "172"
-          parentID: "113"
+          childid: 172
+          parentid: 113
         - meta:
             name: ""
             visual:
@@ -5151,8 +5151,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "192"
-          parentID: "172"
+          childid: 192
+          parentid: 172
         - meta:
             name: ""
             visual:
@@ -5162,8 +5162,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "207"
-          parentID: "195"
+          childid: 207
+          parentid: 195
         - meta:
             name: ""
             visual:
@@ -5173,8 +5173,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "209"
-          parentID: "207"
+          childid: 209
+          parentid: 207
         - meta:
             name: ""
             visual:
@@ -5184,8 +5184,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "213"
-          parentID: "209"
+          childid: 213
+          parentid: 209
         - meta:
             name: ""
             visual:
@@ -5195,8 +5195,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "218"
-          parentID: "213"
+          childid: 218
+          parentid: 213
         - meta:
             name: ""
             visual:
@@ -5206,8 +5206,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "242"
-          parentID: "219"
+          childid: 242
+          parentid: 219
         - meta:
             name: ""
             visual:
@@ -5217,8 +5217,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "273"
-          parentID: "6"
+          childid: 273
+          parentid: 6
         - meta:
             name: ""
             visual:
@@ -5234,8 +5234,8 @@ workflows:
                 - x: 2000
                   "y": 2400
             description: ""
-          childID: "152"
-          parentID: "271"
+          childid: 152
+          parentid: 271
         - meta:
             name: ""
             visual:
@@ -5245,8 +5245,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "236"
-          parentID: "154"
+          childid: 236
+          parentid: 154
         - meta:
             name: ""
             visual:
@@ -5256,8 +5256,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "195"
-          parentID: "236"
+          childid: 195
+          parentid: 236
         - meta:
             name: ""
             visual:
@@ -5267,8 +5267,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "219"
-          parentID: "218"
+          childid: 219
+          parentid: 218
         - meta:
             name: ""
             visual:
@@ -5278,8 +5278,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "159"
-          parentID: "195"
+          childid: 159
+          parentid: 195
         - meta:
             name: ""
             visual:
@@ -5289,8 +5289,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "252"
-          parentID: "251"
+          childid: 252
+          parentid: 251
         - meta:
             name: ""
             visual:
@@ -5300,8 +5300,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "253"
-          parentID: "252"
+          childid: 253
+          parentid: 252
         - meta:
             name: ""
             visual:
@@ -5311,8 +5311,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "251"
-          parentID: "168"
+          childid: 251
+          parentid: 168
         - expr: 'record.values.Name=="(unnamed)" ? true : false'
           meta:
             name: ""
@@ -5323,8 +5323,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "269"
-          parentID: "259"
+          childid: 269
+          parentid: 259
         - meta:
             name: ""
             visual:
@@ -5334,8 +5334,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "6"
-          parentID: "259"
+          childid: 6
+          parentid: 259
         - meta:
             name: ""
             visual:
@@ -5345,8 +5345,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "271"
-          parentID: "191"
+          childid: 271
+          parentid: 191
         - meta:
             name: ""
             visual:
@@ -5356,8 +5356,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "191"
-          parentID: "273"
+          childid: 191
+          parentid: 273
         - meta:
             name: ""
             visual:
@@ -5367,8 +5367,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "6"
-          parentID: "269"
+          childid: 6
+          parentid: 269
         - meta:
             name: ""
             visual:
@@ -5378,8 +5378,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "244"
-          parentID: "242"
+          childid: 244
+          parentid: 242
         - meta:
             name: ""
             visual:
@@ -5389,8 +5389,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "279"
-          parentID: "124"
+          childid: 279
+          parentid: 124
         - meta:
             name: ""
             visual:
@@ -5400,8 +5400,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "16"
-          parentID: "282"
+          childid: 16
+          parentid: 282
         - meta:
             name: ""
             visual:
@@ -5411,8 +5411,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "282"
-          parentID: "279"
+          childid: 282
+          parentid: 279
         - meta:
             name: ""
             visual:
@@ -5422,46 +5422,46 @@ workflows:
               parent: "1"
               points: null
             description: ""
-          childID: "288"
-          parentID: "16"
+          childid: 288
+          parentid: 16
       triggers:
-        resourceType: compose:record
-        eventType: onManual
-        constraints:
-          - op: =
-            name: module.handle
-            values:
-              - Quote
-          - op: =
-            name: namespace.handle
-            values:
-              - crm
-        enabled: "true"
-        stepID: 3
-        meta:
-          visual:
-            id: "2"
-            xywh:
-              - 2040
-              - 2040
-              - 200
-              - 80
-            edges:
-              - meta:
-                  label: ""
-                  visual:
-                    id: "53"
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-                    parent: "1"
-                    points: []
-                  description: ""
-                childID: "3"
-                parentID: "2"
-            value: On Manual Quote
-            parent: "1"
-            defaultName: false
-          description: ""
+        - resourceType: compose:record
+          eventType: onManual
+          constraints:
+            - op: =
+              name: module.handle
+              values:
+                - Quote
+            - op: =
+              name: namespace.handle
+              values:
+                - crm
+          enabled: true
+          stepID: 3
+          meta:
+            visual:
+              id: "2"
+              xywh:
+                - 2040
+                - 2040
+                - 200
+                - 80
+              edges:
+                - meta:
+                    label: ""
+                    visual:
+                      id: "53"
+                      style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                      value: null
+                      parent: "1"
+                      points: []
+                    description: ""
+                  childID: "3"
+                  parentID: "2"
+              value: On Manual Quote
+              parent: "1"
+              defaultName: false
+            description: ""
     CRM-Quote-Pdf-SendToCustomEmail:
       meta:
         name: CRM - Quote - Send PDF To Custom Email
@@ -7093,7 +7093,7 @@ workflows:
                     style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
                     value: '#2 - Has number'
     CRM-Opportunity-ApplyPriceBook:
-      enabled: "true"
+      enabled: true
       meta:
         name: CRM - Opportunity - Apply Price Book
         visual: null
@@ -7113,12 +7113,12 @@ workflows:
               value: Set pricebookId
               parent: "1"
             description: ""
-          stepID: "3"
           results: []
           arguments:
             - expr: 'record.values.PricebookId ? record.values.PricebookId : 0'
               type: ID
               target: pricebookId
+          id: 3
         - ref: composeRecordsSearch
           kind: function
           meta:
@@ -7133,7 +7133,6 @@ workflows:
               value: Fetch Pricebooks
               parent: "1"
             description: ""
-          stepID: "5"
           results:
             - expr: records
               target: pricebooks
@@ -7152,6 +7151,7 @@ workflows:
             - expr: "true"
               type: Boolean
               target: incTotal
+          id: 5
         - ref: excl
           kind: gateway
           meta:
@@ -7166,9 +7166,9 @@ workflows:
               value: Check Pricebooks
               parent: "1"
             description: ""
-          stepID: "7"
           results: []
           arguments: []
+          id: 7
         - ref: ""
           kind: expressions
           meta:
@@ -7183,7 +7183,6 @@ workflows:
               value: Set pricebookIds
               parent: "1"
             description: ""
-          stepID: "10"
           results: []
           arguments:
             - expr: 'pricebooks[0] ? pricebooks[0] : undefined'
@@ -7195,6 +7194,7 @@ workflows:
             - expr: pricebookId
               type: ID
               target: record.values.PricebookId
+          id: 10
         - ref: notification
           kind: prompt
           meta:
@@ -7209,7 +7209,6 @@ workflows:
               value: 'Warning: No Pricebooks'
               parent: "1"
             description: ""
-          stepID: "12"
           results: []
           arguments:
             - type: String
@@ -7221,6 +7220,7 @@ workflows:
             - type: String
               value: אזהרה
               target: variant
+          id: 12
         - ref: excl
           kind: gateway
           meta:
@@ -7235,9 +7235,9 @@ workflows:
               value: Check pricebookId
               parent: "1"
             description: ""
-          stepID: "14"
           results: []
           arguments: []
+          id: 14
         - ref: notification
           kind: prompt
           meta:
@@ -7252,7 +7252,6 @@ workflows:
               value: 'Warning: No Pricebook'
               parent: "1"
             description: ""
-          stepID: "17"
           results: []
           arguments:
             - type: String
@@ -7264,6 +7263,7 @@ workflows:
             - type: String
               value: אזהרה
               target: variant
+          id: 17
         - ref: composeRecordsUpdate
           kind: function
           meta:
@@ -7278,7 +7278,6 @@ workflows:
               value: Save Opportunity
               parent: "1"
             description: ""
-          stepID: "20"
           results:
             - expr: record
               target: record
@@ -7286,6 +7285,7 @@ workflows:
             - expr: record
               type: ComposeRecord
               target: record
+          id: 20
         - ref: composeRecordsEach
           kind: iterator
           meta:
@@ -7300,7 +7300,6 @@ workflows:
               value: Fetch LineItems
               parent: "1"
             description: ""
-          stepID: "23"
           results:
             - expr: record
               target: lineItem
@@ -7321,6 +7320,7 @@ workflows:
             - expr: "true"
               type: Boolean
               target: incTotal
+          id: 23
         - ref: composeRecordsLookup
           kind: function
           meta:
@@ -7335,7 +7335,6 @@ workflows:
               value: Fetch Product
               parent: "1"
             description: ""
-          stepID: "26"
           results:
             - expr: record
               target: product
@@ -7349,6 +7348,7 @@ workflows:
             - expr: lineItem.values.ProductId
               type: ID
               target: record
+          id: 26
         - ref: ""
           kind: expressions
           meta:
@@ -7363,12 +7363,12 @@ workflows:
               value: Set Quote Total
               parent: "1"
             description: ""
-          stepID: "28"
           results: []
           arguments:
             - expr: "0"
               type: Float
               target: quoteTotal
+          id: 28
         - ref: ""
           kind: expressions
           meta:
@@ -7383,12 +7383,12 @@ workflows:
               value: Set Amount
               parent: "1"
             description: ""
-          stepID: "30"
           results: []
           arguments:
             - expr: quoteTotal
               type: Float
               target: record.values.Amount
+          id: 30
         - ref: composeRecordsUpdate
           kind: function
           meta:
@@ -7403,7 +7403,6 @@ workflows:
               value: Save Opportunity
               parent: "1"
             description: ""
-          stepID: "32"
           results:
             - expr: record
               target: record
@@ -7411,6 +7410,7 @@ workflows:
             - expr: record
               type: ComposeRecord
               target: record
+          id: 32
         - ref: notification
           kind: prompt
           meta:
@@ -7425,7 +7425,6 @@ workflows:
               value: 'הצלחה: ספר המחירים ייושם'
               parent: "1"
             description: ""
-          stepID: "34"
           results: []
           arguments:
             - type: String
@@ -7437,6 +7436,7 @@ workflows:
             - type: String
               value: הצלחה
               target: variant
+          id: 34
         - ref: recordPage
           kind: prompt
           meta:
@@ -7451,7 +7451,6 @@ workflows:
               value: Reload page
               parent: "1"
             description: ""
-          stepID: "36"
           results: []
           arguments:
             - type: Handle
@@ -7463,6 +7462,7 @@ workflows:
             - expr: record
               type: ComposeRecord
               target: record
+          id: 36
         - ref: composeRecordsSearch
           kind: function
           meta:
@@ -7477,7 +7477,6 @@ workflows:
               value: Fetch Pricebook entry
               parent: "1"
             description: ""
-          stepID: "38"
           results:
             - expr: records
               target: pricebookEntries
@@ -7496,6 +7495,7 @@ workflows:
             - expr: "true"
               type: Boolean
               target: incTotal
+          id: 38
         - ref: ""
           kind: expressions
           meta:
@@ -7510,12 +7510,12 @@ workflows:
               value: Set pricebookEntry
               parent: "1"
             description: ""
-          stepID: "41"
           results: []
           arguments:
             - expr: 'numOfPricebookEntries > 0 ? pricebookEntries[0] : undefined'
               type: ComposeRecord
               target: pricebookEntry
+          id: 41
         - ref: ""
           kind: continue
           meta:
@@ -7530,9 +7530,9 @@ workflows:
               value: null
               parent: "1"
             description: ""
-          stepID: "45"
           results: []
           arguments: []
+          id: 45
         - ref: ""
           kind: expressions
           meta:
@@ -7547,7 +7547,6 @@ workflows:
               value: Set line item values
               parent: "1"
             description: ""
-          stepID: "49"
           results: []
           arguments:
             - expr: 'lineItem.values.Quantity ? lineItem.values.Quantity : 1'
@@ -7589,6 +7588,7 @@ workflows:
             - expr: quoteTotal + totalprice
               type: Float
               target: quoteTotal
+          id: 49
         - ref: composeRecordsUpdate
           kind: function
           meta:
@@ -7603,7 +7603,6 @@ workflows:
               value: Save lineItem
               parent: "1"
             description: ""
-          stepID: "51"
           results:
             - expr: record
               target: lineItem
@@ -7611,6 +7610,7 @@ workflows:
             - expr: lineItem
               type: ComposeRecord
               target: record
+          id: 51
         - ref: excl
           kind: gateway
           meta:
@@ -7625,9 +7625,9 @@ workflows:
               value: Check pricebookId
               parent: "1"
             description: ""
-          stepID: "53"
           results: []
           arguments: []
+          id: 53
         - ref: excl
           kind: gateway
           meta:
@@ -7642,9 +7642,9 @@ workflows:
               value: Check numOfPricebookEntries > 0
               parent: "1"
             description: ""
-          stepID: "66"
           results: []
           arguments: []
+          id: 66
         - ref: ""
           kind: expressions
           meta:
@@ -7659,7 +7659,6 @@ workflows:
               value: SSet line item product details
               parent: "1"
             description: ""
-          stepID: "91"
           results: []
           arguments:
             - expr: product.values.Description
@@ -7668,6 +7667,7 @@ workflows:
             - expr: product.values.Photo
               type: String
               target: lineItem.values.Photo
+          id: 91
       paths:
         - meta:
             name: ""
@@ -7678,8 +7678,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "7"
-          parentID: "5"
+          childid: 7
+          parentid: 5
         - expr: numOfPricebooks > 0
           meta:
             name: ""
@@ -7690,8 +7690,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "10"
-          parentID: "7"
+          childid: 10
+          parentid: 7
         - meta:
             name: ""
             visual:
@@ -7701,8 +7701,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "12"
-          parentID: "7"
+          childid: 12
+          parentid: 7
         - meta:
             name: ""
             visual:
@@ -7712,8 +7712,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "20"
-          parentID: "10"
+          childid: 20
+          parentid: 10
         - expr: pricebookId != 0
           meta:
             name: ""
@@ -7724,8 +7724,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "28"
-          parentID: "14"
+          childid: 28
+          parentid: 14
         - meta:
             name: ""
             visual:
@@ -7735,8 +7735,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "17"
-          parentID: "14"
+          childid: 17
+          parentid: 14
         - meta:
             name: ""
             visual:
@@ -7746,8 +7746,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "26"
-          parentID: "23"
+          childid: 26
+          parentid: 23
         - meta:
             name: ""
             visual:
@@ -7757,8 +7757,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "23"
-          parentID: "28"
+          childid: 23
+          parentid: 28
         - meta:
             name: ""
             visual:
@@ -7768,8 +7768,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "30"
-          parentID: "23"
+          childid: 30
+          parentid: 23
         - meta:
             name: ""
             visual:
@@ -7779,8 +7779,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "32"
-          parentID: "30"
+          childid: 32
+          parentid: 30
         - meta:
             name: ""
             visual:
@@ -7790,8 +7790,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "34"
-          parentID: "32"
+          childid: 34
+          parentid: 32
         - meta:
             name: ""
             visual:
@@ -7801,8 +7801,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "36"
-          parentID: "34"
+          childid: 36
+          parentid: 34
         - meta:
             name: ""
             visual:
@@ -7812,8 +7812,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "91"
-          parentID: "26"
+          childid: 91
+          parentid: 26
         - meta:
             name: ""
             visual:
@@ -7823,8 +7823,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "38"
-          parentID: "91"
+          childid: 38
+          parentid: 91
         - meta:
             name: ""
             visual:
@@ -7834,8 +7834,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "51"
-          parentID: "49"
+          childid: 51
+          parentid: 49
         - expr: pricebookId != 0
           meta:
             name: ""
@@ -7852,8 +7852,8 @@ workflows:
                 - x: 2000
                   "y": 2600
             description: ""
-          childID: "28"
-          parentID: "53"
+          childid: 28
+          parentid: 53
         - meta:
             name: ""
             visual:
@@ -7863,8 +7863,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "14"
-          parentID: "20"
+          childid: 14
+          parentid: 20
         - meta:
             name: ""
             visual:
@@ -7874,8 +7874,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "5"
-          parentID: "53"
+          childid: 5
+          parentid: 53
         - expr: numOfPricebookEntries > 0
           meta:
             name: ""
@@ -7886,8 +7886,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "41"
-          parentID: "66"
+          childid: 41
+          parentid: 66
         - meta:
             name: ""
             visual:
@@ -7897,8 +7897,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "45"
-          parentID: "66"
+          childid: 45
+          parentid: 66
         - meta:
             name: ""
             visual:
@@ -7908,8 +7908,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "49"
-          parentID: "41"
+          childid: 49
+          parentid: 41
         - meta:
             name: ""
             visual:
@@ -7919,8 +7919,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "66"
-          parentID: "38"
+          childid: 66
+          parentid: 38
         - meta:
             name: ""
             visual:
@@ -7930,45 +7930,45 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "53"
-          parentID: "3"
+          childid: 53
+          parentid: 3
       triggers:
-        resourceType: compose:record
-        eventType: onManual
-        constraints:
-          - op: =
-            name: module.handle
-            values:
-              - Opportunity
-          - op: =
-            name: namespace.handle
-            values:
-              - crm
-        enabled: "true"
-        stepID: 3
-        meta:
-          visual:
-            id: "2"
-            xywh:
-              - 2040
-              - 2040
-              - 200
-              - 80
-            edges:
-              - meta:
-                  label: ""
-                  visual:
-                    id: "4"
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-                    parent: "1"
-                    points: []
-                  description: ""
-                childID: "3"
-                parentID: "2"
-            value: On Manual Opportunity
-            parent: "1"
-          description: ""
+        - resourceType: compose:record
+          eventType: onManual
+          constraints:
+            - op: =
+              name: module.handle
+              values:
+                - Opportunity
+            - op: =
+              name: namespace.handle
+              values:
+                - crm
+          enabled: true
+          stepID: 3
+          meta:
+            visual:
+              id: "2"
+              xywh:
+                - 2040
+                - 2040
+                - 200
+                - 80
+              edges:
+                - meta:
+                    label: ""
+                    visual:
+                      id: "4"
+                      style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                      value: null
+                      parent: "1"
+                      points: []
+                    description: ""
+                  childID: "3"
+                  parentID: "2"
+              value: On Manual Opportunity
+              parent: "1"
+            description: ""
     CRM-Case-InsertNumber:
         meta:
             name: CRM - Case - Insert Number
@@ -14384,7 +14384,7 @@ workflows:
                     style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
                     value: null
     CRM-Lead-ToAccountAndOpportunity:
-      enabled: "true"
+      enabled: true
       meta:
         name: CRM - Lead - To Account and Opportunity
         visual: null
@@ -14405,9 +14405,9 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "35"
           results: []
           arguments: []
+          id: 35
         - ref: composeRecordsNew
           kind: function
           meta:
@@ -14423,7 +14423,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "37"
           results:
             - expr: record
               target: account
@@ -14434,6 +14433,7 @@ workflows:
             - expr: namespace.namespaceID
               type: ID
               target: namespace
+          id: 37
         - ref: ""
           kind: expressions
           meta:
@@ -14449,7 +14449,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "38"
           results: []
           arguments:
             - expr: record.values.Street
@@ -14532,6 +14531,7 @@ workflows:
               target: account.values.CampaignId
             - type: Any
               target: ""
+          id: 38
         - ref: composeRecordsCreate
           kind: function
           meta:
@@ -14547,7 +14547,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "39"
           results:
             - expr: record
               target: account
@@ -14555,6 +14554,7 @@ workflows:
             - type: ComposeRecord
               source: account
               target: record
+          id: 39
         - ref: composeRecordsNew
           kind: function
           meta:
@@ -14570,7 +14570,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "40"
           results:
             - expr: record
               target: contact
@@ -14581,6 +14580,7 @@ workflows:
             - expr: namespace.namespaceID
               type: ID
               target: namespace
+          id: 40
         - ref: ""
           kind: expressions
           meta:
@@ -14596,7 +14596,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "41"
           results: []
           arguments:
             - expr: record.values.Street
@@ -14677,6 +14676,7 @@ workflows:
             - expr: record.values.CampaignId
               type: Array
               target: contact.values.CampaignId
+          id: 41
         - ref: composeRecordsCreate
           kind: function
           meta:
@@ -14692,7 +14692,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "42"
           results:
             - expr: record
               target: contact
@@ -14700,6 +14699,7 @@ workflows:
             - type: ComposeRecord
               source: contact
               target: record
+          id: 42
         - ref: ""
           kind: expressions
           meta:
@@ -14715,7 +14715,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "43"
           results: []
           arguments:
             - expr: '"Converted"'
@@ -14736,6 +14735,7 @@ workflows:
             - expr: opportunity.recordID
               type: ID
               target: record.values.ConvertedOpportunityId
+          id: 43
         - ref: composeRecordsUpdate
           kind: function
           meta:
@@ -14751,7 +14751,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "44"
           results:
             - expr: record
               target: record
@@ -14759,6 +14758,7 @@ workflows:
             - expr: record
               type: ComposeRecord
               target: record
+          id: 44
         - ref: composeRecordsNew
           kind: function
           meta:
@@ -14774,7 +14774,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "64"
           results:
             - expr: record
               type: ComposeRecord
@@ -14786,6 +14785,7 @@ workflows:
             - expr: namespace.namespaceID
               type: ID
               target: namespace
+          id: 64
         - ref: ""
           kind: expressions
           meta:
@@ -14801,7 +14801,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "65"
           results: []
           arguments:
             - expr: record.values.Description
@@ -14846,6 +14845,7 @@ workflows:
             - expr: record.recordID
               type: ID
               target: opportunity.values.LeadRef
+          id: 65
         - ref: composeRecordsCreate
           kind: function
           meta:
@@ -14861,7 +14861,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "66"
           results:
             - expr: record
               target: opportunity
@@ -14869,6 +14868,7 @@ workflows:
             - type: ComposeRecord
               source: opportunity
               target: record
+          id: 66
         - ref: composeRecordsNew
           kind: function
           meta:
@@ -14884,7 +14884,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "69"
           results:
             - expr: record
               target: contactRole
@@ -14895,6 +14894,7 @@ workflows:
             - expr: namespace.namespaceID
               type: ID
               target: namespace
+          id: 69
         - ref: ""
           kind: expressions
           meta:
@@ -14910,7 +14910,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "70"
           results: []
           arguments:
             - expr: contact.recordID
@@ -14922,6 +14921,7 @@ workflows:
             - expr: "true"
               type: Boolean
               target: contactRole.values.IsPrimary
+          id: 70
         - ref: composeRecordsCreate
           kind: function
           meta:
@@ -14937,7 +14937,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "71"
           results:
             - expr: record
               target: contactRole
@@ -14945,6 +14944,7 @@ workflows:
             - type: ComposeRecord
               source: contactRole
               target: record
+          id: 71
         - ref: composeRecordsLast
           kind: function
           meta:
@@ -14960,7 +14960,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "77"
           results:
             - expr: record
               target: settings
@@ -14971,6 +14970,7 @@ workflows:
             - expr: namespace.namespaceID
               type: ID
               target: namespace
+          id: 77
         - ref: notification
           kind: prompt
           meta:
@@ -14986,7 +14986,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "113"
           results: []
           arguments:
             - type: String
@@ -14998,6 +14997,7 @@ workflows:
             - type: String
               value: הצלחה
               target: variant
+          id: 113
         - ref: recordPage
           kind: prompt
           meta:
@@ -15013,7 +15013,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "115"
           results: []
           arguments:
             - type: Handle
@@ -15025,6 +15024,7 @@ workflows:
             - type: ComposeRecord
               source: opportunity
               target: record
+          id: 115
         - ref: emailSend
           kind: function
           meta:
@@ -15040,7 +15040,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "118"
           results: []
           arguments:
             - expr: subject.document
@@ -15052,6 +15051,7 @@ workflows:
             - expr: content.document
               type: Reader
               target: html
+          id: 118
         - ref: usersLookup
           kind: function
           meta:
@@ -15067,7 +15067,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "119"
           results:
             - expr: user
               target: owner
@@ -15075,6 +15074,7 @@ workflows:
             - expr: record.values.OwnerId
               type: ID
               target: lookup
+          id: 119
         - ref: excl
           kind: gateway
           meta:
@@ -15090,9 +15090,9 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "132"
           results: []
           arguments: []
+          id: 132
         - ref: notification
           kind: prompt
           meta:
@@ -15108,7 +15108,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "139"
           results: []
           arguments:
             - type: String
@@ -15120,6 +15119,7 @@ workflows:
             - type: String
               value: info
               target: variant
+          id: 139
         - ref: templatesRender
           kind: function
           meta:
@@ -15135,7 +15135,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "140"
           results:
             - expr: document
               target: subject
@@ -15152,6 +15151,7 @@ workflows:
             - expr: subjectRenderVariables
               type: Vars
               target: variables
+          id: 140
         - ref: templatesRender
           kind: function
           meta:
@@ -15167,7 +15167,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "142"
           results:
             - expr: document
               target: content
@@ -15184,6 +15183,7 @@ workflows:
             - expr: contentRenderVariables
               type: Vars
               target: variables
+          id: 142
         - ref: ""
           kind: expressions
           meta:
@@ -15199,7 +15199,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "145"
           results: []
           arguments:
             - type: Vars
@@ -15215,6 +15214,7 @@ workflows:
             - expr: account
               type: ComposeRecord
               target: contentRenderVariables.account
+          id: 145
       paths:
         - expr: record.values.Status == "Converted"
           meta:
@@ -15226,8 +15226,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "139"
-          parentID: "35"
+          childid: 139
+          parentid: 35
         - meta:
             name: ""
             visual:
@@ -15237,8 +15237,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "37"
-          parentID: "35"
+          childid: 37
+          parentid: 35
         - meta:
             name: ""
             visual:
@@ -15248,8 +15248,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "38"
-          parentID: "37"
+          childid: 38
+          parentid: 37
         - meta:
             name: ""
             visual:
@@ -15259,8 +15259,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "39"
-          parentID: "38"
+          childid: 39
+          parentid: 38
         - meta:
             name: ""
             visual:
@@ -15270,8 +15270,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "40"
-          parentID: "39"
+          childid: 40
+          parentid: 39
         - meta:
             name: ""
             visual:
@@ -15281,8 +15281,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "41"
-          parentID: "40"
+          childid: 41
+          parentid: 40
         - meta:
             name: ""
             visual:
@@ -15292,8 +15292,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "42"
-          parentID: "41"
+          childid: 42
+          parentid: 41
         - meta:
             name: ""
             visual:
@@ -15303,8 +15303,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "44"
-          parentID: "43"
+          childid: 44
+          parentid: 43
         - meta:
             name: ""
             visual:
@@ -15314,8 +15314,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "35"
-          parentID: "77"
+          childid: 35
+          parentid: 77
         - meta:
             name: ""
             visual:
@@ -15325,8 +15325,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "65"
-          parentID: "64"
+          childid: 65
+          parentid: 64
         - meta:
             name: ""
             visual:
@@ -15336,8 +15336,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "66"
-          parentID: "65"
+          childid: 66
+          parentid: 65
         - meta:
             name: ""
             visual:
@@ -15347,8 +15347,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "64"
-          parentID: "42"
+          childid: 64
+          parentid: 42
         - meta:
             name: ""
             visual:
@@ -15358,8 +15358,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "69"
-          parentID: "66"
+          childid: 69
+          parentid: 66
         - meta:
             name: ""
             visual:
@@ -15369,8 +15369,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "115"
-          parentID: "113"
+          childid: 115
+          parentid: 113
         - meta:
             name: ""
             visual:
@@ -15380,8 +15380,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "113"
-          parentID: "118"
+          childid: 113
+          parentid: 118
         - meta:
             name: ""
             visual:
@@ -15391,8 +15391,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "118"
-          parentID: "119"
+          childid: 118
+          parentid: 119
         - meta:
             name: ""
             visual:
@@ -15402,8 +15402,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "71"
-          parentID: "70"
+          childid: 71
+          parentid: 70
         - meta:
             name: ""
             visual:
@@ -15413,8 +15413,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "43"
-          parentID: "71"
+          childid: 43
+          parentid: 71
         - meta:
             name: ""
             visual:
@@ -15424,8 +15424,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "70"
-          parentID: "69"
+          childid: 70
+          parentid: 69
         - meta:
             name: ""
             visual:
@@ -15435,8 +15435,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "132"
-          parentID: "44"
+          childid: 132
+          parentid: 44
         - expr: record.values.OwnerId != 0
           meta:
             name: ""
@@ -15447,8 +15447,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "145"
-          parentID: "132"
+          childid: 145
+          parentid: 132
         - meta:
             name: ""
             visual:
@@ -15466,8 +15466,8 @@ workflows:
                 - x: 2440
                   "y": 3760
             description: ""
-          childID: "113"
-          parentID: "132"
+          childid: 113
+          parentid: 132
         - meta:
             name: ""
             visual:
@@ -15477,8 +15477,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "142"
-          parentID: "140"
+          childid: 142
+          parentid: 140
         - meta:
             name: ""
             visual:
@@ -15488,8 +15488,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "119"
-          parentID: "142"
+          childid: 119
+          parentid: 142
         - meta:
             name: ""
             visual:
@@ -15499,46 +15499,46 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "140"
-          parentID: "145"
+          childid: 140
+          parentid: 145
       triggers:
-        resourceType: compose:record
-        eventType: onManual
-        constraints:
-          - op: =
-            name: module
-            values:
-              - Lead
-          - op: =
-            name: namespace.handle
-            values:
-              - crm
-        enabled: "true"
-        stepID: 77
-        meta:
-          visual:
-            id: "49"
-            xywh:
-              - 1920
-              - 2520
-              - 200
-              - 80
-            edges:
-              - meta:
-                  label: ""
-                  visual:
-                    id: "78"
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-                    parent: "1"
-                    points: []
-                  description: ""
-                childID: "77"
-                parentID: "49"
-            value: To Account and Opportunity
-            parent: "1"
-            defaultName: false
-          description: ""
+        - resourceType: compose:record
+          eventType: onManual
+          constraints:
+            - op: =
+              name: module
+              values:
+                - Lead
+            - op: =
+              name: namespace.handle
+              values:
+                - crm
+          enabled: true
+          stepID: 77
+          meta:
+            visual:
+              id: "49"
+              xywh:
+                - 1920
+                - 2520
+                - 200
+                - 80
+              edges:
+                - meta:
+                    label: ""
+                    visual:
+                      id: "78"
+                      style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                      value: null
+                      parent: "1"
+                      points: []
+                    description: ""
+                  childID: "77"
+                  parentID: "49"
+              value: To Account and Opportunity
+              parent: "1"
+              defaultName: false
+            description: ""
     CRM-Contact-CreateNewCase:
         meta:
             name: CRM - Contact - Create New Case
@@ -18352,7 +18352,7 @@ workflows:
                 - 200
                 - 80
     CRM-Quote-UpdateCoverLetter:
-      enabled: "true"
+      enabled: true
       meta:
         name: CRM - Quote - Update CoverLetter
         visual: null
@@ -18373,9 +18373,9 @@ workflows:
               parent: "1"
               defaultName: true
             description: ""
-          stepID: "16"
           results: []
-          arguments: null
+          arguments: []
+          id: 16
         - ref: ""
           kind: termination
           meta:
@@ -18391,9 +18391,9 @@ workflows:
               parent: "1"
               defaultName: true
             description: ""
-          stepID: "18"
           results: []
-          arguments: null
+          arguments: []
+          id: 18
         - ref: composeRecordsLookup
           kind: function
           meta:
@@ -18409,7 +18409,6 @@ workflows:
               parent: "1"
               defaultName: true
             description: ""
-          stepID: "23"
           results:
             - expr: record
               type: ComposeRecord
@@ -18424,6 +18423,7 @@ workflows:
             - expr: coverTemplateId
               type: ID
               target: record
+          id: 23
         - ref: ""
           kind: expressions
           meta:
@@ -18439,7 +18439,6 @@ workflows:
               parent: "1"
               defaultName: true
             description: ""
-          stepID: "24"
           results: []
           arguments:
             - expr: coverLetterRec.values.Content
@@ -18448,6 +18447,7 @@ workflows:
             - expr: coverLetterRec.values.Content
               type: String
               target: record.values.CoverText
+          id: 24
         - ref: ""
           kind: expressions
           meta:
@@ -18463,12 +18463,12 @@ workflows:
               parent: "1"
               defaultName: true
             description: ""
-          stepID: "27"
           results: []
           arguments:
             - expr: record.values.CoverTemplate
               type: ID
               target: coverTemplateId
+          id: 27
         - ref: ""
           kind: termination
           meta:
@@ -18484,9 +18484,9 @@ workflows:
               parent: "1"
               defaultName: true
             description: ""
-          stepID: "29"
           results: []
-          arguments: null
+          arguments: []
+          id: 29
       paths:
         - expr: oldRecord.values.CoverTemplate != record.values.CoverTemplate
           meta:
@@ -18498,8 +18498,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "27"
-          parentID: "16"
+          childid: 27
+          parentid: 16
         - meta:
             name: ""
             visual:
@@ -18509,8 +18509,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "18"
-          parentID: "16"
+          childid: 18
+          parentid: 16
         - meta:
             name: ""
             visual:
@@ -18520,8 +18520,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "24"
-          parentID: "23"
+          childid: 24
+          parentid: 23
         - meta:
             name: ""
             visual:
@@ -18531,8 +18531,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "23"
-          parentID: "27"
+          childid: 23
+          parentid: 27
         - meta:
             name: ""
             visual:
@@ -18542,48 +18542,48 @@ workflows:
               parent: "1"
               points: null
             description: ""
-          childID: "29"
-          parentID: "24"
+          childid: 29
+          parentid: 24
       triggers:
-        resourceType: compose:record
-        eventType: beforeUpdate
-        constraints:
-          - op: =
-            name: namespace.handle
-            values:
-              - crm
-          - op: =
-            name: module.handle
-            values:
-              - Quote
-        enabled: "true"
-        stepID: 16
-        meta:
-          visual:
-            id: "6"
-            xywh:
-              - 1920
-              - 2000
-              - 200
-              - 80
-            edges:
-              - meta:
-                  label: ""
-                  visual:
-                    id: "22"
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-                    parent: "1"
-                    points: []
-                  description: ""
-                childID: "16"
-                parentID: "6"
-            value: Quote Before Update Quote
-            parent: "1"
-            defaultName: false
-          description: ""
-    CRM-QUOTE-ADD-NOTE:
-      enabled: "true"
+        - resourceType: compose:record
+          eventType: beforeUpdate
+          constraints:
+            - op: =
+              name: namespace.handle
+              values:
+                - crm
+            - op: =
+              name: module.handle
+              values:
+                - Quote
+          enabled: true
+          stepID: 16
+          meta:
+            visual:
+              id: "6"
+              xywh:
+                - 1920
+                - 2000
+                - 200
+                - 80
+              edges:
+                - meta:
+                    label: ""
+                    visual:
+                      id: "22"
+                      style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                      value: null
+                      parent: "1"
+                      points: []
+                    description: ""
+                  childID: "16"
+                  parentID: "6"
+              value: Quote Before Update Quote
+              parent: "1"
+              defaultName: false
+            description: ""
+    CRM-Quote-Add-Note:
+      enabled: true
       meta:
         name: CRM - Quote - Add Note
         visual: null
@@ -18604,9 +18604,9 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "16"
           results: []
-          arguments: null
+          arguments: []
+          id: 16
         - ref: ""
           kind: termination
           meta:
@@ -18622,9 +18622,9 @@ workflows:
               parent: "1"
               defaultName: true
             description: ""
-          stepID: "17"
           results: []
-          arguments: null
+          arguments: []
+          id: 17
         - ref: composeRecordsNew
           kind: function
           meta:
@@ -18640,7 +18640,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "18"
           results:
             - expr: record
               type: ComposeRecord
@@ -18652,6 +18651,7 @@ workflows:
             - type: Handle
               value: crm
               target: namespace
+          id: 18
         - ref: ""
           kind: termination
           meta:
@@ -18667,9 +18667,9 @@ workflows:
               parent: "1"
               defaultName: true
             description: ""
-          stepID: "19"
           results: []
-          arguments: null
+          arguments: []
+          id: 19
         - ref: composeRecordsCreate
           kind: function
           meta:
@@ -18685,7 +18685,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "20"
           results:
             - expr: record
               type: ComposeRecord
@@ -18694,6 +18693,7 @@ workflows:
             - expr: note
               type: ComposeRecord
               target: record
+          id: 20
         - ref: ""
           kind: expressions
           meta:
@@ -18709,7 +18709,6 @@ workflows:
               parent: "1"
               defaultName: false
             description: ""
-          stepID: "21"
           results: []
           arguments:
             - expr: 'record.values.Status == "Presented" ? "<p>נשלחה הצעת מחיר</p>": "<p>נשלחה תזכורת</p>"'
@@ -18721,6 +18720,7 @@ workflows:
             - expr: record.recordID
               type: ID
               target: note.values.QuoteId
+          id: 21
       paths:
         - expr: oldRecord.values.Status != record.values.Status && (record.values.Status == "Presented" || record.values.Status == "Reminder")
           meta:
@@ -18732,8 +18732,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "18"
-          parentID: "16"
+          childid: 18
+          parentid: 16
         - meta:
             name: ""
             visual:
@@ -18743,8 +18743,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "17"
-          parentID: "16"
+          childid: 17
+          parentid: 16
         - meta:
             name: ""
             visual:
@@ -18754,8 +18754,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "21"
-          parentID: "18"
+          childid: 21
+          parentid: 18
         - meta:
             name: ""
             visual:
@@ -18765,8 +18765,8 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "20"
-          parentID: "21"
+          childid: 20
+          parentid: 21
         - meta:
             name: ""
             visual:
@@ -18776,43 +18776,1003 @@ workflows:
               parent: "1"
               points: []
             description: ""
-          childID: "19"
-          parentID: "20"
+          childid: 19
+          parentid: 20
       triggers:
-        resourceType: compose:record
-        eventType: beforeUpdate
-        constraints:
-          - op: =
-            name: namespace.handle
-            values:
-              - crm
-          - op: =
-            name: module.handle
-            values:
-              - Quote
-        enabled: "true"
-        stepID: 4
-        meta:
-          visual:
-            id: "9"
-            xywh:
-              - 2080
-              - 1960
-              - 200
-              - 80
-            edges:
-              - meta:
-                  label: ""
-                  visual:
-                    id: "15"
-                    style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
-                    value: null
-                    parent: "1"
-                    points: []
-                  description: ""
-                childID: "4"
-                parentID: "9"
-            value: Quote Before Update Quote
-            parent: "1"
-            defaultName: false
-          description: ""
+        - resourceType: compose:record
+          eventType: beforeUpdate
+          constraints:
+            - op: =
+              name: namespace.handle
+              values:
+                - crm
+            - op: =
+              name: module.handle
+              values:
+                - Quote
+          enabled: true
+          stepID: 4
+          meta:
+            visual:
+              id: "9"
+              xywh:
+                - 2080
+                - 1960
+                - 200
+                - 80
+              edges:
+                - meta:
+                    label: ""
+                    visual:
+                      id: "15"
+                      style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                      value: null
+                      parent: "1"
+                      points: []
+                    description: ""
+                  childID: "4"
+                  parentID: "9"
+              value: Quote Before Update Quote
+              parent: "1"
+              defaultName: false
+            description: ""
+    CRM-Quote-ApplyPriceBook:
+      enabled: true
+      meta:
+        name: CRM - Quote - Apply Price Book
+        visual: null
+        description: עדכון מחירים מספר מחירים ונתוני הנחה
+      steps:
+        - ref: ""
+          kind: expressions
+          meta:
+            name: ""
+            visual:
+              id: "3"
+              xywh:
+                - 2336
+                - 2056
+                - 200
+                - 80
+              value: Set pricebookId
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - expr: 'record.values.PricebookId ? record.values.PricebookId : 0'
+              type: ID
+              target: pricebookId
+          id: 3
+        - ref: composeRecordsSearch
+          kind: function
+          meta:
+            name: ""
+            visual:
+              id: "4"
+              xywh:
+                - 3056
+                - 2056
+                - 200
+                - 80
+              value: Fetch Pricebooks
+              parent: "1"
+              defaultName: false
+            description: ""
+          results:
+            - expr: records
+              type: ComposeRecord
+              target: pricebooks
+            - expr: total
+              type: UnsignedInteger
+              target: numOfPricebooks
+          arguments:
+            - type: Handle
+              value: Pricebook
+              target: module
+            - type: Handle
+              value: crm
+              target: namespace
+            - expr: '"IsActive AND IsStandard"'
+              type: String
+              target: query
+            - expr: "true"
+              type: Boolean
+              target: incTotal
+          id: 4
+        - ref: excl
+          kind: gateway
+          meta:
+            name: ""
+            visual:
+              id: "5"
+              xywh:
+                - 3336
+                - 2056
+                - 200
+                - 80
+              value: Check Pricebooks
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments: []
+          id: 5
+        - ref: ""
+          kind: expressions
+          meta:
+            name: ""
+            visual:
+              id: "6"
+              xywh:
+                - 3056
+                - 2216
+                - 200
+                - 80
+              value: Set pricebookIds
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - expr: 'pricebooks[0] ? pricebooks[0] : undefined'
+              type: ComposeRecord
+              target: pricebook
+            - expr: 'pricebook ? pricebook.recordID : undefined'
+              type: ID
+              target: pricebookId
+            - expr: pricebookId
+              type: ID
+              target: record.values.PricebookId
+          id: 6
+        - ref: notification
+          kind: prompt
+          meta:
+            name: ""
+            visual:
+              id: "7"
+              xywh:
+                - 3776
+                - 2056
+                - 200
+                - 80
+              value: 'Warning: No Pricebooks'
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - type: String
+              value: אזהרה
+              target: title
+            - expr: '"לא הוגדרו ספרי מחיר להזדמנות זו. נא לבחור ספר מחירים"'
+              type: String
+              target: message
+            - type: String
+              value: אזהרה
+              target: variant
+          id: 7
+        - ref: excl
+          kind: gateway
+          meta:
+            name: ""
+            visual:
+              id: "8"
+              xywh:
+                - 2616
+                - 2416
+                - 200
+                - 80
+              value: Check pricebookId
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments: []
+          id: 8
+        - ref: notification
+          kind: prompt
+          meta:
+            name: ""
+            visual:
+              id: "9"
+              xywh:
+                - 3336
+                - 2416
+                - 200
+                - 80
+              value: 'Warning: No Pricebook'
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - type: String
+              value: אזהרה
+              target: title
+            - type: String
+              value: Please select a Price book for this opportunity first.
+              target: message
+            - type: String
+              value: אזהרה
+              target: variant
+          id: 9
+        - ref: composeRecordsUpdate
+          kind: function
+          meta:
+            name: ""
+            visual:
+              id: "10"
+              xywh:
+                - 3336
+                - 2216
+                - 200
+                - 80
+              value: Save Quote
+              parent: "1"
+              defaultName: false
+            description: ""
+          results:
+            - expr: record
+              type: ComposeRecord
+              target: record
+          arguments:
+            - expr: record
+              type: ComposeRecord
+              target: record
+          id: 10
+        - ref: composeRecordsEach
+          kind: iterator
+          meta:
+            name: ""
+            visual:
+              id: "11"
+              xywh:
+                - 2336
+                - 2576
+                - 200
+                - 80
+              value: Fetch LineItems
+              parent: "1"
+              defaultName: false
+            description: ""
+          results:
+            - expr: record
+              type: ComposeRecord
+              target: lineItem
+            - expr: index
+              type: UnsignedInteger
+              target: index
+            - expr: total
+              type: UnsignedInteger
+              target: numOfLineItems
+          arguments:
+            - type: Handle
+              value: QuoteLineItem
+              target: module
+            - type: Handle
+              value: crm
+              target: namespace
+            - expr: '"QuoteId = " + record.recordID'
+              type: String
+              target: query
+            - expr: "true"
+              type: Boolean
+              target: incTotal
+          id: 11
+        - ref: composeRecordsLookup
+          kind: function
+          meta:
+            name: ""
+            visual:
+              id: "12"
+              xywh:
+                - 2896
+                - 2576
+                - 200
+                - 80
+              value: Fetch Product
+              parent: "1"
+              defaultName: false
+            description: ""
+          results:
+            - expr: record
+              type: ComposeRecord
+              target: product
+          arguments:
+            - type: Handle
+              value: Product
+              target: module
+            - type: Handle
+              value: crm
+              target: namespace
+            - expr: lineItem.values.ProductId
+              type: ID
+              target: record
+          id: 12
+        - ref: ""
+          kind: expressions
+          meta:
+            name: ""
+            visual:
+              id: "13"
+              xywh:
+                - 2056
+                - 2576
+                - 200
+                - 80
+              value: Set Quote Total
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - expr: "0"
+              type: Float
+              target: quoteTotal
+          id: 13
+        - ref: recordPage
+          kind: prompt
+          meta:
+            name: ""
+            visual:
+              id: "14"
+              xywh:
+                - 2336
+                - 2896
+                - 200
+                - 80
+              value: Reload page
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - type: Handle
+              value: Quote
+              target: module
+            - type: Handle
+              value: crm
+              target: namespace
+            - expr: record
+              type: ComposeRecord
+              target: record
+          id: 14
+        - ref: composeRecordsSearch
+          kind: function
+          meta:
+            name: ""
+            visual:
+              id: "15"
+              xywh:
+                - 3616
+                - 2576
+                - 200
+                - 80
+              value: Fetch Pricebook entry
+              parent: "1"
+              defaultName: false
+            description: ""
+          results:
+            - expr: records
+              target: pricebookEntries
+            - expr: total
+              target: numOfPricebookEntries
+          arguments:
+            - type: Handle
+              value: PricebookEntry
+              target: module
+            - type: Handle
+              value: crm
+              target: namespace
+            - expr: '"PricebookId = " + pricebookId + " AND ProductId = " + lineItem.values.ProductId'
+              type: String
+              target: query
+            - expr: "true"
+              type: Boolean
+              target: incTotal
+          id: 15
+        - ref: ""
+          kind: expressions
+          meta:
+            name: ""
+            visual:
+              id: "16"
+              xywh:
+                - 2616
+                - 2736
+                - 200
+                - 80
+              value: Set pricebookEntry
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - expr: 'numOfPricebookEntries > 0 ? pricebookEntries[0] : undefined'
+              type: ComposeRecord
+              target: pricebookEntry
+          id: 16
+        - ref: ""
+          kind: continue
+          meta:
+            name: ""
+            visual:
+              id: "17"
+              xywh:
+                - 3576
+                - 2736
+                - 200
+                - 80
+              value: null
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments: []
+          id: 17
+        - ref: ""
+          kind: expressions
+          meta:
+            name: ""
+            visual:
+              id: "18"
+              xywh:
+                - 2896
+                - 2736
+                - 200
+                - 80
+              value: Set line item values
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - expr: 'lineItem.values.Quantity ? lineItem.values.Quantity : 1'
+              type: Float
+              target: quantity
+            - expr: 'lineItem.values.Discount ? lineItem.values.Discount : 0'
+              type: Float
+              target: discount
+            - expr: 'pricebookEntry.values.UnitPrice ? pricebookEntry.values.UnitPrice : 0'
+              type: Float
+              target: listprice
+            - expr: '(lineItem.values.UnitPrice ? false : true) ? listprice : (lineItem.values.UnitPrice ? lineItem.values.UnitPrice : 0)'
+              type: Any
+              target: unitprice
+            - expr: unitprice * quantity
+              type: Float
+              target: subtotal
+            - expr: subtotal - discount
+              type: Float
+              target: totalprice
+            - expr: product.values.ProductCode
+              type: String
+              target: lineItem.values.ProductCode
+            - expr: listprice
+              type: Float
+              target: lineItem.values.ListPrice
+            - expr: unitprice
+              type: Float
+              target: lineItem.values.UnitPrice
+            - expr: subtotal
+              type: Float
+              target: lineItem.values.Subtotal
+            - expr: totalprice
+              type: Float
+              target: lineItem.values.TotalPrice
+            - expr: quoteTotal + totalprice
+              type: Float
+              target: quoteTotal
+          id: 18
+        - ref: composeRecordsUpdate
+          kind: function
+          meta:
+            name: ""
+            visual:
+              id: "19"
+              xywh:
+                - 3176
+                - 2736
+                - 200
+                - 80
+              value: Save lineItem
+              parent: "1"
+              defaultName: false
+            description: ""
+          results:
+            - expr: record
+              type: ComposeRecord
+              target: lineItem
+          arguments:
+            - expr: lineItem
+              type: ComposeRecord
+              target: record
+          id: 19
+        - ref: excl
+          kind: gateway
+          meta:
+            name: ""
+            visual:
+              id: "20"
+              xywh:
+                - 2616
+                - 2056
+                - 200
+                - 80
+              value: Check pricebookId
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments: []
+          id: 20
+        - ref: excl
+          kind: gateway
+          meta:
+            name: ""
+            visual:
+              id: "21"
+              xywh:
+                - 3856
+                - 2576
+                - 200
+                - 80
+              value: Check numOfPricebookEntries > 0
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments: []
+          id: 21
+        - ref: notification
+          kind: prompt
+          meta:
+            name: ""
+            visual:
+              id: "22"
+              xywh:
+                - 2056
+                - 2896
+                - 200
+                - 80
+              value: 'הצלחה: ספר המחירים ייושם'
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - type: String
+              value: הצלחה
+              target: title
+            - type: String
+              value: ספר המחירים ייושם
+              target: message
+            - type: String
+              value: הצלחה
+              target: variant
+          id: 22
+        - ref: composeRecordsUpdate
+          kind: function
+          meta:
+            name: ""
+            visual:
+              id: "23"
+              xywh:
+                - 2336
+                - 2736
+                - 200
+                - 80
+              value: Save Quote
+              parent: "1"
+              defaultName: false
+            description: ""
+          results:
+            - expr: record
+              type: ComposeRecord
+              target: record
+          arguments:
+            - expr: record
+              type: ComposeRecord
+              target: record
+          id: 23
+        - ref: ""
+          kind: expressions
+          meta:
+            name: ""
+            visual:
+              id: "24"
+              xywh:
+                - 3248
+                - 2576
+                - 200
+                - 80
+              value: SSet line item product details
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - expr: product.values.Description
+              type: String
+              target: lineItem.values.Description
+          id: 24
+        - ref: ""
+          kind: expressions
+          meta:
+            name: ""
+            visual:
+              id: "25"
+              xywh:
+                - 2056
+                - 2736
+                - 200
+                - 80
+              value: Set Amount
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - expr: quoteTotal
+              type: Float
+              target: record.values.TotalPrice
+            - expr: quoteTotal
+              type: Float
+              target: record.values.Subtotal
+          id: 25
+        - ref: ""
+          kind: expressions
+          meta:
+            name: ""
+            visual:
+              id: "26"
+              xywh:
+                - 2064
+                - 2744
+                - 200
+                - 80
+              value: Set Amount
+              parent: "1"
+              defaultName: false
+            description: ""
+          results: []
+          arguments:
+            - expr: quoteTotal
+              type: Float
+              target: record.values.Subtotal
+            - expr: quoteTotal
+              type: Float
+              target: record.values.TotalPrice
+          id: 26
+        - ref: ""
+          kind: debug
+          meta:
+            name: ""
+            visual:
+              id: "28"
+              xywh:
+                - 1768
+                - 2736
+                - 200
+                - 80
+              value: Logs current workflow scope into server logs. If workflow debug is enabled
+              parent: "1"
+              defaultName: true
+            description: ""
+          results: []
+          arguments: []
+          id: 28
+      paths:
+        - meta:
+            name: ""
+            visual:
+              id: "29"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 5
+          parentid: 4
+        - expr: numOfPricebooks > 0
+          meta:
+            name: ""
+            visual:
+              id: "30"
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: '#1 - Has Pricebook'
+              parent: "1"
+              points: []
+            description: ""
+          childid: 6
+          parentid: 5
+        - meta:
+            name: ""
+            visual:
+              id: "31"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: '#2 - No Pricebooks'
+              parent: "1"
+              points: []
+            description: ""
+          childid: 7
+          parentid: 5
+        - meta:
+            name: ""
+            visual:
+              id: "32"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 10
+          parentid: 6
+        - expr: pricebookId != 0
+          meta:
+            name: ""
+            visual:
+              id: "33"
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: '#1 - Has Pricebook'
+              parent: "1"
+              points: []
+            description: ""
+          childid: 13
+          parentid: 8
+        - meta:
+            name: ""
+            visual:
+              id: "34"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: '#2 - No pricebook'
+              parent: "1"
+              points: []
+            description: ""
+          childid: 9
+          parentid: 8
+        - meta:
+            name: ""
+            visual:
+              id: "35"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: Iterate over line items
+              parent: "1"
+              points: []
+            description: ""
+          childid: 12
+          parentid: 11
+        - meta:
+            name: ""
+            visual:
+              id: "36"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 11
+          parentid: 13
+        - meta:
+            name: ""
+            visual:
+              id: "37"
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;
+              value: End
+              parent: "1"
+              points: []
+            description: ""
+          childid: 28
+          parentid: 11
+        - meta:
+            name: ""
+            visual:
+              id: "38"
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 22
+          parentid: 23
+        - meta:
+            name: ""
+            visual:
+              id: "39"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 14
+          parentid: 22
+        - meta:
+            name: ""
+            visual:
+              id: "40"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 19
+          parentid: 18
+        - expr: pricebookId != 0
+          meta:
+            name: ""
+            visual:
+              id: "41"
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: '#1 - Has pricebookId'
+              parent: "1"
+              points:
+                - x: 2700
+                  "y": 2200
+                - x: 2000
+                  "y": 2200
+                - x: 2000
+                  "y": 2600
+            description: ""
+          childid: 13
+          parentid: 20
+        - meta:
+            name: ""
+            visual:
+              id: "42"
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 8
+          parentid: 10
+        - meta:
+            name: ""
+            visual:
+              id: "43"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: '#2 - No pricebookId'
+              parent: "1"
+              points: []
+            description: ""
+          childid: 4
+          parentid: 20
+        - expr: numOfPricebookEntries > 0
+          meta:
+            name: ""
+            visual:
+              id: "44"
+              style: exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+              value: '#1 - Has pricebook entries'
+              parent: "1"
+              points: []
+            description: ""
+          childid: 16
+          parentid: 21
+        - meta:
+            name: ""
+            visual:
+              id: "45"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;
+              value: '#2 - No entry'
+              parent: "1"
+              points: []
+            description: ""
+          childid: 17
+          parentid: 21
+        - meta:
+            name: ""
+            visual:
+              id: "46"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 18
+          parentid: 16
+        - meta:
+            name: ""
+            visual:
+              id: "47"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 21
+          parentid: 15
+        - meta:
+            name: ""
+            visual:
+              id: "48"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 20
+          parentid: 3
+        - meta:
+            name: ""
+            visual:
+              id: "49"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 24
+          parentid: 12
+        - meta:
+            name: ""
+            visual:
+              id: "50"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 15
+          parentid: 24
+        - meta:
+            name: ""
+            visual:
+              id: "51"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 23
+          parentid: 25
+        - meta:
+            name: ""
+            visual:
+              id: "52"
+              style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;
+              value: null
+              parent: "1"
+              points: []
+            description: ""
+          childid: 25
+          parentid: 28
+      triggers:
+        - resourceType: compose:record
+          eventType: onManual
+          constraints:
+            - op: =
+              name: module.handle
+              values:
+                - Quote
+            - op: =
+              name: namespace.handle
+              values:
+                - crm
+          enabled: true
+          stepID: 3
+          meta:
+            visual:
+              id: "27"
+              xywh:
+                - 2056
+                - 2056
+                - 200
+                - 80
+              edges:
+                - meta:
+                    label: ""
+                    visual:
+                      id: "53"
+                      style: exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;
+                      value: null
+                      parent: "1"
+                      points: []
+                    description: ""
+                  childID: "3"
+                  parentID: "27"
+              value: On Manual Quote
+              parent: "1"
+              defaultName: false
+            description: ""

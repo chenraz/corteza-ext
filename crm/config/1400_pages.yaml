@@ -1598,7 +1598,7 @@ pages:
           headerText: primary
       title: הזדמנויות בצנרת
       options:
-        chartID: '313636425742745602'
+        chart: OpportunitySalesPipeline
     - kind: Chart
       xywh:
       - 10
@@ -1611,7 +1611,7 @@ pages:
           headerText: primary
       title: מכירות מול יעדים
       options:
-        chartID: '313636425759260674'
+        chart: SalesVsTarget
     - kind: Chart
       xywh:
       - 8
@@ -1624,7 +1624,7 @@ pages:
           headerText: primary
       title: הזדמנויות מול יעדים
       options:
-        chartID: '313636425742548994'
+        chart: NumberOfOpportunitiesVsTarget
     description: ''
     pages:
     - handle: RecordPageForModuleOpportunity
@@ -3243,7 +3243,7 @@ pages:
           headerText: primary
       title: סטאטוס הצעות מחיר
       options:
-        chartID: '313636425742876674'
+        chart: QuotesByStatus
     - kind: Chart
       xywh:
       - 9
@@ -3258,7 +3258,7 @@ pages:
           headerText: primary
       title: מספר הצעות חודשי
       options:
-        chartID: '313636425759195138'
+        chart: QuotesPerMonth
     description: ''
     pages:
     - handle: RecordPageForModuleQuote
