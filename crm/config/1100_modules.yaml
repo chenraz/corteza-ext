@@ -7434,6 +7434,55 @@ modules:
       Photo:
         label: תמונה
         kind: String
+  OpportunityIncludedItem:
+    (envoy): { onExisting: "skip" }
+    name: OpportunityIncludedItem
+    fields:
+      ServiceDate:
+        label: תאריך
+        kind: DateTime
+      Description:
+        label: תאור פריט
+        kind: String
+      OpportunityId:
+        label: הזדמנות
+        kind: Record
+        options:
+          labelField: Name
+          module: Opportunity
+          queryFields:
+          - AccountId
+          - Name
+          selectType: ""
+      Name:
+        label: שם המוצר
+        kind: String
+      ProductId:
+        label: מוצר
+        kind: Record
+        options:
+          labelField: Name
+          module: Product
+          queryFields: []
+          selectType: ""
+      ProductCode:
+        label: קוד מוצר
+        kind: String
+      Quantity:
+        label: כמות
+        kind: Number
+        options:
+          format: "0"
+          precision: 0
+      SortOrder:
+        label: סדר מיון
+        kind: Number
+        options:
+          format: "0"
+          precision: 0
+      Photo:
+        label: תמונה
+        kind: String
   Pricebook:
     (envoy): { onExisting: "skip" }
     name: Pricebook
@@ -10640,6 +10689,57 @@ modules:
         kind: String
         options:
           multiLine: true
+  QuoteIncludedItem:
+    (envoy): { onExisting: "skip" }
+    name: QuoteIncludedItem
+    fields:
+      ServiceDate:
+        label: תאריך
+        kind: DateTime
+      Description:
+        label: תאור פריט
+        kind: String
+      QuoteId:
+        label: הצעת מחיר
+        kind: Record
+        options:
+          labelField: Name
+          module: Quote
+          queryFields:
+          - AccountId
+          - Name
+          - QuoteNumber
+          selectType: ""
+
+      Name:
+        label: שם המוצר
+        kind: String
+      ProductId:
+        label: מוצר
+        kind: Record
+        options:
+          labelField: Name
+          module: Product
+          queryFields: []
+          selectType: ""
+      ProductCode:
+        label: קוד מוצר
+        kind: String
+      Quantity:
+        label: כמות
+        kind: Number
+        options:
+          format: "0"
+          precision: 0
+      SortOrder:
+        label: סדר מיון
+        kind: Number
+        options:
+          format: "0"
+          precision: 0
+      Photo:
+        label: תמונה
+        kind: String
   QuoteTermItem:
     (envoy): { onExisting: "skip" }
     name: QuoteTermItem
