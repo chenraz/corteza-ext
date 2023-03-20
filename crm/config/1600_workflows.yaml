@@ -14529,8 +14529,6 @@ workflows:
             - expr: record.values.CampaignId
               type: Array
               target: account.values.CampaignId
-            - type: Any
-              target: ""
           id: 38
         - ref: composeRecordsCreate
           kind: function
@@ -18791,7 +18789,7 @@ workflows:
               values:
                 - Quote
           enabled: true
-          stepID: 4
+          stepID: 16
           meta:
             visual:
               id: "9"

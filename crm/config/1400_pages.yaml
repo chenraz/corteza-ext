@@ -4911,7 +4911,9 @@ pages:
               selectType: ''
               description:
                 view: ''
-              queryFields: []
+              queryFields: 
+              - ProductCode
+              - Name              
               multiDelimiter: '
 
                 '
