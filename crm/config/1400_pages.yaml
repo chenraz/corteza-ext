@@ -236,8 +236,8 @@ pages:
       - allDay: false
         options:
           color: '#5680a6'
-          moduleID: '327979457417602570'
           prefilter: Type = 'Call'
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
@@ -245,8 +245,8 @@ pages:
       - allDay: false
         options:
           color: '#e38e3f'
-          moduleID: '327979457417602570'
           prefilter: Type = 'Email'
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
@@ -254,8 +254,8 @@ pages:
       - allDay: false
         options:
           color: '#ce6462'
-          moduleID: '327979457417602570'
           prefilter: Type = 'Meeting'
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
@@ -263,8 +263,8 @@ pages:
       - allDay: false
         options:
           color: '#88b5b2'
-          moduleID: '327979457417602570'
           prefilter: Type = 'Send Letter / Quote'
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
@@ -272,8 +272,8 @@ pages:
       - allDay: false
         options:
           color: '#70974d'
-          moduleID: '327979457417602570'
           prefilter: Type = 'Other'
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
@@ -281,8 +281,8 @@ pages:
       - allDay: false
         options:
           color: '#e9c153'
-          moduleID: '327979457417602570'
           prefilter: Type IS NULL
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
@@ -8536,8 +8536,8 @@ pages:
       - allDay: false
         options:
           color: '#5680a6'
-          moduleID: '327979457417602570'
           prefilter: Type = 'Call'
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
@@ -8545,8 +8545,8 @@ pages:
       - allDay: false
         options:
           color: '#e38e3f'
-          moduleID: '327979457417602570'
           prefilter: Type = 'Email'
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
@@ -8554,8 +8554,8 @@ pages:
       - allDay: false
         options:
           color: '#ce6462'
-          moduleID: '327979457417602570'
           prefilter: Type = 'Meeting'
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
@@ -8563,8 +8563,8 @@ pages:
       - allDay: false
         options:
           color: '#88b5b2'
-          moduleID: '327979457417602570'
           prefilter: Type = 'Send Letter / Quote'
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
@@ -8572,8 +8572,8 @@ pages:
       - allDay: false
         options:
           color: '#70974d'
-          moduleID: '327979457417602570'
           prefilter: Type = 'Other'
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
@@ -8581,8 +8581,8 @@ pages:
       - allDay: false
         options:
           color: '#e9c153'
-          moduleID: '327979457417602570'
           prefilter: Type IS NULL
+          module: Event
         endField: EndDateTime
         resource: compose:record
         startField: ActivityDate
