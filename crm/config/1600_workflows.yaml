@@ -20,9 +20,9 @@ workflows:
             value: Check if First/Last name exists
             parent: "1"
           description: ""
-        stepID: "23"
         results: []
         arguments: []
+        id: 23
       - ref: ""
         kind: expressions
         meta:
@@ -37,12 +37,12 @@ workflows:
             value: Assign record.values.RecordLabel
             parent: "1"
           description: ""
-        stepID: "41"
         results: []
         arguments:
           - expr: record.values.FirstName + ' ' + record.values.LastName
             type: String
             target: record.values.RecordLabel
+        id: 41
       - ref: ""
         kind: expressions
         meta:
@@ -57,12 +57,12 @@ workflows:
             value: Assign record.values.RecordLabel
             parent: "1"
           description: ""
-        stepID: "43"
         results: []
         arguments:
           - expr: record.values.FirstName
             type: String
             target: record.values.RecordLabel
+        id: 43
       - ref: ""
         kind: expressions
         meta:
@@ -77,12 +77,12 @@ workflows:
             value: Assign record.values.RecordLabel
             parent: "1"
           description: ""
-        stepID: "45"
         results: []
         arguments:
           - expr: record.values.LastName
             type: String
             target: record.values.RecordLabel
+        id: 45
       - ref: excl
         kind: gateway
         meta:
@@ -97,9 +97,9 @@ workflows:
             value: Check if related Account exists
             parent: "1"
           description: ""
-        stepID: "74"
         results: []
         arguments: []
+        id: 74
       - ref: ""
         kind: termination
         meta:
@@ -114,9 +114,9 @@ workflows:
             value: null
             parent: "1"
           description: ""
-        stepID: "76"
         results: []
         arguments: []
+        id: 76
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -131,7 +131,6 @@ workflows:
             value: Get related Account
             parent: "1"
           description: ""
-        stepID: "78"
         results:
           - expr: record
             target: accountRecord
@@ -145,6 +144,7 @@ workflows:
           - expr: record.values.AccountId
             type: ID
             target: record
+        id: 78
       - ref: excl
         kind: gateway
         meta:
@@ -159,9 +159,9 @@ workflows:
             value: If related Account has AccountName
             parent: "1"
           description: ""
-        stepID: "85"
         results: []
         arguments: []
+        id: 85
       - ref: ""
         kind: expressions
         meta:
@@ -176,12 +176,12 @@ workflows:
             value: Add AccountName to RecordLabel
             parent: "1"
           description: ""
-        stepID: "86"
         results: []
         arguments:
           - expr: record.values.RecordLabel + " (" + accountRecord.values.AccountName +")"
             type: String
             target: record.values.RecordLabel
+        id: 86
     paths:
       - expr: '(record.values.FirstName ? true : false) && (record.values.LastName ? true : false)'
         meta:
@@ -373,7 +373,6 @@ workflows:
             value: Send Email
             parent: "1"
           description: ""
-        stepID: "13"
         results: []
         arguments:
           - expr: '"Corteza - Case: " + record.values.CaseNumber + " - " + record.values.Subject'
@@ -385,6 +384,7 @@ workflows:
           - expr: emailRow1 + emailRow2 + emailRow3
             type: String
             target: html
+        id: 13
       - ref: ""
         kind: expressions
         meta:
@@ -399,7 +399,6 @@ workflows:
             value: Prepare Email body
             parent: "1"
           description: ""
-        stepID: "17"
         results: []
         arguments:
           - expr: '"<h1>Solution of case: " + record.values.CaseNumber + " - " + record.values.Subject + "<br>"'
@@ -411,6 +410,7 @@ workflows:
           - expr: '"<strong>Solution Details:</strong> " + (record.values.SolutionNote? record.values.SolutionNote: "/") + "<br>"'
             type: Any
             target: emailRow3
+        id: 17
       - ref: notification
         kind: prompt
         meta:
@@ -425,7 +425,6 @@ workflows:
             value: 'Warning: Not Closed'
             parent: "1"
           description: ""
-        stepID: "20"
         results: []
         arguments:
           - type: String
@@ -437,6 +436,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 20
       - ref: excl
         kind: gateway
         meta:
@@ -451,9 +451,9 @@ workflows:
             value: Check if Closed and has Email
             parent: "1"
           description: ""
-        stepID: "21"
         results: []
         arguments: []
+        id: 21
       - ref: notification
         kind: prompt
         meta:
@@ -468,7 +468,6 @@ workflows:
             value: 'Warning: No Email'
             parent: "1"
           description: ""
-        stepID: "24"
         results: []
         arguments:
           - type: String
@@ -480,6 +479,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 24
       - ref: notification
         kind: prompt
         meta:
@@ -494,7 +494,6 @@ workflows:
             value: הצלחה
             parent: "1"
           description: ""
-        stepID: "27"
         results: []
         arguments:
           - type: String
@@ -506,6 +505,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 27
     paths:
       - meta:
           name: ""
@@ -622,7 +622,6 @@ workflows:
             value: Get Settings
             parent: "1"
           description: ""
-        stepID: "3"
         results:
           - expr: record
             target: settings
@@ -633,6 +632,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 3
       - ref: ""
         kind: expressions
         meta:
@@ -647,7 +647,6 @@ workflows:
             value: Set SolutionNumber
             parent: "1"
           description: ""
-        stepID: "5"
         results: []
         arguments:
           - expr: 'settings.values.SolutionNextNumber ? settings.values.SolutionNextNumber : 0'
@@ -659,6 +658,7 @@ workflows:
           - expr: nextSolutionNumber + 1
             type: Integer
             target: settings.values.SolutionNextNumber
+        id: 5
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -673,12 +673,12 @@ workflows:
             value: Save Settings
             parent: "1"
           description: ""
-        stepID: "7"
         results: []
         arguments:
           - expr: settings
             type: ComposeRecord
             target: record
+        id: 7
       - ref: excl
         kind: gateway
         meta:
@@ -693,9 +693,9 @@ workflows:
             value: Check if has number
             parent: "1"
           description: ""
-        stepID: "11"
         results: []
         arguments: []
+        id: 11
       - ref: ""
         kind: termination
         meta:
@@ -710,9 +710,9 @@ workflows:
             value: End
             parent: "1"
           description: ""
-        stepID: "14"
         results: []
         arguments: []
+        id: 14
     paths:
       - meta:
           name: ""
@@ -817,7 +817,6 @@ workflows:
             value: Get Settings
             parent: "1"
           description: ""
-        stepID: "3"
         results:
           - expr: record
             target: settings
@@ -828,6 +827,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 3
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -842,7 +842,6 @@ workflows:
             value: Get Contacts
             parent: "1"
           description: ""
-        stepID: "55"
         results:
           - expr: records
             target: contacts
@@ -861,6 +860,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 55
       - ref: excl
         kind: gateway
         meta:
@@ -875,9 +875,9 @@ workflows:
             value: Check for contact
             parent: "1"
           description: ""
-        stepID: "61"
         results: []
         arguments: []
+        id: 61
       - ref: ""
         kind: expressions
         meta:
@@ -892,12 +892,12 @@ workflows:
             value: Set contact
             parent: "1"
           description: ""
-        stepID: "66"
         results: []
         arguments:
           - expr: contacts[0]
             type: ComposeRecord
             target: contact
+        id: 66
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -912,7 +912,6 @@ workflows:
             value: Make Opportunity
             parent: "1"
           description: ""
-        stepID: "81"
         results:
           - expr: record
             target: opportunity
@@ -923,6 +922,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 81
       - ref: ""
         kind: expressions
         meta:
@@ -937,7 +937,6 @@ workflows:
             value: Set Opportunity values
             parent: "1"
           description: ""
-        stepID: "83"
         results: []
         arguments:
           - expr: '"(unnamed)"'
@@ -973,6 +972,7 @@ workflows:
           - expr: record.values.AccountSource
             type: String
             target: opportunity.values.LeadSource
+        id: 83
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -987,7 +987,6 @@ workflows:
             value: Save Opportunity
             parent: "1"
           description: ""
-        stepID: "86"
         results:
           - expr: record
             target: opportunity
@@ -995,6 +994,7 @@ workflows:
           - expr: opportunity
             type: ComposeRecord
             target: record
+        id: 86
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -1009,7 +1009,6 @@ workflows:
             value: Make OpportunityContactRole
             parent: "1"
           description: ""
-        stepID: "88"
         results:
           - expr: record
             target: opportunityContactRole
@@ -1020,6 +1019,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 88
       - ref: ""
         kind: expressions
         meta:
@@ -1034,7 +1034,6 @@ workflows:
             value: Set OpportunityContactRolevalues
             parent: "1"
           description: ""
-        stepID: "89"
         results: []
         arguments:
           - expr: contact.recordID
@@ -1046,6 +1045,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: opportunityContactRole.values.IsPrimary
+        id: 89
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -1060,7 +1060,6 @@ workflows:
             value: Save OpportunityContactRole
             parent: "1"
           description: ""
-        stepID: "91"
         results:
           - expr: record
             target: opportunity
@@ -1068,6 +1067,7 @@ workflows:
           - expr: opportunity
             type: ComposeRecord
             target: record
+        id: 91
       - ref: notification
         kind: prompt
         meta:
@@ -1082,7 +1082,6 @@ workflows:
             value: Show success
             parent: "1"
           description: ""
-        stepID: "103"
         results: []
         arguments:
           - expr: '"Success"'
@@ -1097,6 +1096,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: sticky
+        id: 103
       - ref: recordPage
         kind: prompt
         meta:
@@ -1111,7 +1111,6 @@ workflows:
             value: Go to editor
             parent: "1"
           description: ""
-        stepID: "105"
         results: []
         arguments:
           - type: Handle
@@ -1126,6 +1125,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: edit
+        id: 105
       - ref: notification
         kind: prompt
         meta:
@@ -1140,7 +1140,6 @@ workflows:
             value: Show warning
             parent: "1"
           description: ""
-        stepID: "107"
         results: []
         arguments:
           - expr: '"Warning"'
@@ -1155,6 +1154,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: sticky
+        id: 107
     paths:
       - expr: numOfContacts > 0
         meta:
@@ -1347,9 +1347,9 @@ workflows:
             value: Check if Case Closed
             parent: "19"
           description: ""
-        stepID: "3"
         results: []
         arguments: []
+        id: 3
       - ref: excl
         kind: gateway
         meta:
@@ -1364,9 +1364,9 @@ workflows:
             value: Check for Solution
             parent: "19"
           description: ""
-        stepID: "7"
         results: []
         arguments: []
+        id: 7
       - ref: ""
         kind: expressions
         meta:
@@ -1381,7 +1381,6 @@ workflows:
             value: Update status
             parent: "19"
           description: ""
-        stepID: "11"
         results: []
         arguments:
           - expr: now()
@@ -1393,6 +1392,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: record.values.IsClosed
+        id: 11
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -1407,7 +1407,6 @@ workflows:
             value: Make Update
             parent: "19"
           description: ""
-        stepID: "13"
         results:
           - expr: record
             target: caseUpdate
@@ -1418,6 +1417,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 13
       - ref: ""
         kind: expressions
         meta:
@@ -1432,7 +1432,6 @@ workflows:
             value: Set Update values
             parent: "19"
           description: ""
-        stepID: "15"
         results: []
         arguments:
           - expr: '"State set to \"Closed\""'
@@ -1444,6 +1443,7 @@ workflows:
           - expr: record.recordID
             type: ID
             target: caseUpdate.values.CaseId
+        id: 15
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -1458,7 +1458,6 @@ workflows:
             value: Save Update
             parent: "19"
           description: ""
-        stepID: "17"
         results:
           - expr: record
             target: caseUpdate
@@ -1466,6 +1465,7 @@ workflows:
           - expr: caseUpdate
             type: ComposeRecord
             target: record
+        id: 17
       - ref: swimlane
         kind: visual
         meta:
@@ -1480,9 +1480,9 @@ workflows:
             value: Prepare and create Case Update
             parent: "1"
           description: ""
-        stepID: "19"
         results: []
         arguments: []
+        id: 19
       - ref: swimlane
         kind: visual
         meta:
@@ -1497,9 +1497,9 @@ workflows:
             value: Handle Existing Solution
             parent: "1"
           description: ""
-        stepID: "20"
         results: []
         arguments: []
+        id: 20
       - ref: excl
         kind: gateway
         meta:
@@ -1514,9 +1514,9 @@ workflows:
             value: Check for Solution
             parent: "20"
           description: ""
-        stepID: "21"
         results: []
         arguments: []
+        id: 21
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -1531,7 +1531,6 @@ workflows:
             value: Get Solution
             parent: "20"
           description: ""
-        stepID: "23"
         results:
           - expr: record
             target: solution
@@ -1545,6 +1544,7 @@ workflows:
           - expr: record.values.SolutionId
             type: ID
             target: record
+        id: 23
       - ref: excl
         kind: gateway
         meta:
@@ -1559,9 +1559,9 @@ workflows:
             value: Check SubmitAsSolution
             parent: "1"
           description: ""
-        stepID: "26"
         results: []
         arguments: []
+        id: 26
       - ref: ""
         kind: expressions
         meta:
@@ -1576,7 +1576,6 @@ workflows:
             value: Update record
             parent: "20"
           description: ""
-        stepID: "28"
         results: []
         arguments:
           - expr: solution.values.SolutionName
@@ -1588,6 +1587,7 @@ workflows:
           - expr: solution.values.File
             type: Array
             target: record.values.SolutionFile
+        id: 28
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -1602,7 +1602,6 @@ workflows:
             value: Save record
             parent: "1"
           description: ""
-        stepID: "30"
         results:
           - expr: record
             target: record
@@ -1610,6 +1609,7 @@ workflows:
           - expr: record
             type: ComposeRecord
             target: record
+        id: 30
       - ref: swimlane
         kind: visual
         meta:
@@ -1624,9 +1624,9 @@ workflows:
             value: Create Solution
             parent: "1"
           description: ""
-        stepID: "34"
         results: []
         arguments: []
+        id: 34
       - ref: composeRecordsLast
         kind: function
         meta:
@@ -1641,7 +1641,6 @@ workflows:
             value: Get Settings
             parent: "1"
           description: ""
-        stepID: "35"
         results:
           - expr: record
             target: settings
@@ -1652,6 +1651,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 35
       - ref: ""
         kind: expressions
         meta:
@@ -1666,12 +1666,12 @@ workflows:
             value: Set nextSolutionNumber
             parent: "20"
           description: ""
-        stepID: "38"
         results: []
         arguments:
           - expr: 'settings.values.SolutionNextNumber ? settings.values.SolutionNextNumber : 0'
             type: Integer
             target: nextSolutionNumber
+        id: 38
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -1686,7 +1686,6 @@ workflows:
             value: Make Solution
             parent: "34"
           description: ""
-        stepID: "40"
         results:
           - expr: record
             target: solution
@@ -1697,6 +1696,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 40
       - ref: ""
         kind: expressions
         meta:
@@ -1711,7 +1711,6 @@ workflows:
             value: Set Solution Values
             parent: "34"
           description: ""
-        stepID: "42"
         results: []
         arguments:
           - expr: record.values.SolutionName
@@ -1738,6 +1737,7 @@ workflows:
           - expr: record.values.ProductId
             type: ID
             target: solution.values.ProductId
+        id: 42
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -1752,7 +1752,6 @@ workflows:
             value: Save Solution
             parent: "34"
           description: ""
-        stepID: "44"
         results:
           - expr: record
             target: solution
@@ -1760,6 +1759,7 @@ workflows:
           - expr: solution
             type: ComposeRecord
             target: record
+        id: 44
       - ref: ""
         kind: expressions
         meta:
@@ -1774,12 +1774,12 @@ workflows:
             value: Set SolutionNextNumber
             parent: "34"
           description: ""
-        stepID: "46"
         results: []
         arguments:
           - expr: settings.values.SolutionNextNumber + 1
             type: Integer
             target: settings.values.SolutionNextNumber
+        id: 46
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -1794,7 +1794,6 @@ workflows:
             value: Save Settings
             parent: "34"
           description: ""
-        stepID: "48"
         results:
           - expr: record
             target: settings
@@ -1802,6 +1801,7 @@ workflows:
           - expr: settings
             type: ComposeRecord
             target: record
+        id: 48
       - ref: notification
         kind: prompt
         meta:
@@ -1816,7 +1816,6 @@ workflows:
             value: 'Warning: This case is already closed'
             parent: "19"
           description: ""
-        stepID: "51"
         results: []
         arguments:
           - type: String
@@ -1828,6 +1827,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 51
       - ref: notification
         kind: prompt
         meta:
@@ -1842,7 +1842,6 @@ workflows:
             value: 'Warning: Unable to close the case. Please add a solution name or select an existing solution before closing the case.'
             parent: "19"
           description: ""
-        stepID: "62"
         results: []
         arguments:
           - type: String
@@ -1854,6 +1853,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 62
       - ref: recordPage
         kind: prompt
         meta:
@@ -1868,7 +1868,6 @@ workflows:
             value: Refresh page
             parent: "20"
           description: ""
-        stepID: "63"
         results: []
         arguments:
           - expr: module
@@ -1880,6 +1879,7 @@ workflows:
           - expr: record
             type: ComposeRecord
             target: record
+        id: 63
     paths:
       - expr: record.values.Status == "Closed"
         meta:
@@ -2190,12 +2190,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "4"
         results: []
         arguments:
           - expr: record.values.TermbookIds
             type: Array
             target: termbookIds
+        id: 4
       - ref: excl
         kind: gateway
         meta:
@@ -2211,9 +2211,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "8"
         results: []
         arguments: []
+        id: 8
       - ref: notification
         kind: prompt
         meta:
@@ -2229,7 +2229,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "12"
         results: []
         arguments:
           - type: String
@@ -2241,6 +2240,7 @@ workflows:
           - type: String
             value: warning
             target: variant
+        id: 12
       - ref: loopEach
         kind: iterator
         meta:
@@ -2256,7 +2256,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "13"
         results:
           - expr: item
             target: termbookId
@@ -2264,6 +2263,7 @@ workflows:
           - expr: termbookIds
             type: Array
             target: items
+        id: 13
       - ref: ""
         kind: continue
         meta:
@@ -2279,9 +2279,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "16"
         results: []
         arguments: []
+        id: 16
       - ref: composeRecordsEach
         kind: iterator
         meta:
@@ -2297,7 +2297,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "24"
         results:
           - expr: record
             target: TermbookEntry
@@ -2311,6 +2310,7 @@ workflows:
           - expr: '"TermbookId = " + termbookId'
             type: String
             target: query
+        id: 24
       - ref: ""
         kind: continue
         meta:
@@ -2326,9 +2326,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "28"
         results: []
         arguments: []
+        id: 28
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -2344,7 +2344,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "31"
         results:
           - expr: record
             target: QuoteTermItem
@@ -2355,6 +2354,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 31
       - ref: ""
         kind: expressions
         meta:
@@ -2370,7 +2370,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "32"
         results: []
         arguments:
           - expr: TermbookEntry.values.Name
@@ -2382,6 +2381,7 @@ workflows:
           - expr: record.recordID
             type: ID
             target: QuoteTermItem.values.QuoteId
+        id: 32
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -2397,7 +2397,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "35"
         results:
           - expr: record
             target: QuoteTermItem
@@ -2405,6 +2404,7 @@ workflows:
           - expr: QuoteTermItem
             type: ComposeRecord
             target: record
+        id: 35
       - ref: notification
         kind: prompt
         meta:
@@ -2420,7 +2420,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "39"
         results: []
         arguments:
           - type: String
@@ -2429,6 +2428,7 @@ workflows:
           - type: String
             value: כל התנאים מספרי התנאים שנבחרו יובאו להצעה
             target: message
+        id: 39
       - ref: recordPage
         kind: prompt
         meta:
@@ -2444,7 +2444,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "42"
         results: []
         arguments:
           - type: Handle
@@ -2459,6 +2458,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: edit
+        id: 42
     paths:
       - meta:
           name: ""
@@ -2641,9 +2641,9 @@ workflows:
             value: Check recipient
             parent: "1"
           description: ""
-        stepID: "3"
         results: []
         arguments: []
+        id: 3
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -2658,7 +2658,6 @@ workflows:
             value: Get LineItems
             parent: "1"
           description: ""
-        stepID: "6"
         results:
           - expr: records
             target: lineItems
@@ -2672,6 +2671,7 @@ workflows:
           - expr: '"QuoteId = " + record.recordID'
             type: String
             target: query
+        id: 6
       - ref: emailSend
         kind: function
         meta:
@@ -2686,7 +2686,6 @@ workflows:
             value: Send Mail
             parent: "1"
           description: ""
-        stepID: "11"
         results: []
         arguments:
           - expr: '"Corteza - Quote: " + record.values.QuoteNumber + " - " + record.values.Name'
@@ -2698,6 +2697,7 @@ workflows:
           - expr: html.document
             type: Reader
             target: html
+        id: 11
       - ref: notification
         kind: prompt
         meta:
@@ -2712,7 +2712,6 @@ workflows:
             value: 'אזהרה: לא קושר אימייל להצעת המחיר. נא להזין פרטי איש קשר ראשי.'
             parent: "1"
           description: ""
-        stepID: "15"
         results: []
         arguments:
           - type: String
@@ -2724,6 +2723,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 15
       - ref: notification
         kind: prompt
         meta:
@@ -2738,7 +2738,6 @@ workflows:
             value: 'הצלחה: הצעת המחיר נשלחה במייל'
             parent: "1"
           description: ""
-        stepID: "16"
         results: []
         arguments:
           - type: String
@@ -2750,6 +2749,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 16
       - ref: templatesRender
         kind: function
         meta:
@@ -2764,7 +2764,6 @@ workflows:
             value: Quote to HTML
             parent: "1"
           description: ""
-        stepID: "19"
         results:
           - expr: document
             target: html
@@ -2781,6 +2780,7 @@ workflows:
           - expr: renderVariables
             type: Vars
             target: variables
+        id: 19
       - ref: ""
         kind: expressions
         meta:
@@ -2795,7 +2795,6 @@ workflows:
             value: Set Render Variables
             parent: "1"
           description: ""
-        stepID: "31"
         results: []
         arguments:
           - type: Vars
@@ -2806,6 +2805,7 @@ workflows:
           - expr: lineItems
             type: Array
             target: renderVariables.lineItems
+        id: 31
     paths:
       - expr: 'record.values.Email ? true : false'
         meta:
@@ -2932,7 +2932,6 @@ workflows:
             value: Prompt for Email
             parent: "1"
           description: ""
-        stepID: "3"
         results:
           - expr: value
             target: email
@@ -2949,6 +2948,7 @@ workflows:
           - type: String
             value: email
             target: type
+        id: 3
       - ref: excl
         kind: gateway
         meta:
@@ -2963,9 +2963,9 @@ workflows:
             value: Check if email entered
             parent: "1"
           description: ""
-        stepID: "5"
         results: []
         arguments: []
+        id: 5
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -2980,7 +2980,6 @@ workflows:
             value: Get LineItems
             parent: "1"
           description: ""
-        stepID: "8"
         results:
           - expr: records
             target: lineItems
@@ -2994,6 +2993,7 @@ workflows:
           - expr: '"QuoteId = " + record.recordID'
             type: String
             target: query
+        id: 8
       - ref: emailSend
         kind: function
         meta:
@@ -3008,7 +3008,6 @@ workflows:
             value: Send Email
             parent: "1"
           description: ""
-        stepID: "13"
         results: []
         arguments:
           - expr: '"Corteza - Quote: " + record.values.QuoteNumber + " - " + record.values.Name'
@@ -3020,6 +3019,7 @@ workflows:
           - expr: html.document
             type: Reader
             target: html
+        id: 13
       - ref: notification
         kind: prompt
         meta:
@@ -3034,7 +3034,6 @@ workflows:
             value: 'Warning: Please enter an email to send this quote to'
             parent: "1"
           description: ""
-        stepID: "19"
         results: []
         arguments:
           - type: String
@@ -3046,6 +3045,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 19
       - ref: notification
         kind: prompt
         meta:
@@ -3060,7 +3060,6 @@ workflows:
             value: 'הצלחה: הצעת המחיר נשלחה במייל'
             parent: "1"
           description: ""
-        stepID: "20"
         results: []
         arguments:
           - type: String
@@ -3072,6 +3071,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 20
       - ref: templatesRender
         kind: function
         meta:
@@ -3086,7 +3086,6 @@ workflows:
             value: Render Template
             parent: "1"
           description: ""
-        stepID: "29"
         results:
           - expr: document
             target: html
@@ -3103,6 +3102,7 @@ workflows:
           - expr: renderVariables
             type: Vars
             target: variables
+        id: 29
       - ref: ""
         kind: expressions
         meta:
@@ -3117,7 +3117,6 @@ workflows:
             value: Set Render Variables
             parent: "1"
           description: ""
-        stepID: "33"
         results: []
         arguments:
           - type: Vars
@@ -3128,6 +3127,7 @@ workflows:
           - expr: lineItems
             type: Array
             target: renderVariables.lineItems
+        id: 33
     paths:
       - meta:
           name: ""
@@ -3266,9 +3266,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "3"
         results: []
         arguments: []
+        id: 3
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -3284,7 +3284,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "6"
         results:
           - expr: records
             type: ComposeRecord
@@ -3302,6 +3301,7 @@ workflows:
           - type: String
             value: SortOrder
             target: sort
+        id: 6
       - ref: notification
         kind: prompt
         meta:
@@ -3317,7 +3317,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "15"
         results: []
         arguments:
           - type: String
@@ -3329,6 +3328,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 15
       - ref: notification
         kind: prompt
         meta:
@@ -3344,7 +3344,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "16"
         results: []
         arguments:
           - type: String
@@ -3356,6 +3355,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 16
       - ref: ""
         kind: expressions
         meta:
@@ -3371,7 +3371,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "31"
         results: []
         arguments:
           - type: Vars
@@ -3422,6 +3421,7 @@ workflows:
           - expr: extensionItems
             type: Array
             target: renderVariables.extensionItems
+        id: 31
       - ref: templatesRender
         kind: function
         meta:
@@ -3437,7 +3437,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "99"
         results:
           - expr: document
             target: mailHtml
@@ -3454,6 +3453,7 @@ workflows:
           - expr: renderVariables
             type: Vars
             target: variables
+        id: 99
       - ref: templatesRender
         kind: function
         meta:
@@ -3469,7 +3469,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "113"
         results:
           - expr: document
             target: html
@@ -3486,6 +3485,7 @@ workflows:
           - expr: renderVariables
             type: Vars
             target: variables
+        id: 113
       - ref: ""
         kind: expressions
         meta:
@@ -3501,7 +3501,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "119"
         results: []
         arguments:
           - expr: html.document
@@ -3519,6 +3518,7 @@ workflows:
           - expr: join([record.values.Name,record.values.QuoteNumber]," - ")
             type: String
             target: quoteName
+        id: 119
       - ref: corredorExec
         kind: function
         meta:
@@ -3534,7 +3534,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "124"
         results:
           - expr: results
             type: Vars
@@ -3556,6 +3555,7 @@ workflows:
               }
             type: Vars
             target: args
+        id: 124
       - ref: composeRecordsLast
         kind: function
         meta:
@@ -3571,7 +3571,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "152"
         results:
           - expr: record
             target: settings
@@ -3582,6 +3581,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 152
       - ref: ""
         kind: expressions
         meta:
@@ -3597,7 +3597,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "153"
         results: []
         arguments:
           - expr: settings.values.DefaultQuoteImage
@@ -3606,6 +3605,7 @@ workflows:
           - expr: settings.values.DefaultAboutImage
             type: String
             target: DefaultAboutImage
+        id: 153
       - ref: oauth2Authenticate
         kind: function
         meta:
@@ -3621,7 +3621,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "154"
         results:
           - expr: accessToken
             type: String
@@ -3639,6 +3638,7 @@ workflows:
           - expr: join([settings.values.Domain,"/auth/oauth2/token"],'')
             type: String
             target: tokenUrl
+        id: 154
       - ref: httpRequestSend
         kind: function
         meta:
@@ -3654,7 +3654,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "159"
         results:
           - expr: status
             type: String
@@ -3672,6 +3671,7 @@ workflows:
           - expr: accessToken
             type: String
             target: headerAuthBearer
+        id: 159
       - ref: ""
         kind: expressions
         meta:
@@ -3687,12 +3687,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "163"
         results: []
         arguments:
           - expr: attachmentReader
             type: String
             target: attachmentString
+        id: 163
       - ref: jsenvExecute
         kind: function
         meta:
@@ -3708,7 +3708,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "168"
         results:
           - expr: resultString
             type: String
@@ -3722,6 +3721,7 @@ workflows:
               const js = JSON.parse(arguments[0])
               return js.response.url;
             target: source
+        id: 168
       - ref: templatesRender
         kind: function
         meta:
@@ -3737,7 +3737,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "172"
         results:
           - expr: document
             target: headerHtml
@@ -3751,6 +3750,7 @@ workflows:
           - type: String
             value: text/html
             target: documentType
+        id: 172
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -3766,7 +3766,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "191"
         results:
           - expr: record
             target: priContact
@@ -3780,6 +3779,7 @@ workflows:
           - expr: record.values.ContactId
             type: ID
             target: record
+        id: 191
       - ref: templatesRender
         kind: function
         meta:
@@ -3795,7 +3795,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "192"
         results:
           - expr: document
             target: footerHtml
@@ -3809,6 +3808,7 @@ workflows:
           - type: String
             value: text/html
             target: documentType
+        id: 192
       - ref: loopEach
         kind: iterator
         meta:
@@ -3824,7 +3824,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "195"
         results:
           - expr: item
             type: Any
@@ -3833,6 +3832,7 @@ workflows:
           - expr: lineItems
             type: Array
             target: items
+        id: 195
       - ref: ""
         kind: expressions
         meta:
@@ -3848,12 +3848,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "207"
         results: []
         arguments:
           - expr: lineItem.values.ProductId
             type: String
             target: ProductId
+        id: 207
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -3869,7 +3869,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "209"
         results:
           - expr: record
             type: ComposeRecord
@@ -3884,6 +3883,7 @@ workflows:
           - expr: ProductId
             type: ID
             target: record
+        id: 209
       - ref: httpRequestSend
         kind: function
         meta:
@@ -3899,7 +3899,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "213"
         results:
           - expr: body
             type: Reader
@@ -3914,6 +3913,7 @@ workflows:
           - expr: accessToken
             type: String
             target: headerAuthBearer
+        id: 213
       - ref: ""
         kind: expressions
         meta:
@@ -3929,7 +3929,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "218"
         results: []
         arguments:
           - expr: productImage
@@ -3938,6 +3937,7 @@ workflows:
           - expr: join([ settings.values.Domain, "api/compose/namespace",record.namespaceID, "attachment/record", LineItemProduct.values.Photo],"/")
             type: String
             target: productImageUrl
+        id: 218
       - ref: jsenvExecute
         kind: function
         meta:
@@ -3953,7 +3953,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "219"
         results:
           - expr: resultString
             type: String
@@ -3967,6 +3966,7 @@ workflows:
               const js = JSON.parse(arguments[0])
               return js.response.url;
             target: source
+        id: 219
       - ref: ""
         kind: expressions
         meta:
@@ -3982,7 +3982,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "236"
         results: []
         arguments:
           - type: Vars
@@ -3991,6 +3990,7 @@ workflows:
             target: productNames
           - type: Vars
             target: productFamilies
+        id: 236
       - ref: ""
         kind: expressions
         meta:
@@ -4006,7 +4006,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "242"
         results: []
         arguments:
           - expr: |-
@@ -4029,6 +4028,7 @@ workflows:
           - expr: merge(productFamilies,familyItem)
             type: Vars
             target: productFamilies
+        id: 242
       - ref: ""
         kind: continue
         meta:
@@ -4044,9 +4044,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "244"
         results: []
         arguments: []
+        id: 244
       - ref: httpRequestSend
         kind: function
         meta:
@@ -4062,7 +4062,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "251"
         results:
           - expr: body
             type: Reader
@@ -4077,6 +4076,7 @@ workflows:
           - expr: accessToken
             type: String
             target: headerAuthBearer
+        id: 251
       - ref: ""
         kind: expressions
         meta:
@@ -4092,12 +4092,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "252"
         results: []
         arguments:
           - expr: attachmentReader
             type: String
             target: attachmentString
+        id: 252
       - ref: jsenvExecute
         kind: function
         meta:
@@ -4113,7 +4113,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "253"
         results:
           - expr: resultString
             target: aboutImgUrl
@@ -4126,6 +4125,7 @@ workflows:
               const js = JSON.parse(arguments[0])
               return js.response.url;
             target: source
+        id: 253
       - ref: excl
         kind: gateway
         meta:
@@ -4141,9 +4141,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "259"
         results: []
         arguments: []
+        id: 259
       - ref: ""
         kind: expressions
         meta:
@@ -4159,12 +4159,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "269"
         results: []
         arguments:
           - expr: '"הצעת מחיר לפיתוח"'
             type: String
             target: record.values.Name
+        id: 269
       - ref: jsenvExecute
         kind: function
         meta:
@@ -4180,7 +4180,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "271"
         results:
           - expr: resultString
             target: ExpirationDate
@@ -4191,6 +4190,7 @@ workflows:
           - type: String
             value: return arguments[0].replace(/([\d]{4})-([\d]{2})-([\d]{2}).*/,"$3/$2/$1")
             target: source
+        id: 271
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -4206,7 +4206,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "273"
         results:
           - expr: records
             type: ComposeRecord
@@ -4224,6 +4223,7 @@ workflows:
           - type: String
             value: Order
             target: sort
+        id: 273
       - ref: ""
         kind: expressions
         meta:
@@ -4239,12 +4239,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "279"
         results: []
         arguments:
           - expr: '"Presented"'
             type: String
             target: record.values.Status
+        id: 279
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -4260,7 +4260,6 @@ workflows:
             parent: "1"
             defaultName: true
           description: ""
-        stepID: "282"
         results:
           - expr: record
             type: ComposeRecord
@@ -4269,6 +4268,7 @@ workflows:
           - expr: record
             type: ComposeRecord
             target: record
+        id: 282
       - ref: recordPage
         kind: prompt
         meta:
@@ -4284,7 +4284,6 @@ workflows:
             parent: "1"
             defaultName: true
           description: ""
-        stepID: "288"
         results: []
         arguments:
           - type: Handle
@@ -4296,6 +4295,7 @@ workflows:
           - expr: record.recordID
             type: ID
             target: record
+        id: 288
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -4311,7 +4311,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "294"
         results:
           - expr: records
             type: ComposeRecord
@@ -4329,6 +4328,7 @@ workflows:
           - type: String
             value: SortOrder
             target: sort
+        id: 294
       - ref: ""
         kind: expressions
         meta:
@@ -4344,7 +4344,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "296"
         results: []
         arguments:
           - expr: |-
@@ -4367,6 +4366,7 @@ workflows:
           - expr: merge(productFamilies,familyItem)
             type: Vars
             target: productFamilies
+        id: 296
       - ref: ""
         kind: continue
         meta:
@@ -4382,9 +4382,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "297"
         results: []
         arguments: []
+        id: 297
       - ref: ""
         kind: expressions
         meta:
@@ -4400,12 +4400,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "298"
         results: []
         arguments:
           - expr: extensionItem.values.ProductId
             type: String
             target: ProductId
+        id: 298
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -4421,7 +4421,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "299"
         results:
           - expr: record
             type: ComposeRecord
@@ -4436,6 +4435,7 @@ workflows:
           - expr: ProductId
             type: ID
             target: record
+        id: 299
       - ref: jsenvExecute
         kind: function
         meta:
@@ -4451,7 +4451,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "300"
         results:
           - expr: resultString
             type: String
@@ -4465,6 +4464,7 @@ workflows:
               const js = JSON.parse(arguments[0])
               return js.response.url;
             target: source
+        id: 300
       - ref: httpRequestSend
         kind: function
         meta:
@@ -4480,7 +4480,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "301"
         results:
           - expr: body
             type: Reader
@@ -4495,6 +4494,7 @@ workflows:
           - expr: accessToken
             type: String
             target: headerAuthBearer
+        id: 301
       - ref: ""
         kind: expressions
         meta:
@@ -4510,7 +4510,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "302"
         results: []
         arguments:
           - expr: productImage
@@ -4519,6 +4518,7 @@ workflows:
           - expr: join([ settings.values.Domain, "api/compose/namespace",record.namespaceID, "attachment/record", LineItemProduct.values.Photo],"/")
             type: String
             target: productImageUrl
+        id: 302
       - ref: loopEach
         kind: iterator
         meta:
@@ -4534,7 +4534,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "303"
         results:
           - expr: item
             type: Any
@@ -4543,6 +4542,7 @@ workflows:
           - expr: extensionItems
             type: Array
             target: items
+        id: 303
     paths:
       - expr: 'record.values.Email ? true : false'
         meta:
@@ -5111,7 +5111,6 @@ workflows:
             value: Prompt for Email
             parent: "1"
           description: ""
-        stepID: "3"
         results:
           - expr: value
             target: email
@@ -5128,6 +5127,7 @@ workflows:
           - type: String
             value: email
             target: type
+        id: 3
       - ref: excl
         kind: gateway
         meta:
@@ -5142,9 +5142,9 @@ workflows:
             value: Check if email entered
             parent: "1"
           description: ""
-        stepID: "5"
         results: []
         arguments: []
+        id: 5
       - ref: notification
         kind: prompt
         meta:
@@ -5159,7 +5159,6 @@ workflows:
             value: 'Warning: Please enter an email to send this quote to'
             parent: "1"
           description: ""
-        stepID: "19"
         results: []
         arguments:
           - type: String
@@ -5171,6 +5170,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 19
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -5185,7 +5185,6 @@ workflows:
             value: Get LineItems
             parent: "1"
           description: ""
-        stepID: "53"
         results:
           - expr: records
             target: lineItems
@@ -5199,6 +5198,7 @@ workflows:
           - expr: '"QuoteId = " + record.recordID'
             type: String
             target: query
+        id: 53
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -5213,7 +5213,6 @@ workflows:
             value: Get pri contact record
             parent: "1"
           description: ""
-        stepID: "54"
         results:
           - expr: record
             target: priContact
@@ -5227,6 +5226,7 @@ workflows:
           - expr: record.values.ContactId
             type: ID
             target: record
+        id: 54
       - ref: excl
         kind: gateway
         meta:
@@ -5241,9 +5241,9 @@ workflows:
             value: Check quote name
             parent: "1"
           description: ""
-        stepID: "55"
         results: []
         arguments: []
+        id: 55
       - ref: ""
         kind: expressions
         meta:
@@ -5258,12 +5258,12 @@ workflows:
             value: Prepare quote name
             parent: "1"
           description: ""
-        stepID: "56"
         results: []
         arguments:
           - expr: '"הצעת מחיר לפיתוח"'
             type: String
             target: record.values.Name
+        id: 56
       - ref: jsenvExecute
         kind: function
         meta:
@@ -5278,7 +5278,6 @@ workflows:
             value: jsenv set expiration date
             parent: "1"
           description: ""
-        stepID: "57"
         results:
           - expr: resultString
             target: ExpirationDate
@@ -5289,6 +5288,7 @@ workflows:
           - type: String
             value: return arguments[0].replace(/([\d]{4})-([\d]{2})-([\d]{2}).*/,"$3/$2/$1")
             target: source
+        id: 57
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -5303,7 +5303,6 @@ workflows:
             value: Get TermItems
             parent: "1"
           description: ""
-        stepID: "58"
         results:
           - expr: records
             target: termItems
@@ -5317,6 +5316,7 @@ workflows:
           - expr: '"QuoteId = " + record.recordID'
             type: String
             target: query
+        id: 58
       - ref: notification
         kind: prompt
         meta:
@@ -5331,7 +5331,6 @@ workflows:
             value: 'הצלחה: הצעת המחיר נשלחה במייל'
             parent: "1"
           description: ""
-        stepID: "65"
         results: []
         arguments:
           - type: String
@@ -5343,6 +5342,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 65
       - ref: ""
         kind: expressions
         meta:
@@ -5357,7 +5357,6 @@ workflows:
             value: Set Render Variables
             parent: "1"
           description: ""
-        stepID: "66"
         results: []
         arguments:
           - type: Vars
@@ -5402,6 +5401,7 @@ workflows:
           - expr: termItems
             type: Array
             target: renderVariables.termItems
+        id: 66
       - ref: templatesRender
         kind: function
         meta:
@@ -5416,7 +5416,6 @@ workflows:
             value: Mail Message Template
             parent: "1"
           description: ""
-        stepID: "67"
         results:
           - expr: document
             target: mailHtml
@@ -5433,6 +5432,7 @@ workflows:
           - expr: renderVariables
             type: Vars
             target: variables
+        id: 67
       - ref: templatesRender
         kind: function
         meta:
@@ -5447,7 +5447,6 @@ workflows:
             value: Quote to HTML
             parent: "1"
           description: ""
-        stepID: "68"
         results:
           - expr: document
             target: html
@@ -5464,6 +5463,7 @@ workflows:
           - expr: renderVariables
             type: Vars
             target: variables
+        id: 68
       - ref: ""
         kind: expressions
         meta:
@@ -5478,7 +5478,6 @@ workflows:
             value: Prepare Automation Script Vars
             parent: "1"
           description: ""
-        stepID: "69"
         results: []
         arguments:
           - expr: html.document
@@ -5496,6 +5495,7 @@ workflows:
           - expr: join([record.values.Name,record.values.QuoteNumber]," - ")
             type: String
             target: quoteName
+        id: 69
       - ref: corredorExec
         kind: function
         meta:
@@ -5510,7 +5510,6 @@ workflows:
             value: Send PDF using Auto Script
             parent: "1"
           description: ""
-        stepID: "70"
         results:
           - expr: results
             target: res
@@ -5531,6 +5530,7 @@ workflows:
               }
             type: Vars
             target: args
+        id: 70
       - ref: composeRecordsLast
         kind: function
         meta:
@@ -5545,7 +5545,6 @@ workflows:
             value: get settings
             parent: "1"
           description: ""
-        stepID: "71"
         results:
           - expr: record
             target: settings
@@ -5556,6 +5555,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 71
       - ref: ""
         kind: expressions
         meta:
@@ -5570,7 +5570,6 @@ workflows:
             value: Prepare settings
             parent: "1"
           description: ""
-        stepID: "72"
         results: []
         arguments:
           - expr: settings.values.DefaultQuoteImage
@@ -5579,6 +5578,7 @@ workflows:
           - expr: settings.values.DefaultAboutImage
             type: String
             target: DefaultAboutImage
+        id: 72
       - ref: oauth2Authenticate
         kind: function
         meta:
@@ -5593,7 +5593,6 @@ workflows:
             value: get api token
             parent: "1"
           description: ""
-        stepID: "73"
         results:
           - expr: accessToken
             target: accessToken
@@ -5610,6 +5609,7 @@ workflows:
           - type: String
             value: http://local.cortezaproject.org:18080/auth/oauth2/token
             target: tokenUrl
+        id: 73
       - ref: httpRequestSend
         kind: function
         meta:
@@ -5624,7 +5624,6 @@ workflows:
             value: get cover image
             parent: "1"
           description: ""
-        stepID: "74"
         results:
           - expr: status
             target: attachemtResStatus
@@ -5640,6 +5639,7 @@ workflows:
           - expr: accessToken
             type: String
             target: headerAuthBearer
+        id: 74
       - ref: ""
         kind: expressions
         meta:
@@ -5654,12 +5654,12 @@ workflows:
             value: Prepare cover image results
             parent: "1"
           description: ""
-        stepID: "75"
         results: []
         arguments:
           - expr: attachmentReader
             type: String
             target: attachmentString
+        id: 75
       - ref: jsenvExecute
         kind: function
         meta:
@@ -5674,7 +5674,6 @@ workflows:
             value: jsenv get cover image preview url
             parent: "1"
           description: ""
-        stepID: "76"
         results:
           - expr: resultString
             target: coverImgUrl
@@ -5687,6 +5686,7 @@ workflows:
               const js = JSON.parse(arguments[0])
               return js.response.url;
             target: source
+        id: 76
       - ref: templatesRender
         kind: function
         meta:
@@ -5701,7 +5701,6 @@ workflows:
             value: Quote to HTML Header
             parent: "1"
           description: ""
-        stepID: "77"
         results:
           - expr: document
             target: headerHtml
@@ -5715,6 +5714,7 @@ workflows:
           - type: String
             value: text/html
             target: documentType
+        id: 77
       - ref: templatesRender
         kind: function
         meta:
@@ -5729,7 +5729,6 @@ workflows:
             value: Quote to HTML Footer
             parent: "1"
           description: ""
-        stepID: "78"
         results:
           - expr: document
             target: footerHtml
@@ -5743,6 +5742,7 @@ workflows:
           - type: String
             value: text/html
             target: documentType
+        id: 78
       - ref: loopEach
         kind: iterator
         meta:
@@ -5757,7 +5757,6 @@ workflows:
             value: get product data
             parent: "1"
           description: ""
-        stepID: "79"
         results:
           - expr: item
             target: lineItem
@@ -5765,6 +5764,7 @@ workflows:
           - expr: lineItems
             type: Array
             target: items
+        id: 79
       - ref: ""
         kind: expressions
         meta:
@@ -5779,12 +5779,12 @@ workflows:
             value: set product data
             parent: "1"
           description: ""
-        stepID: "80"
         results: []
         arguments:
           - expr: lineItem.values.ProductId
             type: String
             target: ProductId
+        id: 80
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -5799,7 +5799,6 @@ workflows:
             value: get LineItem Product record
             parent: "1"
           description: ""
-        stepID: "81"
         results:
           - expr: record
             target: LineItemProduct
@@ -5813,6 +5812,7 @@ workflows:
           - expr: ProductId
             type: ID
             target: record
+        id: 81
       - ref: httpRequestSend
         kind: function
         meta:
@@ -5827,7 +5827,6 @@ workflows:
             value: http get product image attachment
             parent: "1"
           description: ""
-        stepID: "82"
         results:
           - expr: body
             target: productImage
@@ -5841,6 +5840,7 @@ workflows:
           - expr: accessToken
             type: String
             target: headerAuthBearer
+        id: 82
       - ref: ""
         kind: expressions
         meta:
@@ -5855,12 +5855,12 @@ workflows:
             value: cast product image to string
             parent: "1"
           description: ""
-        stepID: "83"
         results: []
         arguments:
           - expr: productImage
             type: String
             target: productImage
+        id: 83
       - ref: jsenvExecute
         kind: function
         meta:
@@ -5875,7 +5875,6 @@ workflows:
             value: jsenv image preview
             parent: "1"
           description: ""
-        stepID: "84"
         results:
           - expr: resultString
             target: imagePreviewUrl
@@ -5888,6 +5887,7 @@ workflows:
               const js = JSON.parse(arguments[0])
               return js.response.url;
             target: source
+        id: 84
       - ref: ""
         kind: expressions
         meta:
@@ -5902,13 +5902,13 @@ workflows:
             value: Prepare product Data Arrays
             parent: "1"
           description: ""
-        stepID: "85"
         results: []
         arguments:
           - type: Vars
             target: productImages
           - type: Vars
             target: productNames
+        id: 85
       - ref: ""
         kind: expressions
         meta:
@@ -5923,7 +5923,6 @@ workflows:
             value: add product data
             parent: "1"
           description: ""
-        stepID: "86"
         results: []
         arguments:
           - expr: |-
@@ -5940,6 +5939,7 @@ workflows:
           - expr: merge(productNames,nameItem)
             type: Vars
             target: productNames
+        id: 86
       - ref: ""
         kind: continue
         meta:
@@ -5954,9 +5954,9 @@ workflows:
             value: null
             parent: "1"
           description: ""
-        stepID: "87"
         results: []
         arguments: []
+        id: 87
       - ref: httpRequestSend
         kind: function
         meta:
@@ -5971,7 +5971,6 @@ workflows:
             value: get about image
             parent: "1"
           description: ""
-        stepID: "88"
         results:
           - expr: body
             target: attachmentReader
@@ -5985,6 +5984,7 @@ workflows:
           - expr: accessToken
             type: String
             target: headerAuthBearer
+        id: 88
       - ref: ""
         kind: expressions
         meta:
@@ -5999,12 +5999,12 @@ workflows:
             value: Prepare about image results
             parent: "1"
           description: ""
-        stepID: "89"
         results: []
         arguments:
           - expr: attachmentReader
             type: String
             target: attachmentString
+        id: 89
       - ref: jsenvExecute
         kind: function
         meta:
@@ -6019,7 +6019,6 @@ workflows:
             value: jsenv get about image preview url
             parent: "1"
           description: ""
-        stepID: "90"
         results:
           - expr: resultString
             target: aboutImgUrl
@@ -6032,6 +6031,7 @@ workflows:
               const js = JSON.parse(arguments[0])
               return js.response.url;
             target: source
+        id: 90
     paths:
       - meta:
           name: ""
@@ -6482,7 +6482,6 @@ workflows:
             value: Get Settings
             parent: "1"
           description: ""
-        stepID: "3"
         results:
           - expr: record
             target: settings
@@ -6493,6 +6492,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 3
       - ref: ""
         kind: expressions
         meta:
@@ -6507,7 +6507,6 @@ workflows:
             value: Set QuoteNumber
             parent: "1"
           description: ""
-        stepID: "5"
         results: []
         arguments:
           - expr: 'settings.values.QuoteNextNumber ? settings.values.QuoteNextNumber : 0'
@@ -6519,6 +6518,7 @@ workflows:
           - expr: nextQuoteNumber + 1
             type: Integer
             target: settings.values.QuoteNextNumber
+        id: 5
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -6533,12 +6533,12 @@ workflows:
             value: Save Settings
             parent: "1"
           description: ""
-        stepID: "7"
         results: []
         arguments:
           - expr: settings
             type: ComposeRecord
             target: record
+        id: 7
       - ref: excl
         kind: gateway
         meta:
@@ -6553,9 +6553,9 @@ workflows:
             value: Check if has number
             parent: "1"
           description: ""
-        stepID: "11"
         results: []
         arguments: []
+        id: 11
       - ref: ""
         kind: termination
         meta:
@@ -6570,9 +6570,9 @@ workflows:
             value: End
             parent: "1"
           description: ""
-        stepID: "14"
         results: []
         arguments: []
+        id: 14
     paths:
       - meta:
           name: ""
@@ -6678,12 +6678,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "3"
         results: []
         arguments:
           - expr: 'record.values.PricebookId ? record.values.PricebookId : 0'
             type: ID
             target: pricebookId
+        id: 3
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -6699,7 +6699,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "5"
         results:
           - expr: records
             target: pricebooks
@@ -6718,6 +6717,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 5
       - ref: excl
         kind: gateway
         meta:
@@ -6733,9 +6733,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "7"
         results: []
         arguments: []
+        id: 7
       - ref: ""
         kind: expressions
         meta:
@@ -6751,7 +6751,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "10"
         results: []
         arguments:
           - expr: 'pricebooks[0] ? pricebooks[0] : undefined'
@@ -6763,6 +6762,7 @@ workflows:
           - expr: pricebookId
             type: ID
             target: record.values.PricebookId
+        id: 10
       - ref: notification
         kind: prompt
         meta:
@@ -6778,7 +6778,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "12"
         results: []
         arguments:
           - type: String
@@ -6790,6 +6789,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 12
       - ref: excl
         kind: gateway
         meta:
@@ -6805,9 +6805,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "14"
         results: []
         arguments: []
+        id: 14
       - ref: notification
         kind: prompt
         meta:
@@ -6823,7 +6823,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "17"
         results: []
         arguments:
           - type: String
@@ -6835,6 +6834,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 17
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -6850,7 +6850,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "20"
         results:
           - expr: record
             target: record
@@ -6858,6 +6857,7 @@ workflows:
           - expr: record
             type: ComposeRecord
             target: record
+        id: 20
       - ref: composeRecordsEach
         kind: iterator
         meta:
@@ -6873,7 +6873,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "23"
         results:
           - expr: record
             type: ComposeRecord
@@ -6897,6 +6896,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 23
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -6912,7 +6912,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "26"
         results:
           - expr: record
             target: product
@@ -6926,6 +6925,7 @@ workflows:
           - expr: lineItem.values.ProductId
             type: ID
             target: record
+        id: 26
       - ref: ""
         kind: expressions
         meta:
@@ -6941,12 +6941,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "28"
         results: []
         arguments:
           - expr: "0"
             type: Float
             target: quoteTotal
+        id: 28
       - ref: ""
         kind: expressions
         meta:
@@ -6962,12 +6962,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "30"
         results: []
         arguments:
           - expr: quoteTotal
             type: Float
             target: record.values.Amount
+        id: 30
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -6983,7 +6983,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "32"
         results:
           - expr: record
             target: record
@@ -6991,6 +6990,7 @@ workflows:
           - expr: record
             type: ComposeRecord
             target: record
+        id: 32
       - ref: notification
         kind: prompt
         meta:
@@ -7006,7 +7006,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "34"
         results: []
         arguments:
           - type: String
@@ -7018,6 +7017,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 34
       - ref: recordPage
         kind: prompt
         meta:
@@ -7033,7 +7033,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "36"
         results: []
         arguments:
           - type: Handle
@@ -7045,6 +7044,7 @@ workflows:
           - expr: record
             type: ComposeRecord
             target: record
+        id: 36
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -7060,7 +7060,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "38"
         results:
           - expr: records
             target: pricebookEntries
@@ -7079,6 +7078,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 38
       - ref: ""
         kind: expressions
         meta:
@@ -7094,12 +7094,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "41"
         results: []
         arguments:
           - expr: 'numOfPricebookEntries > 0 ? pricebookEntries[0] : undefined'
             type: ComposeRecord
             target: pricebookEntry
+        id: 41
       - ref: ""
         kind: continue
         meta:
@@ -7115,9 +7115,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "45"
         results: []
         arguments: []
+        id: 45
       - ref: ""
         kind: expressions
         meta:
@@ -7133,7 +7133,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "49"
         results: []
         arguments:
           - expr: 'lineItem.values.Quantity ? lineItem.values.Quantity : 1'
@@ -7175,6 +7174,7 @@ workflows:
           - expr: quoteTotal + totalprice
             type: Float
             target: quoteTotal
+        id: 49
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -7190,7 +7190,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "51"
         results:
           - expr: record
             type: ComposeRecord
@@ -7199,6 +7198,7 @@ workflows:
           - expr: lineItem
             type: ComposeRecord
             target: record
+        id: 51
       - ref: excl
         kind: gateway
         meta:
@@ -7214,9 +7214,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "53"
         results: []
         arguments: []
+        id: 53
       - ref: excl
         kind: gateway
         meta:
@@ -7232,9 +7232,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "66"
         results: []
         arguments: []
+        id: 66
       - ref: ""
         kind: expressions
         meta:
@@ -7250,7 +7250,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "91"
         results: []
         arguments:
           - expr: product.values.Description
@@ -7259,6 +7258,7 @@ workflows:
           - expr: product.values.Photo
             type: String
             target: lineItem.values.Photo
+        id: 91
       - ref: ""
         kind: continue
         meta:
@@ -7274,9 +7274,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "93"
         results: []
         arguments: []
+        id: 93
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -7292,7 +7292,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "94"
         results:
           - expr: record
             type: ComposeRecord
@@ -7307,6 +7306,7 @@ workflows:
           - expr: lineItem.values.ProductId
             type: ID
             target: record
+        id: 94
       - ref: ""
         kind: expressions
         meta:
@@ -7322,7 +7322,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "95"
         results: []
         arguments:
           - expr: product.values.Description
@@ -7331,6 +7330,7 @@ workflows:
           - expr: product.values.Photo
             type: String
             target: lineItem.values.Photo
+        id: 95
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -7346,7 +7346,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "96"
         results:
           - expr: records
             type: ComposeRecord
@@ -7367,6 +7366,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 96
       - ref: excl
         kind: gateway
         meta:
@@ -7382,9 +7382,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "97"
         results: []
         arguments: []
+        id: 97
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -7400,7 +7400,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "98"
         results:
           - expr: record
             type: ComposeRecord
@@ -7409,6 +7408,7 @@ workflows:
           - expr: lineItem
             type: ComposeRecord
             target: record
+        id: 98
       - ref: ""
         kind: expressions
         meta:
@@ -7424,7 +7424,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "99"
         results: []
         arguments:
           - expr: 'lineItem.values.Quantity ? lineItem.values.Quantity : 1'
@@ -7463,6 +7462,7 @@ workflows:
           - expr: totalprice
             type: Float
             target: lineItem.values.TotalPrice
+        id: 99
       - ref: composeRecordsEach
         kind: iterator
         meta:
@@ -7478,7 +7478,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "100"
         results:
           - expr: record
             type: ComposeRecord
@@ -7502,6 +7501,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 100
       - ref: ""
         kind: expressions
         meta:
@@ -7517,12 +7517,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "102"
         results: []
         arguments:
           - expr: 'numOfPricebookEntries > 0 ? pricebookEntries[0] : undefined'
             type: ComposeRecord
             target: pricebookEntry
+        id: 102
     paths:
       - meta:
           name: ""
@@ -7940,7 +7940,6 @@ workflows:
             value: Fetch settings
             parent: "1"
           description: ""
-        stepID: "3"
         results:
           - expr: record
             target: settings
@@ -7951,6 +7950,7 @@ workflows:
           - expr: namespace.ID
             type: ID
             target: namespace
+        id: 3
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -7965,7 +7965,6 @@ workflows:
             value: Update settings
             parent: "1"
           description: ""
-        stepID: "16"
         results:
           - expr: record
             target: settings
@@ -7973,6 +7972,7 @@ workflows:
           - expr: settings
             type: ComposeRecord
             target: record
+        id: 16
       - ref: excl
         kind: gateway
         meta:
@@ -7987,9 +7987,9 @@ workflows:
             value: Check if has number
             parent: "1"
           description: ""
-        stepID: "21"
         results: []
         arguments: []
+        id: 21
       - ref: ""
         kind: termination
         meta:
@@ -8004,9 +8004,9 @@ workflows:
             value: End
             parent: "1"
           description: ""
-        stepID: "24"
         results: []
         arguments: []
+        id: 24
       - ref: ""
         kind: expressions
         meta:
@@ -8021,7 +8021,6 @@ workflows:
             value: Set number
             parent: "1"
           description: ""
-        stepID: "26"
         results: []
         arguments:
           - expr: 'settings.values.CaseNextNumber ? settings.values.CaseNextNumber: 0'
@@ -8030,6 +8029,7 @@ workflows:
           - expr: record.values.CaseNumber + 1
             type: Integer
             target: settings.values.CaseNextNumber
+        id: 26
     paths:
       - meta:
           name: ""
@@ -8134,12 +8134,12 @@ workflows:
             value: Init primaryContact
             parent: "1"
           description: ""
-        stepID: "56"
         results: []
         arguments:
           - expr: "false"
             type: Boolean
             target: primaryContact
+        id: 56
       - ref: composeRecordsEach
         kind: iterator
         meta:
@@ -8154,7 +8154,6 @@ workflows:
             value: Find primary contact
             parent: "1"
           description: ""
-        stepID: "14"
         results:
           - expr: record
             target: contact
@@ -8168,6 +8167,7 @@ workflows:
           - expr: '"AccountId=" + record.recordID'
             type: String
             target: query
+        id: 14
       - ref: excl
         kind: gateway
         meta:
@@ -8182,9 +8182,9 @@ workflows:
             value: Is primary contact?
             parent: "1"
           description: ""
-        stepID: "17"
         results: []
         arguments: []
+        id: 17
       - ref: ""
         kind: break
         meta:
@@ -8199,9 +8199,9 @@ workflows:
             value: Found it!
             parent: "1"
           description: ""
-        stepID: "18"
         results: []
         arguments: []
+        id: 18
       - ref: ""
         kind: expressions
         meta:
@@ -8216,12 +8216,12 @@ workflows:
             value: Set primary contact
             parent: "1"
           description: ""
-        stepID: "19"
         results: []
         arguments:
           - expr: contact
             type: ComposeRecord
             target: primaryContact
+        id: 19
       - ref: ""
         kind: continue
         meta:
@@ -8236,9 +8236,9 @@ workflows:
             value: Keep looking
             parent: "1"
           description: ""
-        stepID: "20"
         results: []
         arguments: []
+        id: 20
       - ref: excl
         kind: gateway
         meta:
@@ -8253,9 +8253,9 @@ workflows:
             value: Found primary contact?
             parent: "1"
           description: ""
-        stepID: "28"
         results: []
         arguments: []
+        id: 28
       - ref: notification
         kind: prompt
         meta:
@@ -8270,7 +8270,6 @@ workflows:
             value: No primary contact
             parent: "1"
           description: ""
-        stepID: "29"
         results: []
         arguments:
           - type: String
@@ -8282,6 +8281,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 29
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -8296,7 +8296,6 @@ workflows:
             value: Prepare record
             parent: "1"
           description: ""
-        stepID: "34"
         results:
           - expr: record
             target: case
@@ -8307,6 +8306,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 34
       - ref: ""
         kind: expressions
         meta:
@@ -8321,7 +8321,6 @@ workflows:
             value: Set record values
             parent: "1"
           description: ""
-        stepID: "36"
         results: []
         arguments:
           - expr: '"(no subject)"'
@@ -8354,6 +8353,7 @@ workflows:
           - expr: nextCaseNumber
             type: Integer
             target: case.values.CaseNumber
+        id: 36
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -8368,7 +8368,6 @@ workflows:
             value: Create case
             parent: "1"
           description: ""
-        stepID: "38"
         results:
           - expr: record
             target: case
@@ -8376,6 +8375,7 @@ workflows:
           - expr: case
             type: ComposeRecord
             target: record
+        id: 38
       - ref: notification
         kind: prompt
         meta:
@@ -8390,7 +8390,6 @@ workflows:
             value: Notify Case created
             parent: "1"
           description: ""
-        stepID: "40"
         results: []
         arguments:
           - type: String
@@ -8402,6 +8401,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 40
       - ref: recordPage
         kind: prompt
         meta:
@@ -8416,7 +8416,6 @@ workflows:
             value: Go to record editor
             parent: "1"
           description: ""
-        stepID: "42"
         results: []
         arguments:
           - type: Handle
@@ -8431,6 +8430,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: edit
+        id: 42
       - ref: composeRecordsLast
         kind: function
         meta:
@@ -8445,7 +8445,6 @@ workflows:
             value: Fetch settings
             parent: "1"
           description: ""
-        stepID: "44"
         results:
           - expr: record
             target: settings
@@ -8456,6 +8455,7 @@ workflows:
           - expr: namespace
             type: ComposeNamespace
             target: namespace
+        id: 44
       - ref: ""
         kind: expressions
         meta:
@@ -8470,7 +8470,6 @@ workflows:
             value: Set nextCaseNumber
             parent: "1"
           description: ""
-        stepID: "45"
         results: []
         arguments:
           - expr: 'settings.values.CaseNextNumber ? settings.values.CaseNextNumber : 0'
@@ -8479,6 +8478,7 @@ workflows:
           - expr: settings.values.CaseNextNumber + 1
             type: Integer
             target: settings.values.CaseNextNumber
+        id: 45
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -8493,7 +8493,6 @@ workflows:
             value: Save settings
             parent: "1"
           description: ""
-        stepID: "50"
         results:
           - expr: record
             target: settings
@@ -8501,6 +8500,7 @@ workflows:
           - expr: settings
             type: ComposeRecord
             target: record
+        id: 50
     paths:
       - expr: contact.values.IsPrimary
         meta:
@@ -8727,9 +8727,9 @@ workflows:
             value: Already converted?
             parent: "1"
           description: ""
-        stepID: "3"
         results: []
         arguments: []
+        id: 3
       - ref: notification
         kind: prompt
         meta:
@@ -8744,7 +8744,6 @@ workflows:
             value: Lead already converted
             parent: "1"
           description: ""
-        stepID: "5"
         results: []
         arguments:
           - type: String
@@ -8756,6 +8755,7 @@ workflows:
           - type: String
             value: info
             target: variant
+        id: 5
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -8770,7 +8770,6 @@ workflows:
             value: Prepare account record
             parent: "1"
           description: ""
-        stepID: "6"
         results:
           - expr: record
             target: account
@@ -8781,6 +8780,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 6
       - ref: ""
         kind: expressions
         meta:
@@ -8795,7 +8795,6 @@ workflows:
             value: Populate account data
             parent: "1"
           description: ""
-        stepID: "7"
         results: []
         arguments:
           - expr: record.values.Street
@@ -8873,6 +8872,7 @@ workflows:
           - expr: record.values.CampaignId
             type: Array
             target: account.values.CampaignId
+        id: 7
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -8887,7 +8887,6 @@ workflows:
             value: Create account
             parent: "1"
           description: ""
-        stepID: "8"
         results:
           - expr: record
             target: account
@@ -8895,6 +8894,7 @@ workflows:
           - type: ComposeRecord
             source: account
             target: record
+        id: 8
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -8909,7 +8909,6 @@ workflows:
             value: Prepare contact record
             parent: "1"
           description: ""
-        stepID: "9"
         results:
           - expr: record
             target: contact
@@ -8920,6 +8919,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 9
       - ref: ""
         kind: expressions
         meta:
@@ -8934,7 +8934,6 @@ workflows:
             value: Populate contact data
             parent: "1"
           description: ""
-        stepID: "10"
         results: []
         arguments:
           - expr: record.values.Street
@@ -9012,6 +9011,7 @@ workflows:
           - expr: record.values.CampaignId
             type: Array
             target: contact.values.CampaignId
+        id: 10
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -9026,7 +9026,6 @@ workflows:
             value: Create contact
             parent: "1"
           description: ""
-        stepID: "11"
         results:
           - expr: record
             target: contact
@@ -9034,6 +9033,7 @@ workflows:
           - type: ComposeRecord
             source: contact
             target: record
+        id: 11
       - ref: ""
         kind: expressions
         meta:
@@ -9048,7 +9048,6 @@ workflows:
             value: Update lead data
             parent: "1"
           description: ""
-        stepID: "12"
         results: []
         arguments:
           - expr: '"Converted"'
@@ -9066,6 +9065,7 @@ workflows:
           - expr: account.createdAt
             type: DateTime
             target: record.values.ConvertedDate
+        id: 12
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -9080,7 +9080,6 @@ workflows:
             value: Save lead
             parent: "1"
           description: ""
-        stepID: "13"
         results:
           - expr: record
             target: record
@@ -9088,6 +9087,7 @@ workflows:
           - type: ComposeRecord
             source: record
             target: record
+        id: 13
       - ref: notification
         kind: prompt
         meta:
@@ -9102,7 +9102,6 @@ workflows:
             value: Lead converted
             parent: "1"
           description: ""
-        stepID: "17"
         results: []
         arguments:
           - type: String
@@ -9114,6 +9113,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 17
       - ref: recordPage
         kind: prompt
         meta:
@@ -9128,7 +9128,6 @@ workflows:
             value: Redirect to account page
             parent: "1"
           description: ""
-        stepID: "79"
         results: []
         arguments:
           - type: Handle
@@ -9140,6 +9139,7 @@ workflows:
           - expr: account
             type: ComposeRecord
             target: record
+        id: 79
       - ref: templatesRender
         kind: function
         meta:
@@ -9154,7 +9154,6 @@ workflows:
             value: Prepare email content
             parent: "1"
           description: ""
-        stepID: "81"
         results:
           - expr: document
             target: content
@@ -9171,6 +9170,7 @@ workflows:
           - expr: contentRenderVariables
             type: Vars
             target: variables
+        id: 81
       - ref: templatesRender
         kind: function
         meta:
@@ -9185,7 +9185,6 @@ workflows:
             value: Prepare email subject
             parent: "1"
           description: ""
-        stepID: "83"
         results:
           - expr: document
             target: subject
@@ -9202,6 +9201,7 @@ workflows:
           - expr: subjectRenderVariables
             type: Vars
             target: variables
+        id: 83
       - ref: emailSend
         kind: function
         meta:
@@ -9216,7 +9216,6 @@ workflows:
             value: Send email
             parent: "1"
           description: ""
-        stepID: "85"
         results: []
         arguments:
           - expr: subject.document
@@ -9228,6 +9227,7 @@ workflows:
           - expr: content.document
             type: Reader
             target: html
+        id: 85
       - ref: usersLookup
         kind: function
         meta:
@@ -9242,7 +9242,6 @@ workflows:
             value: Get owner
             parent: "1"
           description: ""
-        stepID: "88"
         results:
           - expr: user
             target: owner
@@ -9250,6 +9249,7 @@ workflows:
           - expr: record.values.OwnerId
             type: ID
             target: lookup
+        id: 88
       - ref: excl
         kind: gateway
         meta:
@@ -9264,9 +9264,9 @@ workflows:
             value: Has owner?
             parent: "1"
           description: ""
-        stepID: "136"
         results: []
         arguments: []
+        id: 136
       - ref: ""
         kind: expressions
         meta:
@@ -9281,7 +9281,6 @@ workflows:
             value: Prepare render Vars
             parent: "1"
           description: ""
-        stepID: "139"
         results: []
         arguments:
           - type: Vars
@@ -9297,6 +9296,7 @@ workflows:
           - expr: account
             type: ComposeRecord
             target: contentRenderVariables.account
+        id: 139
     paths:
       - expr: record.values.Status == "Converted"
         meta:
@@ -9564,7 +9564,6 @@ workflows:
             value: Fetch settings
             parent: "1"
           description: ""
-        stepID: "3"
         results:
           - expr: record
             target: settings
@@ -9575,6 +9574,7 @@ workflows:
           - expr: namespace
             type: ComposeNamespace
             target: namespace
+        id: 3
       - ref: ""
         kind: expressions
         meta:
@@ -9589,7 +9589,6 @@ workflows:
             value: Prepare setting values
             parent: "1"
           description: ""
-        stepID: "4"
         results: []
         arguments:
           - expr: 'settings.values.ContractNextNumber ? settings.values.ContractNextNumber : 0'
@@ -9601,6 +9600,7 @@ workflows:
           - expr: settings.values.ContractNextNumber + 1
             type: Integer
             target: settings.values.ContractNextNumber
+        id: 4
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -9615,7 +9615,6 @@ workflows:
             value: Prepare contract record
             parent: "1"
           description: ""
-        stepID: "5"
         results:
           - expr: record
             target: contract
@@ -9626,6 +9625,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 5
       - ref: ""
         kind: expressions
         meta:
@@ -9640,7 +9640,6 @@ workflows:
             value: Update contract data
             parent: "1"
           description: ""
-        stepID: "6"
         results: []
         arguments:
           - expr: record.recordID
@@ -9688,6 +9687,7 @@ workflows:
           - expr: record.values.OwnerId
             type: ID
             target: contract.values.OwnerId
+        id: 6
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -9702,7 +9702,6 @@ workflows:
             value: Save contract
             parent: "1"
           description: ""
-        stepID: "7"
         results:
           - expr: record
             target: contract
@@ -9710,6 +9709,7 @@ workflows:
           - type: ComposeRecord
             source: contract
             target: record
+        id: 7
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -9724,7 +9724,6 @@ workflows:
             value: Update settings
             parent: "1"
           description: ""
-        stepID: "8"
         results:
           - expr: record
             target: settings
@@ -9732,6 +9731,7 @@ workflows:
           - type: ComposeRecord
             source: settings
             target: record
+        id: 8
       - ref: notification
         kind: prompt
         meta:
@@ -9746,7 +9746,6 @@ workflows:
             value: Notify user
             parent: "1"
           description: ""
-        stepID: "9"
         results: []
         arguments:
           - type: String
@@ -9758,6 +9757,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 9
       - ref: recordPage
         kind: prompt
         meta:
@@ -9772,7 +9772,6 @@ workflows:
             value: Redirect user
             parent: "1"
           description: ""
-        stepID: "22"
         results: []
         arguments:
           - type: Handle
@@ -9787,6 +9786,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: edit
+        id: 22
     paths:
       - meta:
           name: ""
@@ -9923,12 +9923,12 @@ workflows:
             value: Set status
             parent: "1"
           description: ""
-        stepID: "3"
         results: []
         arguments:
           - expr: '"Working"'
             type: String
             target: record.values.Status
+        id: 3
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -9943,7 +9943,6 @@ workflows:
             value: Update case
             parent: "1"
           description: ""
-        stepID: "4"
         results:
           - expr: record
             target: record
@@ -9951,6 +9950,7 @@ workflows:
           - expr: record
             type: ComposeRecord
             target: record
+        id: 4
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -9965,7 +9965,6 @@ workflows:
             value: Prepare case update
             parent: "1"
           description: ""
-        stepID: "5"
         results:
           - expr: record
             target: caseUpdate
@@ -9976,6 +9975,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 5
       - ref: ""
         kind: expressions
         meta:
@@ -9990,7 +9990,6 @@ workflows:
             value: Set case update data
             parent: "1"
           description: ""
-        stepID: "6"
         results: []
         arguments:
           - expr: record.recordID
@@ -10002,6 +10001,7 @@ workflows:
           - expr: '"State change"'
             type: String
             target: caseUpdate.values.Type
+        id: 6
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -10016,7 +10016,6 @@ workflows:
             value: Create case update
             parent: "1"
           description: ""
-        stepID: "7"
         results:
           - expr: record
             target: caseUpdate
@@ -10024,6 +10023,7 @@ workflows:
           - expr: caseUpdate
             type: ComposeRecord
             target: record
+        id: 7
       - ref: excl
         kind: gateway
         meta:
@@ -10038,9 +10038,9 @@ workflows:
             value: Check if Status is "Working"
             parent: "1"
           description: ""
-        stepID: "14"
         results: []
         arguments: []
+        id: 14
       - ref: notification
         kind: prompt
         meta:
@@ -10055,7 +10055,6 @@ workflows:
             value: 'Warning: Status already set to "Working"'
             parent: "1"
           description: ""
-        stepID: "19"
         results: []
         arguments:
           - type: String
@@ -10067,6 +10066,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 19
       - ref: recordPage
         kind: prompt
         meta:
@@ -10081,7 +10081,6 @@ workflows:
             value: Refresh page
             parent: "1"
           description: ""
-        stepID: "20"
         results: []
         arguments:
           - expr: module
@@ -10096,6 +10095,7 @@ workflows:
           - expr: "false"
             type: Boolean
             target: edit
+        id: 20
     paths:
       - meta:
           name: ""
@@ -10234,9 +10234,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "3"
         results: []
         arguments: []
+        id: 3
       - ref: notification
         kind: prompt
         meta:
@@ -10252,7 +10252,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "4"
         results: []
         arguments:
           - type: String
@@ -10264,6 +10263,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 4
       - ref: ""
         kind: termination
         meta:
@@ -10279,9 +10279,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "5"
         results: []
         arguments: []
+        id: 5
       - ref: composeRecordsLast
         kind: function
         meta:
@@ -10297,7 +10297,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "6"
         results:
           - expr: record
             target: settings
@@ -10308,6 +10307,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 6
       - ref: ""
         kind: expressions
         meta:
@@ -10323,7 +10323,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "7"
         results: []
         arguments:
           - expr: settings.values.QuoteNextNumber
@@ -10332,6 +10331,7 @@ workflows:
           - expr: settings.values.QuoteNextNumber + 1
             type: Integer
             target: settings.values.QuoteNextNumber
+        id: 7
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -10347,7 +10347,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "8"
         results:
           - expr: record
             target: account
@@ -10361,6 +10360,7 @@ workflows:
           - expr: record.values.AccountId
             type: ID
             target: record
+        id: 8
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -10376,7 +10376,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "9"
         results:
           - expr: records
             target: contacts
@@ -10392,6 +10391,7 @@ workflows:
           - expr: '"AccountId=" + account.recordID'
             type: String
             target: query
+        id: 9
       - ref: excl
         kind: gateway
         meta:
@@ -10407,9 +10407,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "10"
         results: []
         arguments: []
+        id: 10
       - ref: ""
         kind: expressions
         meta:
@@ -10425,12 +10425,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "11"
         results: []
         arguments:
           - expr: contacts[0]
             type: ComposeRecord
             target: contact
+        id: 11
       - ref: loopEach
         kind: iterator
         meta:
@@ -10446,7 +10446,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "12"
         results:
           - expr: item
             target: c
@@ -10454,6 +10453,7 @@ workflows:
           - expr: contacts
             type: Array
             target: items
+        id: 12
       - ref: excl
         kind: gateway
         meta:
@@ -10469,9 +10469,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "13"
         results: []
         arguments: []
+        id: 13
       - ref: ""
         kind: expressions
         meta:
@@ -10487,12 +10487,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "14"
         results: []
         arguments:
           - expr: c
             type: ComposeRecord
             target: contact
+        id: 14
       - ref: ""
         kind: break
         meta:
@@ -10508,9 +10508,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "15"
         results: []
         arguments: []
+        id: 15
       - ref: ""
         kind: continue
         meta:
@@ -10526,9 +10526,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "16"
         results: []
         arguments: []
+        id: 16
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -10544,7 +10544,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "17"
         results:
           - expr: record
             target: quote
@@ -10555,6 +10554,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 17
       - ref: ""
         kind: expressions
         meta:
@@ -10570,7 +10570,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "18"
         results: []
         arguments:
           - expr: '"Draft"'
@@ -10675,6 +10674,7 @@ workflows:
           - expr: record.values.TermbookIds
             type: Any
             target: quote.values.TermbookIds
+        id: 18
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -10690,7 +10690,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "19"
         results:
           - expr: record
             target: quote
@@ -10698,6 +10697,7 @@ workflows:
           - type: ComposeRecord
             source: quote
             target: record
+        id: 19
       - ref: composeRecordsEach
         kind: iterator
         meta:
@@ -10713,7 +10713,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "20"
         results:
           - expr: record
             target: opportunityLineItem
@@ -10727,6 +10726,7 @@ workflows:
           - expr: '"OpportunityId="+record.recordID'
             type: String
             target: query
+        id: 20
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -10742,7 +10742,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "21"
         results:
           - expr: record
             type: ComposeRecord
@@ -10754,6 +10753,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 21
       - ref: ""
         kind: expressions
         meta:
@@ -10769,7 +10769,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "22"
         results: []
         arguments:
           - expr: opportunityLineItem.values.Discount
@@ -10808,6 +10807,7 @@ workflows:
           - expr: opportunityLineItem.values.Name
             type: String
             target: quoteLineItem.values.Name
+        id: 22
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -10823,7 +10823,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "23"
         results:
           - expr: record
             target: quoteLineItem
@@ -10831,6 +10830,7 @@ workflows:
           - expr: quoteLineItem
             type: ComposeRecord
             target: record
+        id: 23
       - ref: ""
         kind: continue
         meta:
@@ -10846,9 +10846,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "24"
         results: []
         arguments: []
+        id: 24
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -10864,7 +10864,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "25"
         results:
           - expr: record
             target: settings
@@ -10872,6 +10871,7 @@ workflows:
           - type: ComposeRecord
             source: settings
             target: record
+        id: 25
       - ref: notification
         kind: prompt
         meta:
@@ -10887,7 +10887,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "26"
         results: []
         arguments:
           - type: String
@@ -10899,6 +10898,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 26
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -10914,7 +10914,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "38"
         results:
           - expr: record
             target: contact
@@ -10925,6 +10924,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 38
       - ref: recordPage
         kind: prompt
         meta:
@@ -10940,7 +10940,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "71"
         results: []
         arguments:
           - expr: module
@@ -10955,6 +10954,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: edit
+        id: 71
       - ref: ""
         kind: continue
         meta:
@@ -10970,9 +10970,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "73"
         results: []
         arguments: []
+        id: 73
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -10988,7 +10988,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "74"
         results:
           - expr: record
             type: ComposeRecord
@@ -11000,6 +10999,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 74
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -11015,7 +11015,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "75"
         results:
           - expr: record
             type: ComposeRecord
@@ -11024,6 +11023,7 @@ workflows:
           - expr: quoteIncludedItem
             type: ComposeRecord
             target: record
+        id: 75
       - ref: ""
         kind: expressions
         meta:
@@ -11039,7 +11039,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "76"
         results: []
         arguments:
           - expr: opportunityIncludedItem.values.Description
@@ -11078,6 +11077,7 @@ workflows:
           - expr: opportunityIncludedItem.values.Name
             type: String
             target: quoteIncludedItem.values.Name
+        id: 76
       - ref: composeRecordsEach
         kind: iterator
         meta:
@@ -11093,7 +11093,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "78"
         results:
           - expr: record
             type: ComposeRecord
@@ -11108,6 +11107,7 @@ workflows:
           - expr: '"OpportunityId="+record.recordID'
             type: String
             target: query
+        id: 78
     paths:
       - expr: 'record.values.AccountId ? false : true'
         meta:
@@ -11516,12 +11516,12 @@ workflows:
             value: Set CampaignIds
             parent: "1"
           description: ""
-        stepID: "5"
         results: []
         arguments:
           - expr: '[]'
             type: Array
             target: campaignIDs
+        id: 5
       - ref: loopEach
         kind: iterator
         meta:
@@ -11536,7 +11536,6 @@ workflows:
             value: Iterate record CampaignIDs
             parent: "1"
           description: ""
-        stepID: "14"
         results:
           - expr: item
             target: campaignID
@@ -11544,6 +11543,7 @@ workflows:
           - expr: 'record.recordID != "0" ? record.values.CampaignId : []'
             type: Array
             target: items
+        id: 14
       - ref: ""
         kind: expressions
         meta:
@@ -11558,12 +11558,12 @@ workflows:
             value: Push campaignID
             parent: "1"
           description: ""
-        stepID: "16"
         results: []
         arguments:
           - expr: push(campaignIDs, "recordID = " + campaignID)
             type: Array
             target: campaignIDs
+        id: 16
       - ref: ""
         kind: continue
         meta:
@@ -11578,9 +11578,9 @@ workflows:
             value: Check next ID
             parent: "1"
           description: ""
-        stepID: "21"
         results: []
         arguments: []
+        id: 21
       - ref: excl
         kind: gateway
         meta:
@@ -11595,9 +11595,9 @@ workflows:
             value: If already pushed
             parent: "1"
           description: ""
-        stepID: "26"
         results: []
         arguments: []
+        id: 26
       - ref: loopEach
         kind: iterator
         meta:
@@ -11612,7 +11612,6 @@ workflows:
             value: Iterate oldRecord CampaignIDs
             parent: "1"
           description: ""
-        stepID: "49"
         results:
           - expr: item
             target: campaignID
@@ -11620,6 +11619,7 @@ workflows:
           - expr: 'oldRecord.recordID != "0" ? oldRecord.values.CampaignId : []'
             type: Array
             target: items
+        id: 49
       - ref: ""
         kind: expressions
         meta:
@@ -11634,12 +11634,12 @@ workflows:
             value: Set campaign filter
             parent: "1"
           description: ""
-        stepID: "58"
         results: []
         arguments:
           - expr: join(campaignIDs, " OR ")
             type: String
             target: campaignFilter
+        id: 58
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -11654,7 +11654,6 @@ workflows:
             value: Get Campaigns
             parent: "1"
           description: ""
-        stepID: "61"
         results:
           - expr: records
             target: campaigns
@@ -11673,6 +11672,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 61
       - ref: loopEach
         kind: iterator
         meta:
@@ -11687,7 +11687,6 @@ workflows:
             value: Iterate over Campaigns
             parent: "1"
           description: ""
-        stepID: "63"
         results:
           - expr: item
             target: campaign
@@ -11695,6 +11694,7 @@ workflows:
           - expr: campaigns
             type: Array
             target: items
+        id: 63
       - ref: ""
         kind: termination
         meta:
@@ -11709,9 +11709,9 @@ workflows:
             value: End
             parent: "1"
           description: ""
-        stepID: "65"
         results: []
         arguments: []
+        id: 65
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -11726,7 +11726,6 @@ workflows:
             value: Get NumberOfLeads
             parent: "1"
           description: ""
-        stepID: "66"
         results:
           - expr: total
             target: NumberOfLeads
@@ -11743,6 +11742,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 66
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -11757,7 +11757,6 @@ workflows:
             value: Get NumberOfConvertedLeads
             parent: "1"
           description: ""
-        stepID: "71"
         results:
           - expr: total
             target: NumberOfConvertedLeads
@@ -11774,6 +11773,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 71
       - ref: ""
         kind: expressions
         meta:
@@ -11788,7 +11788,6 @@ workflows:
             value: Set Campaign Values
             parent: "1"
           description: ""
-        stepID: "73"
         results: []
         arguments:
           - expr: NumberOfLeads
@@ -11797,6 +11796,7 @@ workflows:
           - expr: NumberOfConvertedLeads
             type: Integer
             target: campaign.values.NumberOfConvertedLeads
+        id: 73
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -11811,12 +11811,12 @@ workflows:
             value: Save Campaign
             parent: "1"
           description: ""
-        stepID: "75"
         results: []
         arguments:
           - expr: campaign
             type: ComposeRecord
             target: record
+        id: 75
     paths:
       - expr: has(campaignIDs, campaignID)
         meta:
@@ -12035,12 +12035,12 @@ workflows:
             value: Set CampaignIds
             parent: "1"
           description: ""
-        stepID: "5"
         results: []
         arguments:
           - expr: '[]'
             type: Array
             target: campaignIDs
+        id: 5
       - ref: loopEach
         kind: iterator
         meta:
@@ -12055,7 +12055,6 @@ workflows:
             value: Iterate record CampaignIDs
             parent: "1"
           description: ""
-        stepID: "14"
         results:
           - expr: item
             target: campaignID
@@ -12063,6 +12062,7 @@ workflows:
           - expr: 'record.recordID != "0" ? record.values.CampaignId : []'
             type: Array
             target: items
+        id: 14
       - ref: ""
         kind: expressions
         meta:
@@ -12077,12 +12077,12 @@ workflows:
             value: Push campaignID
             parent: "1"
           description: ""
-        stepID: "16"
         results: []
         arguments:
           - expr: push(campaignIDs, "recordID = " + campaignID)
             type: Array
             target: campaignIDs
+        id: 16
       - ref: ""
         kind: continue
         meta:
@@ -12097,9 +12097,9 @@ workflows:
             value: Check next ID
             parent: "1"
           description: ""
-        stepID: "21"
         results: []
         arguments: []
+        id: 21
       - ref: excl
         kind: gateway
         meta:
@@ -12114,9 +12114,9 @@ workflows:
             value: If already pushed
             parent: "1"
           description: ""
-        stepID: "26"
         results: []
         arguments: []
+        id: 26
       - ref: loopEach
         kind: iterator
         meta:
@@ -12131,7 +12131,6 @@ workflows:
             value: Iterate oldrecord CampaignIDs
             parent: "1"
           description: ""
-        stepID: "49"
         results:
           - expr: item
             target: campaignID
@@ -12139,6 +12138,7 @@ workflows:
           - expr: 'oldRecord.recordID != "0" ? oldRecord.values.CampaignId : []'
             type: Array
             target: items
+        id: 49
       - ref: ""
         kind: expressions
         meta:
@@ -12153,12 +12153,12 @@ workflows:
             value: Set campaign filter
             parent: "1"
           description: ""
-        stepID: "58"
         results: []
         arguments:
           - expr: join(campaignIDs, " OR ")
             type: String
             target: campaignFilter
+        id: 58
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -12173,7 +12173,6 @@ workflows:
             value: Get Campaigns
             parent: "1"
           description: ""
-        stepID: "61"
         results:
           - expr: records
             target: campaigns
@@ -12192,6 +12191,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 61
       - ref: loopEach
         kind: iterator
         meta:
@@ -12206,7 +12206,6 @@ workflows:
             value: Iterate over Campaigns
             parent: "1"
           description: ""
-        stepID: "63"
         results:
           - expr: item
             target: campaign
@@ -12214,6 +12213,7 @@ workflows:
           - expr: campaigns
             type: Array
             target: items
+        id: 63
       - ref: ""
         kind: termination
         meta:
@@ -12228,9 +12228,9 @@ workflows:
             value: End
             parent: "1"
           description: ""
-        stepID: "65"
         results: []
         arguments: []
+        id: 65
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -12245,7 +12245,6 @@ workflows:
             value: Get NumberOfAccounts
             parent: "1"
           description: ""
-        stepID: "66"
         results:
           - expr: total
             target: NumberOfAccounts
@@ -12262,6 +12261,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 66
       - ref: ""
         kind: expressions
         meta:
@@ -12276,12 +12276,12 @@ workflows:
             value: Set Campaign Values
             parent: "1"
           description: ""
-        stepID: "73"
         results: []
         arguments:
           - expr: NumberOfAccounts
             type: Integer
             target: campaign.values.NumberOfAccounts
+        id: 73
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -12296,12 +12296,12 @@ workflows:
             value: Save Campaign
             parent: "1"
           description: ""
-        stepID: "75"
         results: []
         arguments:
           - expr: campaign
             type: ComposeRecord
             target: record
+        id: 75
     paths:
       - expr: has(campaignIDs, campaignID)
         meta:
@@ -12509,12 +12509,12 @@ workflows:
             value: Set CampaignIds
             parent: "1"
           description: ""
-        stepID: "5"
         results: []
         arguments:
           - expr: '[]'
             type: Array
             target: campaignIDs
+        id: 5
       - ref: loopEach
         kind: iterator
         meta:
@@ -12529,7 +12529,6 @@ workflows:
             value: Iterate record CampaignIDs
             parent: "1"
           description: ""
-        stepID: "14"
         results:
           - expr: item
             target: campaignID
@@ -12537,6 +12536,7 @@ workflows:
           - expr: 'record.recordID != "0" ? record.values.CampaignId : []'
             type: Array
             target: items
+        id: 14
       - ref: ""
         kind: expressions
         meta:
@@ -12551,12 +12551,12 @@ workflows:
             value: Push campaignID
             parent: "1"
           description: ""
-        stepID: "16"
         results: []
         arguments:
           - expr: push(campaignIDs, "recordID = " + campaignID)
             type: Array
             target: campaignIDs
+        id: 16
       - ref: ""
         kind: continue
         meta:
@@ -12571,9 +12571,9 @@ workflows:
             value: Check next ID
             parent: "1"
           description: ""
-        stepID: "21"
         results: []
         arguments: []
+        id: 21
       - ref: excl
         kind: gateway
         meta:
@@ -12588,9 +12588,9 @@ workflows:
             value: If already pushed
             parent: "1"
           description: ""
-        stepID: "26"
         results: []
         arguments: []
+        id: 26
       - ref: loopEach
         kind: iterator
         meta:
@@ -12605,7 +12605,6 @@ workflows:
             value: Iterate oldrecord CampaignIDs
             parent: "1"
           description: ""
-        stepID: "49"
         results:
           - expr: item
             target: campaignID
@@ -12613,6 +12612,7 @@ workflows:
           - expr: 'oldRecord.recordID != "0" ? oldRecord.values.CampaignId : []'
             type: Array
             target: items
+        id: 49
       - ref: ""
         kind: expressions
         meta:
@@ -12627,12 +12627,12 @@ workflows:
             value: Set campaign filter
             parent: "1"
           description: ""
-        stepID: "58"
         results: []
         arguments:
           - expr: join(campaignIDs, " OR ")
             type: String
             target: campaignFilter
+        id: 58
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -12647,7 +12647,6 @@ workflows:
             value: Get Campaigns
             parent: "1"
           description: ""
-        stepID: "61"
         results:
           - expr: records
             target: campaigns
@@ -12666,6 +12665,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 61
       - ref: loopEach
         kind: iterator
         meta:
@@ -12680,7 +12680,6 @@ workflows:
             value: Iterate over Campaigns
             parent: "1"
           description: ""
-        stepID: "63"
         results:
           - expr: item
             target: campaign
@@ -12688,6 +12687,7 @@ workflows:
           - expr: campaigns
             type: Array
             target: items
+        id: 63
       - ref: ""
         kind: termination
         meta:
@@ -12702,9 +12702,9 @@ workflows:
             value: End
             parent: "1"
           description: ""
-        stepID: "65"
         results: []
         arguments: []
+        id: 65
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -12719,7 +12719,6 @@ workflows:
             value: Get NumberOfContacts
             parent: "1"
           description: ""
-        stepID: "66"
         results:
           - expr: total
             target: NumberOfContacts
@@ -12736,6 +12735,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 66
       - ref: ""
         kind: expressions
         meta:
@@ -12750,12 +12750,12 @@ workflows:
             value: Set Campaign Values
             parent: "1"
           description: ""
-        stepID: "73"
         results: []
         arguments:
           - expr: NumberOfContacts
             type: Integer
             target: campaign.values.NumberOfContacts
+        id: 73
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -12770,12 +12770,12 @@ workflows:
             value: Save Campaign
             parent: "1"
           description: ""
-        stepID: "75"
         results: []
         arguments:
           - expr: campaign
             type: ComposeRecord
             target: record
+        id: 75
     paths:
       - expr: has(campaignIDs, campaignID)
         meta:
@@ -12984,9 +12984,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "35"
         results: []
         arguments: []
+        id: 35
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -13002,7 +13002,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "37"
         results:
           - expr: record
             target: account
@@ -13013,6 +13012,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 37
       - ref: ""
         kind: expressions
         meta:
@@ -13028,7 +13028,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "38"
         results: []
         arguments:
           - expr: record.values.Street
@@ -13109,6 +13108,7 @@ workflows:
           - expr: record.values.CampaignId
             type: Array
             target: account.values.CampaignId
+        id: 38
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -13124,7 +13124,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "39"
         results:
           - expr: record
             target: account
@@ -13132,6 +13131,7 @@ workflows:
           - type: ComposeRecord
             source: account
             target: record
+        id: 39
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -13147,7 +13147,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "40"
         results:
           - expr: record
             target: contact
@@ -13158,6 +13157,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 40
       - ref: ""
         kind: expressions
         meta:
@@ -13173,7 +13173,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "41"
         results: []
         arguments:
           - expr: record.values.Street
@@ -13254,6 +13253,7 @@ workflows:
           - expr: record.values.CampaignId
             type: Array
             target: contact.values.CampaignId
+        id: 41
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -13269,7 +13269,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "42"
         results:
           - expr: record
             target: contact
@@ -13277,6 +13276,7 @@ workflows:
           - type: ComposeRecord
             source: contact
             target: record
+        id: 42
       - ref: ""
         kind: expressions
         meta:
@@ -13292,7 +13292,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "43"
         results: []
         arguments:
           - expr: '"Converted"'
@@ -13313,6 +13312,7 @@ workflows:
           - expr: opportunity.recordID
             type: ID
             target: record.values.ConvertedOpportunityId
+        id: 43
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -13328,7 +13328,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "44"
         results:
           - expr: record
             target: record
@@ -13336,6 +13335,7 @@ workflows:
           - expr: record
             type: ComposeRecord
             target: record
+        id: 44
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -13351,7 +13351,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "64"
         results:
           - expr: record
             type: ComposeRecord
@@ -13363,6 +13362,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 64
       - ref: ""
         kind: expressions
         meta:
@@ -13378,7 +13378,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "65"
         results: []
         arguments:
           - expr: record.values.Description
@@ -13423,6 +13422,7 @@ workflows:
           - expr: record.recordID
             type: ID
             target: opportunity.values.LeadRef
+        id: 65
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -13438,7 +13438,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "66"
         results:
           - expr: record
             target: opportunity
@@ -13446,6 +13445,7 @@ workflows:
           - type: ComposeRecord
             source: opportunity
             target: record
+        id: 66
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -13461,7 +13461,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "69"
         results:
           - expr: record
             target: contactRole
@@ -13472,6 +13471,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 69
       - ref: ""
         kind: expressions
         meta:
@@ -13487,7 +13487,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "70"
         results: []
         arguments:
           - expr: contact.recordID
@@ -13499,6 +13498,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: contactRole.values.IsPrimary
+        id: 70
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -13514,7 +13514,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "71"
         results:
           - expr: record
             target: contactRole
@@ -13522,6 +13521,7 @@ workflows:
           - type: ComposeRecord
             source: contactRole
             target: record
+        id: 71
       - ref: composeRecordsLast
         kind: function
         meta:
@@ -13537,7 +13537,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "77"
         results:
           - expr: record
             target: settings
@@ -13548,6 +13547,7 @@ workflows:
           - expr: namespace.namespaceID
             type: ID
             target: namespace
+        id: 77
       - ref: notification
         kind: prompt
         meta:
@@ -13563,7 +13563,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "113"
         results: []
         arguments:
           - type: String
@@ -13575,6 +13574,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 113
       - ref: recordPage
         kind: prompt
         meta:
@@ -13590,7 +13590,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "115"
         results: []
         arguments:
           - type: Handle
@@ -13602,6 +13601,7 @@ workflows:
           - type: ComposeRecord
             source: opportunity
             target: record
+        id: 115
       - ref: emailSend
         kind: function
         meta:
@@ -13617,7 +13617,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "118"
         results: []
         arguments:
           - expr: subject.document
@@ -13629,6 +13628,7 @@ workflows:
           - expr: content.document
             type: Reader
             target: html
+        id: 118
       - ref: usersLookup
         kind: function
         meta:
@@ -13644,7 +13644,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "119"
         results:
           - expr: user
             target: owner
@@ -13652,6 +13651,7 @@ workflows:
           - expr: record.values.OwnerId
             type: ID
             target: lookup
+        id: 119
       - ref: excl
         kind: gateway
         meta:
@@ -13667,9 +13667,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "132"
         results: []
         arguments: []
+        id: 132
       - ref: notification
         kind: prompt
         meta:
@@ -13685,7 +13685,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "139"
         results: []
         arguments:
           - type: String
@@ -13697,6 +13696,7 @@ workflows:
           - type: String
             value: info
             target: variant
+        id: 139
       - ref: templatesRender
         kind: function
         meta:
@@ -13712,7 +13712,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "140"
         results:
           - expr: document
             target: subject
@@ -13729,6 +13728,7 @@ workflows:
           - expr: subjectRenderVariables
             type: Vars
             target: variables
+        id: 140
       - ref: templatesRender
         kind: function
         meta:
@@ -13744,7 +13744,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "142"
         results:
           - expr: document
             target: content
@@ -13761,6 +13760,7 @@ workflows:
           - expr: contentRenderVariables
             type: Vars
             target: variables
+        id: 142
       - ref: ""
         kind: expressions
         meta:
@@ -13776,7 +13776,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "145"
         results: []
         arguments:
           - type: Vars
@@ -13792,6 +13791,7 @@ workflows:
           - expr: account
             type: ComposeRecord
             target: contentRenderVariables.account
+        id: 145
     paths:
       - expr: record.values.Status == "Converted"
         meta:
@@ -14137,7 +14137,6 @@ workflows:
             value: Fetch settings
             parent: "1"
           description: ""
-        stepID: "3"
         results:
           - expr: record
             target: settings
@@ -14148,6 +14147,7 @@ workflows:
           - expr: namespace
             type: ComposeNamespace
             target: namespace
+        id: 3
       - ref: ""
         kind: expressions
         meta:
@@ -14162,7 +14162,6 @@ workflows:
             value: Set nextCaseNumber
             parent: "1"
           description: ""
-        stepID: "5"
         results: []
         arguments:
           - expr: 'settings.values.CaseNextNumber ? settings.values.CaseNextNumber : 0'
@@ -14171,6 +14170,7 @@ workflows:
           - expr: settings.values.CaseNextNumber + 1
             type: Integer
             target: settings.values.CaseNextNumber
+        id: 5
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -14185,7 +14185,6 @@ workflows:
             value: Make Case
             parent: "1"
           description: ""
-        stepID: "7"
         results:
           - expr: record
             target: case
@@ -14196,6 +14195,7 @@ workflows:
           - expr: namespace
             type: ComposeNamespace
             target: namespace
+        id: 7
       - ref: ""
         kind: expressions
         meta:
@@ -14210,7 +14210,6 @@ workflows:
             value: Set Case Values
             parent: "1"
           description: ""
-        stepID: "9"
         results: []
         arguments:
           - expr: record.values.OwnerId
@@ -14243,6 +14242,7 @@ workflows:
           - expr: nextCaseNumber
             type: Integer
             target: case.values.CaseNumber
+        id: 9
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -14257,7 +14257,6 @@ workflows:
             value: Create Case
             parent: "1"
           description: ""
-        stepID: "11"
         results:
           - expr: record
             target: case
@@ -14265,6 +14264,7 @@ workflows:
           - expr: case
             type: ComposeRecord
             target: record
+        id: 11
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -14279,7 +14279,6 @@ workflows:
             value: Save settings
             parent: "1"
           description: ""
-        stepID: "13"
         results:
           - expr: record
             target: settings
@@ -14287,6 +14286,7 @@ workflows:
           - expr: settings
             type: ComposeRecord
             target: record
+        id: 13
       - ref: notification
         kind: prompt
         meta:
@@ -14301,7 +14301,6 @@ workflows:
             value: Notify Case created
             parent: "1"
           description: ""
-        stepID: "15"
         results: []
         arguments:
           - type: String
@@ -14313,6 +14312,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 15
       - ref: recordPage
         kind: prompt
         meta:
@@ -14327,7 +14327,6 @@ workflows:
             value: Go to record editor
             parent: "1"
           description: ""
-        stepID: "18"
         results: []
         arguments:
           - type: Handle
@@ -14342,6 +14341,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: edit
+        id: 18
     paths:
       - meta:
           name: ""
@@ -14478,12 +14478,12 @@ workflows:
             value: Set CampaignIds
             parent: "1"
           description: ""
-        stepID: "5"
         results: []
         arguments:
           - expr: '[]'
             type: Array
             target: campaignIDs
+        id: 5
       - ref: loopEach
         kind: iterator
         meta:
@@ -14498,7 +14498,6 @@ workflows:
             value: Iterate record CampaignIDs
             parent: "1"
           description: ""
-        stepID: "14"
         results:
           - expr: item
             target: campaignID
@@ -14506,6 +14505,7 @@ workflows:
           - expr: 'record.recordID != "0" ? record.values.CampaignId : []'
             type: Array
             target: items
+        id: 14
       - ref: ""
         kind: expressions
         meta:
@@ -14520,12 +14520,12 @@ workflows:
             value: Push campaignID
             parent: "1"
           description: ""
-        stepID: "16"
         results: []
         arguments:
           - expr: push(campaignIDs, "recordID = " + campaignID)
             type: Array
             target: campaignIDs
+        id: 16
       - ref: ""
         kind: continue
         meta:
@@ -14540,9 +14540,9 @@ workflows:
             value: Check next ID
             parent: "1"
           description: ""
-        stepID: "21"
         results: []
         arguments: []
+        id: 21
       - ref: excl
         kind: gateway
         meta:
@@ -14557,9 +14557,9 @@ workflows:
             value: If already pushed
             parent: "1"
           description: ""
-        stepID: "26"
         results: []
         arguments: []
+        id: 26
       - ref: loopEach
         kind: iterator
         meta:
@@ -14574,7 +14574,6 @@ workflows:
             value: Iterate oldRecord CampaignIDs
             parent: "1"
           description: ""
-        stepID: "49"
         results:
           - expr: item
             target: campaignID
@@ -14582,6 +14581,7 @@ workflows:
           - expr: 'oldRecord.recordID != "0" ? oldRecord.values.CampaignId : []'
             type: Array
             target: items
+        id: 49
       - ref: ""
         kind: expressions
         meta:
@@ -14596,12 +14596,12 @@ workflows:
             value: Set campaign filter
             parent: "1"
           description: ""
-        stepID: "58"
         results: []
         arguments:
           - expr: join(campaignIDs, " OR ")
             type: String
             target: campaignFilter
+        id: 58
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -14616,7 +14616,6 @@ workflows:
             value: Get Campaigns
             parent: "1"
           description: ""
-        stepID: "61"
         results:
           - expr: records
             target: campaigns
@@ -14635,6 +14634,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 61
       - ref: loopEach
         kind: iterator
         meta:
@@ -14649,7 +14649,6 @@ workflows:
             value: Iterate over Campaigns
             parent: "1"
           description: ""
-        stepID: "63"
         results:
           - expr: item
             target: campaign
@@ -14657,6 +14656,7 @@ workflows:
           - expr: campaigns
             type: Array
             target: items
+        id: 63
       - ref: ""
         kind: termination
         meta:
@@ -14671,9 +14671,9 @@ workflows:
             value: End
             parent: "1"
           description: ""
-        stepID: "65"
         results: []
         arguments: []
+        id: 65
       - ref: ""
         kind: expressions
         meta:
@@ -14688,7 +14688,6 @@ workflows:
             value: Set Campaign Values
             parent: "1"
           description: ""
-        stepID: "73"
         results: []
         arguments:
           - expr: NumberOfOpportunities
@@ -14703,6 +14702,7 @@ workflows:
           - expr: AmountWonOpportunities
             type: Float
             target: campaign.values.AmountWonOpportunities
+        id: 73
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -14717,12 +14717,12 @@ workflows:
             value: Save Campaign
             parent: "1"
           description: ""
-        stepID: "75"
         results: []
         arguments:
           - expr: campaign
             type: ComposeRecord
             target: record
+        id: 75
       - ref: composeRecordsReport
         kind: function
         meta:
@@ -14737,7 +14737,6 @@ workflows:
             value: Generate Report All
             parent: "1"
           description: ""
-        stepID: "104"
         results:
           - expr: report
             target: report
@@ -14757,6 +14756,7 @@ workflows:
           - expr: '"CampaignId = " + campaign.recordID'
             type: String
             target: filter
+        id: 104
       - ref: ""
         kind: expressions
         meta:
@@ -14771,7 +14771,6 @@ workflows:
             value: Set Number and Amount
             parent: "1"
           description: ""
-        stepID: "110"
         results: []
         arguments:
           - expr: "0"
@@ -14780,6 +14779,7 @@ workflows:
           - expr: "0"
             type: Float
             target: AmountAllOpportunities
+        id: 110
       - ref: loopEach
         kind: iterator
         meta:
@@ -14794,7 +14794,6 @@ workflows:
             value: Iterate report items
             parent: "1"
           description: ""
-        stepID: "112"
         results:
           - expr: item
             target: dimension
@@ -14802,6 +14801,7 @@ workflows:
           - expr: 'report ? report : []'
             type: Array
             target: items
+        id: 112
       - ref: ""
         kind: expressions
         meta:
@@ -14816,7 +14816,6 @@ workflows:
             value: Update Number and Amount
             parent: "1"
           description: ""
-        stepID: "123"
         results: []
         arguments:
           - expr: NumberOfOpportunities + dimension.count
@@ -14825,6 +14824,7 @@ workflows:
           - expr: 'AmountAllOpportunities + (dimension.amount ? dimension.amount : 0)'
             type: Float
             target: AmountAllOpportunities
+        id: 123
       - ref: composeRecordsReport
         kind: function
         meta:
@@ -14839,7 +14839,6 @@ workflows:
             value: Generate Report Won
             parent: "1"
           description: ""
-        stepID: "126"
         results:
           - expr: report
             target: report
@@ -14859,6 +14858,7 @@ workflows:
           - expr: '"(CampaignId = " + campaign.recordID + ") AND (StageName = ''Closed Won'')"'
             type: String
             target: filter
+        id: 126
       - ref: ""
         kind: expressions
         meta:
@@ -14873,7 +14873,6 @@ workflows:
             value: Set Number and Amount
             parent: "1"
           description: ""
-        stepID: "127"
         results: []
         arguments:
           - expr: "0"
@@ -14882,6 +14881,7 @@ workflows:
           - expr: "0"
             type: Float
             target: AmountWonOpportunities
+        id: 127
       - ref: loopEach
         kind: iterator
         meta:
@@ -14896,7 +14896,6 @@ workflows:
             value: Iterate report items
             parent: "1"
           description: ""
-        stepID: "128"
         results:
           - expr: item
             target: dimension
@@ -14904,6 +14903,7 @@ workflows:
           - expr: 'report ? report : []'
             type: Array
             target: items
+        id: 128
       - ref: ""
         kind: expressions
         meta:
@@ -14918,7 +14918,6 @@ workflows:
             value: Update Number and Amount
             parent: "1"
           description: ""
-        stepID: "131"
         results: []
         arguments:
           - expr: NumberOfWonOpportunities + dimension.count
@@ -14927,6 +14926,7 @@ workflows:
           - expr: 'AmountWonOpportunities + (dimension.amount ? dimension.amount : 0)'
             type: Float
             target: AmountWonOpportunities
+        id: 131
     paths:
       - expr: has(campaignIDs, campaignID)
         meta:
@@ -15212,9 +15212,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "6"
         results: []
         arguments: []
+        id: 6
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -15230,7 +15230,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "7"
         results:
           - expr: records
             target: lineItems
@@ -15244,6 +15243,7 @@ workflows:
           - expr: '"QuoteId = " + record.recordID'
             type: String
             target: query
+        id: 7
       - ref: notification
         kind: prompt
         meta:
@@ -15259,7 +15259,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "8"
         results: []
         arguments:
           - type: String
@@ -15271,6 +15270,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 8
       - ref: ""
         kind: expressions
         meta:
@@ -15286,7 +15286,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "9"
         results: []
         arguments:
           - type: Vars
@@ -15331,6 +15330,7 @@ workflows:
           - expr: termItems
             type: Array
             target: renderVariables.termItems
+        id: 9
       - ref: templatesRender
         kind: function
         meta:
@@ -15346,7 +15346,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "10"
         results:
           - expr: document
             type: RenderedDocument
@@ -15364,6 +15363,7 @@ workflows:
           - expr: renderVariables
             type: Vars
             target: variables
+        id: 10
       - ref: ""
         kind: expressions
         meta:
@@ -15379,7 +15379,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "11"
         results: []
         arguments:
           - expr: settings.values.DefaultQuoteImage
@@ -15388,6 +15387,7 @@ workflows:
           - expr: settings.values.DefaultAboutImage
             type: String
             target: DefaultAboutImage
+        id: 11
       - ref: oauth2Authenticate
         kind: function
         meta:
@@ -15403,7 +15403,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "12"
         results:
           - expr: accessToken
             type: String
@@ -15421,6 +15420,7 @@ workflows:
           - expr: join([settings.values.Domain,"/auth/oauth2/token"],'')
             type: String
             target: tokenUrl
+        id: 12
       - ref: httpRequestSend
         kind: function
         meta:
@@ -15436,7 +15436,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "13"
         results:
           - expr: status
             type: String
@@ -15454,6 +15453,7 @@ workflows:
           - expr: accessToken
             type: String
             target: headerAuthBearer
+        id: 13
       - ref: ""
         kind: expressions
         meta:
@@ -15469,12 +15469,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "14"
         results: []
         arguments:
           - expr: attachmentReader
             type: String
             target: attachmentString
+        id: 14
       - ref: jsenvExecute
         kind: function
         meta:
@@ -15490,7 +15490,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "15"
         results:
           - expr: resultString
             target: coverImgUrl
@@ -15503,6 +15502,7 @@ workflows:
               const js = JSON.parse(arguments[0])
               return js.response.url;
             target: source
+        id: 15
       - ref: templatesRender
         kind: function
         meta:
@@ -15518,7 +15518,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "16"
         results:
           - expr: document
             type: RenderedDocument
@@ -15533,6 +15532,7 @@ workflows:
           - type: String
             value: text/html
             target: documentType
+        id: 16
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -15548,7 +15548,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "17"
         results:
           - expr: record
             type: ComposeRecord
@@ -15563,6 +15562,7 @@ workflows:
           - expr: record.values.ContactId
             type: ID
             target: record
+        id: 17
       - ref: templatesRender
         kind: function
         meta:
@@ -15578,7 +15578,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "18"
         results:
           - expr: document
             target: footerHtml
@@ -15592,6 +15591,7 @@ workflows:
           - type: String
             value: text/html
             target: documentType
+        id: 18
       - ref: loopEach
         kind: iterator
         meta:
@@ -15607,7 +15607,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "19"
         results:
           - expr: item
             type: Any
@@ -15616,6 +15615,7 @@ workflows:
           - expr: lineItems
             type: Array
             target: items
+        id: 19
       - ref: ""
         kind: expressions
         meta:
@@ -15631,12 +15631,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "20"
         results: []
         arguments:
           - expr: lineItem.values.ProductId
             type: String
             target: ProductId
+        id: 20
       - ref: httpRequestSend
         kind: function
         meta:
@@ -15652,7 +15652,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "21"
         results:
           - expr: body
             type: Reader
@@ -15667,6 +15666,7 @@ workflows:
           - expr: accessToken
             type: String
             target: headerAuthBearer
+        id: 21
       - ref: ""
         kind: expressions
         meta:
@@ -15682,12 +15682,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "22"
         results: []
         arguments:
           - expr: productImage
             type: String
             target: productImage
+        id: 22
       - ref: jsenvExecute
         kind: function
         meta:
@@ -15703,7 +15703,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "23"
         results:
           - expr: resultString
             type: String
@@ -15717,6 +15716,7 @@ workflows:
               const js = JSON.parse(arguments[0])
               return js.response.url;
             target: source
+        id: 23
       - ref: ""
         kind: expressions
         meta:
@@ -15732,13 +15732,13 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "24"
         results: []
         arguments:
           - type: Vars
             target: productImages
           - type: Vars
             target: productNames
+        id: 24
       - ref: ""
         kind: expressions
         meta:
@@ -15754,7 +15754,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "25"
         results: []
         arguments:
           - expr: |-
@@ -15771,6 +15770,7 @@ workflows:
           - expr: merge(productNames,nameItem)
             type: Vars
             target: productNames
+        id: 25
       - ref: ""
         kind: continue
         meta:
@@ -15786,9 +15786,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "26"
         results: []
         arguments: []
+        id: 26
       - ref: httpRequestSend
         kind: function
         meta:
@@ -15804,7 +15804,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "27"
         results:
           - expr: body
             type: Reader
@@ -15819,6 +15818,7 @@ workflows:
           - expr: accessToken
             type: String
             target: headerAuthBearer
+        id: 27
       - ref: ""
         kind: expressions
         meta:
@@ -15834,12 +15834,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "28"
         results: []
         arguments:
           - expr: attachmentReader
             type: String
             target: attachmentString
+        id: 28
       - ref: jsenvExecute
         kind: function
         meta:
@@ -15855,7 +15855,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "29"
         results:
           - expr: resultString
             type: String
@@ -15869,6 +15868,7 @@ workflows:
               const js = JSON.parse(arguments[0])
               return `https://crm.tilnet.co.il/api/compose${js.response.url}`;
             target: source
+        id: 29
       - ref: excl
         kind: gateway
         meta:
@@ -15884,9 +15884,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "30"
         results: []
         arguments: []
+        id: 30
       - ref: ""
         kind: expressions
         meta:
@@ -15902,12 +15902,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "31"
         results: []
         arguments:
           - expr: '"הצעת מחיר לפיתוח"'
             type: String
             target: record.values.Name
+        id: 31
       - ref: jsenvExecute
         kind: function
         meta:
@@ -15923,7 +15923,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "32"
         results:
           - expr: resultString
             type: String
@@ -15935,6 +15934,7 @@ workflows:
           - type: String
             value: return arguments[0].replace(/([\d]{4})-([\d]{2})-([\d]{2}).*/,"$3/$2/$1")
             target: source
+        id: 32
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -15950,7 +15950,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "33"
         results:
           - expr: records
             target: termItems
@@ -15964,6 +15963,7 @@ workflows:
           - expr: '"QuoteId = " + record.recordID'
             type: String
             target: query
+        id: 33
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -15979,7 +15979,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "35"
         results:
           - expr: record
             type: ComposeRecord
@@ -15994,6 +15993,7 @@ workflows:
           - expr: ProductId
             type: ID
             target: record
+        id: 35
       - ref: corredorExec
         kind: function
         meta:
@@ -16009,7 +16009,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "36"
         results:
           - expr: results
             type: Vars
@@ -16031,6 +16030,7 @@ workflows:
               }
             type: Vars
             target: args
+        id: 36
       - ref: notification
         kind: prompt
         meta:
@@ -16046,7 +16046,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "37"
         results: []
         arguments:
           - type: String
@@ -16058,6 +16057,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 37
       - ref: templatesRender
         kind: function
         meta:
@@ -16073,7 +16073,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "38"
         results:
           - expr: document
             type: RenderedDocument
@@ -16091,6 +16090,7 @@ workflows:
           - expr: renderVariables
             type: Vars
             target: variables
+        id: 38
       - ref: composeRecordsLast
         kind: function
         meta:
@@ -16106,7 +16106,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "39"
         results:
           - expr: record
             type: ComposeRecord
@@ -16118,6 +16117,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 39
       - ref: ""
         kind: expressions
         meta:
@@ -16133,7 +16133,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "40"
         results: []
         arguments:
           - expr: html.document
@@ -16151,6 +16150,7 @@ workflows:
           - expr: join([record.values.Name,record.values.QuoteNumber]," - ")
             type: String
             target: quoteName
+        id: 40
     paths:
       - expr: 'record.values.Email ? true : false'
         meta:
@@ -16588,9 +16588,9 @@ workflows:
             parent: "1"
             defaultName: true
           description: ""
-        stepID: "16"
         results: []
         arguments: []
+        id: 16
       - ref: ""
         kind: termination
         meta:
@@ -16606,9 +16606,9 @@ workflows:
             parent: "1"
             defaultName: true
           description: ""
-        stepID: "18"
         results: []
         arguments: []
+        id: 18
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -16624,7 +16624,6 @@ workflows:
             parent: "1"
             defaultName: true
           description: ""
-        stepID: "23"
         results:
           - expr: record
             type: ComposeRecord
@@ -16639,6 +16638,7 @@ workflows:
           - expr: coverTemplateId
             type: ID
             target: record
+        id: 23
       - ref: ""
         kind: expressions
         meta:
@@ -16654,7 +16654,6 @@ workflows:
             parent: "1"
             defaultName: true
           description: ""
-        stepID: "24"
         results: []
         arguments:
           - expr: coverLetterRec.values.Content
@@ -16663,6 +16662,7 @@ workflows:
           - expr: coverLetterRec.values.Content
             type: String
             target: record.values.CoverText
+        id: 24
       - ref: ""
         kind: expressions
         meta:
@@ -16678,12 +16678,12 @@ workflows:
             parent: "1"
             defaultName: true
           description: ""
-        stepID: "27"
         results: []
         arguments:
           - expr: record.values.CoverTemplate
             type: ID
             target: coverTemplateId
+        id: 27
       - ref: ""
         kind: termination
         meta:
@@ -16699,9 +16699,9 @@ workflows:
             parent: "1"
             defaultName: true
           description: ""
-        stepID: "29"
         results: []
         arguments: []
+        id: 29
     paths:
       - expr: (!oldRecord.values.CoverTemplate && record.values.CoverTemplate) || oldRecord.values.CoverTemplate != record.values.CoverTemplate
         meta:
@@ -16819,9 +16819,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "16"
         results: []
         arguments: []
+        id: 16
       - ref: ""
         kind: termination
         meta:
@@ -16837,9 +16837,9 @@ workflows:
             parent: "1"
             defaultName: true
           description: ""
-        stepID: "17"
         results: []
         arguments: []
+        id: 17
       - ref: composeRecordsNew
         kind: function
         meta:
@@ -16855,7 +16855,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "18"
         results:
           - expr: record
             type: ComposeRecord
@@ -16867,6 +16866,7 @@ workflows:
           - type: Handle
             value: crm
             target: namespace
+        id: 18
       - ref: ""
         kind: termination
         meta:
@@ -16882,9 +16882,9 @@ workflows:
             parent: "1"
             defaultName: true
           description: ""
-        stepID: "19"
         results: []
         arguments: []
+        id: 19
       - ref: composeRecordsCreate
         kind: function
         meta:
@@ -16900,7 +16900,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "20"
         results:
           - expr: record
             type: ComposeRecord
@@ -16909,6 +16908,7 @@ workflows:
           - expr: note
             type: ComposeRecord
             target: record
+        id: 20
       - ref: ""
         kind: expressions
         meta:
@@ -16924,7 +16924,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "21"
         results: []
         arguments:
           - expr: 'record.values.Status == "Presented" ? "<p>נשלחה הצעת מחיר</p>": "<p>נשלחה תזכורת</p>"'
@@ -16936,6 +16935,7 @@ workflows:
           - expr: record.recordID
             type: ID
             target: note.values.QuoteId
+        id: 21
     paths:
       - expr: oldRecord.values.Status != record.values.Status && (record.values.Status == "Presented" || record.values.Status == "Reminder")
         meta:
@@ -17053,12 +17053,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "3"
         results: []
         arguments:
           - expr: 'record.values.PricebookId ? record.values.PricebookId : 0'
             type: ID
             target: pricebookId
+        id: 3
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -17074,7 +17074,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "4"
         results:
           - expr: records
             type: ComposeRecord
@@ -17095,6 +17094,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 4
       - ref: excl
         kind: gateway
         meta:
@@ -17110,9 +17110,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "5"
         results: []
         arguments: []
+        id: 5
       - ref: ""
         kind: expressions
         meta:
@@ -17128,7 +17128,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "6"
         results: []
         arguments:
           - expr: 'pricebooks[0] ? pricebooks[0] : undefined'
@@ -17140,6 +17139,7 @@ workflows:
           - expr: pricebookId
             type: ID
             target: record.values.PricebookId
+        id: 6
       - ref: notification
         kind: prompt
         meta:
@@ -17155,7 +17155,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "7"
         results: []
         arguments:
           - type: String
@@ -17167,6 +17166,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 7
       - ref: excl
         kind: gateway
         meta:
@@ -17182,9 +17182,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "8"
         results: []
         arguments: []
+        id: 8
       - ref: notification
         kind: prompt
         meta:
@@ -17200,7 +17200,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "9"
         results: []
         arguments:
           - type: String
@@ -17212,6 +17211,7 @@ workflows:
           - type: String
             value: אזהרה
             target: variant
+        id: 9
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -17227,7 +17227,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "10"
         results:
           - expr: record
             type: ComposeRecord
@@ -17236,6 +17235,7 @@ workflows:
           - expr: record
             type: ComposeRecord
             target: record
+        id: 10
       - ref: composeRecordsEach
         kind: iterator
         meta:
@@ -17251,7 +17251,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "11"
         results:
           - expr: record
             type: ComposeRecord
@@ -17275,6 +17274,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 11
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -17290,7 +17290,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "12"
         results:
           - expr: record
             type: ComposeRecord
@@ -17305,6 +17304,7 @@ workflows:
           - expr: lineItem.values.ProductId
             type: ID
             target: record
+        id: 12
       - ref: ""
         kind: expressions
         meta:
@@ -17320,12 +17320,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "13"
         results: []
         arguments:
           - expr: "0"
             type: Float
             target: quoteTotal
+        id: 13
       - ref: recordPage
         kind: prompt
         meta:
@@ -17341,7 +17341,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "14"
         results: []
         arguments:
           - type: Handle
@@ -17353,6 +17352,7 @@ workflows:
           - expr: record
             type: ComposeRecord
             target: record
+        id: 14
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -17368,7 +17368,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "15"
         results:
           - expr: records
             target: pricebookEntries
@@ -17387,6 +17386,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 15
       - ref: ""
         kind: expressions
         meta:
@@ -17402,12 +17402,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "16"
         results: []
         arguments:
           - expr: 'numOfPricebookEntries > 0 ? pricebookEntries[0] : undefined'
             type: ComposeRecord
             target: pricebookEntry
+        id: 16
       - ref: ""
         kind: continue
         meta:
@@ -17423,9 +17423,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "17"
         results: []
         arguments: []
+        id: 17
       - ref: ""
         kind: expressions
         meta:
@@ -17441,7 +17441,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "18"
         results: []
         arguments:
           - expr: 'lineItem.values.Quantity ? lineItem.values.Quantity : 1'
@@ -17480,6 +17479,7 @@ workflows:
           - expr: quoteTotal + totalprice
             type: Float
             target: quoteTotal
+        id: 18
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -17495,7 +17495,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "19"
         results:
           - expr: record
             type: ComposeRecord
@@ -17504,6 +17503,7 @@ workflows:
           - expr: lineItem
             type: ComposeRecord
             target: record
+        id: 19
       - ref: excl
         kind: gateway
         meta:
@@ -17519,9 +17519,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "20"
         results: []
         arguments: []
+        id: 20
       - ref: excl
         kind: gateway
         meta:
@@ -17537,9 +17537,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "21"
         results: []
         arguments: []
+        id: 21
       - ref: notification
         kind: prompt
         meta:
@@ -17555,7 +17555,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "22"
         results: []
         arguments:
           - type: String
@@ -17567,6 +17566,7 @@ workflows:
           - type: String
             value: הצלחה
             target: variant
+        id: 22
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -17582,7 +17582,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "23"
         results:
           - expr: record
             type: ComposeRecord
@@ -17591,6 +17590,7 @@ workflows:
           - expr: record
             type: ComposeRecord
             target: record
+        id: 23
       - ref: ""
         kind: expressions
         meta:
@@ -17606,12 +17606,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "24"
         results: []
         arguments:
           - expr: product.values.Description
             type: String
             target: lineItem.values.Description
+        id: 24
       - ref: ""
         kind: expressions
         meta:
@@ -17627,7 +17627,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "25"
         results: []
         arguments:
           - expr: quoteTotal
@@ -17636,6 +17635,7 @@ workflows:
           - expr: quoteTotal
             type: Float
             target: record.values.Subtotal
+        id: 25
       - ref: composeRecordsSearch
         kind: function
         meta:
@@ -17651,7 +17651,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "54"
         results:
           - expr: records
             target: pricebookEntries
@@ -17670,6 +17669,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 54
       - ref: ""
         kind: continue
         meta:
@@ -17685,9 +17685,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "55"
         results: []
         arguments: []
+        id: 55
       - ref: ""
         kind: expressions
         meta:
@@ -17703,7 +17703,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "56"
         results: []
         arguments:
           - expr: 'lineItem.values.Quantity ? lineItem.values.Quantity : 1'
@@ -17739,6 +17738,7 @@ workflows:
           - expr: totalprice
             type: Float
             target: lineItem.values.TotalPrice
+        id: 56
       - ref: excl
         kind: gateway
         meta:
@@ -17754,9 +17754,9 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "57"
         results: []
         arguments: []
+        id: 57
       - ref: ""
         kind: expressions
         meta:
@@ -17772,7 +17772,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "58"
         results: []
         arguments:
           - expr: product.values.Description
@@ -17781,6 +17780,7 @@ workflows:
           - expr: product.values.Name
             type: String
             target: lineItem.values.Name
+        id: 58
       - ref: composeRecordsLookup
         kind: function
         meta:
@@ -17796,7 +17796,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "59"
         results:
           - expr: record
             type: ComposeRecord
@@ -17811,6 +17810,7 @@ workflows:
           - expr: lineItem.values.ProductId
             type: ID
             target: record
+        id: 59
       - ref: composeRecordsUpdate
         kind: function
         meta:
@@ -17826,7 +17826,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "60"
         results:
           - expr: record
             type: ComposeRecord
@@ -17835,6 +17834,7 @@ workflows:
           - expr: lineItem
             type: ComposeRecord
             target: record
+        id: 60
       - ref: ""
         kind: expressions
         meta:
@@ -17850,12 +17850,12 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "61"
         results: []
         arguments:
           - expr: 'numOfPricebookEntries > 0 ? pricebookEntries[0] : undefined'
             type: ComposeRecord
             target: pricebookEntry
+        id: 61
       - ref: composeRecordsEach
         kind: iterator
         meta:
@@ -17871,7 +17871,6 @@ workflows:
             parent: "1"
             defaultName: false
           description: ""
-        stepID: "62"
         results:
           - expr: record
             type: ComposeRecord
@@ -17895,6 +17894,7 @@ workflows:
           - expr: "true"
             type: Boolean
             target: incTotal
+        id: 62
     paths:
       - meta:
           name: ""
