@@ -136,12 +136,12 @@ pages:
       metrics:
       - label: ''
         filter: Status = 'New'
-        moduleID: '327979456545842698'
         labelStyle: {}
         valueStyle:
           color: '#379cd3'
           fontSize: '120'
         metricField: count
+        module: Lead
   - kind: Metric
     xywh:
     - 2
@@ -157,12 +157,12 @@ pages:
     options:
       metrics:
       - filter: Status = 'Converted'
-        moduleID: '327979456545842698'
         labelStyle: {}
         valueStyle:
           color: '#379cd3'
           fontSize: '120'
         metricField: count
+        module: Lead
   - kind: Metric
     xywh:
     - 4
@@ -181,7 +181,6 @@ pages:
           IS NOT NULL
         prefix: ''
         suffix: k
-        moduleID: '327979456562226698'
         operation: sum
         labelStyle: {}
         valueStyle:
@@ -190,6 +189,7 @@ pages:
         metricField: Amount
         transformFx: v=v/1000
         numberFormat: '0.0'
+        module: Opportunity
   - kind: Chart
     xywh:
     - 0
@@ -7760,13 +7760,13 @@ pages:
     title: מספר לידים בקמפיין
     options:
       metrics:
-      - moduleID: '327979455840675338'
-        operation: sum
+      - operation: sum
         labelStyle: {}
         valueStyle:
           color: '#379cd3'
           fontSize: '100'
         metricField: NumberOfLeads
+        module: Campaigns
   - kind: Metric
     xywh:
     - 2
@@ -7780,13 +7780,13 @@ pages:
     title: מספר חשבונות בקמפיין
     options:
       metrics:
-      - moduleID: '327979455840675338'
-        operation: sum
+      - operation: sum
         labelStyle: {}
         valueStyle:
           color: '#379cd3'
           fontSize: '100'
         metricField: NumberOfAccounts
+        module: Campaigns
   - kind: Metric
     xywh:
     - 4
@@ -7800,13 +7800,13 @@ pages:
     title: מספר אנשי קשר בקמפיין
     options:
       metrics:
-      - moduleID: '327979455840675338'
-        operation: sum
+      - operation: sum
         labelStyle: {}
         valueStyle:
           color: '#379cd3'
           fontSize: '100'
         metricField: NumberOfContacts
+        module: Campaigns
   - kind: Metric
     xywh:
     - 6
@@ -7820,13 +7820,13 @@ pages:
     title: מספר הזדמנויות בקמפיין
     options:
       metrics:
-      - moduleID: '327979455840675338'
-        operation: sum
+      - operation: sum
         labelStyle: {}
         valueStyle:
           color: '#379cd3'
           fontSize: '100'
         metricField: NumberOfOpportunities
+        module: Campaigns
   - kind: Chart
     xywh:
     - 8
@@ -8972,13 +8972,13 @@ pages:
       title: מספר לידים בקמפיין
       options:
         metrics:
-        - moduleID: '327979455840675338'
-          operation: sum
+        - operation: sum
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: NumberOfLeads
+          module: Campaigns
     - kind: Metric
       xywh:
       - 3
@@ -8993,13 +8993,13 @@ pages:
       options:
         metrics:
         - label: Number of Accounts in Campaigns
-          moduleID: '327979455840675338'
           operation: sum
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: NumberOfAccounts
+          module: Campaigns
     - kind: Metric
       xywh:
       - 6
@@ -9013,13 +9013,13 @@ pages:
       title: מספר אנשי קשר בקמפיין
       options:
         metrics:
-        - moduleID: '327979455840675338'
-          operation: sum
+        - operation: sum
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: NumberOfContacts
+          module: Campaigns
     - kind: Metric
       xywh:
       - 9
@@ -9033,13 +9033,13 @@ pages:
       title: מספר הזדמנויות בקמפיין
       options:
         metrics:
-        - moduleID: '327979455840675338'
-          operation: sum
+        - operation: sum
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: NumberOfOpportunities
+          module: Campaigns
     - kind: Chart
       xywh:
       - 3
@@ -9315,12 +9315,12 @@ pages:
       options:
         metrics:
         - filter: Status = 'New'
-          moduleID: '327979456545842698'
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: count
+          module: Lead
     - kind: Metric
       xywh:
       - 2
@@ -9335,12 +9335,12 @@ pages:
       options:
         metrics:
         - filter: Status = 'Converted'
-          moduleID: '327979456545842698'
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: count
+          module: Lead
     - kind: Metric
       xywh:
       - 4
@@ -9355,12 +9355,12 @@ pages:
       options:
         metrics:
         - filter: StageName != 'Closed Won' AND StageName != 'Closed Lost'
-          moduleID: '327979456562226698'
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: count
+          module: Opportunity
     - kind: Metric
       xywh:
       - 0
@@ -9374,13 +9374,13 @@ pages:
       title: מספר לידים בקמפיין
       options:
         metrics:
-        - moduleID: '327979455840675338'
-          operation: sum
+        - operation: sum
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: NumberOfLeads
+          module: Campaigns
     - kind: Metric
       xywh:
       - 2
@@ -9394,13 +9394,13 @@ pages:
       title: מספר חשבונות בקמפיין
       options:
         metrics:
-        - moduleID: '327979455840675338'
-          operation: sum
+        - operation: sum
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: NumberOfAccounts
+          module: Campaigns
     - kind: Metric
       xywh:
       - 4
@@ -9414,13 +9414,13 @@ pages:
       title: מספר אנשי קשר בקמפיין
       options:
         metrics:
-        - moduleID: '327979455840675338'
-          operation: sum
+        - operation: sum
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: NumberOfContacts
+          module: Campaigns
     - kind: Metric
       xywh:
       - 6
@@ -9434,13 +9434,13 @@ pages:
       title: מספר הזדמנויות בקמפיין
       options:
         metrics:
-        - moduleID: '327979455840675338'
-          operation: sum
+        - operation: sum
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: NumberOfOpportunities
+          module: Campaigns
     - kind: Metric
       xywh:
       - 6
@@ -9455,12 +9455,12 @@ pages:
       options:
         metrics:
         - filter: YEAR(created_at) = YEAR(NOW()) AND Amount IS NOT NULL
-          moduleID: '327979456562226698'
           labelStyle: {}
           valueStyle:
             color: '#379cd3'
             fontSize: '100'
           metricField: count
+          module: Opportunity
     - kind: Chart
       xywh:
       - 8
@@ -9655,7 +9655,6 @@ pages:
         metrics:
         - filter: StageName != 'Closed Won' AND StageName != 'Closed Lost'
           suffix: k
-          moduleID: '327979456562226698'
           operation: sum
           labelStyle: {}
           valueStyle:
@@ -9665,6 +9664,7 @@ pages:
           metricField: Amount
           transformFx: v=v/1000
           numberFormat: '0.0'
+          module: Opportunity
     - kind: Chart
       xywh:
       - 0
