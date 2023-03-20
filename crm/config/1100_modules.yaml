@@ -1,19 +1,29 @@
 namespace: crm
 modules:
   Account:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Account
     fields:
       AccountName:
         label: שם חשבון
         kind: String
+        options: null
+        expressions: {}
         required: true
+        multi: false
+        place: 0
       OwnerId:
         label: בעל החשבון
         kind: User
         options:
-          presetWithAuthenticated: true
+          roles: null
           selectType: default
+          presetWithAuthenticated: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       AccountSource:
         label: מקור
         kind: Select
@@ -50,30 +60,50 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       BillingStreet:
         label: רחוב (חיוב)
         kind: String
+        options: null
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 3
       BillingCity:
         label: ישוב (חיוב)
         kind: String
+        options: null
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 4
       BillingState:
         label: מחוז (חיוב)
         kind: String
+        options: null
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 5
       BillingPostalCode:
         label: מיקוד (חיוב)
         kind: String
+        options: null
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 6
       BillingCountry:
         label: מדינה (חיוב)
         kind: Select
@@ -568,34 +598,56 @@ modules:
           - text: Zimbabwe
             value: Zimbabwe
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       GeneratedBillingAddress:
         label: כתובת (חיוב)
         kind: String
-        private: true
+        options: null
         expressions:
-          valueExpr: trim(trim(trim(BillingStreet?BillingStreet:"") + "\n" + trim(trim(trim(BillingPostalCode?BillingPostalCode:"") + " " + trim(BillingCity?BillingCity:"")) + " " + trim(BillingState?BillingState:""))) + "\n" + trim(BillingCountry?BillingCountry:""))
+          value: trim(trim(trim(BillingStreet?BillingStreet:"") + "\n" + trim(trim(trim(BillingPostalCode?BillingPostalCode:"")
+            + " " + trim(BillingCity?BillingCity:"")) + " " + trim(BillingState?BillingState:"")))
+            + "\n" + trim(BillingCountry?BillingCountry:""))
+        required: false
+        multi: false
+        place: 8
       Description:
         label: תאור
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       NumberOfEmployees:
         label: שכירים
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       Fax:
         label: פקס
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       Industry:
         label: ענף
         kind: Select
         options:
           options:
-          - text: ""
-            value: ""
+          - text: ''
+            value: ''
           - text: חקלאות
             value: Agriculture
           - text: הלבשה
@@ -661,6 +713,10 @@ modules:
           - text: שירותים
             value: Utilities
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       Ownership:
         label: מבנה בעלות
         kind: Select
@@ -671,18 +727,31 @@ modules:
           - text: Private
             value: Private
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       ParentId:
         label: חשבון אם
         kind: Record
         options:
           labelField: AccountName
-          module: Account
+          selectType: default
           queryFields:
           - AccountName
-          selectType: default
+          module: Account
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       Phone:
         label: טלפון
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 15
       Rating:
         label: דירוג
         kind: Select
@@ -701,36 +770,66 @@ modules:
           - text: ★★★★★
             value: ★★★★★
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 16
       Sic:
         label: SIC קוד
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       SicDesc:
         label: SIC תאור
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       ShippingStreet:
         label: רחוב (משלוח)
         kind: String
+        options: null
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 19
       ShippingCity:
         label: ישוב (משלוח)
         kind: String
+        options: null
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 20
       ShippingState:
         label: מחוז (משלוח)
         kind: String
+        options: null
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 21
       ShippingPostalCode:
         label: מיקוד (משלוח)
         kind: String
+        options: null
         expressions:
           sanitizers:
-            - "trim(value)"
+          - trim(value)
+        required: false
+        multi: false
+        place: 22
       ShippingCountry:
         label: מדינה (משלוח)
         kind: Select
@@ -1225,12 +1324,21 @@ modules:
           - text: Zimbabwe
             value: Zimbabwe
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 23
       GeneratedShippingAddress:
         label: כתובת (משלוח)
         kind: String
-        private: true
+        options: null
         expressions:
-          valueExpr: trim(trim(trim(ShippingStreet?ShippingStreet:"") + "\n" + trim(trim(trim(ShippingPostalCode?ShippingPostalCode:"") + " " + trim(ShippingCity?ShippingCity:"")) + " " + trim(ShippingState?ShippingState:""))) + "\n" + trim(ShippingCountry?ShippingCountry:""))
+          value: trim(trim(trim(ShippingStreet?ShippingStreet:"") + "\n" + trim(trim(trim(ShippingPostalCode?ShippingPostalCode:"")
+            + " " + trim(ShippingCity?ShippingCity:"")) + " " + trim(ShippingState?ShippingState:"")))
+            + "\n" + trim(ShippingCountry?ShippingCountry:""))
+        required: false
+        multi: false
+        place: 24
       Type:
         label: סוג
         kind: Select
@@ -1253,6 +1361,10 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 25
       AnnualRevenue:
         label: הכנסות שנתיות
         kind: Select
@@ -1277,31 +1389,59 @@ modules:
           - text: 100 עד 500 מיליון
             value: 100 To 500 Million
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 26
       Website:
         label: אתר
         kind: Url
+        options: null
+        expressions: {}
+        required: false
         multi: true
+        place: 27
       Twitter:
         label: טוויטר
         kind: Url
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 28
       LinkedIn:
         label: לינקדאין
         kind: Url
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 29
       Facebook:
         label: פייסבוק
         kind: Url
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 30
       CampaignId:
         label: קמפיין
         kind: Record
         options:
           labelField: Name
-          module: Campaigns
+          selectType: multiple
           queryFields:
           - Name
-          selectType: multiple
+          module: Campaigns
+        expressions: {}
+        required: false
         multi: true
+        place: 31
+
   AccountContactRole:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: AccountContactRole
     fields:
       AccountId:
@@ -1309,26 +1449,38 @@ modules:
         kind: Record
         options:
           labelField: AccountName
-          module: Account
+          selectType: ''
           queryFields:
           - AccountName
-          selectType: ""
+          module: Account
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       ContactId:
         label: איש קשר
         kind: Record
         options:
           labelField: MasterRecordId
-          module: Contact
+          selectType: ''
           queryFields:
           - AccountId
           - MasterRecordId
-          selectType: ""
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       IsPrimary:
         label: ראשי
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Role:
         label: תפקיד
         kind: Select
@@ -1357,95 +1509,158 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
+
   Campaigns:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Campaigns
     fields:
       IsActive:
         label: פעיל
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       ActualCost:
         label: עלות בפועל
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           suffix: ₪
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       BudgetedCost:
         label: עלות מתוקצבת
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           suffix: ₪
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Name:
         label: שם קמפיין
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       NumberOfConvertedLeads:
         label: Converted Leads in Campaign
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Description:
         label: תאור
         kind: String
         options:
           multiLine: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       EndDate:
         label: תאריך סיום
         kind: DateTime
         options:
           onlyDate: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       ExpectedResponse:
         label: Expected Response (%)
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           suffix: '%'
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       ExpectedRevenue:
         label: צפי הכנסות
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           suffix: ₪
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       NumberOfLeads:
         label: לידים בקמפיין
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       NumberOfOpportunities:
         label: הזדמנויות בקמפיין
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       ParentId:
         label: קמפיין אב
         kind: Record
         options:
-          labelField: ""
-          module: Campaigns
+          labelField: ''
+          selectType: ''
           queryFields:
           - Name
-          selectType: ""
+          module: Campaigns
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       NumberOfResponses:
         label: Responses in Campaign
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       StartDate:
         label: תאריך התחלה
         kind: DateTime
         options:
           onlyDate: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       Status:
         label: סטאטוס
         kind: Select
@@ -1462,6 +1677,10 @@ modules:
           - text: על תנאי
             value: Tentative
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       Type:
         label: סוג
         kind: Select
@@ -1496,40 +1715,66 @@ modules:
           - text: לידים - רשת מכרים אישית
             value: Lead Generation - Contacting personal network
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 15
       AmountAllOpportunities:
         label: ערך הזדמנויות בקמפיין
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           suffix: ₪
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 16
       AmountWonOpportunities:
         label: ערך הזדמנויות מוצלחות בקמפיין
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           suffix: ₪
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       NumberOfWonOpportunities:
         label: הזדמנויות שהומרו בהצלחה בקמפיין
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       NumberOfAccounts:
         label: חשבונות בקמפיין
         kind: Number
         options:
-          format: ""
+          format: ''
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 19
       NumberOfContacts:
         label: אנשי קשר בקמפיין
         kind: Number
         options:
-          format: ""
+          format: ''
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 20
+
   Case:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Case
     fields:
       AccountId:
@@ -1537,28 +1782,48 @@ modules:
         kind: Record
         options:
           labelField: AccountName
-          module: Account
+          selectType: ''
           queryFields:
           - AccountName
-          selectType: ""
+          module: Account
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       SuppliedEmail:
         label: איש קשר Email
         kind: Email
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       SuppliedName:
         label: שם איש קשר
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       SuppliedPhone:
         label: איש קשר Phone
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       CaseNumber:
         label: מס קייס
         kind: Number
         options:
-          format: "0000000"
+          format: '0000000'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Origin:
         label: Case Origin
         kind: Select
@@ -1575,6 +1840,10 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       Reason:
         label: Case Reason
         kind: Select
@@ -1589,54 +1858,87 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       IsClosed:
         label: Closed
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       IsClosedOnCreate:
         label: Closed When Created
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       ContactId:
         label: שם איש קשר
         kind: Record
         options:
           labelField: RecordLabel
-          module: Contact
+          selectType: ''
           queryFields:
           - RecordLabel
-          selectType: ""
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       ClosedDate:
         label: Date/Time Closed
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       Description:
         label: תאור
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       IsEscalated:
         label: Escalated
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       ParentId:
         label: Parent Case
         kind: Record
         options:
           labelField: Subject
-          module: Case
+          selectType: ''
           queryFields:
           - AccountId
           - CaseNumber
           - Subject
-          selectType: ""
-      Priority: 
+          module: Case
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
+      Priority:
         label: עדיפות
         kind: Select
         options:
@@ -1648,6 +1950,10 @@ modules:
           - text: גבוהה
             value: High
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       Status:
         label: סטאטוס
         kind: Select
@@ -1662,9 +1968,18 @@ modules:
           - text: Closed
             value: Closed
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 15
       Subject:
         label: נושא
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 16
       Type:
         label: סוג
         kind: Select
@@ -1679,68 +1994,106 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       ProductId:
         label: מוצר
         kind: Record
         options:
           labelField: Name
-          module: Product
+          selectType: ''
           queryFields:
           - ProductCode
           - Name
-          selectType: ""
+          module: Product
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       SolutionId:
         label: Solution Record
         kind: Record
         options:
           labelField: SolutionName
-          module: Solution
+          selectType: ''
           queryFields:
           - SolutionNote
           - SolutionNumber
           - SolutionName
-          selectType: ""
+          module: Solution
+        expressions: {}
+        required: false
+        multi: false
+        place: 19
       File:
         label: File(s)
         kind: File
         options:
-          allowDocuments: false
-          allowImages: false
-          maxSize: 0
           mode: list
+          maxSize: 0
+          allowImages: false
+          allowDocuments: false
+        expressions: {}
+        required: false
         multi: true
+        place: 20
       SolutionName:
         label: Solution Title
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 21
       SolutionNote:
         label: Solution Details
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 22
       SolutionFile:
         label: Solution File(s)
         kind: File
         options:
-          allowDocuments: false
-          allowImages: false
-          maxSize: 0
           mode: list
+          maxSize: 0
+          allowImages: false
+          allowDocuments: false
+        expressions: {}
+        required: false
         multi: true
+        place: 23
       SubmitAsSolution:
         label: Submit as Solution Record when Case is Closed
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 24
       OwnerId:
         label: Case Owner
         kind: User
         options:
-          presetWithAuthenticated: true
+          roles: null
           selectType: default
+          presetWithAuthenticated: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 25
+
   CaseUpdate:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: CaseUpdate
     fields:
       CaseId:
@@ -1748,17 +2101,25 @@ modules:
         kind: Record
         options:
           labelField: Subject
-          module: Case
           queryFields:
           - AccountId
           - CaseNumber
           - Subject
+          module: Case
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Description:
         label: תאור
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       Type:
         label: סוג
         kind: Select
@@ -1770,21 +2131,35 @@ modules:
           - Letter
           - Visit
           - State change
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       File:
         label: File
         kind: File
         options:
-          allowDocuments: false
-          allowImages: false
           mode: list
+          allowImages: false
+          allowDocuments: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       IsSolution:
         label: Marked as solution
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
+
   Contact:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Contact
     fields:
       AccountId:
@@ -1792,66 +2167,121 @@ modules:
         kind: Record
         options:
           labelField: AccountName
-          module: Account
-          queryFields: []
           selectType: default
+          queryFields: []
+          module: Account
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       AssistantName:
         label: Assistant
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       AssistantPhone:
         label: Asst. Phone
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Birthdate:
         label: Birthdate
         kind: DateTime
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       MasterRecordId:
         label: איש קשר
         kind: Record
         options:
           labelField: Email
-          module: Contact
-          queryFields: []
           selectType: default
+          queryFields: []
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Department:
         label: Department
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       Description:
         label: תאור
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       DoNotCall:
         label: לא להתקשר
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       Email:
         label: אימייל
         kind: Email
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       HasOptedOutOfEmail:
         label: לא לשלוח מיילים
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       Fax:
         label: פקס
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       HasOptedOutOfFax:
         label: לא לשלוח פקס
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       HomePhone:
         label: טלפון בבית
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       LeadSource:
         label: מקור ליד
         kind: Select
@@ -1888,22 +2318,42 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       MailingStreet:
         label: רחוב
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       MailingCity:
         label: ישוב
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 15
       MailingState:
         label: מחוז
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 16
       MailingPostalCode:
         label: מיקוד
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       MailingCountry:
         label: מדינה
         kind: Select
@@ -2398,39 +2848,74 @@ modules:
           - text: Zimbabwe
             value: Zimbabwe
           selectType: default
-        private: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       MobilePhone:
         label: נייד
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 19
       Salutation:
         label: תואר
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 20
       FirstName:
         label: שם פרטי
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 21
       LastName:
         label: שם משפחה
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 22
       OtherStreet:
         label: Other Street
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 23
       OtherCity:
         label: Other City
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 24
       OtherState:
         label: Other State
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 25
       OtherPostalCode:
         label: Other Postal Code
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 26
       OtherCountry:
         label: Other Country
         kind: Select
@@ -2925,80 +3410,132 @@ modules:
           - text: Zimbabwe
             value: Zimbabwe
           selectType: default
-        private: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 27
       OtherPhone:
         label: Other Phone
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 28
       Phone:
         label: טלפון
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 29
       ReportsToId:
         label: Reports To
         kind: Record
         options:
           labelField: Email
-          module: Contact
+          selectType: default
           queryFields:
           - AccountId
           - Email
           - FirstName
           - LastName
-          selectType: default
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 30
       Title:
         label: כותרת
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 31
       Twitter:
         label: טוויטר
         kind: Url
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 32
       Facebook:
         label: פייסבוק
         kind: Url
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 33
       LinkedIn:
         label: לינקדאין
         kind: Url
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 34
       IsPrimary:
         label: איש קשר ראשי לחשבון
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 35
       RecordLabel:
         label: Record Label
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 36
       OwnerId:
         label: בעל איש הקשר
         kind: User
         options:
-          presetWithAuthenticated: true
+          roles: null
           selectType: default
+          presetWithAuthenticated: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 37
       Photo:
         label: תמונה
         kind: File
         options:
-          allowDocuments: true
-          allowImages: true
-          maxSize: 0
           mode: single
-        private: true
+          maxSize: 0
+          allowImages: true
+          allowDocuments: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 38
       CampaignId:
         label: קמפיין
         kind: Record
         options:
           labelField: Name
-          module: Campaigns
+          selectType: multiple
           queryFields:
           - Name
-          selectType: multiple
+          module: Campaigns
+        expressions: {}
+        required: false
         multi: true
+        place: 39
+
   Contract:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Contract
     fields:
       AccountId:
@@ -3006,41 +3543,70 @@ modules:
         kind: Record
         options:
           labelField: AccountName
-          module: Account
+          selectType: ''
           queryFields:
           - AccountName
-          selectType: ""
+          module: Account
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       ActivatedById:
         label: Activated By
         kind: Record
         options:
           labelField: Email
-          module: Contact
+          selectType: ''
           queryFields:
           - AccountId
           - Email
           - FirstName
           - LastName
-          selectType: ""
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       ActivatedDate:
         label: Activated Date
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       BillingStreet:
         label: רחוב (חיוב)
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       BillingCity:
         label: ישוב (חיוב)
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       BillingState:
         label: מחוז (חיוב)
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       BillingPostalCode:
         label: מיקוד (חיוב)
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       BillingCountry:
         label: מדינה (חיוב)
         kind: Select
@@ -3535,74 +4101,135 @@ modules:
           - text: Zimbabwe
             value: Zimbabwe
           selectType: default
-        private: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       CompanySignedId:
         label: Company Signed By
         kind: Record
         options:
           labelField: RecordLabel
-          module: Contact
+          selectType: ''
           queryFields:
           - RecordLabel
-          selectType: ""
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       CompanySignedDate:
         label: Company Signed Date
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       EndDate:
         label: תאריך סיום
         kind: DateTime
         options:
           onlyDate: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       Name:
         label: שם הסכם
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       ContractNumber:
         label: מספר הסכם
         kind: Number
         options:
-          format: "0000000"
+          format: '0000000'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       OwnerId:
         label: בעל ההסכם
         kind: User
         options:
-          presetWithAuthenticated: true
+          roles: null
           selectType: default
+          presetWithAuthenticated: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       StartDate:
         label: תאריך התחלה
         kind: DateTime
         options:
           onlyDate: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       ContractTerm:
         label: תקופה (חודשים)
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 15
       CustomerSignedId:
         label: Customer Signed By
         kind: Record
         options:
           labelField: RecordLabel
-          module: Contact
+          selectType: ''
           queryFields:
           - RecordLabel
-          selectType: ""
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 16
       CustomerSignedDate:
         label: Customer Signed Date
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       CustomerSignedTitle:
         label: Customer Signed Title
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       Description:
         label: תאור
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 19
       LastApprovedDate:
         label: Last Approved Date
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 20
       OwnerExpirationNotice:
         label: Owner Expiration Notice
         kind: Select
@@ -3637,22 +4264,42 @@ modules:
           - text: 365 Days
             value: 365 Days
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 21
       ShippingStreet:
         label: רחוב (משלוח)
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 22
       ShippingCity:
         label: ישוב (משלוח)
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 23
       ShippingState:
         label: מחוז (משלוח)
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 24
       ShippingPostalCode:
         label: מיקוד (משלוח)
         kind: String
-        private: true
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 25
       ShippingCountry:
         label: מדינה (משלוח)
         kind: Select
@@ -4147,13 +4794,20 @@ modules:
           - text: Zimbabwe
             value: Zimbabwe
           selectType: default
-        private: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 26
       SpecialTerms:
         label: תנאים מיוחדים
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 27
       Status:
         label: סטאטוס
         kind: Select
@@ -4170,20 +4824,34 @@ modules:
           - text: Inactive (Deactivated)
             value: Inactive (Deactivated)
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 28
       RecordLabel:
         label: Record Label
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 29
       Files:
         label: קבצים
         kind: File
         options:
-          allowDocuments: true
-          allowImages: true
-          maxSize: 0
           mode: list
+          maxSize: 0
+          allowImages: true
+          allowDocuments: true
+        expressions: {}
+        required: false
         multi: true
+        place: 30
+
   ContractContactRole:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: ContractContactRole
     fields:
       ContactId:
@@ -4191,30 +4859,42 @@ modules:
         kind: Record
         options:
           labelField: RecordLabel
-          module: Contact
+          selectType: ''
           queryFields:
           - AccountId
           - Email
           - FirstName
           - LastName
-          selectType: ""
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       ContractId:
         label: הסכם
         kind: Record
         options:
           labelField: Name
-          module: Contract
+          selectType: ''
           queryFields:
           - AccountId
           - Name
           - ContractNumber
-          selectType: ""
+          module: Contract
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       IsPrimary:
         label: ראשי
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Role:
         label: תפקיד
         kind: Select
@@ -4243,8 +4923,14 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
+
   ContractLineItem:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: ContractLineItem
     fields:
       Description:
@@ -4252,59 +4938,95 @@ modules:
         kind: String
         options:
           multiLine: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Discount:
         label: הנחה
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           prefix: $
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       EndDate:
         label: תאריך סיום
         kind: DateTime
         options:
           onlyDate: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       LineItemNumber:
         label: Line Item Number
         kind: Number
         options:
           multiLine: false
           useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       ListPrice:
         label: מחיר רשום
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           suffix: ₪
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       PricebookEntryId:
         label: Price Book Entry
         kind: Record
         options:
           labelField: Name
-          module: PricebookEntry
+          selectType: ''
           queryFields:
           - ProductCode
           - Name
-          selectType: ""
+          module: PricebookEntry
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       Quantity:
         label: כמות
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       UnitPrice:
         label: מחיר מכירה
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           suffix: ₪
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       StartDate:
         label: תאריך התחלה
         kind: DateTime
         options:
           onlyDate: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       Status:
         label: סטאטוס
         kind: Select
@@ -4317,104 +5039,169 @@ modules:
           - text: Inactive
             value: Inactive
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       Subtotal:
         label: 'Subtotal '
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           suffix: ₪
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       TotalPrice:
         label: סה"כ מחיר
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           suffix: ₪
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       ContractId:
         label: 'Contract '
         kind: Record
         options:
           labelField: Name
-          module: Contract
+          selectType: ''
           queryFields:
           - AccountId
           - Name
           - ContractNumber
-          selectType: ""
+          module: Contract
+        expressions: {}
         required: true
+        multi: false
+        place: 12
       ProductId:
         label: מוצר
         kind: Record
         options:
           labelField: Name
-          module: Product
+          selectType: default
           queryFields:
           - Name
-          selectType: default
+          module: Product
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       Order:
         label: Order
         kind: Number
         options:
           multiLine: false
           useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
+
   EmailTemplate:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: EmailTemplate
     fields:
       IsActive:
         label: Available For Use
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Description:
         label: תאור
         kind: String
         options:
           multiLine: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       Body:
         label: תוכן
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Name:
         label: Email Template Name
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       Subject:
         label: נושא
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Markup:
         label: Markup
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       TemplateStyle:
         label: Style
         kind: Select
         options:
           options:
-          - text: ""
-            value: ""
+          - text: ''
+            value: ''
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       TemplateType:
         label: Template Type
         kind: Select
         options:
           options:
-          - text: ""
-            value: ""
+          - text: ''
+            value: ''
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       DeveloperName:
         label: Template Unique Name
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
+
   Entitlement:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Entitlement
     fields:
       AccountId:
@@ -4422,54 +5209,93 @@ modules:
         kind: Record
         options:
           labelField: AccountName
-          module: Account
+          selectType: ''
           queryFields:
           - AccountName
-          selectType: ""
+          module: Account
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       CasesPerEntitlement:
         label: Cases Per Entitlement
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       ContractLineItemId:
         label: Contract Line Item
         kind: Record
         options:
           labelField: ContractId
-          module: ContractLineItem
+          selectType: ''
           queryFields:
           - Description
           - LineItemNumber
           - ContractId
-          selectType: ""
+          module: ContractLineItem
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       EndDate:
         label: תאריך סיום
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       Name:
         label: Entitlement Name
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       EntitlementProcess:
         label: Entitlement Process
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       IsPerIncident:
         label: Per Incident
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       RemainingCases:
         label: Remaining Cases
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       StartDate:
         label: תאריך התחלה
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       Status:
         label: סטאטוס
         kind: Select
@@ -4482,6 +5308,10 @@ modules:
           - text: Inactive
             value: Inactive
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       Type:
         label: סוג
         kind: Select
@@ -4496,8 +5326,14 @@ modules:
           - text: Dedicated Support
             value: Dedicated Support
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
+
   EntitlementContact:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: EntitlementContact
     fields:
       ContactId:
@@ -4505,53 +5341,89 @@ modules:
         kind: Record
         options:
           labelField: RecordLabel
-          module: Contact
+          selectType: ''
           queryFields:
           - RecordLabel
-          selectType: ""
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Name:
         label: Entitlement Contact
         kind: String
         options:
           multiLine: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       EntitlementId:
         label: Entitlement Name
         kind: Record
         options:
           labelField: Name
-          module: Entitlement
+          selectType: ''
           queryFields:
           - AccountId
           - Name
-          selectType: ""
+          module: Entitlement
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
+
   EntitlementTemplate:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: EntitlementTemplate
     fields:
       BusinessHours:
         label: Business Hours
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       CasesPerEntitlement:
         label: Cases Per Entitlement
         kind: Number
         options:
           format: 0
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       Name:
         label: Entitlement Template Name
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       IsPerIncident:
         label: Per Incident
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       Term:
         label: Term (Days)
         kind: Number
         options:
           format: 0
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Type:
         label: סוג
         kind: Select
@@ -4561,66 +5433,126 @@ modules:
           - Messaging
           - Phone
           - Web
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
+
   Event:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Event
     fields:
       IsAllDayEvent:
         label: אירוע כל היום
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       IsArchived:
         label: Archived
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       OwnerId:
         label: שוייך ל
         kind: User
         options:
-          presetWithAuthenticated: true
+          roles: null
           selectType: default
+          presetWithAuthenticated: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       ActivityDate:
         label: מתחיל
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       Description:
         label: תאור
         kind: String
         options:
           multiLine: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       DurationInMinutes:
         label: Duration
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       EndDateTime:
         label: סיום
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       Location:
         label: מיקום
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       IsPrivate:
         label: Private
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       ReminderDateTime:
         label: Reminder Date/Time
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       IsReminderSet:
         label: Reminder Set
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       Subject:
         label: נושא
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       Type:
         label: סוג
         kind: Select
@@ -4637,78 +5569,112 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       LeadId:
         label: ליד
         kind: Record
         options:
           labelField: RecordLabel
-          module: Lead
+          selectType: ''
           queryFields:
           - RecordLabel
-          selectType: ""
+          module: Lead
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       AccountId:
         label: חשבון
         kind: Record
         options:
           labelField: AccountName
-          module: Account
+          selectType: ''
           queryFields:
           - AccountName
-          selectType: ""
+          module: Account
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       ContactId:
         label: איש קשר
         kind: Record
         options:
           labelField: RecordLabel
-          module: Contact
+          selectType: ''
           queryFields:
           - RecordLabel
-          selectType: ""
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 15
       OpportunityId:
         label: הזדמנות
         kind: Record
         options:
           labelField: RecordLabel
-          module: Opportunity
+          selectType: ''
           queryFields:
           - AccountId
           - Name
-          selectType: ""
+          module: Opportunity
+        expressions: {}
+        required: false
+        multi: false
+        place: 16
       QuoteId:
         label: הצעת מחיר
         kind: Record
         options:
           labelField: Name
-          module: Quote
+          selectType: ''
           queryFields:
           - AccountId
           - Name
           - QuoteNumber
-          selectType: ""
+          module: Quote
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       ContractId:
         label: הסכם
         kind: Record
         options:
           labelField: Name
-          module: Contract
+          selectType: ''
           queryFields:
           - AccountId
           - Name
           - ContractNumber
-          selectType: ""
+          module: Contract
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       CaseId:
         label: קייס
         kind: Record
         options:
           labelField: Subject
-          module: Case
+          selectType: ''
           queryFields:
           - AccountId
           - CaseNumber
           - Subject
-          selectType: ""
+          module: Case
+        expressions: {}
+        required: false
+        multi: false
+        place: 19
+
   Idea:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Idea
     fields:
       Categories:
@@ -4731,27 +5697,44 @@ modules:
           - text: Support
             value: Support
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Body:
         label: Idea Body
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       CreatorName:
         label: Name of Creator
         kind: User
         options:
-          presetWithAuthenticated: true
+          roles: null
           selectType: default
+          presetWithAuthenticated: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       ParentIdeaId:
         label: Parent Idea
         kind: Record
         options:
           labelField: Title
-          module: Idea
+          selectType: ''
           queryFields:
           - Title
-          selectType: ""
+          module: Idea
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       Status:
         label: סטאטוס
         kind: Select
@@ -4768,21 +5751,39 @@ modules:
           - text: Duplicate
             value: Duplicate
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Title:
         label: כותרת
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       VoteScore:
         label: Vote Score
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       VoteTotal:
         label: Vote Total
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
+
   Lead:
     (envoy):
       onExisting: skip
@@ -5782,7 +6783,7 @@ modules:
           hint:
             edit: ''
             view: ''
-          roles: []
+          roles: null
           selectType: each
           description:
             edit: ''
@@ -6285,8 +7286,10 @@ modules:
         required: false
         multi: false
         place: 41
+
   Note:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Note
     fields:
       Body:
@@ -6295,237 +7298,342 @@ modules:
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       IsPrivate:
         label: Private
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       Title:
         label: כותרת
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       AccountContactRoleId:
         label: חשבון Contact Role
         kind: Record
         options:
           labelField: Role
-          module: AccountContactRole
+          selectType: ''
           queryFields:
           - AccountId
           - ContactId
           - Role
-          selectType: ""
+          module: AccountContactRole
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       ContractContactRoleId:
         label: Contract Contact Role
         kind: Record
         options:
           labelField: ContactId
-          module: ContractContactRole
+          selectType: ''
           queryFields:
           - ContactId
           - ContractId
-          selectType: ""
+          module: ContractContactRole
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       ContractId:
         label: הסכם
         kind: Record
         options:
           labelField: Name
-          module: Contract
+          selectType: ''
           queryFields:
           - AccountId
           - Name
           - ContractNumber
-          selectType: ""
+          module: Contract
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       AccountId:
         label: חשבון
         kind: Record
         options:
           labelField: AccountName
-          module: Account
+          selectType: ''
           queryFields:
           - AccountName
-          selectType: ""
+          module: Account
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       CampaignId:
         label: קמפיין
         kind: Record
         options:
           labelField: Name
-          module: Campaigns
+          selectType: ''
           queryFields:
           - Name
-          selectType: ""
+          module: Campaigns
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       EntitlementId:
         label: Entitlement
         kind: Record
         options:
           labelField: Name
-          module: Entitlement
+          selectType: ''
           queryFields:
           - Name
-          selectType: ""
+          module: Entitlement
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       CaseId:
         label: קייס
         kind: Record
         options:
           labelField: Subject
-          module: Case
+          selectType: ''
           queryFields:
           - AccountId
           - CaseNumber
           - Subject
-          selectType: ""
+          module: Case
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       EventId:
         label: Event
         kind: Record
         options:
           labelField: Subject
-          module: Event
+          selectType: ''
           queryFields:
           - Subject
-          selectType: ""
+          module: Event
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       OpportunityId:
         label: הזדמנות
         kind: Record
         options:
           labelField: Name
-          module: Opportunity
+          selectType: ''
           queryFields:
           - AccountId
           - Name
-          selectType: ""
+          module: Opportunity
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       EmailTemplateId:
         label: Email Template
         kind: Record
         options:
           labelField: Subject
-          module: EmailTemplate
+          selectType: ''
           queryFields:
           - Subject
-          selectType: ""
+          module: EmailTemplate
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       ContractLineItemId:
         label: Contract Line Item
         kind: Record
         options:
           labelField: PricebookEntryId
-          module: ContractLineItem
+          selectType: ''
           queryFields:
           - PricebookEntryId
-          selectType: ""
+          module: ContractLineItem
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       EntitlementTemplateId:
         label: Entitlement Template
         kind: Record
         options:
           labelField: Name
-          module: EntitlementTemplate
+          selectType: ''
           queryFields:
           - Name
-          selectType: ""
+          module: EntitlementTemplate
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       LeadId:
         label: ליד
         kind: Record
         options:
           labelField: RecordLabel
-          module: Lead
+          selectType: ''
           queryFields:
           - RecordLabel
-          selectType: ""
+          module: Lead
+        expressions: {}
+        required: false
+        multi: false
+        place: 15
       OpportunityCompetitorId:
         label: Opportunity Competitor
         kind: Record
         options:
           labelField: CompetitorName
-          module: OpportunityCompetitor
+          selectType: ''
           queryFields:
           - CompetitorName
-          selectType: ""
+          module: OpportunityCompetitor
+        expressions: {}
+        required: false
+        multi: false
+        place: 16
       ContactId:
         label: איש קשר
         kind: Record
         options:
           labelField: RecordLabel
-          module: Contact
+          selectType: ''
           queryFields:
           - RecordLabel
-          selectType: ""
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       ProductId:
         label: מוצר
         kind: Record
         options:
           labelField: Name
-          module: Product
+          selectType: ''
           queryFields:
           - ProductCode
           - Name
-          selectType: ""
+          module: Product
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       PricebookEntryId:
         label: Pricebook Entry
         kind: Record
         options:
           labelField: Name
-          module: PricebookEntry
+          selectType: ''
           queryFields:
           - ProductCode
           - Name
-          selectType: ""
+          module: PricebookEntry
+        expressions: {}
+        required: false
+        multi: false
+        place: 19
       PricebookId:
         label: ספר מחירים
         kind: Record
         options:
           labelField: Name
-          module: Pricebook
+          selectType: ''
           queryFields:
           - Name
-          selectType: ""
+          module: Pricebook
+        expressions: {}
+        required: false
+        multi: false
+        place: 20
       OpportunityLineItemId:
         label: Opportunity Line Item
         kind: Record
         options:
           labelField: ProductId
-          module: OpportunityLineItem
+          selectType: ''
           queryFields:
           - Description
           - Name
           - ProductId
-          selectType: ""
+          module: OpportunityLineItem
+        expressions: {}
+        required: false
+        multi: false
+        place: 21
       OpportunityContactRoleId:
         label: Opportunity Contact Role
         kind: Record
         options:
           labelField: ContactId
-          module: OpportunityContactRole
+          selectType: ''
           queryFields:
           - ContactId
           - Role
-          selectType: ""
+          module: OpportunityContactRole
+        expressions: {}
+        required: false
+        multi: false
+        place: 22
       TaskId:
         label: Task
         kind: Record
         options:
           labelField: Subject
-          module: Task
+          selectType: ''
           queryFields:
           - Subject
-          selectType: ""
+          module: Task
+        expressions: {}
+        required: false
+        multi: false
+        place: 23
       QuoteId:
         label: הצעת מחיר
         kind: Record
         options:
           labelField: Name
-          module: Quote
+          selectType: ''
           queryFields:
           - AccountId
           - Name
           - QuoteNumber
-          selectType: ""
+          module: Quote
+        expressions: {}
+        required: false
+        multi: false
+        place: 24
       Files:
         label: קבצים
         kind: File
         options:
-          allowDocuments: true
-          allowImages: true
-          maxSize: 0
           mode: list
+          maxSize: 0
+          allowImages: true
+          allowDocuments: true
+        expressions: {}
+        required: false
         multi: true
+        place: 25
+
   Opportunity:
     (envoy):
       onExisting: skip
@@ -6924,6 +8032,27 @@ modules:
         required: false
         multi: false
         place: 15
+      TermbookIds:
+        label: ספרי תנאים
+        kind: Record
+        options:
+          hint:
+            view: ''
+          labelField: Name
+          selectType: default
+          description:
+            view: ''
+          queryFields:
+          - Name
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Termbook
+        expressions: {}
+        required: false
+        multi: true
+        place: 16
       CampaignId:
         label: מקור קמפיין ראשי
         kind: Record
@@ -6946,7 +8075,7 @@ modules:
         expressions: {}
         required: false
         multi: true
-        place: 16
+        place: 17
       IsPrivate:
         label: Private
         kind: Bool
@@ -6962,7 +8091,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 17
+        place: 18
       Probability:
         label: סיכוי (%)
         kind: Number
@@ -6991,7 +8120,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 18
+        place: 19
       TotalOpportunityQuantity:
         label: כמות
         kind: Number
@@ -7020,7 +8149,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 19
+        place: 20
       StageName:
         label: שלב
         kind: Select
@@ -7051,7 +8180,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 20
+        place: 21
       Type:
         label: סוג
         kind: Select
@@ -7074,7 +8203,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 21
+        place: 22
       IsWon:
         label: Won
         kind: Bool
@@ -7090,7 +8219,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 22
+        place: 23
       Budget:
         label: Budget
         kind: String
@@ -7109,7 +8238,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 23
+        place: 24
       Authority:
         label: Authority
         kind: String
@@ -7128,7 +8257,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 24
+        place: 25
       Need:
         label: Need
         kind: String
@@ -7147,7 +8276,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 25
+        place: 26
       Timeline:
         label: Timeline
         kind: String
@@ -7166,7 +8295,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 26
+        place: 27
       Competition:
         label: Competition
         kind: String
@@ -7185,7 +8314,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 27
+        place: 28
       RecordLabel:
         label: Record Label
         kind: String
@@ -7204,7 +8333,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 28
+        place: 29
       Files:
         label: קבצים
         kind: File
@@ -7225,7 +8354,7 @@ modules:
         expressions: {}
         required: false
         multi: true
-        place: 29
+        place: 30
       LeadRef:
         label: רשומת ליד
         kind: Record
@@ -7249,7 +8378,7 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 30
+        place: 31
       CoverTemplate:
         label: טמפלט למכתב מלווה
         kind: Record
@@ -7270,37 +8399,58 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 31
+        place: 32
+
   OpportunityCompetitor:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: OpportunityCompetitor
     fields:
       CompetitorName:
         label: Competitor Name
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       OpportunityId:
         label: הזדמנות
         kind: Record
         options:
           labelField: Name
-          module: Opportunity
           queryFields:
           - AccountId
           - Name
+          module: Opportunity
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       Strengths:
         label: Strengths
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Weaknesses:
         label: Weaknesses
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
+
   OpportunityContactRole:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: OpportunityContactRole
     fields:
       ContactId:
@@ -7308,22 +8458,34 @@ modules:
         kind: Record
         options:
           labelField: RecordLabel
-          module: Contact
           queryFields:
           - RecordLabel
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       OpportunityId:
         label: הזדמנות
         kind: Record
         options:
           labelField: Name
-          module: Opportunity
           queryFields: []
+          module: Opportunity
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       IsPrimary:
         label: ראשי
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Role:
         label: תפקיד
         kind: Select
@@ -7340,246 +8502,889 @@ modules:
           - Project Manager
           - Technical Buyer
           - Other
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
+
   OpportunityLineItem:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: OpportunityLineItem
     fields:
       ServiceDate:
         label: תאריך
         kind: DateTime
+        options:
+          hint:
+            view: ''
+          format: ''
+          onlyDate: false
+          onlyTime: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          onlyPastValues: false
+          outputRelative: false
+          onlyFutureValues: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Discount:
         label: הנחה
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       Description:
         label: תאור פריט
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: true
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       ListPrice:
         label: מחיר רשום
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       OpportunityId:
         label: הזדמנות
         kind: Record
         options:
+          hint:
+            view: ''
           labelField: Name
-          module: Opportunity
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - AccountId
           - Name
-          selectType: ""
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Opportunity
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Name:
         label: שם המוצר
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       PricebookEntryId:
         label: ספר מחירים
         kind: Record
         options:
+          hint:
+            view: ''
           labelField: Name
-          module: PricebookEntry
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - ProductCode
           - Name
-          selectType: ""
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: PricebookEntry
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       ProductId:
         label: מוצר
         kind: Record
         options:
+          hint:
+            view: ''
           labelField: Name
-          module: Product
+          selectType: ''
+          description:
+            view: ''
           queryFields: []
-          selectType: ""
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Product
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       ProductCode:
         label: קוד מוצר
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       Quantity:
         label: כמות
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       UnitPrice:
         label: מחיר מכירה
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       SortOrder:
         label: סדר מיון
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       Subtotal:
         label: סכום
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       TotalPrice:
         label: סה"כ מחיר
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       Photo:
         label: תמונה
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
+
   OpportunityIncludedItem:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: OpportunityIncludedItem
     fields:
       ServiceDate:
         label: תאריך
         kind: DateTime
+        options:
+          hint:
+            edit: ''
+            view: ''
+          format: ''
+          onlyDate: false
+          onlyTime: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          onlyPastValues: false
+          outputRelative: false
+          onlyFutureValues: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
+      Discount:
+        label: הנחה
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 3
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       Description:
         label: תאור פריט
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: true
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
+      ListPrice:
+        label: מחיר רשום
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       OpportunityId:
         label: הזדמנות
         kind: Record
         options:
+          hint:
+            edit: ''
+            view: ''
           labelField: Name
-          module: Opportunity
+          selectType: ''
+          description:
+            edit: ''
+            view: ''
           queryFields:
           - AccountId
           - Name
-          selectType: ""
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Opportunity
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Name:
         label: שם המוצר
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
+      PricebookEntryId:
+        label: ספר מחירים
+        kind: Record
+        options:
+          hint:
+            view: ''
+          labelField: Name
+          selectType: default
+          description:
+            view: ''
+          queryFields:
+          - ProductCode
+          - Name
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: PricebookEntry
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       ProductId:
         label: מוצר
         kind: Record
         options:
+          hint:
+            edit: ''
+            view: ''
           labelField: Name
-          module: Product
+          selectType: ''
+          description:
+            edit: ''
+            view: ''
           queryFields: []
-          selectType: ""
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Product
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       ProductCode:
         label: קוד מוצר
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       Quantity:
         label: כמות
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
+      UnitPrice:
+        label: מחיר מכירה
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       SortOrder:
         label: סדר מיון
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            edit: ''
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            edit: ''
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
+      Subtotal:
+        label: סכום
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
+      TotalPrice:
+        label: סה"כ מחיר
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       Photo:
         label: תמונה
         kind: String
+        options:
+          hint:
+            edit: ''
+            view: ''
+          multiLine: false
+          description:
+            edit: ''
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
+
   Pricebook:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Pricebook
     fields:
       IsActive:
         label: פעיל
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Description:
         label: תאור
         kind: String
         options:
           multiLine: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       IsStandard:
         label: ספר מחיר סטנדרטי
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Name:
         label: שם ספר מחיר
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
+
   PricebookEntry:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: PricebookEntry
     fields:
       IsActive:
         label: פעיל
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       UnitPrice:
         label: מחיר רשום
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          format: '0.00'
           suffix: ₪
+          precision: 2
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       PricebookId:
         label: ספר מחיר
         kind: Record
         options:
           labelField: Name
-          module: Pricebook
+          selectType: ''
           queryFields:
           - Name
-          selectType: ""
+          module: Pricebook
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       ProductId:
         label: מוצר
         kind: Record
         options:
           labelField: Name
-          module: Product
+          selectType: ''
           queryFields:
           - ProductCode
           - Name
-          selectType: ""
+          module: Product
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       ProductCode:
         label: קוד מוצר
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Name:
         label: שם מוצר
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       UseStandardPrice:
         label: Use Standard Price
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       Order:
         label: Order
         kind: Number
         options:
           multiLine: false
           useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
+
   Product:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Product
     fields:
       IsActive:
         label: פעיל
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       ProductCode:
         label: קוד מוצר
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       Description:
         label: תאור מוצר
         kind: String
         options:
           multiLine: true
           useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Family:
         label: משפחת מוצר
         kind: Select
@@ -7590,37 +9395,59 @@ modules:
           - text: מוצרים
             value: Products
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       Name:
         label: שם מוצר
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Photo:
         label: תמונה
         kind: File
         options:
-          allowDocuments: true
-          allowImages: true
-          maxSize: 0
           mode: single
+          maxSize: 0
+          allowImages: true
+          allowDocuments: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       File:
         label: קבצים
         kind: File
         options:
-          allowDocuments: true
-          allowImages: true
-          maxSize: 0
           mode: list
+          maxSize: 0
+          allowImages: true
+          allowDocuments: true
+        expressions: {}
+        required: false
         multi: true
+        place: 6
       EntitlementTemplateId:
         label: EntitlementTemplateId
         kind: Record
         options:
           labelField: Name
-          module: EntitlementTemplate
+          selectType: default
           queryFields:
           - Name
-          selectType: default
+          module: EntitlementTemplate
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
+
   Question:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Question
     fields:
       BestReplyId:
@@ -7628,36 +9455,62 @@ modules:
         kind: Record
         options:
           labelField: Name
-          module: Reply
           queryFields:
           - Name
+          module: Reply
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       NumReplies:
         label: Number of Replies
         kind: Number
         options:
           format: 0
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       Body:
         label: Question Body
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Title:
         label: Question Title
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       UpVotes:
         label: Up Votes
         kind: Number
         options:
           format: 0
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       VoteScore:
         label: Vote Score
         kind: Number
         options:
           format: 0
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
+
   Quote:
     (envoy):
       onExisting: skip
@@ -10424,7 +12277,7 @@ modules:
         required: false
         multi: false
         place: 40
-      TermookIds:
+      TermbookIds:
         label: ספרי תנאים
         kind: Record
         options:
@@ -10432,13 +12285,15 @@ modules:
             edit: ''
             view: ''
           labelField: Name
-          selectType: ''
+          selectType: default
           description:
             edit: ''
             view: ''
           queryFields:
           - Name
-          multiDelimiter: \n
+          multiDelimiter: '
+
+            '
           recordLabelField: ''
           module: Termbook
         expressions: {}
@@ -10559,6 +12414,23 @@ modules:
         kind: String
         options:
           hint:
+            view: ''
+          multiLine: true
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 47
+      ReminderText:
+        label: טקסט לתזכורת
+        kind: String
+        options:
+          hint:
             edit: ''
             view: ''
           multiLine: true
@@ -10572,9 +12444,80 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 47
-      ReminderText:
-        label: טקסט לתזכורת
+        place: 48
+
+  QuoteLineItem:
+    (envoy):
+      onExisting: skip
+    name: QuoteLineItem
+    fields:
+      ServiceDate:
+        label: תאריך
+        kind: DateTime
+        options:
+          hint:
+            view: ''
+          format: ''
+          onlyDate: false
+          onlyTime: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          onlyPastValues: false
+          outputRelative: false
+          onlyFutureValues: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
+      Discount:
+        label: הנחה
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
+      Name:
+        label: שם המוצר
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
+      Description:
+        label: תאור פריט
         kind: String
         options:
           hint:
@@ -10589,159 +12532,623 @@ modules:
         expressions: {}
         required: false
         multi: false
-        place: 48
-  QuoteLineItem:
-    (envoy): { onExisting: "skip" }
-    name: QuoteLineItem
-    fields:
-      ServiceDate:
-        label: תאריך
-        kind: DateTime
-      Discount:
-        label: הנחה
-        kind: Number
-        options:
-          format: "0.00"
-          precision: 2
-          suffix: ₪
-      Description:
-        label: תאור פריט
-        kind: String
+        place: 3
       ListPrice:
         label: מחיר רשום
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       QuoteId:
         label: הצעת מחיר
         kind: Record
         options:
+          hint:
+            view: ''
           labelField: Name
-          module: Quote
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - AccountId
           - Name
           - QuoteNumber
-          selectType: ""
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Quote
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       PricebookEntryId:
         label: ספר מחירים
         kind: Record
         options:
+          hint:
+            view: ''
           labelField: Name
-          module: PricebookEntry
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - ProductCode
           - Name
-          selectType: ""
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: PricebookEntry
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       ProductId:
         label: מוצר
         kind: Record
         options:
+          hint:
+            view: ''
           labelField: Name
-          module: Product
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - ProductCode
           - Name
-          selectType: ""
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Product
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       ProductCode:
         label: קוד מוצר
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       Quantity:
         label: כמות
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       UnitPrice:
         label: מחיר מכירה
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       SortOrder:
         label: סדר מיון
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       Subtotal:
         label: סכום
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       TotalPrice:
         label: סה"כ מחיר
         kind: Number
         options:
-          format: "0.00"
-          precision: 2
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
           suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       LineItemNumber:
         label: מספר פריט
         kind: String
-      LineItemDescription:
-        label: תאור פריט
-        kind: String
         options:
-          multiLine: true
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
+
   QuoteIncludedItem:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: QuoteIncludedItem
     fields:
       ServiceDate:
         label: תאריך
         kind: DateTime
+        options:
+          hint:
+            view: ''
+          format: ''
+          onlyDate: false
+          onlyTime: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          onlyPastValues: false
+          outputRelative: false
+          onlyFutureValues: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
+      Discount:
+        label: הנחה
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       Description:
         label: תאור פריט
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: true
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
+      ListPrice:
+        label: מחיר רשום
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
+      UnitPrice:
+        label: מחיר מכירה
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: '2'
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       QuoteId:
         label: הצעת מחיר
         kind: Record
         options:
+          hint:
+            view: ''
           labelField: Name
-          module: Quote
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - AccountId
           - Name
           - QuoteNumber
-          selectType: ""
+          multiDelimiter: '
 
-      Name:
-        label: שם המוצר
-        kind: String
+            '
+          recordLabelField: ''
+          module: Quote
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
+      PricebookEntryId:
+        label: ספר מחירים
+        kind: Record
+        options:
+          hint:
+            view: ''
+          labelField: Name
+          selectType: default
+          description:
+            view: ''
+          queryFields:
+          - ProductCode
+          - Name
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: PricebookEntry
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       ProductId:
         label: מוצר
         kind: Record
         options:
+          hint:
+            view: ''
           labelField: Name
-          module: Product
+          selectType: ''
+          description:
+            view: ''
           queryFields: []
-          selectType: ""
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Product
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       ProductCode:
         label: קוד מוצר
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       Quantity:
         label: כמות
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       SortOrder:
         label: סדר מיון
         kind: Number
         options:
-          format: "0"
+          max: 100
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
           precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
+      Subtotal:
+        label: סכום
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
+      TotalPrice:
+        label: סה"כ מחיר
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
+      Name:
+        label: שם המוצר
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       Photo:
         label: תמונה
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
+
   QuoteTermItem:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: QuoteTermItem
     fields:
       QuoteId:
@@ -10749,27 +13156,45 @@ modules:
         kind: Record
         options:
           labelField: Name
-          module: Quote
+          selectType: ''
           queryFields:
           - Name
-          selectType: ""
+          module: Quote
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Description:
         label: תאור התנאי
         kind: String
         options:
           multiLine: true
+        expressions: {}
+        required: false
         multi: true
+        place: 1
       Name:
         label: שם תנאי
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Order:
         label: Order
         kind: Number
         options:
           multiLine: false
           useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
+
   Reply:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Reply
     fields:
       DownVotes:
@@ -10778,43 +13203,73 @@ modules:
         options:
           format: 0
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Name:
         label: Name
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       QuestionId:
         label: Question
         kind: Record
         options:
           labelField: Title
-          module: Question
           queryFields:
           - Title
+          module: Question
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Body:
         label: Reply Body
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       UpVotes:
         label: Up Votes
         kind: Number
         options:
           format: 0
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       VoteTotal:
         label: Vote Total
         kind: Number
         options:
           format: 0
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       IdeaId:
         label: Idea
         kind: Record
         options:
           labelField: Title
-          module: Idea
           queryFields:
           - Title
+          module: Idea
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
+
   Settings:
     (envoy):
       onExisting: skip
@@ -11560,37 +14015,60 @@ modules:
         required: false
         multi: false
         place: 27
+
   Solution:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Solution
     fields:
       IsPublished:
         label: Public
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       IsReviewed:
         label: Reviewed
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       SolutionNote:
         label: Solution Details
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       SolutionNumber:
         label: Solution Number
         kind: Number
         options:
-          format: "0000000"
+          format: '0000000'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       SolutionName:
         label: Solution Title
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       Status:
         label: סטאטוס
         kind: Select
@@ -11607,38 +14085,55 @@ modules:
           - text: Duplicate
             value: Duplicate
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       CaseId:
         label: קייס
         kind: Record
         options:
           labelField: Subject
-          module: Case
+          selectType: ''
           queryFields:
           - AccountId
           - CaseNumber
           - Subject
-          selectType: ""
+          module: Case
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       ProductId:
         label: מוצר
         kind: Record
         options:
           labelField: Name
-          module: Product
+          selectType: ''
           queryFields:
           - ProductCode
           - Name
-          selectType: ""
+          module: Product
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       File:
         label: File(s)
         kind: File
         options:
-          allowDocuments: false
-          allowImages: false
-          maxSize: 0
           mode: list
+          maxSize: 0
+          allowImages: false
+          allowDocuments: false
+        expressions: {}
+        required: false
         multi: true
+        place: 8
+
   Task:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Task
     fields:
       AccountId:
@@ -11646,28 +14141,51 @@ modules:
         kind: Record
         options:
           labelField: AccountName
-          module: Account
+          selectType: default
           queryFields:
           - AccountName
-          selectType: default
+          module: Account
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       OwnerId:
         label: שוייך ל
         kind: User
         options:
-          presetWithAuthenticated: true
+          roles: null
           selectType: default
+          presetWithAuthenticated: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       CallDurationInSeconds:
         label: Call Duration
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       CallObject:
         label: Call Object Identifier
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
       CallDisposition:
         label: Call Result
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
       CallType:
         label: Call Type
         kind: Select
@@ -11680,21 +14198,38 @@ modules:
           - text: Outbound
             value: Outbound
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
       IsClosed:
         label: Closed
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
       Description:
         label: Comments
         kind: String
         options:
           multiLine: true
           useRichTextEditor: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
       ActivityDate:
         label: תאריך יעד
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
       Priority:
         label: עדיפות
         kind: Select
@@ -11707,15 +14242,28 @@ modules:
           - text: נמוכה
             value: Low
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
       ReminderDateTime:
         label: Reminder Date/Time
         kind: DateTime
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
       IsReminderSet:
         label: Reminder Set
         kind: Bool
         options:
-          falseLabel: "No"
-          trueLabel: "Yes"
+          trueLabel: 'Yes'
+          falseLabel: 'No'
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
       Status:
         label: סטאטוס
         kind: Select
@@ -11726,9 +14274,18 @@ modules:
           - text: הושלמה
             value: Completed
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
       Subject:
         label: נושא
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
       Type:
         label: סוג
         kind: Select
@@ -11747,69 +14304,99 @@ modules:
           - text: אחר
             value: Other
           selectType: default
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
       LeadId:
         label: ליד
         kind: Record
         options:
           labelField: RecordLabel
-          module: Lead
+          selectType: default
           queryFields:
           - RecordLabel
-          selectType: default
+          module: Lead
+        expressions: {}
+        required: false
+        multi: false
+        place: 15
       ContactId:
         label: איש קשר
         kind: Record
         options:
           labelField: RecordLabel
-          module: Contact
+          selectType: default
           queryFields:
           - RecordLabel
-          selectType: default
+          module: Contact
+        expressions: {}
+        required: false
+        multi: false
+        place: 16
       OpportunityId:
         label: הזדמנות
         kind: Record
         options:
           labelField: Name
-          module: Opportunity
+          selectType: default
           queryFields:
           - AccountId
           - Name
-          selectType: default
+          module: Opportunity
+        expressions: {}
+        required: false
+        multi: false
+        place: 17
       QuoteId:
         label: הצעת מחיר
         kind: Record
         options:
           labelField: Name
-          module: Quote
+          selectType: default
           queryFields:
           - AccountId
           - Name
           - QuoteNumber
-          selectType: default
+          module: Quote
+        expressions: {}
+        required: false
+        multi: false
+        place: 18
       ContractId:
         label: הסכם
         kind: Record
         options:
           labelField: Name
-          module: Contract
+          selectType: default
           queryFields:
           - AccountId
           - Name
           - ContractNumber
-          selectType: default
+          module: Contract
+        expressions: {}
+        required: false
+        multi: false
+        place: 19
       CaseId:
         label: קייס
         kind: Record
         options:
           labelField: Subject
-          module: Case
+          selectType: default
           queryFields:
           - AccountId
           - CaseNumber
           - Subject
-          selectType: default
+          module: Case
+        expressions: {}
+        required: false
+        multi: false
+        place: 20
+
   Termbook:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Termbook
     fields:
       Description:
@@ -11817,39 +14404,110 @@ modules:
         kind: String
         options:
           multiLine: true
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Name:
         label: שם ספר תנאים
         kind: String
+        options: null
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
+
   TermbookEntry:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: TermbookEntry
     fields:
       TermbookId:
         label: ספר תנאים
         kind: Record
         options:
+          hint:
+            view: ''
           labelField: Name
-          module: Termbook
+          selectType: ''
+          description:
+            view: ''
           queryFields:
           - Name
-          selectType: ""
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Termbook
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       Description:
         label: תאור התנאי
         kind: String
         options:
+          hint:
+            view: ''
           multiLine: true
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
         multi: true
+        place: 1
       Name:
         label: שם תנאי
         kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Order:
         label: Order
         kind: Number
         options:
-          multiLine: false
-          useRichTextEditor: false
+          max: 100
+          hint:
+            view: ''
+          format: ''
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
+          precision: 3
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
+
   Vote:
-    (envoy): { onExisting: "skip" }
+    (envoy):
+      onExisting: skip
     name: Vote
     fields:
       IdeaId:
@@ -11857,34 +14515,51 @@ modules:
         kind: Record
         options:
           labelField: Title
-          module: Idea
+          selectType: ''
           queryFields:
           - Title
-          selectType: ""
+          module: Idea
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
       ReplyId:
         label: Reply
         kind: Record
         options:
           labelField: Name
-          module: Reply
+          selectType: ''
           queryFields:
           - Name
-          selectType: ""
+          module: Reply
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
       QuestionId:
         label: Question
         kind: Record
         options:
           labelField: Title
-          module: Question
+          selectType: ''
           queryFields:
           - Title
-          selectType: ""
+          module: Question
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
       Score:
         label: Score
         kind: Number
         options:
-          format: "0"
+          format: '0'
           precision: 0
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
+
   CoverTemplate:
     (envoy):
       onExisting: skip
@@ -11900,7 +14575,7 @@ modules:
           description:
             view: ''
           multiDelimiter: \n
-          useRichTextEditor: false
+          useRichTextEditor: true
         expressions: {}
         required: false
         multi: false
@@ -11920,4 +14595,3 @@ modules:
         required: false
         multi: false
         place: 1
-
