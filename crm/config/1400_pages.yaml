@@ -119,7 +119,7 @@ pages:
         headerText: primary
     title: מכירות מול יעדים
     options:
-      chartID: '327979457921050122'
+      chart: SalesVsTarget
   - kind: Metric
     xywh:
     - 0
@@ -204,7 +204,7 @@ pages:
         headerText: primary
     title: לידים פר חודש
     options:
-      chartID: '327979457904862730'
+      chart: LeadsPerMonth
   - kind: Chart
     xywh:
     - 4
@@ -218,7 +218,7 @@ pages:
         headerText: primary
     title: מכירות חודשיות
     options:
-      chartID: '327979457904928266'
+      chart: MonthlySales
   - kind: Calendar
     xywh:
     - 8
@@ -317,7 +317,7 @@ pages:
         headerText: primary
     title: לידים לפי סוג
     options:
-      chartID: '327979457904797194'
+      chart: LeadsByType
   - kind: Chart
     xywh:
     - 9
@@ -332,7 +332,7 @@ pages:
         headerText: primary
     title: לידים חדשים פר חודש
     options:
-      chartID: '327979457904862730'
+      chart: LeadsPerMonth
   - kind: RecordList
     xywh:
     - 0
@@ -1174,7 +1174,7 @@ pages:
         headerText: primary
     title: חשבון לפי סוג
     options:
-      chartID: '327979455840544266'
+      chart: AccountsByType
   - kind: Chart
     xywh:
     - 9
@@ -1187,7 +1187,7 @@ pages:
         headerText: primary
     title: חשבונות לפי דירוג
     options:
-      chartID: '327979455824225802'
+      chart: AccountsByRating
   description: ''
   pages:
   - handle: RecordPageForModuleAccount
@@ -1621,7 +1621,7 @@ pages:
         headerText: primary
     title: מספר אנשי קשר לפי תואר
     options:
-      chartID: '327979456511960586'
+      chart: ContactsPerSeniorLeveltitle
   - kind: Chart
     xywh:
     - 9
@@ -1634,7 +1634,7 @@ pages:
         headerText: primary
     title: אנשי קשר פר מדינה
     options:
-      chartID: '327979456511895050'
+      chart: ContactsPerCountry
   description: ''
   pages:
   - handle: RecordPageForModuleContact
@@ -1936,7 +1936,7 @@ pages:
         headerText: primary
     title: הזדמנויות בצנרת
     options:
-      chartID: '327979457905190410'
+      chart: OpportunitySalesPipeline
   - kind: Chart
     xywh:
     - 10
@@ -1949,7 +1949,7 @@ pages:
         headerText: primary
     title: מכירות מול יעדים
     options:
-      chartID: '327979457921050122'
+      chart: SalesVsTarget
   - kind: Chart
     xywh:
     - 8
@@ -1962,7 +1962,7 @@ pages:
         headerText: primary
     title: הזדמנויות מול יעדים
     options:
-      chartID: '327979457904993802'
+      chart: NumberOfOpportunitiesVsTarget
   description: ''
   pages:
   - handle: RecordPageForModuleOpportunity
@@ -4868,7 +4868,7 @@ pages:
         headerText: primary
     title: סטאטוס הצעות מחיר
     options:
-      chartID: '327979457920919050'
+      chart: QuotesByStatus
   - kind: Chart
     xywh:
     - 9
@@ -4883,7 +4883,7 @@ pages:
         headerText: primary
     title: מספר הצעות חודשי
     options:
-      chartID: '327979457920984586'
+      chart: QuotesPerMonth
   description: ''
   pages:
   - handle: RecordPageForModuleQuote
@@ -7164,7 +7164,7 @@ pages:
         headerText: primary
     title: הסכמים פעילים לפי חודש התחלה
     options:
-      chartID: '327979456512091658'
+      chart: ContractsPerStartingMonth
   - kind: Chart
     xywh:
     - 9
@@ -7177,7 +7177,7 @@ pages:
         headerText: primary
     title: הסכמים לפי סטאטוס
     options:
-      chartID: '327979456512026122'
+      chart: ContractsByStatus
   description: ''
   pages:
   - handle: RecordPageForModuleContract
@@ -7733,7 +7733,7 @@ pages:
         headerText: primary
     title: עלויות קמפיין מול הכנסות
     options:
-      chartID: '327979455958771210'
+      chart: CampaignCostVsRevenue
   - kind: Chart
     xywh:
     - 8
@@ -7746,7 +7746,7 @@ pages:
         headerText: primary
     title: קמפיינים פעילים פר סוג
     options:
-      chartID: '327979455958574602'
+      chart: ActiveCampaignsByType
   - kind: Metric
     xywh:
     - 0
@@ -7839,7 +7839,7 @@ pages:
         headerText: primary
     title: הזדמנויות בקמפיין מול יעדים
     options:
-      chartID: '327979455958640138'
+      chart: CampaignAmountAllOpportunitiesVsTarget
   - kind: Chart
     xywh:
     - 10
@@ -7852,7 +7852,7 @@ pages:
         headerText: primary
     title: הזדמנויות מוצלחות בקמפיין מול יעדים
     options:
-      chartID: '327979455958705674'
+      chart: CampaignAmountAllWonOpportunitiesVsTarget
   description: ''
   pages:
   - handle: RecordPageForModuleCampaign
@@ -8112,7 +8112,7 @@ pages:
         headerText: primary
     title: מוצרים לפי משפחת מוצר
     options:
-      chartID: '327979454985299466'
+      chart: ProductsPerFamily
   - kind: Chart
     xywh:
     - 9
@@ -8125,7 +8125,7 @@ pages:
         headerText: primary
     title: מוצרים נוספים פר חודש
     options:
-      chartID: '327979454985233930'
+      chart: ProductsAddedPerMonth
   description: ''
   pages:
   - handle: PriceBook
@@ -8178,7 +8178,7 @@ pages:
           headerText: primary
       title: ספרי מחיר פר חודש
       options:
-        chartID: '327979454985168394'
+        chart: PriceBooksCreatedPerMonth
     - kind: Chart
       xywh:
       - 9
@@ -8191,7 +8191,7 @@ pages:
           headerText: primary
       title: פרטי ספרי מחיר פר חודש
       options:
-        chartID: '327979454985102858'
+        chart: PriceBookEntriesPerMonth
     description: ''
     pages:
     - handle: RecordPageForModulePricebook
@@ -8506,7 +8506,7 @@ pages:
         headerText: primary
     title: אירועים לפי סוג
     options:
-      chartID: '327979457904469514'
+      chart: EventsPerType
   - kind: Chart
     xywh:
     - 9
@@ -8519,7 +8519,7 @@ pages:
         headerText: primary
     title: אירועים פר חודש
     options:
-      chartID: '327979457904403978'
+      chart: EventsPerMonth
   - kind: Calendar
     xywh:
     - 3
@@ -8729,7 +8729,7 @@ pages:
         headerText: primary
     title: משימות לפי סטאטוס
     options:
-      chartID: '327979457921181194'
+      chart: TasksByStatus
   - kind: Chart
     xywh:
     - 9
@@ -8742,7 +8742,7 @@ pages:
         headerText: primary
     title: משימות פר חודש
     options:
-      chartID: '327979457921246730'
+      chart: TasksPerMonth
   description: ''
   pages:
   - handle: RecordPageForModuleTask
@@ -8846,7 +8846,7 @@ pages:
         headerText: primary
     title: לידים פר יום
     options:
-      chartID: '327979457904862730'
+      chart: LeadsPerMonth
   - kind: Chart
     xywh:
     - 6
@@ -8859,7 +8859,7 @@ pages:
         headerText: primary
     title: לידים לפי סוג
     options:
-      chartID: '327979457904797194'
+      chart: LeadsByType
   - kind: Chart
     xywh:
     - 6
@@ -8872,7 +8872,7 @@ pages:
         headerText: primary
     title: לידים לפי מדינה
     options:
-      chartID: '327979457904600586'
+      chart: LeadsByCountry
   - kind: Chart
     xywh:
     - 9
@@ -8885,7 +8885,7 @@ pages:
         headerText: primary
     title: משפך לידים
     options:
-      chartID: '327979457904535050'
+      chart: LeadFunnel
   - kind: Chart
     xywh:
     - 0
@@ -8898,7 +8898,7 @@ pages:
         headerText: primary
     title: מכירות חודשיות
     options:
-      chartID: '327979457904928266'
+      chart: MonthlySales
   - kind: Chart
     xywh:
     - 9
@@ -8911,7 +8911,7 @@ pages:
         headerText: primary
     title: צנרת מכירות
     options:
-      chartID: '327979457905255946'
+      chart: OpportunityStatusFunnel
   - kind: Chart
     xywh:
     - 0
@@ -8924,7 +8924,7 @@ pages:
         headerText: primary
     title: מכירות מול יעדים
     options:
-      chartID: '327979457921050122'
+      chart: SalesVsTarget
   - kind: Chart
     xywh:
     - 3
@@ -8937,7 +8937,7 @@ pages:
         headerText: primary
     title: הזדמנויות מול ידעים
     options:
-      chartID: '327979457904993802'
+      chart: NumberOfOpportunitiesVsTarget
   - kind: Chart
     xywh:
     - 6
@@ -8950,7 +8950,7 @@ pages:
         headerText: primary
     title: חשבונות לפי דירוג
     options:
-      chartID: '327979455824225802'
+      chart: AccountsByRating
   description: ''
   pages:
   - handle: LeadFunnelDashboard
@@ -9052,7 +9052,7 @@ pages:
           headerText: primary
       title: הזדמנויות בקמפיין מול יעדים
       options:
-        chartID: '327979455958640138'
+        chart: CampaignAmountAllOpportunitiesVsTarget
     - kind: Chart
       xywh:
       - 6
@@ -9065,7 +9065,7 @@ pages:
           headerText: primary
       title: הזדמנויות מוצלחות בקמפיין מול יעדים
       options:
-        chartID: '327979455958705674'
+        chart: CampaignAmountAllWonOpportunitiesVsTarget
     - kind: Chart
       xywh:
       - 0
@@ -9078,7 +9078,7 @@ pages:
           headerText: primary
       title: קמפיינים פעילים פר סוג
       options:
-        chartID: '327979455958574602'
+        chart: ActiveCampaignsByType
     - kind: Chart
       xywh:
       - 0
@@ -9091,7 +9091,7 @@ pages:
           headerText: primary
       title: עלויות קמפיין מול הכנסות
       options:
-        chartID: '327979455958771210'
+        chart: CampaignCostVsRevenue
     - kind: Chart
       xywh:
       - 6
@@ -9104,7 +9104,7 @@ pages:
           headerText: primary
       title: לידים חדשים פר חודש
       options:
-        chartID: '327979457904862730'
+        chart: LeadsPerMonth
     - kind: Chart
       xywh:
       - 0
@@ -9117,7 +9117,7 @@ pages:
           headerText: primary
       title: לידים לפי סוג
       options:
-        chartID: '327979457904797194'
+        chart: LeadsByType
     - kind: Chart
       xywh:
       - 3
@@ -9130,7 +9130,7 @@ pages:
           headerText: primary
       title: לידים לפי מקור
       options:
-        chartID: '327979457904731658'
+        chart: LeadsBySource
     - kind: Chart
       xywh:
       - 0
@@ -9143,7 +9143,7 @@ pages:
           headerText: primary
       title: לידים לפי מדינה
       options:
-        chartID: '327979457904600586'
+        chart: LeadsByCountry
     - kind: Chart
       xywh:
       - 9
@@ -9156,7 +9156,7 @@ pages:
           headerText: primary
       title: משפך לידים
       options:
-        chartID: '327979457904535050'
+        chart: LeadFunnel
     - kind: Chart
       xywh:
       - 6
@@ -9169,7 +9169,7 @@ pages:
           headerText: primary
       title: לידים לפי דירוג
       options:
-        chartID: '327979457904666122'
+        chart: LeadsByRating
     - kind: Chart
       xywh:
       - 9
@@ -9182,7 +9182,7 @@ pages:
           headerText: primary
       title: חשבונות לפי דירוג
       options:
-        chartID: '327979455824225802'
+        chart: AccountsByRating
     description: ''
   - handle: ForecastDashboard
     (envoy):
@@ -9202,7 +9202,7 @@ pages:
           headerText: primary
       title: Sales YTD
       options:
-        chartID: '327979457921115658'
+        chart: SalesYTD
     - kind: Chart
       xywh:
       - 6
@@ -9215,7 +9215,7 @@ pages:
           headerText: primary
       title: Dealsize
       options:
-        chartID: '327979457904338442'
+        chart: Dealsize
     - kind: Chart
       xywh:
       - 0
@@ -9228,7 +9228,7 @@ pages:
           headerText: primary
       title: מכירות חודשיות
       options:
-        chartID: '327979457904928266'
+        chart: MonthlySales
     - kind: Chart
       xywh:
       - 9
@@ -9241,7 +9241,7 @@ pages:
           headerText: primary
       title: הזדמנויות בצנרת
       options:
-        chartID: '327979457905255946'
+        chart: OpportunityStatusFunnel
     - kind: Chart
       xywh:
       - 0
@@ -9254,7 +9254,7 @@ pages:
           headerText: primary
       title: הזדמנויות מול יעדים
       options:
-        chartID: '327979457904993802'
+        chart: NumberOfOpportunitiesVsTarget
     - kind: Chart
       xywh:
       - 3
@@ -9267,7 +9267,7 @@ pages:
           headerText: primary
       title: מכירות מול יעדים
       options:
-        chartID: '327979457921050122'
+        chart: SalesVsTarget
     - kind: Chart
       xywh:
       - 6
@@ -9280,7 +9280,7 @@ pages:
           headerText: primary
       title: Quotes Per Month
       options:
-        chartID: '327979457920984586'
+        chart: QuotesPerMonth
     - kind: Chart
       xywh:
       - 0
@@ -9293,7 +9293,7 @@ pages:
           headerText: primary
       title: Number of Opportunities per Month
       options:
-        chartID: '327979457905059338'
+        chart: OpportunitiesCreatedPerMonth
     description: ''
   - handle: KPIsAndSalesActivitiesDashboard
     (envoy):
@@ -9473,7 +9473,7 @@ pages:
           headerText: primary
       title: Sales YTD
       options:
-        chartID: '327979457921115658'
+        chart: SalesYTD
     - kind: Chart
       xywh:
       - 10
@@ -9486,7 +9486,7 @@ pages:
           headerText: primary
       title: מכירות מול יעדים
       options:
-        chartID: '327979457921050122'
+        chart: SalesVsTarget
     - kind: Chart
       xywh:
       - 8
@@ -9499,7 +9499,7 @@ pages:
           headerText: primary
       title: הזדמנויות בקמפיין מול יעדים
       options:
-        chartID: '327979455958640138'
+        chart: CampaignAmountAllOpportunitiesVsTarget
     - kind: Chart
       xywh:
       - 10
@@ -9512,7 +9512,7 @@ pages:
           headerText: primary
       title: הזדמנויות מוצלחות בקמפיין מול יעדים
       options:
-        chartID: '327979455958705674'
+        chart: CampaignAmountAllWonOpportunitiesVsTarget
     - kind: Chart
       xywh:
       - 0
@@ -9525,7 +9525,7 @@ pages:
           headerText: primary
       title: לידים פר חודש
       options:
-        chartID: '327979457904862730'
+        chart: LeadsPerMonth
     - kind: Chart
       xywh:
       - 0
@@ -9538,7 +9538,7 @@ pages:
           headerText: primary
       title: Sales per Month
       options:
-        chartID: '327979457904928266'
+        chart: MonthlySales
     - kind: Chart
       xywh:
       - 6
@@ -9551,7 +9551,7 @@ pages:
           headerText: primary
       title: Campaign Cost vs. Revenue
       options:
-        chartID: '327979455958771210'
+        chart: CampaignCostVsRevenue
     - kind: Chart
       xywh:
       - 6
@@ -9564,7 +9564,7 @@ pages:
           headerText: primary
       title: Quotes per Month
       options:
-        chartID: '327979457920984586'
+        chart: QuotesPerMonth
     - kind: Chart
       xywh:
       - 0
@@ -9577,7 +9577,7 @@ pages:
           headerText: primary
       title: Contracts Starting per Month
       options:
-        chartID: '327979456512091658'
+        chart: ContractsPerStartingMonth
     - kind: Chart
       xywh:
       - 6
@@ -9590,7 +9590,7 @@ pages:
           headerText: primary
       title: Cases per Month
       options:
-        chartID: '327979456058713610'
+        chart: CasesPerMonth
     description: ''
   - handle: ExecutiveDailyViewDashboard
     (envoy):
@@ -9610,7 +9610,7 @@ pages:
           headerText: primary
       title: צנרת מכירות
       options:
-        chartID: '327979457905190410'
+        chart: OpportunitySalesPipeline
     - kind: RecordList
       xywh:
       - 3
@@ -9677,7 +9677,7 @@ pages:
           headerText: primary
       title: Activities by Type
       options:
-        chartID: '327979457904469514'
+        chart: EventsPerType
     - kind: Chart
       xywh:
       - 3
@@ -9690,7 +9690,7 @@ pages:
           headerText: primary
       title: Activities per Month
       options:
-        chartID: '327979457904403978'
+        chart: EventsPerMonth
     - kind: Chart
       xywh:
       - 3
@@ -9703,7 +9703,7 @@ pages:
           headerText: primary
       title: Quotes by Status
       options:
-        chartID: '327979457920919050'
+        chart: QuotesByStatus
     - kind: Chart
       xywh:
       - 0
@@ -9716,7 +9716,7 @@ pages:
           headerText: primary
       title: משפך לידים
       options:
-        chartID: '327979457904535050'
+        chart: LeadFunnel
     - kind: Chart
       xywh:
       - 9
@@ -9729,7 +9729,7 @@ pages:
           headerText: primary
       title: Cases by Status
       options:
-        chartID: '327979456042329610'
+        chart: CasesByStatus
     - kind: Chart
       xywh:
       - 6
@@ -9742,7 +9742,7 @@ pages:
           headerText: primary
       title: Contract by Status
       options:
-        chartID: '327979456512026122'
+        chart: ContractsByStatus
     - kind: Chart
       xywh:
       - 9
@@ -9755,7 +9755,7 @@ pages:
           headerText: primary
       title: משימות לפי סטאטוס
       options:
-        chartID: '327979457921181194'
+        chart: TasksByStatus
     description: ''
 
 - handle: More
@@ -10057,7 +10057,7 @@ pages:
           headerText: primary
       title: Cases per Month
       options:
-        chartID: '327979456058713610'
+        chart: CasesPerMonth
     - kind: Chart
       xywh:
       - 8
@@ -10070,7 +10070,7 @@ pages:
           headerText: primary
       title: Cases by Status
       options:
-        chartID: '327979456042329610'
+        chart: CasesByStatus
     - kind: Chart
       xywh:
       - 10
@@ -10083,7 +10083,7 @@ pages:
           headerText: primary
       title: Cases by Type
       options:
-        chartID: '327979456058648074'
+        chart: CasesByType
     - kind: Chart
       xywh:
       - 10
@@ -10096,7 +10096,7 @@ pages:
           headerText: primary
       title: Cases by Priority
       options:
-        chartID: '327979456042264074'
+        chart: CasesByPriority
     - kind: Chart
       xywh:
       - 8
@@ -10109,7 +10109,7 @@ pages:
           headerText: primary
       title: Cases by Origin
       options:
-        chartID: '327979456042198538'
+        chart: CasesByOrigin
     description: ''
     pages:
     - handle: RecordPageForModuleCase
@@ -10433,7 +10433,7 @@ pages:
           headerText: primary
       title: Solutions by Status
       options:
-        chartID: '327979456058779146'
+        chart: SolutionsByStatus
     - kind: Chart
       xywh:
       - 9
@@ -10446,7 +10446,7 @@ pages:
           headerText: primary
       title: Solutions Created per Month
       options:
-        chartID: '327979456058844682'
+        chart: SolutionsCreatedPerMonth
     description: ''
     pages:
     - handle: RecordPageForModuleSolution
