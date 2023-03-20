@@ -10,6 +10,7 @@ workflows:
         kind: gateway
         meta:
           name: ""
+          visual:
             id: "23"
             xywh:
               - 2360
