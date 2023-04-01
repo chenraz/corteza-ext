@@ -111,6 +111,96 @@ templates:
     meta:
       short: Lead Converted (subject)
       description: lead_converted_subject
+  auth_email_password_reset_subject:
+    type: text/plain
+    partial: false
+    template: |
+      Reset your password
+    meta:
+      short: Password reset subject
+  auth_email_password_reset_content:
+    type: text/html
+    partial: false
+    template: |
+      {{template "email_general_header" .}}<h2 style=color:#568ba2;text-align:center>Reset your password</h2><p>Hello,</p><p>Follow <a href="{{ .URL }}" style=color:#568ba2>this link</a> and reset your password.</p><p>You will be logged-in after successful reset.</p>{{template "email_general_footer" .}}
+    meta:
+      short: Password reset content
+  auth_email_confirm_subject:
+    type: text/plain
+    partial: false
+    template: |
+      Confirm your email address
+    meta:
+      short: Email confirmation subject
+  auth_email_confirm_content:
+    type: text/html
+    partial: false
+    template: |
+      {{template "email_general_header" .}}<h2 style=color:#568ba2;text-align:center>Confirm your email address</h2><p>Hello,</p><p>Follow <a href="{{ .URL }}" style=color:#568ba2>this link</a> to confirm your email address.</p><p>You will be logged-in after successful confirmation.</p>{{template "email_general_footer" .}}
+    meta:
+      short: Email confirmation content
+  auth_email_mfa_subject:
+    type: text/plain
+    partial: false
+    template: |
+      Login code
+    meta:
+      short: MFA login code subject
+  auth_email_mfa_content:
+    type: text/html
+    partial: false
+    template: |
+      {{template "email_general_header" .}}<h2 style=color:#568ba2;text-align:center>Reset your password</h2><p>Hello,</p><p>Enter this code into your login form: <code>{{.Code}}</code></p>{{template "email_general_footer" .}}
+    meta:
+      short: MFA login code content
+  email_general_header:
+    type: text/html
+    partial: true
+    template: |
+      <div style=width:100%;min-height:100%;margin:0;padding:0;color:#3a393c;font-size:12px;line-height:18px;font-family:Verdana,Arial,sans-serif><table width=100% align=center style=width:100%;height:100%;border-collapse:collapse;border:0;padding:60px border=0 cellspacing=0 cellpadding=0 summary><tbody><tr><td valign=top align=center style="padding:20px 0"><table width=800 cellspacing=0 cellpadding=0 border=0><tbody><tr><td width=800 bgcolor=#ffffff style="color:#3a393c;font-size:14px;line-height:20px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;text-align:left"><table width=800 cellspacing=0 cellpadding=0 border=0><tbody><tr style=background-color:#fff;height:50px><td style="border-bottom:2px solid #568ba2"> <a href="{{ .BaseURL }}" style=text-decoration:none target=_blank> <img src="{{ .Logo }}" style="display:block;margin:0 auto;padding:10px"> </a><tr><td width=800 style="padding:40px 30px">
+    meta:
+      short: General template header
+      description: General template header to use with system email notifications
+  email_general_footer:
+    type: text/html
+    partial: true
+    template: |
+      <tr><td style="padding:30px;border-top:1px solid #f3f3f5"><p>If you have any questions, please contact <a href="mailto:{{ .SignatureEmail }}" style=color:#568ba2>{{ .SignatureEmail }}</a>.</p><p>Kind regards,<br> {{ .SignatureName }}</p></table></table></table></div>
+    meta:
+      short: General template footer
+      description: General template footer to use with system email notifications
+  record_table:
+    type: text/html
+    partial: true
+    template: |
+      <table width=800 cellspacing=0 cellpadding=0 border=0 style="margin:0 auto"><thead><tr><th>Field<th>Value<tbody>{{range $key, $value := .values}}<tr><td>{{ $key }}{{if $value }} {{if typeIs "[]interface {}" $value}}<td>{{ $value | join ", " }} {{else}}<td>{{ $value }} {{end}}{{else}}<td>&nbsp;{{end}}{{end}} </table>
+    meta:
+      short: Tablefy Record
+      description: Displays the provided record as a table.
+  case_update_subject:
+    type: text/plain
+    partial: false
+    template: |
+      Case: [{{.case.values.Number}}] {{.case.values.Subject}}
+    meta:
+      short: case_update_subject
+      description: case_update_subject
+  case_update_content:
+    type: text/html
+    partial: false
+    template: |
+      <p> Dear {{.contact.values.FirstName}}, We are contacting you with regard to the case "{{.case.values.Subject}}".  {{.reason}}  You can reply directly to this email. When replying, please make sure the ticket ID is kept in the subject so we can track your replies.  Kind regards,  The service team
+    meta:
+      short: case_update_content
+      description: case_update_content
+  quote_pdf_included_items:
+    type: text/html
+    partial: true
+    template: |
+      <div id=specs class=products-list style=direction:rtl;page-break-after:always><h2 class=page-title>מפרט הצעת המחיר</h2><h4 class=sub-title>מוצרים ושירותים הכלולים בהצעת המחיר</h4><table id=products-table cellspacing=0 cellpadding>  {{range $index, $element :=.lineItems}} {{ $productId := printf "%v" $element.values.ProductId }} {{ $imgageUrl := index $.productImages $productId }} {{ $qty := 1}} {{ if $element.values.Quantity }} {{ $qty = $element.values.Quantity }} {{ end }}<tr><td valign=top halign=right> <img width=36px height=auto src="{{ inlineRemote $imgageUrl }}"><br><td><h3 class=product-title>{{ index $.productNames $productId }}</h3> {{ $element.values.Description }}<br> {{end}}</table></div>
+    meta:
+      short: quote_pdf_included_items
+      description: Quote included products
   quote_pdf_extension_items:
     type: text/html
     partial: true
