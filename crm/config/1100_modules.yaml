@@ -5104,6 +5104,42 @@ modules:
         multi: false
         place: 14
 
+  CoverTemplate:
+    (envoy):
+      onExisting: skip
+    name: CoverTemplate
+    fields:
+      Content:
+        label: תוכן
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: true
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
+      Name:
+        label: שם
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: \n
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
+
   EmailTemplate:
     (envoy):
       onExisting: skip
@@ -7996,7 +8032,7 @@ modules:
           hint:
             edit: ''
             view: ''
-          roles: []
+          roles: null
           selectType: default
           description:
             edit: ''
@@ -8507,354 +8543,6 @@ modules:
         multi: false
         place: 3
 
-  OpportunityLineItem:
-    (envoy):
-      onExisting: skip
-    name: OpportunityLineItem
-    fields:
-      ServiceDate:
-        label: תאריך
-        kind: DateTime
-        options:
-          hint:
-            view: ''
-          format: ''
-          onlyDate: false
-          onlyTime: false
-          description:
-            view: ''
-          multiDelimiter: '
-
-            '
-          onlyPastValues: false
-          outputRelative: false
-          onlyFutureValues: false
-        expressions: {}
-        required: false
-        multi: false
-        place: 0
-      Discount:
-        label: הנחה
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0.00'
-          prefix: ''
-          suffix: ₪
-          display: number
-          variant: success
-          animated: false
-          precision: 2
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 1
-      Description:
-        label: תאור פריט
-        kind: String
-        options:
-          hint:
-            view: ''
-          multiLine: true
-          description:
-            view: ''
-          multiDelimiter: '
-
-            '
-          useRichTextEditor: false
-        expressions: {}
-        required: false
-        multi: false
-        place: 2
-      ListPrice:
-        label: מחיר רשום
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0.00'
-          prefix: ''
-          suffix: ₪
-          display: number
-          variant: success
-          animated: false
-          precision: 2
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 3
-      OpportunityId:
-        label: הזדמנות
-        kind: Record
-        options:
-          hint:
-            view: ''
-          labelField: Name
-          selectType: ''
-          description:
-            view: ''
-          queryFields:
-          - AccountId
-          - Name
-          multiDelimiter: '
-
-            '
-          recordLabelField: ''
-          module: Opportunity
-        expressions: {}
-        required: false
-        multi: false
-        place: 4
-      Name:
-        label: שם המוצר
-        kind: String
-        options:
-          hint:
-            view: ''
-          multiLine: false
-          description:
-            view: ''
-          multiDelimiter: '
-
-            '
-          useRichTextEditor: false
-        expressions: {}
-        required: false
-        multi: false
-        place: 5
-      PricebookEntryId:
-        label: ספר מחירים
-        kind: Record
-        options:
-          hint:
-            view: ''
-          labelField: Name
-          selectType: ''
-          description:
-            view: ''
-          queryFields:
-          - ProductCode
-          - Name
-          multiDelimiter: '
-
-            '
-          recordLabelField: ''
-          module: PricebookEntry
-        expressions: {}
-        required: false
-        multi: false
-        place: 6
-      ProductId:
-        label: מוצר
-        kind: Record
-        options:
-          hint:
-            view: ''
-          labelField: Name
-          selectType: ''
-          description:
-            view: ''
-          queryFields: []
-          multiDelimiter: '
-
-            '
-          recordLabelField: ''
-          module: Product
-        expressions: {}
-        required: false
-        multi: false
-        place: 7
-      ProductCode:
-        label: קוד מוצר
-        kind: String
-        options:
-          hint:
-            view: ''
-          multiLine: false
-          description:
-            view: ''
-          multiDelimiter: '
-
-            '
-          useRichTextEditor: false
-        expressions: {}
-        required: false
-        multi: false
-        place: 8
-      Quantity:
-        label: כמות
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0'
-          prefix: ''
-          suffix: ''
-          display: number
-          variant: success
-          animated: false
-          precision: 0
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 9
-      UnitPrice:
-        label: מחיר מכירה
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0.00'
-          prefix: ''
-          suffix: ₪
-          display: number
-          variant: success
-          animated: false
-          precision: 2
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 10
-      SortOrder:
-        label: סדר מיון
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0'
-          prefix: ''
-          suffix: ''
-          display: number
-          variant: success
-          animated: false
-          precision: 0
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 11
-      Subtotal:
-        label: סכום
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0.00'
-          prefix: ''
-          suffix: ₪
-          display: number
-          variant: success
-          animated: false
-          precision: 2
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 12
-      TotalPrice:
-        label: סה"כ מחיר
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0.00'
-          prefix: ''
-          suffix: ₪
-          display: number
-          variant: success
-          animated: false
-          precision: 2
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 13
-      Photo:
-        label: תמונה
-        kind: String
-        options:
-          hint:
-            view: ''
-          multiLine: false
-          description:
-            view: ''
-          multiDelimiter: '
-
-            '
-          useRichTextEditor: false
-        expressions: {}
-        required: false
-        multi: false
-        place: 14
-
   OpportunityIncludedItem:
     (envoy):
       onExisting: skip
@@ -9219,6 +8907,354 @@ modules:
         multi: false
         place: 14
 
+  OpportunityLineItem:
+    (envoy):
+      onExisting: skip
+    name: OpportunityLineItem
+    fields:
+      ServiceDate:
+        label: תאריך
+        kind: DateTime
+        options:
+          hint:
+            view: ''
+          format: ''
+          onlyDate: false
+          onlyTime: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          onlyPastValues: false
+          outputRelative: false
+          onlyFutureValues: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
+      Discount:
+        label: הנחה
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
+      Description:
+        label: תאור פריט
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: true
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
+      ListPrice:
+        label: מחיר רשום
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
+      OpportunityId:
+        label: הזדמנות
+        kind: Record
+        options:
+          hint:
+            view: ''
+          labelField: Name
+          selectType: ''
+          description:
+            view: ''
+          queryFields:
+          - AccountId
+          - Name
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Opportunity
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
+      Name:
+        label: שם המוצר
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
+      PricebookEntryId:
+        label: ספר מחירים
+        kind: Record
+        options:
+          hint:
+            view: ''
+          labelField: Name
+          selectType: ''
+          description:
+            view: ''
+          queryFields:
+          - ProductCode
+          - Name
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: PricebookEntry
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
+      ProductId:
+        label: מוצר
+        kind: Record
+        options:
+          hint:
+            view: ''
+          labelField: Name
+          selectType: ''
+          description:
+            view: ''
+          queryFields: []
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Product
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
+      ProductCode:
+        label: קוד מוצר
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
+      Quantity:
+        label: כמות
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
+          precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
+      UnitPrice:
+        label: מחיר מכירה
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
+      SortOrder:
+        label: סדר מיון
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
+          precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
+      Subtotal:
+        label: סכום
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
+      TotalPrice:
+        label: סה"כ מחיר
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
+      Photo:
+        label: תמונה
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
+
   Pricebook:
     (envoy):
       onExisting: skip
@@ -9361,8 +9397,12 @@ modules:
         label: פעיל
         kind: Bool
         options:
+          hint:
+            view: ''
           trueLabel: 'Yes'
           falseLabel: 'No'
+          description:
+            view: ''
         expressions: {}
         required: false
         multi: false
@@ -9370,7 +9410,16 @@ modules:
       ProductCode:
         label: קוד מוצר
         kind: String
-        options: null
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
         expressions: {}
         required: false
         multi: false
@@ -9379,7 +9428,14 @@ modules:
         label: תאור מוצר
         kind: String
         options:
+          hint:
+            view: ''
           multiLine: true
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
           useRichTextEditor: false
         expressions: {}
         required: false
@@ -9389,12 +9445,19 @@ modules:
         label: משפחת מוצר
         kind: Select
         options:
+          hint:
+            view: ''
           options:
           - text: שירותים
             value: Services
           - text: מוצרים
             value: Products
           selectType: default
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
         expressions: {}
         required: false
         multi: false
@@ -9402,7 +9465,16 @@ modules:
       Name:
         label: שם מוצר
         kind: String
-        options: null
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
         expressions: {}
         required: false
         multi: false
@@ -9411,9 +9483,16 @@ modules:
         label: תמונה
         kind: File
         options:
+          hint:
+            view: ''
           mode: single
+          inline: true
           maxSize: 0
+          mimetypes: ''
           allowImages: true
+          description:
+            view: ''
+          hideFileName: false
           allowDocuments: true
         expressions: {}
         required: false
@@ -9423,9 +9502,16 @@ modules:
         label: קבצים
         kind: File
         options:
+          hint:
+            view: ''
           mode: list
+          inline: true
           maxSize: 0
+          mimetypes: ''
           allowImages: true
+          description:
+            view: ''
+          hideFileName: false
           allowDocuments: true
         expressions: {}
         required: false
@@ -9435,10 +9521,18 @@ modules:
         label: EntitlementTemplateId
         kind: Record
         options:
+          hint:
+            view: ''
           labelField: Name
           selectType: default
+          description:
+            view: ''
           queryFields:
           - Name
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
           module: EntitlementTemplate
         expressions: {}
         required: false
@@ -12421,7 +12515,7 @@ modules:
           multiDelimiter: '
 
             '
-          useRichTextEditor: true
+          useRichTextEditor: false
         expressions: {}
         required: false
         multi: false
@@ -12445,6 +12539,355 @@ modules:
         required: false
         multi: false
         place: 48
+
+  QuoteIncludedItem:
+    (envoy):
+      onExisting: skip
+    name: QuoteIncludedItem
+    fields:
+      ServiceDate:
+        label: תאריך
+        kind: DateTime
+        options:
+          hint:
+            view: ''
+          format: ''
+          onlyDate: false
+          onlyTime: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          onlyPastValues: false
+          outputRelative: false
+          onlyFutureValues: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 0
+      Discount:
+        label: הנחה
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 1
+      Description:
+        label: תאור פריט
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: true
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 2
+      ListPrice:
+        label: מחיר רשום
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 3
+      UnitPrice:
+        label: מחיר מכירה
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: '2'
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 4
+      QuoteId:
+        label: הצעת מחיר
+        kind: Record
+        options:
+          hint:
+            view: ''
+          labelField: Name
+          selectType: ''
+          description:
+            view: ''
+          queryFields:
+          - AccountId
+          - Name
+          - QuoteNumber
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Quote
+        expressions: {}
+        required: false
+        multi: false
+        place: 5
+      PricebookEntryId:
+        label: ספר מחירים
+        kind: Record
+        options:
+          hint:
+            view: ''
+          labelField: Name
+          selectType: default
+          description:
+            view: ''
+          queryFields:
+          - ProductCode
+          - Name
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: PricebookEntry
+        expressions: {}
+        required: false
+        multi: false
+        place: 6
+      ProductId:
+        label: מוצר
+        kind: Record
+        options:
+          hint:
+            view: ''
+          labelField: Name
+          selectType: ''
+          description:
+            view: ''
+          queryFields: []
+          multiDelimiter: '
+
+            '
+          recordLabelField: ''
+          module: Product
+        expressions: {}
+        required: false
+        multi: false
+        place: 7
+      ProductCode:
+        label: קוד מוצר
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 8
+      Quantity:
+        label: כמות
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
+          precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 9
+      SortOrder:
+        label: סדר מיון
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0'
+          prefix: ''
+          suffix: ''
+          display: number
+          variant: success
+          animated: false
+          precision: 0
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 10
+      Subtotal:
+        label: סכום
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 11
+      TotalPrice:
+        label: סה"כ מחיר
+        kind: Number
+        options:
+          max: 100
+          hint:
+            view: ''
+          format: '0.00'
+          prefix: ''
+          suffix: ₪
+          display: number
+          variant: success
+          animated: false
+          precision: 2
+          showValue: true
+          thresholds: []
+          description:
+            view: ''
+          showProgress: false
+          showRelative: true
+          multiDelimiter: '
+
+            '
+        expressions: {}
+        required: false
+        multi: false
+        place: 12
+      Name:
+        label: שם המוצר
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 13
+      Photo:
+        label: תמונה
+        kind: String
+        options:
+          hint:
+            view: ''
+          multiLine: false
+          description:
+            view: ''
+          multiDelimiter: '
+
+            '
+          useRichTextEditor: false
+        expressions: {}
+        required: false
+        multi: false
+        place: 14
 
   QuoteLineItem:
     (envoy):
@@ -12781,355 +13224,6 @@ modules:
         place: 13
       LineItemNumber:
         label: מספר פריט
-        kind: String
-        options:
-          hint:
-            view: ''
-          multiLine: false
-          description:
-            view: ''
-          multiDelimiter: '
-
-            '
-          useRichTextEditor: false
-        expressions: {}
-        required: false
-        multi: false
-        place: 14
-
-  QuoteIncludedItem:
-    (envoy):
-      onExisting: skip
-    name: QuoteIncludedItem
-    fields:
-      ServiceDate:
-        label: תאריך
-        kind: DateTime
-        options:
-          hint:
-            view: ''
-          format: ''
-          onlyDate: false
-          onlyTime: false
-          description:
-            view: ''
-          multiDelimiter: '
-
-            '
-          onlyPastValues: false
-          outputRelative: false
-          onlyFutureValues: false
-        expressions: {}
-        required: false
-        multi: false
-        place: 0
-      Discount:
-        label: הנחה
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0.00'
-          prefix: ''
-          suffix: ₪
-          display: number
-          variant: success
-          animated: false
-          precision: 2
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 1
-      Description:
-        label: תאור פריט
-        kind: String
-        options:
-          hint:
-            view: ''
-          multiLine: true
-          description:
-            view: ''
-          multiDelimiter: '
-
-            '
-          useRichTextEditor: false
-        expressions: {}
-        required: false
-        multi: false
-        place: 2
-      ListPrice:
-        label: מחיר רשום
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0.00'
-          prefix: ''
-          suffix: ₪
-          display: number
-          variant: success
-          animated: false
-          precision: 2
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 3
-      UnitPrice:
-        label: מחיר מכירה
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0.00'
-          prefix: ''
-          suffix: ₪
-          display: number
-          variant: success
-          animated: false
-          precision: '2'
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 4
-      QuoteId:
-        label: הצעת מחיר
-        kind: Record
-        options:
-          hint:
-            view: ''
-          labelField: Name
-          selectType: ''
-          description:
-            view: ''
-          queryFields:
-          - AccountId
-          - Name
-          - QuoteNumber
-          multiDelimiter: '
-
-            '
-          recordLabelField: ''
-          module: Quote
-        expressions: {}
-        required: false
-        multi: false
-        place: 5
-      PricebookEntryId:
-        label: ספר מחירים
-        kind: Record
-        options:
-          hint:
-            view: ''
-          labelField: Name
-          selectType: default
-          description:
-            view: ''
-          queryFields:
-          - ProductCode
-          - Name
-          multiDelimiter: '
-
-            '
-          recordLabelField: ''
-          module: PricebookEntry
-        expressions: {}
-        required: false
-        multi: false
-        place: 6
-      ProductId:
-        label: מוצר
-        kind: Record
-        options:
-          hint:
-            view: ''
-          labelField: Name
-          selectType: ''
-          description:
-            view: ''
-          queryFields: []
-          multiDelimiter: '
-
-            '
-          recordLabelField: ''
-          module: Product
-        expressions: {}
-        required: false
-        multi: false
-        place: 7
-      ProductCode:
-        label: קוד מוצר
-        kind: String
-        options:
-          hint:
-            view: ''
-          multiLine: false
-          description:
-            view: ''
-          multiDelimiter: '
-
-            '
-          useRichTextEditor: false
-        expressions: {}
-        required: false
-        multi: false
-        place: 8
-      Quantity:
-        label: כמות
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0'
-          prefix: ''
-          suffix: ''
-          display: number
-          variant: success
-          animated: false
-          precision: 0
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 9
-      SortOrder:
-        label: סדר מיון
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0'
-          prefix: ''
-          suffix: ''
-          display: number
-          variant: success
-          animated: false
-          precision: 0
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 10
-      Subtotal:
-        label: סכום
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0.00'
-          prefix: ''
-          suffix: ₪
-          display: number
-          variant: success
-          animated: false
-          precision: 2
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 11
-      TotalPrice:
-        label: סה"כ מחיר
-        kind: Number
-        options:
-          max: 100
-          hint:
-            view: ''
-          format: '0.00'
-          prefix: ''
-          suffix: ₪
-          display: number
-          variant: success
-          animated: false
-          precision: 2
-          showValue: true
-          thresholds: []
-          description:
-            view: ''
-          showProgress: false
-          showRelative: true
-          multiDelimiter: '
-
-            '
-        expressions: {}
-        required: false
-        multi: false
-        place: 12
-      Name:
-        label: שם המוצר
-        kind: String
-        options:
-          hint:
-            view: ''
-          multiLine: false
-          description:
-            view: ''
-          multiDelimiter: '
-
-            '
-          useRichTextEditor: false
-        expressions: {}
-        required: false
-        multi: false
-        place: 13
-      Photo:
-        label: תמונה
         kind: String
         options:
           hint:
@@ -14559,39 +14653,3 @@ modules:
         required: false
         multi: false
         place: 3
-
-  CoverTemplate:
-    (envoy):
-      onExisting: skip
-    name: CoverTemplate
-    fields:
-      Content:
-        label: תוכן
-        kind: String
-        options:
-          hint:
-            view: ''
-          multiLine: true
-          description:
-            view: ''
-          multiDelimiter: \n
-          useRichTextEditor: true
-        expressions: {}
-        required: false
-        multi: false
-        place: 0
-      Name:
-        label: שם
-        kind: String
-        options:
-          hint:
-            view: ''
-          multiLine: false
-          description:
-            view: ''
-          multiDelimiter: \n
-          useRichTextEditor: false
-        expressions: {}
-        required: false
-        multi: false
-        place: 1
